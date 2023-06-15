@@ -8,6 +8,7 @@ class Solution:
         for i in range(0, len(nums) + 1):
             if i not in mySet:
                 return i
+        return -1
 
 
 nums = [9, 6, 4, 2, 3, 5, 7, 0, 1]
