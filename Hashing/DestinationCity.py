@@ -5,6 +5,17 @@
 
 class Solution:
     def destCity(self, paths: list[list[str]]) -> str:
+        paths_dict = dict(paths)
+        # for city1, city2 in paths:
+        #     paths_dict[city1] = city2
+
+        for key in paths_dict:
+            if paths_dict[key] not in paths_dict:  # if the dictionary value is not a key in the dictionary
+                return paths_dict[key]
+        return "no result"
 
 
-paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]] # output: Sao Paulo
+paths = [["London", "New York"], ["New York", "Lima"], ["Lima", "Sao Paulo"]]  # returns: Sao Paulo
+# paths = [["B", "C"], ["D", "B"], ["C", "A"]]  # returns A
+sol = Solution()
+print(sol.destCity(paths))
