@@ -116,8 +116,96 @@ class SLL:
         if copied_list.head is not None:
             if copied_list.head.next is None:
                 return copied_list.head
+            if left == 1 and right == 1:
+                return copied_list.head
 
-            curr_node = until_node = copied_list.head
+            prev_node = curr_node = until_node = copied_list.head
+
+            for _ in range(left - 1):
+                prev_node = curr_node
+                curr_node = curr_node.next
+            for _ in range(right - 1):
+                until_node = until_node.next
+            if curr_node == copied_list.head:
+                curr_node = curr_node.next
+
+            prev_node.next = until_node
+            term_node = until_node.next
+            resu_node = curr_node
+
+            while curr_node != term_node:
+                next_node = curr_node.next
+                curr_node.next = prev_node
+                prev_node = curr_node
+                curr_node = next_node
+
+            if left == 1:
+                copied_list.head.next = term_node
+                copied_list.head = until_node
+            else:
+                resu_node.next = term_node
+
+            return copied_list.head
+
+    def delete_middle(self):
+        copied_list = self.copy_list()
+        if copied_list.head is not None:
+            if copied_list.head.next is None:
+                return None
+            prev_node = None
+            fast = slow = copied_list.head
+            while fast is not None and fast.next is not None:
+                fast = fast.next.next
+                prev_node = slow
+                slow = slow.next
+            prev_node.next = slow.next
+            return copied_list.head
+
+    def rem_Nth_from_end(self, n):
+        copied_list = self.copy_list()
+        if copied_list.head is not None and n != 0:
+            if copied_list.head.next is None and n == 1:
+                return None
+            if n == 1:
+                return None
+            prev_node = None
+            slow = fast = copied_list.head
+            for _ in range(n):
+                fast = fast.next
+            while fast is not None:
+                prev_node = slow
+                slow = slow.next
+                fast = fast.next
+            if prev_node is None:
+                copied_list.head = copied_list.head.next
+            else:
+                prev_node.next = slow.next
+            return copied_list.head
+
+    def is_palindrome(self):
+        copied_list = self.copy_list()
+        slow = fast = copied_list.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        prev_node = slow
+        curr_node = slow.next
+        while curr_node:
+            next_node = curr_node.next
+            curr_node.next = prev_node
+            prev_node = curr_node
+            curr_node = next_node
+        slow.next = None
+        head_one = copied_list.head
+        head_two = prev_node
+
+        while head_two:
+            if head_one.val != head_two.val:
+                print("False")
+                return
+            head_one = head_one.next
+            head_two = head_two.next
+        print("True")
 
     def print_nodes(self, outside_head=None):
         if outside_head is None:
@@ -131,8 +219,6 @@ class SLL:
 
 
 sll = SLL()
-sll.add_rear("A")
 sll.add_rear("B")
-sll.add_rear("C")
 sll.print_nodes()
-sll.print_nodes(sll.swap_node_pairs())
+sll.is_palindrome()

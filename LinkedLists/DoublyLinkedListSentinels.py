@@ -161,9 +161,7 @@ class DLL:
 
 dll = DLL()
 dll.add_rear("1")
-dll.add_rear("2")
-dll.add_rear("3")
-dll.add_rear("4")
-dll.add_rear("5")
-dll.print_nodes()
-dll.print_middle()
+# dll.add_rear("2")
+# dll.add_rear("3")
+# dll.add_rear("4")
+# dll.add_rear("5")
