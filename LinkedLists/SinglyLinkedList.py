@@ -1,6 +1,3 @@
-import copy
-
-
 class SLL:
     class ListNode:
         def __init__(self, val, next=None):
@@ -9,6 +6,10 @@ class SLL:
 
     def __init__(self):
         self.head = None
+
+    def add_array(self, arr):
+        for element in arr:
+            self.add_rear(element)
 
     def add_front(self, val):
         new_node = self.ListNode(val)
@@ -93,11 +94,10 @@ class SLL:
             return prev_node
 
     def swap_node_pairs(self):
-        copied_list = self.copy_list()
-        if copied_list.head is not None:
-            if copied_list.head.next is None:
-                return copied_list.head
-            prev_node = curr_node = copied_list.head
+        if self.head is not None:
+            if self.head.next is None:
+                return self.head
+            prev_node = curr_node = self.head
             new_head_node = curr_node.next  # second node will be first node in swapped list
             while curr_node and curr_node.next:  # curr_node becomes None odd sz list. curr_node.next becomes None even sz list
                 # next two lines are redundant on the first iteration
@@ -112,21 +112,20 @@ class SLL:
             return new_head_node
 
     def reverse_sll_between(self, left, right):
-        copied_list = self.copy_list()
-        if copied_list.head is not None:
-            if copied_list.head.next is None:
-                return copied_list.head
+        if self.head is not None:
+            if self.head.next is None:
+                return self.head
             if left == 1 and right == 1:
-                return copied_list.head
+                return self.head
 
-            prev_node = curr_node = until_node = copied_list.head
+            prev_node = curr_node = until_node = self.head
 
             for _ in range(left - 1):
                 prev_node = curr_node
                 curr_node = curr_node.next
             for _ in range(right - 1):
                 until_node = until_node.next
-            if curr_node == copied_list.head:
+            if curr_node == self.head:
                 curr_node = curr_node.next
 
             prev_node.next = until_node
@@ -140,36 +139,34 @@ class SLL:
                 curr_node = next_node
 
             if left == 1:
-                copied_list.head.next = term_node
-                copied_list.head = until_node
+                self.head.next = term_node
+                self.head = until_node
             else:
                 resu_node.next = term_node
 
-            return copied_list.head
+            return self.head
 
     def delete_middle(self):
-        copied_list = self.copy_list()
-        if copied_list.head is not None:
-            if copied_list.head.next is None:
+        if self.head is not None:
+            if self.head.next is None:
                 return None
             prev_node = None
-            fast = slow = copied_list.head
+            fast = slow = self.head
             while fast is not None and fast.next is not None:
                 fast = fast.next.next
                 prev_node = slow
                 slow = slow.next
             prev_node.next = slow.next
-            return copied_list.head
+            return self.head
 
     def rem_Nth_from_end(self, n):
-        copied_list = self.copy_list()
-        if copied_list.head is not None and n != 0:
-            if copied_list.head.next is None and n == 1:
+        if self.head is not None and n != 0:
+            if self.head.next is None and n == 1:
                 return None
             if n == 1:
                 return None
             prev_node = None
-            slow = fast = copied_list.head
+            slow = fast = self.head
             for _ in range(n):
                 fast = fast.next
             while fast is not None:
@@ -177,14 +174,13 @@ class SLL:
                 slow = slow.next
                 fast = fast.next
             if prev_node is None:
-                copied_list.head = copied_list.head.next
+                self.head = self.head.next
             else:
                 prev_node.next = slow.next
-            return copied_list.head
+            return self.head
 
     def is_palindrome(self):
-        copied_list = self.copy_list()
-        slow = fast = copied_list.head
+        slow = fast = self.head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
@@ -196,16 +192,41 @@ class SLL:
             prev_node = curr_node
             curr_node = next_node
         slow.next = None
-        head_one = copied_list.head
+        head_one = self.head
         head_two = prev_node
 
         while head_two:
             if head_one.val != head_two.val:
-                print("False")
-                return
+                return False
             head_one = head_one.next
             head_two = head_two.next
-        print("True")
+            return True
+
+    def remove_same_element(self, val):
+        while self.head and self.head.val == val:
+            self.head = self.head.next
+        if self.head:
+            curr_node = self.head
+            while curr_node.next:
+                while curr_node.next and curr_node.next.val == val:
+                    curr_node.next = curr_node.next.next
+                if curr_node.next is not None:
+                    curr_node = curr_node.next
+                else:
+                    break
+            return self.head
+
+    def odd_even_list(self):
+        if self.head:
+            odd_node = self.head
+            even_head = even_node = self.head.next
+            while odd_node.next and even_node.next:
+                odd_node.next = odd_node.next.next
+                even_node.next = even_node.next.next
+                odd_node = odd_node.next
+                even_node = even_node.next
+            odd_node.next = even_head
+            return self.head
 
     def print_nodes(self, outside_head=None):
         if outside_head is None:
@@ -219,6 +240,10 @@ class SLL:
 
 
 sll = SLL()
-sll.add_rear("B")
+sll.add_rear(1)
+sll.add_rear(2)
+sll.add_rear(3)
+sll.add_rear(4)
+sll.add_rear(5)
 sll.print_nodes()
-sll.is_palindrome()
+sll.print_nodes(sll.delete_middle())
