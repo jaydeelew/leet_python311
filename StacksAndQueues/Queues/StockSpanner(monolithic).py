@@ -12,14 +12,26 @@
 
 
 class StockSpanner:
-
     def __init__(self):
-        
+        self.stack = []
+        self.index = 0
 
     def next(self, price: int) -> int:
-        
+        tuple = (price, self.index)
+        # maintain monotonically decreasing stack
+        while self.stack and price >= self.stack[-1][0]:  # price >= than price from tuple at top of stack
+            self.stack.pop()
+        self.stack.append(tuple)
+        self.index += 1  # the count of each item pushed onto stack starting at 0
+        if len(self.stack) == 1:
+            return self.stack[0][1] + 1  # return index value of only tuple on stack
+        return self.stack[-1][1] - self.stack[-2][1]  # return top of stack index value minus next-to-top index value
 
 
-# Your StockSpanner object will be instantiated and called as such:
-# obj = StockSpanner()
-# param_1 = obj.next(price)
+obj = StockSpanner()
+prices = [100, 80, 60, 70, 60, 75, 85]  # output = [1,1,1,2,1,4,6]
+# prices = [31, 41, 48, 59, 79]  # output = [1,2,3,4,5]
+# prices = [28, 14, 28, 35, 46, 53, 66, 80, 87, 88]  # output = [1,1,3,4,5,6,7,8,9,10]
+for price in prices:
+    print(obj.next(price), end=" ")
+print("")
