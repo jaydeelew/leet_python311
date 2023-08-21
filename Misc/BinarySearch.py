@@ -122,39 +122,50 @@ class BinarySearch:
     #  of the two nodes. The LCA is the lowest node in the tree that has both p and q as descendants
     # (note: a node is a descendant of itself).
 
-    def lowestCommonAncestor(self, root: "TreeNode", p: "TreeNode", q: "TreeNode") -> "TreeNode":
+    def lowestCommonAncestor(self, root: Optional["TreeNode"], p: "TreeNode", q: "TreeNode") -> Optional["TreeNode"]:
         if not root:
             return None
-        if root.val == p or root.val == q:
-            return root.val
+        if root == p or root == q:
+            return root
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
-        if left.val == p or left.val == q:
-            return left.val
-        if right.val == p or right.val == q:
-            return right.val
-        if left.val is not None and right.val is not None:
-            return root.val
+        if left and right:
+            return root
+        # if not left and not right: # not needed since if function does not return, left/right will be None
+        #     return None
+        if left:
+            return left
+        return right
 
 
 bs = BinarySearch()
 
+# eight = TreeNode(8)
+# seven = TreeNode(7)
+# four = TreeNode(4)
+# twelve = TreeNode(12, four)
+# three = TreeNode(3, twelve, seven)
+# five = TreeNode(5, eight, three)
+
+# eight1 = TreeNode(8)
+# seven1 = TreeNode(7)
+# four1 = TreeNode(4)
+# twelve1 = TreeNode(12, four1)
+# three1 = TreeNode(3, twelve1, seven1)
+# five1 = TreeNode(5, eight1, three1)
+
 eight = TreeNode(8)
+six = TreeNode(6)
+zero = TreeNode(0)
 seven = TreeNode(7)
 four = TreeNode(4)
-twelve = TreeNode(12, four)
-three = TreeNode(3, twelve, seven)
-five = TreeNode(5, eight, three)
-
-eight1 = TreeNode(8)
-seven1 = TreeNode(7)
-four1 = TreeNode(4)
-twelve1 = TreeNode(12, four1)
-three1 = TreeNode(3, twelve1, seven1)
-five1 = TreeNode(5, eight1, three1)
+two = TreeNode(2, seven, four)
+one = TreeNode(1, zero, eight)
+five = TreeNode(5, six, two)
+three = TreeNode(3, five, one)
 
 # print(bs.isSameTree(five, five1))  # returns True
-print(bs.lowestCommonAncestor(five, four, seven))  # should return 3
+print(bs.lowestCommonAncestor(three, five, two).val)  # should return 3
 
 # two = TreeNode(2)
 # one = TreeNode(1, two)
