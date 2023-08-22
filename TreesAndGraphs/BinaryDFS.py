@@ -137,35 +137,70 @@ class BinarySearch:
             return left
         return right
 
+    def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        left = self.minDepth(root.left)
+        right = self.minDepth(root.right)
+        if left == 0:
+            return right + 1
+        if right == 0:
+            return left + 1
+        return min(left, right) + 1
+
+    # Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b
+    # where v = |a.val - b.val| and a is an ancestor of b.
+    # A node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.
+
+    def maxAncestorDiff(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        # record the required maximum difference
+        self.result = 0
+
+        def helper(node, cur_max_node, cur_min_node):
+            if not node:
+                return
+            # update `result`
+            self.result = max(self.result, abs(cur_max_node - node.val), abs(cur_min_node - node.val))
+            # update the max and min
+            cur_max_node = max(cur_max_node, node.val)
+            cur_min_node = min(cur_min_node, node.val)
+            helper(node.left, cur_max_node, cur_min_node)
+            helper(node.right, cur_max_node, cur_min_node)
+
+        helper(root, root.val, root.val)
+        return self.result
+
 
 bs = BinarySearch()
 
-# eight = TreeNode(8)
-# seven = TreeNode(7)
-# four = TreeNode(4)
-# twelve = TreeNode(12, four)
-# three = TreeNode(3, twelve, seven)
-# five = TreeNode(5, eight, three)
+eight = TreeNode(8)
+seven = TreeNode(7)
+four = TreeNode(4)
+twelve = TreeNode(12, four)
+three = TreeNode(3, twelve, seven)
+five = TreeNode(5, eight, three)  # root node
 
 # eight1 = TreeNode(8)
 # seven1 = TreeNode(7)
 # four1 = TreeNode(4)
 # twelve1 = TreeNode(12, four1)
 # three1 = TreeNode(3, twelve1, seven1)
-# five1 = TreeNode(5, eight1, three1)
+# five1 = TreeNode(5, eight1, three1) # root node
 
-eight = TreeNode(8)
-six = TreeNode(6)
-zero = TreeNode(0)
-seven = TreeNode(7)
-four = TreeNode(4)
-two = TreeNode(2, seven, four)
-one = TreeNode(1, zero, eight)
-five = TreeNode(5, six, two)
-three = TreeNode(3, five, one)
+# eight = TreeNode(8)
+# six = TreeNode(6)
+# zero = TreeNode(0)
+# seven = TreeNode(7)
+# four = TreeNode(4)
+# two = TreeNode(2, seven, four)
+# one = TreeNode(1, zero, eight)
+# five = TreeNode(5, six, two)
+# three = TreeNode(3, five, one)  # root node
 
 # print(bs.isSameTree(five, five1))  # returns True
-print(bs.lowestCommonAncestor(three, five, two).val)  # should return 3
+print(bs.maxAncestorDiff(five))
 
 # two = TreeNode(2)
 # one = TreeNode(1, two)
