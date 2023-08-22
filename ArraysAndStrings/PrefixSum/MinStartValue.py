@@ -5,8 +5,8 @@
 
 def minStartValue(nums):
     currentmin = runningsum = 0
-    for i in nums:
-        runningsum += i
+    for num in nums:
+        runningsum += num
         currentmin = min(currentmin, runningsum)
 
     return 1 - currentmin  # min value is zero, so return value will always be greater than 0

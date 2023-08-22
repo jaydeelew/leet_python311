@@ -155,21 +155,22 @@ class BinarySearch:
     def maxAncestorDiff(self, root: TreeNode) -> int:
         if not root:
             return 0
-        # record the required maximum difference
-        self.result = 0
+        self.result = 0  # record the maximum difference from helper function in result
 
-        def helper(node, cur_max_node, cur_min_node):
+        # nested helper function needed to pass current max and min value and report result to parent function
+        def helper(node, cur_max_val, cur_min_val):
             if not node:
                 return
-            # update `result`
-            self.result = max(self.result, abs(cur_max_node - node.val), abs(cur_min_node - node.val))
-            # update the max and min
-            cur_max_node = max(cur_max_node, node.val)
-            cur_min_node = min(cur_min_node, node.val)
-            helper(node.left, cur_max_node, cur_min_node)
-            helper(node.right, cur_max_node, cur_min_node)
+            # update current maximum difference in result
+            self.result = max(self.result, abs(cur_max_val - node.val), abs(cur_min_val - node.val))
+            # update the current max and min values
+            cur_max_val = max(cur_max_val, node.val)
+            cur_min_val = min(cur_min_val, node.val)
+            # if left or right nodes exist, update the max of their absolute differences from cur_min and cur_max to self.result
+            helper(node.left, cur_max_val, cur_min_val)
+            helper(node.right, cur_max_val, cur_min_val)
 
-        helper(root, root.val, root.val)
+        helper(root, root.val, root.val)  # call helper with root node and current max & min vals (which are intitially the same)
         return self.result
 
 
