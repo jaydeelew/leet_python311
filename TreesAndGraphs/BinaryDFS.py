@@ -8,14 +8,30 @@ class TreeNode:
         self.right = right
 
 
-class BinarySearch:
-    def dfs(self, root):
+class BinaryDFS:
+    def dfs_pre_order(self, root):
         if not root:
             return
-        print(root.val, end=" ")
-        self.dfs(root.left)
-        self.dfs(root.right)
-        return ""  # return "" only necessary for not printing "None" at last stack return
+        print(root.val, end=" ")  # pre-order logic here
+        self.dfs_pre_order(root.left)
+        self.dfs_pre_order(root.right)
+        return ""  # return "" necessary for not printing "None" at final stack return
+
+    def dfs_in_order(self, root):
+        if not root:
+            return
+        self.dfs_in_order(root.left)
+        print(root.val, end=" ")  # in-order logic here
+        self.dfs_in_order(root.right)
+        return ""  # return "" necessary for not printing "None" at final stack return
+
+    def dfs_post_order(self, root):
+        if not root:
+            return
+        self.dfs_post_order(root.left)
+        self.dfs_post_order(root.right)
+        print(root.val, end=" ")  # post-order logic here
+        return ""  # return "" necessary for not printing "None" at final stack return
 
     def dfsIterative(self, root):
         if not root:
@@ -173,19 +189,42 @@ class BinarySearch:
         helper(root, root.val, root.val)  # call helper with root node and current max & min vals (which are intitially the same)
         return self.result
 
+    # Given the root of a binary tree, return the length of the diameter of the tree.
+    # The diameter of a binary tree is the length of the longest path between any two nodes in a tree.
+    # This path may or may not pass through the root.
+    # The length of a path between two nodes is represented by the number of edges between them.
 
-bs = BinarySearch()
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        self.max_edges = 0
 
-eight = TreeNode(8)
+        def helper(node):
+            if not node:
+                return 0
+            left = helper(node.left)
+            right = helper(node.right)
+            self.max_edges = max(self.max_edges, left + right)
+            return max(left, right) + 1
+
+        helper(root)
+        return self.max_edges
+
+
+dfs = BinaryDFS()
+
+nine = TreeNode(9)
 seven = TreeNode(7)
 four = TreeNode(4)
+eight = TreeNode(8, nine)
 twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-# eight1 = TreeNode(8)
+# nine = TreeNode(9)
 # seven1 = TreeNode(7)
 # four1 = TreeNode(4)
+# eight1 = TreeNode(8, nine1)
 # twelve1 = TreeNode(12, four1)
 # three1 = TreeNode(3, twelve1, seven1)
 # five1 = TreeNode(5, eight1, three1) # root node
@@ -201,7 +240,9 @@ five = TreeNode(5, eight, three)  # root node
 # three = TreeNode(3, five, one)  # root node
 
 # print(bs.isSameTree(five, five1))  # returns True
-print(bs.maxAncestorDiff(five))
+print(dfs.dfs_pre_order(five))
+print(dfs.dfs_in_order(five))
+print(dfs.dfs_post_order(five))
 
 # two = TreeNode(2)
 # one = TreeNode(1, two)
