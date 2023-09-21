@@ -22,7 +22,7 @@ def build_directed_graph_1(edges):
     return graph
 
 
-def build_graph_2(adj_list):
+def build_graph_2(adj_list):  # no need for this function as we can work with adj_list directly
     graph = defaultdict(list)
     for i in range(len(adj_list)):
         if adj_list[i]:
