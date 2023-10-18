@@ -31,16 +31,19 @@ class Solution:
         # now for BFS
         while queue and distance < k:
             current_length = len(queue)
+            # iterate over number of nodes at each level
             for _ in range(current_length):
+                # all nodes will be popped from current level at last iteration
                 node = queue.popleft()
-                for neighbor in [node.left, node.right, node.parent]:  # this allows to to move up and down the tree
+                # this allows us to move up and down the tree
+                for neighbor in [node.left, node.right, node.parent]:
                     if neighbor and neighbor not in seen:
                         seen.add(neighbor)
                         queue.append(neighbor)
 
-            distance += 1
+            distance += 1  # after a level is popped from queue, distance is incremented
         # once distance == k, we return the values in the queue
-        return [node.val for node in queue]
+        return [node.val for node in queue]  # list comprehension
 
 
 sol = Solution()

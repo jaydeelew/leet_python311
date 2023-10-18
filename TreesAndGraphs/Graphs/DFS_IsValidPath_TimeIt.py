@@ -59,11 +59,11 @@ print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code))
 print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code))
 
 
-# n = 6
-# edges = [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]]
-# source = 0
-# destination = 5
-# # return False
+n = 6
+edges = [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]]
+source = 0
+destination = 5
+# return False
 
 # n = 0
 # edges = [[0, 1], [1, 2], [2, 0]]

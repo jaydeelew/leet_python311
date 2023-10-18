@@ -9,11 +9,6 @@ class Solution:
         inbound = [0] * n
         for _, y in edges:
             inbound[y] += 1
-        # zero_inbound = []
-        # for i in range(n):
-        #     if inbound[i] == 0:
-        #         zero_inbound.append(i)
-        # return zero_inbound
 
         # Using Python list comprehension
         # Syntax: newList = [ expression(element) for element in oldList if condition ]

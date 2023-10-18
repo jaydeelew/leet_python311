@@ -8,12 +8,17 @@ class Solution:
         minlength = float("inf")  # set minimum length to infinity
         for right in range(len(nums)):
             runningSum += nums[right]
-            while runningSum >= target:  # keep moving left window/subarray boundary until statement is not true
+            while (
+                runningSum >= target
+            ):  # keep moving left window/subarray boundary until statement is not true
                 currlength = right - left + 1
-                minlength = min(currlength, minlength)  # record shortest window with sum greater than or equal to target
+                minlength = min(
+                    currlength, minlength
+                )  # record shortest window with sum greater than or equal to target
                 runningSum -= nums[left]
                 left += 1
-        return minlength if sum(nums) >= target else 0  # if the sum of all elements in nums[] is less than target, return 0
+        # if the sum of all elements in nums[] is less than target, return 0
+        return minlength if sum(nums) >= target else 0  # type: ignore
 
 
 nums = [2, 3, 1, 2, 4, 3]
