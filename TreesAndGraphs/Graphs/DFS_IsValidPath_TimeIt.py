@@ -34,6 +34,13 @@ def validPath(n: int, edges: list[list[int]], source: int, destination: int) -> 
         return False
     except valid_path:
         return True
+
+n = 6
+edges = [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]]
+source = 0
+destination = 5
+
+validPath(n, edges, source, destination)
 """
 
 iterative_code = """
@@ -54,18 +61,19 @@ def validPath_Iterative(n: int, edges: list[list[int]], source: int, destination
                 seen.add(neighbor)
                 stack.append(neighbor)
     return False
-"""
-print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code))
-print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code))
-
 
 n = 6
 edges = [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]]
 source = 0
 destination = 5
-# return False
 
-# n = 0
+validPath_Iterative(n, edges, source, destination)
+"""
+print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code, number=10000))
+print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code, number=10000))
+
+
+# n = 0 w
 # edges = [[0, 1], [1, 2], [2, 0]]
 # source = 0
 # destination = 0

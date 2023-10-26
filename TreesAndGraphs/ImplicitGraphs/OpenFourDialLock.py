@@ -9,21 +9,23 @@ from collections import deque
 
 class Solution:
     def openLock(self, deadends: list[str], target: str) -> int:
-        def neighbors(node):
+        def neighbors(node: str) -> list[str]:
             ans = []
             for i in range(4):
-                num = int(node[i])
-                for change in [-1, 1]:
-                    x = (num + change) % 10
-                    ans.append(node[:i] + str(x) + node[i + 1 :])
+                num = int(node[i])  # dealing with ith character in string node converted to num
+                for change in [-1, 1]:  # one step for a dial is one up or one down
+                    x = (num + change) % 10  # for the dial to wrap: e.g. -1 % 10 = 9; 10 % 10 = 0
+                    # slicing: string[start:stop] up to but not including start index, include stop index to end of string
+                    # x - 1 & x + 1 are substituted for ith character in string node
+                    ans.append(node[:i] + str(x) + node[i + 1 :])  # "up to index i exclusive" + "x" + "after i to the end"
 
             return ans
 
         if "0000" in deadends:
             return -1
 
-        queue = deque([("0000", 0)])
-        seen = set(deadends)
+        queue = deque([("1234", 0)])  # (node, steps)
+        seen = set(deadends)  # place deadends in seen to avoid additional "if not deadend" check
         seen.add("0000")
 
         while queue:

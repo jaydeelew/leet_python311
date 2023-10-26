@@ -73,3 +73,4 @@ destination = 2
 
 sol = Solution()
 print(sol.validPath(n, edges, source, destination))
+print(sol.validPath_Iterative(n, edges, source, destination))
