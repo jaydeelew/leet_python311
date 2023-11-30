@@ -1,5 +1,4 @@
 import sys
-
 from TextEffects import banner, formatBinarySearch
 
 sys.path.append("./Modules")
@@ -8,8 +7,7 @@ sys.path.append("./Modules")
 def binary_search(arr: list[int], target: int):
     left = 0
     right = len(arr) - 1
-    mid = None
-    while arr[left] <= arr[right]:
+    while left <= right:
         mid = (left + right) // 2
         formatBinarySearch(arr, left, mid, right)
         if arr[mid] == target:

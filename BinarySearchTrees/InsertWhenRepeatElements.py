@@ -4,10 +4,11 @@ from TextEffects import formatBinarySearch
 sys.path.append("./Modules")
 
 
-# If target appears multiple times, then the following will find the left-most index:
+# If target appears multiple times, return the left-most index:
 def left_insert(arr, target):
     left = 0
     right = len(arr) - 1
+    # cannot have left <= right as with standard binary search since infinite loop occurs if target == arr[mid]
     while left < right:
         mid = (left + right) // 2
         formatBinarySearch(arr, left, mid, right)
@@ -16,14 +17,15 @@ def left_insert(arr, target):
         else:
             left = mid + 1
 
-    print("For left insertion, " + str(arr[left]) + " is the insertion point\n")
+    print("For left insertion, index " + str(left) + " is the insertion point\n")
     return left
 
 
-# If target appears multiple times, then the following will find the right-most index:
+# If target appears multiple times, return the right-most index:
 def right_insert(arr, target):
     left = 0
     right = len(arr) - 1
+    # cannot have left <= right as with standard binary search since infinite loop occurs if target == arr[mid]
     while left < right:
         mid = (left + right) // 2
         formatBinarySearch(arr, left, mid, right)
@@ -32,7 +34,7 @@ def right_insert(arr, target):
         else:
             left = mid + 1
 
-    print("For right insertion, " + str(arr[left]) + " is the insertion point\n")
+    print("For right insertion, index " + str(left) + " is the insertion point\n")
     return left
 
 
