@@ -12,17 +12,20 @@ class Solution:
         profsNcapl = sorted(zip(capital, profits))
         totalCapital = w
         maxHeap = []
-        i = 0  # i needs to be outside the nested while loop since it is conditionally incremented
+        # i needs to be outside the nested while loop since it is conditionally incremented
+        i = 0
         for _ in range(k):
             while i < len(profsNcapl) and profsNcapl[i][0] <= totalCapital:
-                heapq.heappush(maxHeap, -profsNcapl[i][1])  # push on the profit
+                # push on the profit
+                heapq.heappush(maxHeap, -profsNcapl[i][1])
                 i += 1
 
             # if there is nothing on the heap, we are out of capital
             if len(maxHeap) == 0:
                 return totalCapital
 
-            totalCapital -= heapq.heappop(maxHeap)  # since maxHeap pops a negative, we must negate it
+            # since maxHeap pops a negative, we must negate it
+            totalCapital -= heapq.heappop(maxHeap)
 
         return totalCapital
 

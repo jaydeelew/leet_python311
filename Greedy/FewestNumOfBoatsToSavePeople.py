@@ -8,12 +8,15 @@ class Solution:
     def numRescueBoats(self, people: list[int], limit: int) -> int:
         ans = 0
         # using two pointers
-        l = 0  # lightest person pointer
-        h = len(people) - 1  # heaviest person pointer
-        people.sort()  # sort ascending in-place
+        # lightest person pointer
+        l = 0
+        # heaviest person pointer
+        h = len(people) - 1
+        # sort ascending in-place
+        people.sort()
 
         while l <= h:
-            # lightest preson will join heaviest if together not greater than limit
+            # lightest preson will join heaviest if sum not greater than limit
             if people[l] + people[h] <= limit:
                 l += 1
             # the heaviest person will always increment answer

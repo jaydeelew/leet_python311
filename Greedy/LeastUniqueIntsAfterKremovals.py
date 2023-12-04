@@ -7,8 +7,8 @@ from collections import Counter
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: list[int], k: int) -> int:
         counts = Counter(arr)
-        # sorted_counts = sorted(counts.items(), key=lambda x: x[1])  # commented out since no need to included key values
-        sorted_counts = sorted(counts.values())  # sorted returns a list in ascending order
+        # sorted returns a list in ascending order
+        sorted_counts = sorted(counts.values())
         ans = len(counts)
 
         for cnt in sorted_counts:
@@ -30,7 +30,7 @@ class Solution:
 
 arr = [1]
 k = 1
-# Outpu: 0
+# Output: 0
 
 sol = Solution()
 print(sol.findLeastNumOfUniqueInts(arr, k))
