@@ -9,7 +9,8 @@ def minStartValue(nums):
         runningsum += num
         currentmin = min(currentmin, runningsum)
 
-    return 1 - currentmin  # min value is zero, so return value will always be greater than 0
+    # min value is zero, so return value will always be greater than 0
+    return 1 - currentmin
 
 
 nums = [-3, 2, -3, 4, 2]

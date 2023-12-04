@@ -5,6 +5,7 @@
 # A spell and potion pair is considered successful if the product of their strengths is at least success.
 # Return an integer array pairs of length n where pairs[i] is the number of potions
 # that will form a successful pair with the ith spell.
+from TextEffects import formatBinarySearch
 
 
 class Solution:
@@ -15,6 +16,8 @@ class Solution:
 
             while left <= right:
                 mid = (left + right) // 2
+                formatBinarySearch(arr, left, mid, right)
+                # normally in binary search: if target == arr[mid], elif target < arr[mid]
                 if target <= arr[mid]:
                     right = mid - 1
                 else:
@@ -27,7 +30,9 @@ class Solution:
         ans = []
         for spell in spells:
             target = success / spell
+            print("Target " + str(target))
             index = binary_search(potions, target)
+            print("")
             ans.append(len(potions) - index)
 
         return ans
@@ -41,7 +46,7 @@ class Solution:
 spells = [3, 1, 2]
 potions = [8, 5, 8]
 success = 16
-Output: [2, 0, 2]
+# Output: [2, 0, 2]
 
 sol = Solution()
 print(sol.successfulPairs(spells, potions, success))

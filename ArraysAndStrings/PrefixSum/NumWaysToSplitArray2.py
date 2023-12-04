@@ -4,11 +4,14 @@
 
 def waysToSplitArray2(nums):
     ans = left_section = 0
-    total = sum(nums)  # sum of all element in nums[]
+    total = sum(nums)
 
-    for i in range(len(nums) - 1):  # from nums[0] to second to last element in nums (need to keep last element for right section)
-        left_section += nums[i]  # maintain running sum of left section
-        right_section = total - left_section  # total sum of nums[] minus current running sum of left section
+    # from nums[0] to second to last element in nums (need to keep last element for right section)
+    for i in range(len(nums) - 1):
+        # maintain running sum of left section
+        left_section += nums[i]
+        # total sum of nums[] minus current running sum of left section
+        right_section = total - left_section
         if left_section >= right_section:
             ans += 1
 
