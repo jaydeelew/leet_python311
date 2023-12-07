@@ -12,12 +12,16 @@ class Solution:
         def neighbors(node: str) -> list[str]:
             ans = []
             for i in range(4):
-                num = int(node[i])  # dealing with ith character in string node converted to num
-                for change in [-1, 1]:  # one step for a dial is one up or one down
-                    x = (num + change) % 10  # for the dial to wrap: e.g. -1 % 10 = 9; 10 % 10 = 0
+                # dealing with ith character in string node converted to num
+                num = int(node[i])
+                # one step for a dial is one up or one down
+                for change in [-1, 1]:
+                    # for the dial to wrap: e.g. -1 % 10 = 9; 10 % 10 = 0
+                    x = (num + change) % 10
                     # slicing: string[start:stop] up to but not including start index, include stop index to end of string
                     # x - 1 & x + 1 are substituted for ith character in string node
-                    ans.append(node[:i] + str(x) + node[i + 1 :])  # "up to index i exclusive" + "x" + "after i to the end"
+                    # "up to index i exclusive" + "x" + "after i to the end"
+                    ans.append(node[:i] + str(x) + node[i + 1 :])  # noqa
 
             return ans
 
@@ -25,7 +29,8 @@ class Solution:
             return -1
 
         queue = deque([("1234", 0)])  # (node, steps)
-        seen = set(deadends)  # place deadends in seen to avoid additional "if not deadend" check
+        # place deadends in seen to avoid additional "if not deadend" check
+        seen = set(deadends)
         seen.add("0000")
 
         while queue:
@@ -41,8 +46,6 @@ class Solution:
         return -1
 
 
-sol = Solution()
-
 deadends = ["0201", "0101", "0102", "1212", "2002"]
 target = "0202"
 # Output: 6
@@ -55,4 +58,5 @@ target = "0202"
 # target = "8888"
 # # Output: -1
 
+sol = Solution()
 print(sol.openLock(deadends, target))

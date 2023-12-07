@@ -1,3 +1,4 @@
+# 1302. Given the root of a binary tree, return the sum of values of its deepest leaves.
 from typing import Optional
 from collections import deque
 
@@ -10,7 +11,6 @@ class TreeNode:
 
 
 class BinaryBFS:
-    # Given the root of a binary tree, return the sum of values of its deepest leaves.
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
         queue = deque([root])
         level_sum = 0
@@ -36,5 +36,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(bfs.deepestLeavesSum(five))
-print("")
+print(bfs.deepestLeavesSum(five))  # Output: 4

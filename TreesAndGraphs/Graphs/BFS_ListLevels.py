@@ -1,3 +1,4 @@
+# list the contents of each level of the BFS in order starting with root
 from collections import deque
 from collections import defaultdict
 

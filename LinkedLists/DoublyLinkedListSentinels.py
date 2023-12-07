@@ -26,12 +26,16 @@ class DLL:
         self.tail.prev = new_node
 
     def rem_front(self):
-        self.head.next.next.prev = self.head  # assign head to prev pointer of the node after next
-        self.head.next = self.head.next.next  # assign node after next to be next node
+        # assign head to prev pointer of the node after next
+        self.head.next.next.prev = self.head
+        # assign node after next to be next node
+        self.head.next = self.head.next.next
 
     def rem_rear(self):
-        self.tail.prev.prev.next = self.tail  # asssign tail to the next pointer of the node before previous
-        self.tail.prev = self.tail.prev.prev  # assign node before previous to be the previous node
+        # asssign tail to the next pointer of the node before previous
+        self.tail.prev.prev.next = self.tail
+        # assign node before previous to be the previous node
+        self.tail.prev = self.tail.prev.prev
 
     def clear(self):
         self.head.next = self.tail
@@ -71,7 +75,8 @@ class DLL:
                 return True
         print(False)
 
-    def find_k_node(self, k):  # find kth node from end
+    # find kth node from end
+    def find_k_node(self, k):
         slow = fast = self.head
         for _ in range(k):
             fast = fast.next
@@ -80,7 +85,8 @@ class DLL:
             fast = fast.next
         print(slow.prev.value)
 
-    def del_duplicates(self):  # using two pointers
+    # using two pointers
+    def del_duplicates(self):
         current = self.head
         following = self.head.next
         while following != self.tail:
@@ -104,24 +110,34 @@ class DLL:
         return copy.deepcopy(dll)
 
     def reverse_sll(self):
-        copied_list = self.copy_list()  # using as a SLL
+        # using as a SLL
+        copied_list = self.copy_list()
         curr_node = copied_list.head
         prev_node = None
         while curr_node:
-            next_node = curr_node.next  # must save next node since pointer to it is changed on line below
-            curr_node.next = prev_node  # have current node now point to previous node
-            prev_node = curr_node  # set previous node to current node
-            curr_node = next_node  # make next node the current node
-        return prev_node  # this last node of original list becomes the first in reversed list
+            # must save next node since pointer to it is changed on line below
+            next_node = curr_node.next
+            # have current node now point to previous node
+            curr_node.next = prev_node
+            # set previous node to current node
+            prev_node = curr_node
+            # make next node the current node
+            curr_node = next_node
+        # this last node of original list becomes the first in reversed list
+        return prev_node
 
     def reverse_dll(self):
         copied_list = self.copy_list()
         curr_node = copied_list.head
         while curr_node:
-            next_node = curr_node.next  # must save next node since it is changed on line below
-            curr_node.next = curr_node.prev  # the current node's next becomes the current node's previous
-            curr_node.prev = next_node  # the current node's previous becomes the current node's next
-            curr_node = next_node  # the current node is assigned next node
+            # must save next node since it is changed on line below
+            next_node = curr_node.next
+            # the current node's next becomes the current node's previous
+            curr_node.next = curr_node.prev
+            # the current node's previous becomes the current node's next
+            curr_node.prev = next_node
+            # the current node is assigned next node
+            curr_node = next_node
         return copied_list.tail
 
     def reverse_sll_between(self, left, right):
@@ -134,7 +150,8 @@ class DLL:
         for _ in range(right - 1):
             until_node = until_node.next
 
-        terminate_loop = until_node.next  # save until.node.next since it will change
+        # save until.node.next since it will change
+        terminate_loop = until_node.next
         resume_node = curr_node
         prev_node.next = until_node
         prev_node = curr_node
@@ -153,7 +170,8 @@ class DLL:
             node_ptr = self.head.next
         else:
             node_ptr = outside_head.next
-        while node_ptr and node_ptr.value:  # if node_ptr is None, end loop before accessing node_ptr.value
+        # if node_ptr is None, end loop before accessing node_ptr.value
+        while node_ptr and node_ptr.value:
             print(node_ptr.value, end=" ")
             node_ptr = node_ptr.next
         print("")

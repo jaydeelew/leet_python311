@@ -1,4 +1,4 @@
-# Example 2: 2294. Partition Array Such That Maximum Difference Is K
+# 2294. Partition Array Such That Maximum Difference Is K
 # Given an integer array nums and an integer k, split nums into subsequences,
 # where each subsequences' maximum and minimum element is within k of each other.
 # What is the minimum number of subsequences needed?

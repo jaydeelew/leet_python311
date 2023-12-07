@@ -1,3 +1,6 @@
+# 111. Given a binary tree, find its minimum depth.
+# The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+# Note: A leaf is a node with no children.
 from typing import Optional
 
 
@@ -32,4 +35,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(dfs.minDepth(five))
+print(dfs.minDepth(five))  # Output: 3

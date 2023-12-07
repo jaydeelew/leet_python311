@@ -1,3 +1,5 @@
+# 1448. Given the root of a binary tree, find the number of nodes that are good. A node is good if the path between the root
+# and the node has no nodes with a greater value.
 from typing import Optional
 
 
@@ -9,13 +11,12 @@ class TreeNode:
 
 
 class BinaryDFS:
-    # Given the root of a binary tree, find the number of nodes that are good. A node is good if the path between the root
-    # and the node has no nodes with a greater value.
     def goodNodes(self, root: Optional[TreeNode], maxSoFar: Optional[float] = float("-inf")) -> int:
         if not root:
             return 0
         good = 0
-        if root.val >= maxSoFar:  # the original root will be counted in total number of good nodes
+        # the original root will be counted in total number of good nodes
+        if root.val >= maxSoFar:
             maxSoFar = root.val
             good = 1
         left = self.goodNodes(root.left, maxSoFar)
@@ -29,7 +30,8 @@ class BinaryDFS:
     #         left = dfs(node.left, max(max_so_far, node.val))
     #         right = dfs(node.right, max(max_so_far, node.val))
     #         ans = left + right
-    #         if node.val >= max_so_far:  # the original root will be counted in total number of good nodes
+    #         # the original root will be counted in total number of good nodes
+    #         if node.val >= max_so_far:
     #             ans += 1
     #         return ans
 
@@ -47,4 +49,4 @@ twelve = TreeNode(12, four, ten)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(dfs.goodNodes(five))
+print(dfs.goodNodes(five))  # Output: 5

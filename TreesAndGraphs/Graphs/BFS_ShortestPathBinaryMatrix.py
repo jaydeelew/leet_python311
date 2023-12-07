@@ -30,7 +30,8 @@ class Solution:
                 adjacent_row, adjacent_col = row + dy, col + dx
                 if valid(adjacent_row, adjacent_col) and (adjacent_row, adjacent_col) not in seen:
                     seen.add((adjacent_row, adjacent_col))
-                    queue.append((adjacent_row, adjacent_col, steps + 1))  # each node in queue holds number of steps to get to it
+                    # each node in queue holds number of steps to get to it
+                    queue.append((adjacent_row, adjacent_col, steps + 1))
         return -1
 
 

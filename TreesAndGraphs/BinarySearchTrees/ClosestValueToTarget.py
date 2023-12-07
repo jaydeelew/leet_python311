@@ -1,3 +1,5 @@
+# 270. Given the root of a binary search tree and a target value, return the value in the BST that is closest to the target.
+# If there are multiple answers, print the smallest
 from typing import Optional
 
 
@@ -9,16 +11,16 @@ class TreeNode:
 
 
 class BST:
-    # Given the root of a binary search tree and a target value, return the value in the BST that is closest to the target.
-    # If there are multiple answers, print the smallest.
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         if not root:
             return None
         closest = root.val
 
         def helper(node, min_diff):
-            nonlocal closest  # this allows the samel-named variable in enclosing function to be modified
-            if abs(target - node.val) == min_diff:  # if two nodes have same difference from target, choose the smaller value
+            # this allows the samel-named variable in enclosing function to be modified
+            nonlocal closest
+            # if two nodes have same difference from target, choose the smaller value
+            if abs(target - node.val) == min_diff:
                 closest = min(closest, node.val)
             if abs(target - node.val) < min_diff:
                 min_diff = abs(target - node.val)
@@ -39,4 +41,4 @@ two = TreeNode(2, one, three)
 four = TreeNode(4, two, five)  # root
 
 bst = BST()
-print(bst.closestValue(four, 2.2))
+print(bst.closestValue(four, 2.2))  # Output: 2

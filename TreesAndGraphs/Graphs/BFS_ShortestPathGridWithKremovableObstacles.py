@@ -15,8 +15,10 @@ class Solution:
 
         m = len(grid)  # rows
         n = len(grid[0])  # columns
-        queue = deque([(0, 0, k, 0)])  # row, col, obstacles remaining, steps
-        seen = {(0, 0, k)}  # make a distinction between same cell with different remaining qty (each entry is a state)
+        # row, col, obstacles remaining, steps
+        queue = deque([(0, 0, k, 0)])
+        # make a distinction between same cell with different remaining qty (each entry is a state)
+        seen = {(0, 0, k)}
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
         while queue:

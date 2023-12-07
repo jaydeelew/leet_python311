@@ -1,13 +1,22 @@
+# A monotonically increasing stack
+
+
 class IncreasingStack:
     def build_stack(self, arr):
         stack = []
-        for num in arr:
-            while stack and num >= stack[-1]:
+        for element in arr:
+            # keep popping elements from the stack as long as there is a stack
+            # and the current element is less or equal to the element at the top of the stack
+            while stack and element <= stack[-1]:
                 stack.pop()
-            stack.append(num)
+            # push the current element onto the stack.
+            stack.append(element)
         return stack
 
 
-arr = [15, 17, 14, 12, 13, 14, 10]
+arr = [1, 4, 5, 3, 3, 12, 10]
+arr_sz = len(arr)
+# Output: [1, 3, 10]
+
 inc_stack = IncreasingStack()
 print(inc_stack.build_stack(arr))

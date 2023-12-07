@@ -10,7 +10,8 @@ class TreeNode:
 
 class BinaryBFS:
     def print_all_nodes(self, root):
-        queue = deque([root])  # [root], and not "root" alone, is necessary since deque requires an iterable
+        # [root], and not "root" alone, is necessary since deque requires an iterable
+        queue = deque([root])
         while queue:
             nodes_in_current_level = len(queue)
             # do some logic here for the current level
@@ -38,5 +39,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(bfs.print_all_nodes(five))
-print("")
+print(bfs.print_all_nodes(five))  # Output: 5 8 3 9 12 7 4

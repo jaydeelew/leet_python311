@@ -5,25 +5,27 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: list[int]) -> int:
         left = runningSum = 0
-        minlength = float("inf")  # set minimum length to infinity
+        minlength = float("inf")
         for right in range(len(nums)):
             runningSum += nums[right]
-            while (
-                runningSum >= target
-            ):  # keep moving left window/subarray boundary until statement is not true
+            # keep moving left window/subarray boundary until statement is not true
+            while runningSum >= target:
                 currlength = right - left + 1
-                minlength = min(
-                    currlength, minlength
-                )  # record shortest window with sum greater than or equal to target
+                # record shortest window with sum greater than or equal to target
+                minlength = min(currlength, minlength)
                 runningSum -= nums[left]
                 left += 1
         # if the sum of all elements in nums[] is less than target, return 0
         return minlength if sum(nums) >= target else 0  # type: ignore
 
 
-nums = [2, 3, 1, 2, 4, 3]
-target = 7
-# nums = [1,1,1,1,1,1,1,1]
-# target = 11
+# nums = [2, 3, 1, 2, 4, 3]
+# target = 7
+# # Output: 2
+
+nums = [1, 1, 1, 1, 1, 1, 1, 1]
+target = 11
+# Output: 0
+
 sol = Solution()
 print(sol.minSubArrayLen(target, nums))

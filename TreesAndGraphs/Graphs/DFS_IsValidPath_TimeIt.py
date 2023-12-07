@@ -1,4 +1,4 @@
-# There is a bi-directional graph with n vertices, where each vertex is labeled from 0 to n - 1 (inclusive).
+# 1971. There is a bi-directional graph with n vertices, where each vertex is labeled from 0 to n - 1 (inclusive).
 # The edges in the graph are represented as a 2D integer array edges, where each edges[i] = [ui, vi] denotes
 # a bi-directional edge between vertex ui and vertex vi. Every vertex pair is connected by at most one edge,
 # and no vertex has an edge to itself.
@@ -69,12 +69,6 @@ destination = 5
 
 validPath_Iterative(n, edges, source, destination)
 """
+
 print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code, number=10000))
 print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code, number=10000))
-
-
-# n = 0 w
-# edges = [[0, 1], [1, 2], [2, 0]]
-# source = 0
-# destination = 0
-# # return True

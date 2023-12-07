@@ -1,3 +1,6 @@
+# 1026. Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b
+# where v = |a.val - b.val| and a is an ancestor of b.
+# A node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -6,14 +9,11 @@ class TreeNode:
 
 
 class BinaryDFS:
-    # Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b
-    # where v = |a.val - b.val| and a is an ancestor of b.
-    # A node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.
-
     def maxAncestorDiff(self, root: TreeNode) -> int:
         if not root:
             return 0
-        self.result = 0  # record the maximum difference from helper function in result
+        # record the maximum difference from helper function in result
+        self.result = 0
 
         # nested helper function needed to pass current max and min value and report result to parent function
         def helper(node, cur_max_val, cur_min_val):
@@ -28,7 +28,8 @@ class BinaryDFS:
             helper(node.left, cur_max_val, cur_min_val)
             helper(node.right, cur_max_val, cur_min_val)
 
-        helper(root, root.val, root.val)  # call helper with root node and current max & min vals (which are intitially the same)
+        # call helper with root node and current max & min vals (which are intitially the same)
+        helper(root, root.val, root.val)
         return self.result
 
 
@@ -42,4 +43,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(dfs.maxAncestorDiff(five))
+print(dfs.maxAncestorDiff(five))  # Output: 9

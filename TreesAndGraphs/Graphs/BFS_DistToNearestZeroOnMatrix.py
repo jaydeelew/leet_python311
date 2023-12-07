@@ -1,4 +1,4 @@
-# 542. 01 matrix
+# 542. 01 Matrix
 # Given an m x n binary (every element is 0 or 1) matrix, find the distance of the nearest 0 for each cell.
 # The distance between adjacent cells (horizontally or vertically) is 1.
 # If the cell is 0, then the distance to the nearest 0 is 0
@@ -43,7 +43,11 @@ class Solution:
         return matrix
 
 
+matrix = [[0, 0, 0], [0, 1, 0], [1, 1, 1]]
+# Output: [[0,0,0],[0,1,0],[1,2,1]]
+
+# matrix = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]
+# # Output: [[0,0,0],[0,1,0],[0,0,0]]
+
 sol = Solution()
-matrix = [[0, 0, 0], [0, 1, 0], [1, 1, 1]]  # Output: [[0,0,0],[0,1,0],[1,2,1]]
-# matrix = [[0, 0, 0], [0, 1, 0], [0, 0, 0]]  # Output: [[0,0,0],[0,1,0],[0,0,0]]
 print(sol.updateMatrix(matrix))

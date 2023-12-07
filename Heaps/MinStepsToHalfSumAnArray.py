@@ -9,14 +9,17 @@ import heapq
 class Solution:
     def halveArray(self, nums: list[int]) -> int:
         target = sum(nums) / 2
-        nums = [-num for num in nums]  # negate each num to prepare for max heapify
+        # negate each num to prepare for max heapify
+        nums = [-num for num in nums]
         heapq.heapify(nums)
 
         num_of_ops = 0
-        while target > 0:  # if target <= 0 we have arrived at least half the sum of nums
-            num = heapq.heappop(nums)  # num is a negative since nums is max heap
+        # if target <= 0 we have arrived at least half the sum of nums
+        while target > 0:
+            # num is a negative since nums is max heap
+            num = heapq.heappop(nums)
             target += num / 2
-            heapq.heappush(nums, num / 2)
+            heapq.heappush(nums, num / 2)  # type: ignore
             num_of_ops += 1
 
         return num_of_ops

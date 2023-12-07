@@ -1,4 +1,4 @@
-# You are given an m x n binary matrix grid. An island is a group of 1's (representing land)
+# 695. You are given an m x n binary matrix grid. An island is a group of 1's (representing land)
 # connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.
 # The area of an island is the number of cells with a value 1 in the island.
 # Return the maximum area of an island in grid. If there is no island, return 0.
@@ -22,9 +22,9 @@ def maxAreaOfIsland(self, grid: list[list[int]]) -> int:
             row_adjacent, col_adjacent = row + dx, col + dy
             if isValid(row_adjacent, col_adjacent) and (row_adjacent, col_adjacent) not in seen:
                 seen.add((row_adjacent, col_adjacent))
-                area += 1  # add one for this current valid neighbor who has not been seen
-                area += dfs(row_adjacent, col_adjacent)  # area is cumulative by every function call below it on the stack
-                # area += dfs(row_adjacent, col_adjacent) + 1  # this could replace previous two lines
+                area += 1
+                area += dfs(row_adjacent, col_adjacent)
+                # area += dfs(row_adjacent, col_adjacent) + 1
         return area
 
     max_area = 0
@@ -32,7 +32,7 @@ def maxAreaOfIsland(self, grid: list[list[int]]) -> int:
         for y in range(col_len):
             if grid[x][y] == 1 and (x, y) not in seen:
                 seen.add((x, y))
-                max_area = max(max_area, 1 + dfs(x, y))  # Add 1 to result of dfs to include coordinate dfs was called with
+                max_area = max(max_area, 1 + dfs(x, y))
     return max_area
 """
 iterative_code = """
@@ -48,7 +48,7 @@ def maxAreaOfIsland_Iterative(self, grid: list[list[int]]) -> int:
     stack = []
 
     def dfs(row, col):
-        stack.append((row, col))  # must push initial unseen node onto stack
+        stack.append((row, col))
         area = 0  # area to be returned from dfs, plus 0 or 1
         while stack:
             coordinate = stack.pop()
@@ -65,7 +65,7 @@ def maxAreaOfIsland_Iterative(self, grid: list[list[int]]) -> int:
             for y in range(col_len):
                 if grid[x][y] == 1 and (x, y) not in seen:
                     seen.add((x, y))
-                    max_area = max(max_area, 1 + dfs(x, y))  # Add 1 to result of dfs to include coordinate dfs was called with
+                    max_area = max(max_area, 1 + dfs(x, y))
         return max_area
 """
 
@@ -78,7 +78,7 @@ grid = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-]  # Output: 6
+]
 
 print("recursive:", min(timeit.repeat(stmt=recursive_code)))
 print("iterative:", min(timeit.repeat(stmt=iterative_code)))

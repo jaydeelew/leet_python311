@@ -1,3 +1,5 @@
+# 103. Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.
+# (i.e., from left to right, then right to left for the next level and alternate between).
 from typing import Optional
 from collections import deque
 
@@ -10,8 +12,6 @@ class TreeNode:
 
 
 class BinaryBFS:
-    # Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.
-    # (i.e., from left to right, then right to left for the next level and alternate between).
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> list[list[int]]:
         if not root:
             return []
@@ -30,7 +30,8 @@ class BinaryBFS:
                 if reverse is False:
                     level.append(node.val)
                 else:
-                    level.insert(0, node.val)  # insert at the beginning of list to reverse order
+                    # insert at the beginning of list to reverse order
+                    level.insert(0, node.val)
                 if node.left:
                     queue.append(node.left)
                 if node.right:
@@ -49,5 +50,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(bfs.zigzagLevelOrder(five))
-print("")
+print(bfs.zigzagLevelOrder(five))  # Output: [[5], [3, 8], [9, 12, 7], [4]]

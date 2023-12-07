@@ -1,3 +1,5 @@
+# 199. Given the root of a binary tree, imagine yourself standing on the right side of it.
+# Return the values of the nodes you can see ordered from top to bottom.
 from typing import Optional
 from collections import deque
 
@@ -10,8 +12,6 @@ class TreeNode:
 
 
 class BinaryBFS:
-    # Given the root of a binary tree, imagine yourself standing on the right side of it.
-    # Return the values of the nodes you can see ordered from top to bottom.
     def rightSideView(self, root: Optional[TreeNode]) -> list[int]:
         if not root:
             return []
@@ -44,5 +44,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(bfs.rightSideView(five))
-print("")
+print(bfs.rightSideView(five))  # Output: [5, 3, 7, 4]

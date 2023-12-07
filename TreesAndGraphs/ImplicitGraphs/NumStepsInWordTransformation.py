@@ -1,4 +1,4 @@
-# A transformation sequence from word beginWord to word endWord using a dictionary wordList is a
+# 127. A transformation sequence from word beginWord to word endWord using a dictionary wordList is a
 # sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
 # - Every adjacent pair of words differs by a single letter.
 # - Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
@@ -17,7 +17,8 @@ class Solution:
             for i in range(len_of_word):
                 # Dictionary key is word with one letter changed to asterisk/wildcard
                 # Dictionary value is a list of words which have the same key (a word with one letter as asterisk)
-                graph[word[:i] + "*" + word[i + 1 :]].append(word)  # keys with a wildcard at one letter position at a time
+                # keys with a wildcard at one letter position at a time
+                graph[word[:i] + "*" + word[i + 1 :]].append(word)  # noqa
 
         queue = deque([(beginWord, 1)])  # (word, word count)
         seen = {beginWord}
@@ -25,7 +26,7 @@ class Solution:
             word, word_count = queue.popleft()
             # all neighbors of "word" would every neighbor of "*ord", "w*rd", "wo*d", and "wor*" in graph
             for i in range(len_of_word):
-                word_with_wildcard = word[:i] + "*" + word[i + 1 :]
+                word_with_wildcard = word[:i] + "*" + word[i + 1 :]  # noqa
                 for neighbor in graph[word_with_wildcard]:
                     # placing check here instead of immediately after popleft() avoids placing found word on queue
                     # need to return word_count + 1 since the + 1 since not getting word count from queue
@@ -4620,3 +4621,4 @@ wordList = [
 ]
 
 print(sol.ladderLength(beginWord, endWord, wordList))
+# Output: 20

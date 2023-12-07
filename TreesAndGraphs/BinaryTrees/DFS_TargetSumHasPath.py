@@ -1,3 +1,5 @@
+# 112. Given the root of a binary tree and an integer targetSum, return true if there exists a path from the root
+# to a leaf such that the sum of the nodes on the path is equal to targetSum, and return false otherwise.
 from typing import Optional
 
 
@@ -9,8 +11,6 @@ class TreeNode:
 
 
 class BinaryDFS:
-    # Given the root of a binary tree and an integer targetSum, return true if there exists a path from the root
-    # to a leaf such that the sum of the nodes on the path is equal to targetSum, and return false otherwise.
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if not root:
             return False

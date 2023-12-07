@@ -1,3 +1,4 @@
+# Trivia to know: an in-order DFS traversal prioritizing left before right on a BST will handle the nodes in sorted order.
 from typing import Optional
 
 
@@ -9,16 +10,17 @@ class TreeNode:
 
 
 class BST:
-    # Trivia to know: an in-order DFS traversal prioritizing left before right on a BST will handle the nodes in sorted order.
     def DFSinOrderTraversal(self, root: Optional[TreeNode]):
         if not root:
             return
         if root.left:
             self.DFSinOrderTraversal(root.left)
-        print(root.val, end=" ")  # here is the "in-order" print statement between calls to left and right nodes
+        # here is the "in-order" print statement between calls to left and right nodes
+        print(root.val, end=" ")
         if root.right:
             self.DFSinOrderTraversal(root.right)
-        return ""  # return "" necessary for not printing "None" at last stack return
+        # return "" necessary for not printing "None" at last stack return
+        return ""
 
 
 one = TreeNode(1)
@@ -28,4 +30,4 @@ two = TreeNode(2, one, three)
 four = TreeNode(4, two, five)  # root
 
 bst = BST()
-print(bst.DFSinOrderTraversal(four))
+print(bst.DFSinOrderTraversal(four))  # Output: 1 2 3 4 5

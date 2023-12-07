@@ -30,4 +30,4 @@ two = TreeNode(2, one, three)
 four = TreeNode(4, two, five)  # root
 
 bst = BST()
-print(bst.BFStraversal(four))
+print(bst.BFStraversal(four))  # Output: 4 2 5 1 3 None

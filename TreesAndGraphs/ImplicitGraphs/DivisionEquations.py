@@ -14,19 +14,24 @@ class Solution:
             if start not in graph:
                 return -1
 
-            seen = {start}  # seen numerators in queries list
-            stack = [(start, 1)]  # (numerator as string from queries, edge multiplier thus far to this node... aka ratio)
+            # seen numerators in queries list
+            seen = {start}
+            # (numerator as string from queries, edge multiplier thus far to this node... aka ratio)
+            stack = [(start, 1)]
 
             while stack:
                 node, ratio = stack.pop()
-                if node == end:  # if denominator is found as
+                # if denominator is found as
+                if node == end:
                     return ratio
 
-                for neighbor in graph[node]:  # since graph is dict of dicts, neighbors are keys of each inner dict
+                # since graph is dict of dicts, neighbors are keys of each inner dict
+                for neighbor in graph[node]:
                     if neighbor not in seen:
                         seen.add(neighbor)
                         # (neighbor, current ratio thus far * neighbors' ratio thus far)
-                        stack.append((neighbor, ratio * graph[node][neighbor]))  # instead of steps, we calc current ratio
+                        # instead of steps, we calc current ratio
+                        stack.append((neighbor, ratio * graph[node][neighbor]))
 
             return -1
 
@@ -46,8 +51,6 @@ class Solution:
         return ans
 
 
-sol = Solution()
-
 equations = [["a", "b"], ["b", "c"]]
 values = [2.0, 3.0]
 queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
@@ -63,4 +66,5 @@ queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
 # queries = [["a","b"],["b","a"],["a","c"],["x","y"]]
 # # Output: [0.50000,2.00000,-1.00000,-1.00000]
 
+sol = Solution()
 print(sol.calcEquation(equations, values, queries))

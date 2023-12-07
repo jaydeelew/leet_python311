@@ -1,4 +1,4 @@
-# Implement the RecentCounter class. It should support ping(int t),
+# 933. Implement the RecentCounter class. It should support ping(int t),
 # which records a call at time t, and then returns an integer representing the number of calls that have happened
 # in the range [t - 3000, t]. Calls to ping will have increasing t.
 
@@ -21,3 +21,4 @@ obj = RecentCounter()
 calls = [1, 100, 3001, 4000]
 for i in calls:
     print(obj.ping(i))
+# Output: 1 2 3 2

@@ -40,6 +40,8 @@ def right_insert(arr, target):
 
 arr = [1, 3, 3, 3, 3, 5, 7, 11, 15, 22, 31, 53, 62, 74, 79, 81, 82, 99, 126]
 target = 3
+# Output: For left insertion, index 1 is the insertion point
+# Output: For right insertion, index 5 is the insertion point
 
 left_insert(arr, target)
 right_insert(arr, target)

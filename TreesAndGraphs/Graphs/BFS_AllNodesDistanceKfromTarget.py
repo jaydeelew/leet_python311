@@ -23,9 +23,11 @@ class Solution:
             dfs(node.left, node)
             dfs(node.right, node)
 
-        dfs(root, None)  # add all parents starting at root (root has None for parent)
+        # add all parents starting at root (root has None for parent)
+        dfs(root, None)
 
-        queue = deque([target])  # we use tardet node as start of our BFS to level k
+        # we use tardet node as start of our BFS to level k
+        queue = deque([target])
         seen = {target}
         distance = 0
         # now for BFS
@@ -41,7 +43,8 @@ class Solution:
                         seen.add(neighbor)
                         queue.append(neighbor)
 
-            distance += 1  # after a level is popped from queue, distance is incremented
+            # after a level is popped from queue, distance is incremented
+            distance += 1
         # once distance == k, we return the values in the queue
         return [node.val for node in queue]  # list comprehension
 

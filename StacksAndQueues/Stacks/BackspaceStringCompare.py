@@ -1,4 +1,4 @@
-# Given two strings s and t, return true if they are equal when both are typed into empty text editors.
+# 844. Given two strings s and t, return true if they are equal when both are typed into empty text editors.
 # '#' means a backspace character.
 # For example, given s = "ab#c" and t = "ad#c", return true. Because of the backspace, the strings are both equal to "ac".
 

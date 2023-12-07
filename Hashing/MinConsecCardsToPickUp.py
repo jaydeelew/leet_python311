@@ -1,4 +1,4 @@
-# Example 2: 2260. Minimum Consecutive Cards to Pick Up
+# 2260. Minimum Consecutive Cards to Pick Up
 # Given an integer array cards, find the length of the shortest subarray that contains at least one duplicate.
 # If the array has no duplicates, return -1.
 
@@ -25,13 +25,17 @@ class Solution:
         shortest = float("inf")
         for i in range(len(cards)):
             if cards[i] in card_positions:
-                shortest = min(shortest, i - card_positions[cards[i]] + 1)  # (current card index)-(last index card was seen at)+1
+                # (current card index) - (last index card was seen at) + 1
+                shortest = min(shortest, i - card_positions[cards[i]] + 1)
 
-            card_positions[cards[i]] = i  # update last index card was seen at
+            # update last index card was seen at
+            card_positions[cards[i]] = i
 
-        return shortest if shortest < float("inf") else -1
+        return shortest if shortest < float("inf") else -1  # type: ignore
 
 
 cards = [1, 2, 7, 5, 2, 4]
+# Output: 4
+
 sol = Solution()
 print(sol.minimumCardPickup(cards))

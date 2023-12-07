@@ -1,3 +1,4 @@
+# 515. Given the root of a binary tree, return an array of the largest value in each row of the tree.
 from typing import Optional
 from collections import deque
 
@@ -10,7 +11,6 @@ class TreeNode:
 
 
 class BinaryBFS:
-    # Given the root of a binary tree, return an array of the largest value in each row of the tree.
     def largestValues(self, root: Optional[TreeNode]) -> list[int]:
         if not root:
             return []
@@ -40,5 +40,4 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(bfs.largestValues(five))
-print("")
+print(bfs.largestValues(five))  # Output: [5, 8, 12, 4]

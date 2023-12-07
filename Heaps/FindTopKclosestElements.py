@@ -10,10 +10,12 @@ class Solution:
         # difference between x and num placed into max heap
         for num in arr:
             diff = abs(num - x)
-            heapq.heappush(heap, (-diff, -num))  # negate diff to maintain max heap, and num to keep lower num in a tie
+            # negate diff to maintain max heap, and num to keep lower num in a tie
+            heapq.heappush(heap, (-diff, -num))
             # pop off higher diffs to maintain k-length array of lower diffs
             if len(heap) > k:
-                heapq.heappop(heap)  # if more than 1 diff is same, the higher num (heap[1]) in heap will be popped first
+                # if more than 1 diff is same, the higher num (heap[1]) in heap will be popped first
+                heapq.heappop(heap)
         # sort ascending(default) the second element in the heap tuples
         return sorted([-tuple[1] for tuple in heap])
 

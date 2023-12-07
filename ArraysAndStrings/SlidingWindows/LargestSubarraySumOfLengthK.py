@@ -1,4 +1,4 @@
-# Example 4: Given an integer array nums and an integer k,
+# Given an integer array nums and an integer k,
 # find the sum of the subarray with the largest sum whose length is k.
 
 
@@ -9,15 +9,17 @@ def find_best_subarray(nums, k):
         curr += nums[i]
 
     ans = curr
-    for i in range(k, len(nums)):  # from k to end of nums array
-        curr += (
-            nums[i] - nums[i - k]
-        )  # subracting leftmost element and adding rightmost element of current subarray to current sum
-        ans = max(ans, curr)  # the max sum subarray thus far
+    for i in range(k, len(nums)):
+        # subracting leftmost element and adding rightmost element of current subarray to current sum
+        curr += nums[i] - nums[i - k]
+        # the max sum subarray thus far
+        ans = max(ans, curr)
 
     return ans
 
 
 nums = [3, -1, 4, 12, -8, 5, 6]
 k = 4
+# Output: 18
+
 print(find_best_subarray(nums, k))

@@ -1,3 +1,6 @@
+# 236. Given the root of a binary tree and two nodes p and q that are in the tree, return the lowest common ancestor (LCA)
+# of the two nodes. The LCA is the lowest node in the tree that has both p and q as descendants
+# (note: a node is a descendant of itself).
 from typing import Optional
 
 
@@ -9,9 +12,6 @@ class TreeNode:
 
 
 class BinaryDFS:
-    # Given the root of a binary tree and two nodes p and q that are in the tree, return the lowest common ancestor (LCA)
-    #  of the two nodes. The LCA is the lowest node in the tree that has both p and q as descendants
-    # (note: a node is a descendant of itself).
     def lowestCommonAncestor(self, root: Optional["TreeNode"], p: "TreeNode", q: "TreeNode") -> Optional["TreeNode"]:
         if not root:
             return None
@@ -39,3 +39,4 @@ three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
 print(dfs.lowestCommonAncestor(five, four, seven).val)  # ".val" to print value to the returned node
+# Output: 3

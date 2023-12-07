@@ -12,4 +12,6 @@ def find_numbers(nums):
 
 
 nums = [5, 4, 7, 2, 3, 11, 15, 14]
+# Output: [7, 11]
+
 print(find_numbers(nums))

@@ -1,3 +1,5 @@
+# 98. Validate Binary Search Tree
+# Given the root of a binary tree, determine if it is a valid BST.
 from typing import Optional
 
 
@@ -9,12 +11,11 @@ class TreeNode:
 
 
 class BST:
-    # 98. Validate Binary Search Tree
-    # Given the root of a binary tree, determine if it is a valid BST.
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         def dfs(node, small, large):
+            # if there is no node, it does not invalidate a BST
             if not node:
-                return True  # if there is no node, it does not invalidate a BST
+                return True
             # first call to function with node val between -inf & inf
             if not (small < node.val < large):
                 return False
@@ -50,5 +51,5 @@ two = TreeNode(2, one, three)
 four = TreeNode(4, two, five)  # root
 
 bst = BST()
-print(bst.isValidBST(four))
-print(bst.isValidBST_Iterative(four))
+print(bst.isValidBST(four))  # Output: True
+print(bst.isValidBST_Iterative(four))  # Output: True

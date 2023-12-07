@@ -1,4 +1,4 @@
-# Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
+# 1189. Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
 # You can use each character in text at most once. Return the maximum number of instances that can be formed.
 
 from collections import Counter
@@ -9,18 +9,17 @@ class Solution:
         textCounts = Counter(text)
         balloonCounts = Counter("balloon")
         for key in balloonCounts:
-            balloonCounts[key] = (
-                textCounts.get(key, 0) // balloonCounts[key]
-            )  # take floor when dividing textCounts by baloonCounts
+            # take floor when dividing textCounts by baloonCounts
             # and 0 when character in baloon does not exist in text
+            balloonCounts[key] = textCounts.get(key, 0) // balloonCounts[key]
 
-        return min(
-            balloonCounts.values()
-        )  # the minimum value in balloonCounts is the max number of times word 'baloon' can be formed
+        # the minimum value in balloonCounts is the max number of times word 'baloon' can be formed
+        return min(balloonCounts.values())
 
 
-text = "balon"  # output 0
-# text = "nlaebolko" # output 1
-# text = "loonbalxballpoon" # output 2
+text = "balon"  # Output: 0
+# text = "nlaebolko" # Output: 1
+# text = "loonbalxballpoon" # Output: 2
+
 sol = Solution()
 print(sol.maxNumberOfBalloons(text))

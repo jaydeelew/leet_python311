@@ -1,4 +1,4 @@
-# You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt.
+# 2101. You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt.
 # This area is in the shape of a circle with the center as the location of the bomb.
 # The bombs are represented by a 0-indexed 2D integer array bombs where bombs[i] = [xi, yi, ri].
 # xi and yi denote the X-coordinate and Y-coordinate of the location of the ith bomb, whereas ri denotes the radius of its range.
@@ -20,25 +20,33 @@ class Solution:
 
         for i in range(len(bombs)):
             bomb_tuple = tuple(bombs[i])
-            graph[bomb_tuple]  # needed to add bombs to graph with no exploding neighbors
+            # needed to add bombs to graph with no exploding neighbors
+            graph[bomb_tuple]
             for j in range(len(bombs)):
                 if i != j and bombs[i] != bombs[j]:
                     diff_x = abs(bombs[j][0] - bombs[i][0])
                     diff_y = abs(bombs[j][1] - bombs[i][1])
                     distance = math.sqrt(diff_x**2 + diff_y**2)
-                    if distance <= bombs[i][2]:  # if distance between bomb i and j is less than or equal bomb radius of i
-                        graph[bomb_tuple].append(bombs[j])  # bomb j is a neighbor of bomb i
-                elif i != j:  # the bombs are same position and radius, but are distinct bombs
+                    # if distance between bomb i and j is less than or equal bomb radius of i
+                    if distance <= bombs[i][2]:
+                        # bomb j is a neighbor of bomb i
+                        graph[bomb_tuple].append(bombs[j])
+                # the bombs are same position and radius, but are distinct bombs
+                elif i != j:
                     if bomb_tuple not in duplicates:
-                        duplicates[bomb_tuple].append([i, j, 1])  # one for the match, the original will be counted w/ q_sz below
-                    elif i == duplicates[bomb_tuple][0][0]:  # only matches on this iteration of i to avoid repeat matches
-                        duplicates[bomb_tuple][0][2] += 1  # one for each addtional match
+                        # one for the match, the original will be counted w/ q_sz below
+                        duplicates[bomb_tuple].append([i, j, 1])
+                    # only matches on this iteration of i to avoid repeat matches
+                    elif i == duplicates[bomb_tuple][0][0]:
+                        # one for each addtional match
+                        duplicates[bomb_tuple][0][2] += 1
 
         queue = deque()
         for x, y, r in graph.keys():
             queue.append((x, y, r))
             seen = {(x, y, r)}
-            num_of_explosions = 0  # number of explosions this graph iteration
+            # number of explosions this graph iteration
+            num_of_explosions = 0
             while queue:
                 q_sz = len(queue)
                 num_of_explosions += q_sz
@@ -54,8 +62,6 @@ class Solution:
 
         return max_exploded
 
-
-sol = Solution()
 
 # bombs = [[2, 1, 3], [6, 1, 4]]
 # # Output: 2
@@ -195,4 +201,5 @@ bombs = [
 # ]
 # # Output: 100
 
+sol = Solution()
 print(sol.maximumDetonation(bombs))

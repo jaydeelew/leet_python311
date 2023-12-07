@@ -1,3 +1,5 @@
+# 530. Minimum Absolute Difference in BST
+# Given the root of a BST, return the minimum absolute difference between the values of any two different nodes in the tree.
 from typing import Optional
 
 
@@ -9,8 +11,6 @@ class TreeNode:
 
 
 class BST:
-    # 530. Minimum Absolute Difference in BST
-    # Given the root of a BST, return the minimum absolute difference between the values of any two different nodes in the tree.
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         def dfs(node):
             if not node:
@@ -34,4 +34,4 @@ two = TreeNode(2, one, three)
 four = TreeNode(4, two, five)  # root
 
 bst = BST()
-print(bst.getMinimumDifference(four))
+print(bst.getMinimumDifference(four))  # Output: 1

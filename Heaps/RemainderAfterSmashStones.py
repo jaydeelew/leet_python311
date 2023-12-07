@@ -10,15 +10,20 @@ import heapq
 
 class Solution:
     def lastStoneWeight(self, stones: list[int]) -> int:
-        stones = [-stone for stone in stones]  # to turn min heap into max heap
-        heapq.heapify(stones)  # turns an array into a heap in linear time
-        while len(stones) > 1:  # while there are two or more stones
+        # to turn min heap into max heap
+        stones = [-stone for stone in stones]
+        # turns an array into a heap in linear time
+        heapq.heapify(stones)
+        # while there are two or more stones
+        while len(stones) > 1:
             first = abs(heapq.heappop(stones))
             second = abs(heapq.heappop(stones))
             if first != second:
-                heapq.heappush(stones, -abs(first - second))  # -abs to maintain max heap
+                # -abs to maintain max heap
+                heapq.heappush(stones, -abs(first - second))
 
-        return -stones[0] if stones else 0  # if one stone left, since it's negative, negate it
+        # if one stone left, since it's negative, negate it
+        return -stones[0] if stones else 0
 
 
 stones = [2, 7, 4, 1, 8, 1]

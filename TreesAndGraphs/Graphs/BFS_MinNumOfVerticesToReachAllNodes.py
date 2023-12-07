@@ -19,4 +19,6 @@ class Solution:
 sol = Solution()
 n = 6
 edges = [[0, 1], [0, 2], [2, 5], [3, 4], [4, 2]]
+# Output: [0, 3]
+
 print(sol.findSmallestSetOfVertices(n, edges))

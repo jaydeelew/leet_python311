@@ -8,12 +8,15 @@ from collections import defaultdict
 class Solution:
     def findCircleNum(self, isConnected: list[list[int]]) -> int:
         # a recursive function that takes an int as key to a graph which is a dict of city-keys each w/ list of neighbor-values
-        def dfs(node):  # node here is an integer
-            for neighbor in graph[node]:  # node is the key in the graph dictionary which references a list of neighbor nodes
+        # node here is an integer
+        def dfs(node):
+            # node is the key in the graph dictionary which references a list of neighbor nodes
+            for neighbor in graph[node]:
                 # add neighbors of this node, if not present in seen set, to avoid incrementing ans below for a province
                 if neighbor not in seen:
                     seen.add(neighbor)
-                    dfs(neighbor)  # call dfs on each neighbor of this node
+                    # call dfs on each neighbor of this node
+                    dfs(neighbor)
 
         def dfs_iterative(start_node):
             stack = [start_node]
@@ -25,23 +28,33 @@ class Solution:
                         stack.append(neighbor)
 
         # build the graph
-        n = len(isConnected)  # for as many rows in "isConnected" (a dictionary of lists of neighbors)
-        graph = defaultdict(list)  # defaultdict allows us to append values to keys that do not yet exist. They will be created.
+        # for as many rows in "isConnected" (a dictionary of lists of neighbors)
+        n = len(isConnected)
+        # defaultdict allows us to append values to keys that do not yet exist. They will be created.
+        graph = defaultdict(list)
         for i in range(n):
-            for j in range(i + 1, n):  # main diagonal and values below it are ignored
+            # main diagonal and values below it are ignored
+            for j in range(i + 1, n):
                 if isConnected[i][j]:  # if result is 1
-                    graph[i].append(j)  # above main diagonal
-                    graph[j].append(i)  # below main diagonal (since undirected graph includes mirror entry)
+                    # above main diagonal
+                    graph[i].append(j)
+                    # below main diagonal (since undirected graph includes mirror entry)
+                    graph[j].append(i)
 
         seen = set()
         ans = 0
 
-        # for each city, if not in seen, increment num of provinces then add city to seen, run dfs to add its neighbors to seen
-        for i in range(n):  # for as many rows in "isConnected" (a dictionary of lists of neighbors)
-            if i not in seen:  # node i has not yet had a dfs run on it thereby adding all of its neighbors to seen
-                ans += 1  # add another province
+        # for each city, if not in seen, increment num of provinces then add city to seen,
+        # run dfs to add its neighbors to seen
+        # for as many rows in "isConnected" (a dictionary of lists of neighbors)
+        for i in range(n):
+            # node i has not yet had a dfs run on it thereby adding all of its neighbors to seen
+            if i not in seen:
+                # add another province
+                ans += 1
                 seen.add(i)
-                dfs(i)  # add all of this node's neighbors to seen via dfs()
+                # add all of this node's neighbors to seen via dfs()
+                dfs(i)
 
         return ans
 
@@ -50,5 +63,6 @@ class Solution:
 # adj_matrix = [[0, 0, 0, 1], [0, 0, 1, 0], [0, 1, 0, 0], [1, 0, 0, 0]]  # returns 2. undirected edges: [0,3], [1,2]
 # adj_matrix = [[0, 0, 1, 1], [0, 0, 1, 0], [1, 1, 0, 0], [1, 0, 0, 0]]  # returns 1. undirected edges: [0,3], [1,2], [2,0]
 adj_matrix = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # returns 3. undirected edges: [0,0], [1,1], [2,2] (three one-city provinces)
+
 sol = Solution()
 print(sol.findCircleNum(adj_matrix))

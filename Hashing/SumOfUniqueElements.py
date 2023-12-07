@@ -1,4 +1,4 @@
-# You are given an integer array nums.
+# 1748. You are given an integer array nums.
 # The unique elements of an array are the elements that appear exactly once in the array.
 # Return the sum of all the unique elements of nums.
 
@@ -15,7 +15,8 @@ class Solution:
         return sum
 
 
-nums = [1, 2, 3, 2]  # returns 4
-# nums = [1, 1, 1, 1, 1]  # returns 0
+nums = [1, 2, 3, 2]  # Output: 4
+# nums = [1, 1, 1, 1, 1]  # Output: 0
+
 sol = Solution()
 print(sol.sumOfUnique(nums))

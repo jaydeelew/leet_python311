@@ -12,5 +12,7 @@ def reverseString(s):
 
 
 s = ["h", "e", "l", "l", "o"]
+# Output: ['o', 'l', 'l', 'e', 'h']
+
 reverseString(s)
 print(s)

@@ -1,10 +1,10 @@
-# Example 3: Given two sorted integer arrays, return an array that combines both of them and is also sorted.
+# Given two sorted integer arrays, return an array that combines both of them and is also sorted.
 
 
 def combine(arr1, arr2):
     ans = []
     i = j = 0
-    while i < len(arr1) and j < len(arr2):  # while iterators i & j are less than their respective arrays
+    while i < len(arr1) and j < len(arr2):
         # append to end of answer array the lesser of the two arrays at current i & j positions
         if arr1[i] < arr2[j]:
             ans.append(arr1[i])
@@ -26,4 +26,6 @@ def combine(arr1, arr2):
 
 arr1 = [1, 4, 7, 20]
 arr2 = [3, 5, 6]
+# Output: [1, 3, 4, 5, 6, 7, 20]
+
 print(combine(arr1, arr2))

@@ -1,4 +1,4 @@
-from typing import Optional
+# print the nodes of a binary tree using DFS in pre-order, in-order, and post-order traveral
 
 
 class TreeNode:
@@ -12,26 +12,32 @@ class BinaryDFS:
     def dfs_pre_order(self, root):
         if not root:
             return
-        print(root.val, end=" ")  # pre-order logic here
+        # pre-order logic here
+        print(root.val, end=" ")
         self.dfs_pre_order(root.left)
         self.dfs_pre_order(root.right)
-        return ""  # return "" necessary for not printing "None" at function return
+        # return "" necessary for not printing "None" at function return
+        return ""
 
     def dfs_in_order(self, root):
         if not root:
             return
         self.dfs_in_order(root.left)
-        print(root.val, end=" ")  # in-order logic here
+        # in-order logic here
+        print(root.val, end=" ")
         self.dfs_in_order(root.right)
-        return ""  # return "" necessary for not printing "None" at function return
+        # return "" necessary for not printing "None" at function return
+        return ""
 
     def dfs_post_order(self, root):
         if not root:
             return
         self.dfs_post_order(root.left)
         self.dfs_post_order(root.right)
-        print(root.val, end=" ")  # post-order logic here
-        return ""  # return "" necessary for not printing "None" at function return
+        # post-order logic here
+        print(root.val, end=" ")
+        # return "" necessary for not printing "None" at function return
+        return ""
 
     def dfs_pre_order_iterative(self, root):
         if not root:
@@ -45,7 +51,8 @@ class BinaryDFS:
                 stack.append(node.right)
             if node.left:
                 stack.append(node.left)
-        return ""  # return "" necessary for not printing "None" at function return
+        # return "" necessary for not printing "None" at function return
+        return ""
 
 
 dfs = BinaryDFS()
@@ -58,7 +65,7 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(dfs.dfs_pre_order(five))
-print(dfs.dfs_in_order(five))
-print(dfs.dfs_post_order(five))
-print(dfs.dfs_pre_order_iterative(five))
+print(dfs.dfs_pre_order(five))  # Output: 5 8 9 3 12 4 7
+print(dfs.dfs_in_order(five))  # Output: 9 8 5 4 12 3 7
+print(dfs.dfs_post_order(five))  # Output: 9 8 4 12 7 3 5
+print(dfs.dfs_pre_order_iterative(five))  # Output: 5 8 9 3 12 4 7

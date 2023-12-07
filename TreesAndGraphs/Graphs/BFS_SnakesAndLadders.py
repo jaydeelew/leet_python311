@@ -1,4 +1,4 @@
-# You are given an n x n integer matrix board where the cells are labeled from 1 to n^2 in a Boustrophedon style
+# 909. You are given an n x n integer matrix board where the cells are labeled from 1 to n^2 in a Boustrophedon style
 # starting from the bottom left of the board (i.e. board[n - 1][0]) and alternating direction each row.
 # You start on square 1 of the board. In each move, starting from square curr, do the following:
 # Choose a destination square next with a label in the range [curr + 1, min(curr + 6, n^2)].
@@ -23,22 +23,25 @@ class Solution:
         n = len(board)
 
         def label_to_position(label):
+            # divmod explanation:
             # label-1 / width of row(i.e. n) = row to subtract from n
             # label-1 % width fo row(i.e. n) = index of col
             row, col = divmod(label - 1, n)  # label minus one to bring to zero indexing
             if row % 2 == 0:  # if even indexed row
-                return n - 1 - row, col  # n-1 minus row flips row counting to botton up
+                return n - 1 - row, col  # n-1 minus flips row counting to botton up
             else:  # if odd indexed row (labels in reverse order)
-                return n - 1 - row, n - 1 - col  # n-1 minus column flips column counting to last to first
+                return n - 1 - row, n - 1 - col  # n-1-column flips column counting to last-to-first
 
         seen = set()
         queue = deque()
-        queue.append((1, 0))  # initial label 1 is lower left corner of board, steps is zero
+        # initial label 1 is lower left corner of board, steps is zero
+        queue.append((1, 0))
         while queue:
             label, step = queue.popleft()
             row, col = label_to_position(label)
             if board[row][col] != -1:
-                label = board[row][col]  # if label snake or ladder, change label to label at end of snake or ladder
+                # if label snake or ladder, change label to label at end of snake or ladder
+                label = board[row][col]
             if label == n * n:
                 return step
             for x in range(1, 7):
@@ -61,24 +64,25 @@ sol = Solution()
 # ]
 # # Output: 4
 
-# board = [
-#     [-1, -1, -1, 135, -1, -1, -1, -1, -1, 185, -1, -1, -1, -1, 105, -1],
-#     [-1, -1, 92, -1, -1, -1, -1, -1, -1, 201, -1, 118, -1, -1, 183, -1],
-#     [-1, -1, -1, -1, -1, -1, -1, -1, -1, 179, -1, -1, -1, -1, -1, -1],
-#     [-1, 248, -1, -1, -1, -1, -1, -1, -1, 119, -1, -1, -1, -1, -1, 192],
-#     [-1, -1, 104, -1, -1, -1, -1, -1, -1, -1, 165, -1, -1, 206, 104, -1],
-#     [145, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 229, -1],
-#     [-1, -1, 75, 140, -1, -1, -1, -1, -1, -1, -1, -1, 43, -1, 34, -1],
-#     [-1, -1, -1, -1, -1, -1, 169, -1, -1, -1, -1, -1, -1, 188, -1, -1],
-#     [-1, -1, -1, -1, -1, -1, 92, -1, 171, -1, -1, -1, -1, -1, -1, 66],
-#     [-1, -1, -1, 126, -1, -1, 68, -1, -1, -1, -1, -1, -1, -1, -1, -1],
-#     [-1, 109, -1, 86, 28, 228, -1, -1, 144, -1, -1, -1, -1, -1, -1, -1],
-#     [-1, -1, -1, -1, 59, -1, -1, -1, -1, -1, 51, -1, -1, -1, 62, -1],
-#     [-1, 71, -1, -1, -1, 63, -1, -1, -1, -1, -1, -1, 212, -1, -1, -1],
-#     [-1, -1, -1, -1, 174, -1, 59, -1, -1, -1, -1, -1, -1, 133, -1, -1],
-#     [-1, -1, 62, -1, 5, -1, 16, -1, -1, -1, -1, -1, -1, -1, -1, -1],
-#     [-1, -1, -1, 59, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
-# ]
+board = [
+    [-1, -1, -1, 135, -1, -1, -1, -1, -1, 185, -1, -1, -1, -1, 105, -1],
+    [-1, -1, 92, -1, -1, -1, -1, -1, -1, 201, -1, 118, -1, -1, 183, -1],
+    [-1, -1, -1, -1, -1, -1, -1, -1, -1, 179, -1, -1, -1, -1, -1, -1],
+    [-1, 248, -1, -1, -1, -1, -1, -1, -1, 119, -1, -1, -1, -1, -1, 192],
+    [-1, -1, 104, -1, -1, -1, -1, -1, -1, -1, 165, -1, -1, 206, 104, -1],
+    [145, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 229, -1],
+    [-1, -1, 75, 140, -1, -1, -1, -1, -1, -1, -1, -1, 43, -1, 34, -1],
+    [-1, -1, -1, -1, -1, -1, 169, -1, -1, -1, -1, -1, -1, 188, -1, -1],
+    [-1, -1, -1, -1, -1, -1, 92, -1, 171, -1, -1, -1, -1, -1, -1, 66],
+    [-1, -1, -1, 126, -1, -1, 68, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, 109, -1, 86, 28, 228, -1, -1, 144, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, -1, 59, -1, -1, -1, -1, -1, 51, -1, -1, -1, 62, -1],
+    [-1, 71, -1, -1, -1, 63, -1, -1, -1, -1, -1, -1, 212, -1, -1, -1],
+    [-1, -1, -1, -1, 174, -1, 59, -1, -1, -1, -1, -1, -1, 133, -1, -1],
+    [-1, -1, 62, -1, 5, -1, 16, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+    [-1, -1, -1, 59, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+]
+# Output: 10
 
 
 # board = [
@@ -89,12 +93,12 @@ sol = Solution()
 # ]
 # # Output: 2
 
-board = [
-    [-1, 4, -1],
-    [6, 2, 6],
-    [-1, 3, -1],
-]
-# Output: 2
+# board = [
+#     [-1, 4, -1],
+#     [6, 2, 6],
+#     [-1, 3, -1],
+# ]
+# # Output: 2
 
 # board = [
 #     [-1, -1, 2, 21, -1],

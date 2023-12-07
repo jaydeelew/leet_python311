@@ -21,15 +21,20 @@ class Solution:
 
         def dfs(node):
             ans = 0
-            for neighbor in graph[node]:  # for each value (neighbor) in undirected dictionary named graph
+            # for each value (neighbor) in undirected dictionary named graph
+            for neighbor in graph[node]:
                 # since we are dealing with an undirected graph (two directional entries per edge),
                 # if we do not add neighbor to seen, we end up with infinite recursion
-                if neighbor not in seen:  # if neighbor was seen, this base case will not call dfs again
+                # if neighbor was seen, this base case will not call dfs again
+                if neighbor not in seen:
                     # since we are starting at origin 0 and moving away toward neighbors in undirected graph,
-                    if (node, neighbor) in roads:  # if exists directed edge (road) pointing away from origin 0,
-                        ans += 1  # the road is pointing away from 0 and needs to flip direction
+                    # if exists directed edge (road) pointing away from origin 0,
+                    if (node, neighbor) in roads:
+                        # the road is pointing away from 0 and needs to flip direction
+                        ans += 1
                     seen.add(neighbor)
-                    ans += dfs(neighbor)  # each call to dfs will return 0 or 1 depending if directed edge is pointing away from 0
+                    # each call to dfs will return 0 or 1 depending if directed edge is pointing away from 0
+                    ans += dfs(neighbor)
 
             return ans
 

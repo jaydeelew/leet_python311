@@ -1,10 +1,9 @@
-from collections import defaultdict
-
 # build graphs in the form of a dictionary for the following 2D-array graph-input formats:
 # array of edges
 # adjacency list
 # adjacency matrix
 # *all forms above in both directed and undirected graphs
+from collections import defaultdict
 
 
 def build_undirected_graph_1(edges):
@@ -33,7 +32,8 @@ def build_graph_2(adj_list):  # no need for this function as we can work with ad
 
 def build_undirected_graph_3(adj_matrix):
     n = len(adj_matrix)
-    graph = defaultdict(list)  # defaultdict allows us to append values to keys that do not yet exist. They will be created.
+    # defaultdict allows us to append values to keys that do not yet exist. They will be created.
+    graph = defaultdict(list)
     for i in range(n):
         for j in range(i + 1, n):  # main diagonal and values below it are ignored
             if adj_matrix[i][j]:  # if result is 1
@@ -44,7 +44,8 @@ def build_undirected_graph_3(adj_matrix):
 
 def build_directed_graph_3(adj_matrix):
     n = len(adj_matrix)
-    graph = defaultdict(list)  # defaultdict allows us to append values to keys that do not yet exist. They will be created.
+    # defaultdict allows us to append values to keys that do not yet exist. They will be created.
+    graph = defaultdict(list)
     for i in range(n):
         for j in range(n):
             if adj_matrix[i][j]:  # if result is 1

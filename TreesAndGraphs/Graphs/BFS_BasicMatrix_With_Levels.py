@@ -1,3 +1,4 @@
+# return the row and column indexes and the number of steps (levels) it took to get there
 from collections import deque
 
 
@@ -9,9 +10,11 @@ class Solution:
         def valid(row, col):
             return 0 <= row < num_of_rows and 0 <= col < num_of_cols
 
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # adjacent cells
+        # adjacent cells
+        directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
         queue = deque([(0, 0)])
-        seen = {(0, 0)}  # if its been in the queue(see above), it's been seen
+        # if its been in the queue, it's been seen
+        seen = {(0, 0)}
         steps = 0
         while queue:
             # do level work starting here
@@ -27,10 +30,10 @@ class Solution:
                         seen.add((adj_row, adj_col))
                         queue.append((adj_row, adj_col))
             steps += 1
-        return (-1, -1, -1)  # (row, col, steps)
+        # (row, col, steps)
+        return (-1, -1, -1)
 
 
-sol = Solution()
 target = 3
 matrix = [
     [1, 15, 0, 16, 5],
@@ -38,4 +41,7 @@ matrix = [
     [8, 17, 11, 6, 9],
     [14, 7, 10, 18, 3],
 ]
+# Output: (3, 4, 7)
+
+sol = Solution()
 print(sol.findCoordinates(matrix, target))

@@ -13,4 +13,6 @@ class Solution:
 
 s = "abcdeda"
 sol = Solution()
+# Output: d
+
 print(sol.repeatedCharacter(s))

@@ -1,3 +1,6 @@
+import copy
+
+
 class SLL:
     class ListNode:
         def __init__(self, val, next=None):
@@ -63,13 +66,18 @@ class SLL:
     def copy_list(self):
         return copy.deepcopy(sll)
 
-    def get_sum(self, head):  # recursive
+    # recursive
+    def get_sum(self, head):
         curr_node = head
-        if curr_node is None:  # if there is no node beside head node
+        # if there is no node beside head node
+        if curr_node is None:
             return 0
-        if curr_node.next is None:  # when curr_node.next becomes None, we are on the last node - base case
-            return curr_node.val  # return val from last node
-        return curr_node.val + self.get_sum(curr_node.next)  # return curr_node head val + retrn value of this function
+        # when curr_node.next becomes None, we are on the last node - base case
+        if curr_node.next is None:
+            # return val from last node
+            return curr_node.val
+        # return curr_node head val + retrn value of this function
+        return curr_node.val + self.get_sum(curr_node.next)
 
     def print_middle(self):
         if self.head is not None:
@@ -98,17 +106,24 @@ class SLL:
             if self.head.next is None:
                 return self.head
             prev_node = curr_node = self.head
-            new_head_node = curr_node.next  # second node will be first node in swapped list
-            while curr_node and curr_node.next:  # curr_node becomes None odd sz list. curr_node.next becomes None even sz list
+            # second node will be first node in swapped list
+            new_head_node = curr_node.next
+            # curr_node becomes None odd sz list. curr_node.next becomes None even sz list
+            while curr_node and curr_node.next:
                 # next two lines are redundant on the first iteration
-                prev_node.next = curr_node.next  # after curr_node points to recover_node at end of previous loop,
+                # after curr_node points to recover_node at end of previous loop,
+                prev_node.next = curr_node.next
                 # prev_node.next now points to second node on previously-detached part of list
                 prev_node = curr_node
 
-                recover_node = curr_node.next.next  # save ptr to node after next. list will be detached at this point on ln below
-                curr_node.next.next = curr_node  # node after curr_node now points back to curr_node
-                curr_node.next = recover_node  # this is where swapped part of list reattaches with rest of list
-                curr_node = recover_node  # curr_node now set to work on unswapped part of list
+                # save ptr to node after next. list will be detached at this point on ln below
+                recover_node = curr_node.next.next
+                # node after curr_node now points back to curr_node
+                curr_node.next.next = curr_node
+                # this is where swapped part of list reattaches with rest of list
+                curr_node.next = recover_node
+                # curr_node now set to work on unswapped part of list
+                curr_node = recover_node
             return new_head_node
 
     def reverse_sll_between(self, left, right):
