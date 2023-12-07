@@ -33,7 +33,7 @@ class Solution:
                     if neighbor == endWord:
                         return word_count + 1
                     if neighbor not in seen:
-                        queue.append((neighbor, word_count + 1))
+                        queue.append((neighbor, word_count + 1))  # type: ignore
                         seen.add(neighbor)
         return 0
 

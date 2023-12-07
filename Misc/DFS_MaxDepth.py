@@ -2,6 +2,6 @@ class Test:
     def dfsmaxdepth(self, root):
         if not root:
             return
-        left = self.dfs(root.left)
-        right = self.dfs(root.right)
+        left = self.dfsmaxdepth(root.left)
+        right = self.dfsmaxdepth(root.right)
         return max(left, right) + 1

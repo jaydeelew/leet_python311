@@ -41,7 +41,7 @@ class Solution:
             for neighbor in neighbors(node):
                 if neighbor not in seen:
                     seen.add(neighbor)
-                    queue.append((neighbor, steps + 1))
+                    queue.append((neighbor, steps + 1))  # type: ignore
 
         return -1
 
