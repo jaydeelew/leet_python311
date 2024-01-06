@@ -21,7 +21,9 @@ def build_directed_graph_1(edges):
     return graph
 
 
-def build_graph_2(adj_list):  # no need for this function as we can work with adj_list directly
+# no need for this function as we can work with adj_list directly
+# but for example, this function can take undirected and directed input
+def build_graph_2(adj_list):
     graph = defaultdict(list)
     for i in range(len(adj_list)):
         if adj_list[i]:
@@ -72,10 +74,12 @@ adj_list_undirected = [[1, 2], [0, 2], [0, 1, 3], [2]]
 adj_matrix_directed = [[0, 1, 0, 0], [0, 0, 1, 0], [1, 0, 0, 1], [0, 0, 0, 0]]
 adj_matrix_undirected = [[0, 1, 1, 0], [1, 0, 1, 0], [1, 1, 0, 1], [0, 0, 1, 0]]
 
-print(build_directed_graph_1(edges))
-print(build_graph_2(adj_list_directed))
-print(build_directed_graph_3(adj_matrix_directed))
+print("Directed Graphs w/ Input from edges, adjacency list, adjacency matrix")
+print(dict(build_directed_graph_1(edges)))
+print(dict(build_graph_2(adj_list_directed)))
+print(dict(build_directed_graph_3(adj_matrix_directed)))
 print("")
-print(build_undirected_graph_1(edges))
-print(build_graph_2(adj_list_undirected))
-print(build_undirected_graph_3(adj_matrix_undirected))
+print("Undirected Graphs: w/ Input from edges, adjacency list, adjacency matrix")
+print(dict(build_undirected_graph_1(edges)))
+print(dict(build_graph_2(adj_list_undirected)))
+print(dict(build_undirected_graph_3(adj_matrix_undirected)))

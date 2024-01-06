@@ -9,7 +9,7 @@ from collections import defaultdict
 
 
 class Solution:
-    def validPath(self, n: int, edges: list[list[int]], source: int, destination: int) -> bool:
+    def validPath_Recursive(self, n: int, edges: list[list[int]], source: int, destination: int) -> bool:
         graph = defaultdict(list)
         for x, y in edges:
             graph[x].append(y)
@@ -73,5 +73,5 @@ destination = 2
 # # return True
 
 sol = Solution()
-print(sol.validPath(n, edges, source, destination))
+print(sol.validPath_Recursive(n, edges, source, destination))
 print(sol.validPath_Iterative(n, edges, source, destination))

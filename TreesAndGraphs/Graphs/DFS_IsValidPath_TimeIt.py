@@ -70,5 +70,5 @@ destination = 5
 validPath_Iterative(n, edges, source, destination)
 """
 
-print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code, number=10000))
-print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code, number=10000))
+print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code, number=100000))
+print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code, number=100000))
