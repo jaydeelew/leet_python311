@@ -7,15 +7,33 @@ class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
         def backtrack(curr):
             if len(curr) == len(nums):
-                ans.append(curr[:])
+                # When adding to the answer, we need to create a copy of curr
+                # because curr is only a reference to the array's address.
+                ans.append(curr.copy())
                 return
 
             for num in nums:
                 if num not in curr:
                     curr.append(num)
                     backtrack(curr)
+                    # pop last appended value so we have three new calls to backtrack
+                    # each with curr having one additional element
+                    # e.g. the first iteration of nums will call backtrack([1]), backtrack([2]), bactrack([3])
                     curr.pop()
 
         ans = []
         backtrack([])
         return ans
+
+
+nums = [1, 2, 3]
+# Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+# nums = [0,1]
+# # Output: [[0,1],[1,0]]
+
+# nums = [1]
+# # Output: [[1]]
+
+sol = Solution()
+print(sol.permute(nums))
