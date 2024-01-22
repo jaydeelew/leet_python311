@@ -16,9 +16,9 @@ class Solution:
                 if num not in curr:
                     curr.append(num)
                     backtrack(curr)
-                    # pop last appended value so we have three new calls to backtrack
-                    # each with curr having one additional element
-                    # e.g. the first iteration of nums will call backtrack([1]), backtrack([2]), bactrack([3])
+                    # pop last appended value so we have len(nums) new calls to backtrack
+                    # each with curr adding one additional element
+                    # e.g. the iteration of nums = [1, 2, 3] will call backtrack([1]), backtrack([2]), bactrack([3])
                     curr.pop()
 
         ans = []
