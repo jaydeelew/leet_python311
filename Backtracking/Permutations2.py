@@ -19,5 +19,6 @@ class Solution:
 letters = ["b", "a", "t"]
 k = 2
 # Output: [['b', 'a'], ['b', 't'], ['a', 'b'], ['a', 't'], ['t', 'b'], ['t', 'a']]
+
 sol = Solution()
 print(sol.letter_combos(letters, k))
