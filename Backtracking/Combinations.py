@@ -7,7 +7,7 @@ class Solution:
     def combine(self, n: int, k: int) -> list[list[int]]:
         def backtrack(curr, i):
             if len(curr) == k:
-                ans.append(curr[:])
+                ans.append(curr.copy())
                 return
 
             for num in range(i, n + 1):
