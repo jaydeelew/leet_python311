@@ -5,15 +5,15 @@
 
 class Solution:
     def combine(self, n: int, k: int) -> list[list[int]]:
-        def backtrack(curr, i):
-            if len(curr) == k:
-                ans.append(curr.copy())
+        def backtrack(curr_path, i):
+            if len(curr_path) == k:
+                ans.append(curr_path.copy())
                 return
 
             for num in range(i, n + 1):
-                curr.append(num)
-                backtrack(curr, num + 1)
-                curr.pop()
+                curr_path.append(num)
+                backtrack(curr_path, num + 1)
+                curr_path.pop()
 
         ans = []
         backtrack([], 1)

@@ -4,18 +4,18 @@
 
 class Solution:
     def subsets(self, nums: list[int]) -> list[list[int]]:
-        def backtrack(curr, i):
+        def backtrack(curr_path, i):
             # a base case is not necessary here since the for loop terminates at length of nums
             # and backtrack is no longer called.
 
-            # for each call to this recursive function, append a copy of curr (e.g. curr[:]) to ans[]
-            # and not the reference to curr since a reference to curr (e.g. curr) in ans[] will keep changing
-            ans.append(curr.copy())
+            # for each call to this recursive function, append a copy of curr_path (e.g. curr_path[:]) to ans[]
+            # and not the reference to curr_path since a reference to curr_path (e.g. curr_path) in ans[] will keep changing
+            ans.append(curr_path.copy())
 
             for j in range(i, len(nums)):
-                curr.append(nums[j])
-                backtrack(curr, j + 1)
-                curr.pop()
+                curr_path.append(nums[j])
+                backtrack(curr_path, j + 1)
+                curr_path.pop()
 
         ans = []
         backtrack([], 0)

@@ -1,15 +1,15 @@
 class Solution:
     def letter_combos(self, letters: list[str], k: int) -> list[list[str]]:
-        def backtrack(curr):
-            if len(curr) == k:
-                ans.append(curr.copy())
+        def backtrack(curr_path):
+            if len(curr_path) == k:
+                ans.append(curr_path.copy())
                 return
 
             for ltr in letters:
-                if ltr not in curr:
-                    curr.append(ltr)
-                    backtrack(curr)
-                    curr.pop()
+                if ltr not in curr_path:
+                    curr_path.append(ltr)
+                    backtrack(curr_path)
+                    curr_path.pop()
 
         ans = []
         backtrack([])

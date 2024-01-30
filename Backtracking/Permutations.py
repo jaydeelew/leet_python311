@@ -5,21 +5,18 @@
 
 class Solution:
     def permute(self, nums: list[int]) -> list[list[int]]:
-        def backtrack(curr):
-            if len(curr) == len(nums):
-                # When adding to the answer, we need to create a copy of curr
-                # because curr is only a reference to the array's address.
-                ans.append(curr.copy())
+        def backtrack(curr_path):
+            if len(curr_path) == len(nums):
+                # When adding to the answer, we need to create a copy of curr_path
+                # because curr_path is only a reference to the array's address.
+                ans.append(curr_path.copy())
                 return
 
             for num in nums:
-                if num not in curr:
-                    curr.append(num)
-                    backtrack(curr)
-                    # pop last appended value so we have len(nums) new calls to backtrack
-                    # each with curr adding one additional element
-                    # e.g. the iteration of nums = [1, 2, 3] will call backtrack([1]), backtrack([2]), bactrack([3])
-                    curr.pop()
+                if num not in curr_path:
+                    curr_path.append(num)
+                    backtrack(curr_path)
+                    curr_path.pop()
 
         ans = []
         backtrack([])

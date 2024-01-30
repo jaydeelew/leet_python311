@@ -24,17 +24,17 @@ class Solution:
 
         ans_list = []
 
-        def backtrack(curr: list[str], digits_list_idx: int):
-            if len(curr) == len(digits):
-                # be sure to append copy of curr and not reference to curr
-                ans_list.append(curr.copy())
+        def backtrack(curr_path: list[str], digits_list_idx: int):
+            if len(curr_path) == len(digits):
+                # be sure to append copy of curr_path and not reference to curr_path
+                ans_list.append(curr_path.copy())
                 return
 
             # subtract 2 from element in digits list to translate from button to index in digits_list
             for ltr in buttons[digits_list[digits_list_idx] - 2]:
-                curr.append(ltr)
-                backtrack(curr, digits_list_idx + 1)
-                curr.pop()
+                curr_path.append(ltr)
+                backtrack(curr_path, digits_list_idx + 1)
+                curr_path.pop()
 
         backtrack([], 0)
         output = []
@@ -48,11 +48,11 @@ class Solution:
         return output
 
 
-# digits = "23"
+digits = "23"
 # Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 
-digits = ""
-# # Output: []
+# digits = ""
+# # # Output: []
 
 # digits = "2"
 # Output: ["a","b","c"]
