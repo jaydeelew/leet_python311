@@ -10,12 +10,14 @@ class Solution:
             # base case arrived at when n queens have been placed
             # and when no column or diagonal has more than one queen
             if row == n:
-                return 1  # a solution
+                return 1  # will add to solution
 
             solutions = 0
 
             for col in range(n):
+                # rows - cols creates diagonals from top left to bottom right of the same difference
                 curr_diagonal = row - col
+                # rows + cols creates diagonals from top right to bottom left of the same sum
                 curr_anti_diagonal = row + col
                 # If the queen is not placeable
                 if col in cols or curr_diagonal in diagonals or curr_anti_diagonal in anti_diagonals:
@@ -23,7 +25,7 @@ class Solution:
 
                 # "Add" the queen to the board
                 # rows are not dealt with here since we only need to be able to
-                # add a queens without sharing any columns or diagonals n times (the number of rows)
+                # add a queen, not sharing any columns or diagonals with another, n times (the number of rows)
                 cols.add(col)
                 diagonals.add(curr_diagonal)
                 anti_diagonals.add(curr_anti_diagonal)

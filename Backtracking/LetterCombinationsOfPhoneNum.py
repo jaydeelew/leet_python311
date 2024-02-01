@@ -39,9 +39,9 @@ class Solution:
         backtrack([], 0)
         output = []
 
-        for lst in ans_list:
+        for str_list in ans_list:
             strg = ""
-            for letter in lst:
+            for letter in str_list:
                 strg += letter
             output.append(strg)
 
