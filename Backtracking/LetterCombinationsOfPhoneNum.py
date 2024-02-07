@@ -26,8 +26,7 @@ class Solution:
 
         def backtrack(curr_path: list[str], digits_list_idx: int):
             if len(curr_path) == len(digits):
-                # be sure to append copy of curr_path and not reference to curr_path
-                ans_list.append(curr_path.copy())
+                ans_list.append("".join(curr_path))
                 return
 
             # subtract 2 from element in digits list to translate from button to index in digits_list
@@ -37,15 +36,8 @@ class Solution:
                 curr_path.pop()
 
         backtrack([], 0)
-        output = []
 
-        for str_list in ans_list:
-            strg = ""
-            for letter in str_list:
-                strg += letter
-            output.append(strg)
-
-        return output
+        return ans_list
 
 
 digits = "23"

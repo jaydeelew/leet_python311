@@ -14,6 +14,8 @@ class Solution:
 
             for j in range(i, len(nums)):
                 curr_path.append(nums[j])
+                # by incrementing j, which is the i parameter to backtrack, we avoid duplicates
+                # we only consider elements in the array that come after the one we just added
                 backtrack(curr_path, j + 1)
                 curr_path.pop()
 
