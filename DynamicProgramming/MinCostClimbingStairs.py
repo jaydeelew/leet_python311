@@ -42,7 +42,8 @@ class Solution:
             # dp is a history of the min cost up to the ith element (dp[i])
             dp[i] = min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2])
 
-        # n represents the num of steps to reach top of stairs, and dp[n] the min total cost to arrive
+        # since our array is zero based, n represents the num of steps to reach top of stairs,
+        # and dp[n] the min total cost to arrive
         return dp[n]
 
 

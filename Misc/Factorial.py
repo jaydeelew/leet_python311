@@ -1,3 +1,8 @@
+from Timer import Timer
+from functools import cache
+
+
+@cache
 def factorial1(n):
     if n == 0 or n == 1:
         return 1
@@ -13,5 +18,12 @@ def factorial2(n):
     return product
 
 
-print(factorial1(10))
-print(factorial2(10))
+t = Timer("recursive")
+t.start()
+factorial1(500)
+t.stop()
+
+t = Timer("iterative")
+t.start()
+factorial2(500)
+t.stop()
