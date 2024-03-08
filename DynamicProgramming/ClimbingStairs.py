@@ -5,6 +5,7 @@ from functools import cache
 
 
 class Solution:
+    # top down
     def climbStairs(self, n: int) -> int:
         @cache
         def dp(step):
@@ -23,6 +24,7 @@ class Solution:
 
         return dp(n)
 
+    # bottom up
     def climbStairs_iter(self, n: int) -> int:
         if n < 3:
             return n
