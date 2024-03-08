@@ -10,7 +10,7 @@ from functools import lru_cache
 
 class Solution:
     def coinChange(self, coins: list[int], amount: int) -> int:
-
+        # top down
         @lru_cache(None)
         def dfs(remaining):
             # base cases
@@ -31,6 +31,7 @@ class Solution:
 
         return dfs(amount)
 
+    # bottom up
     def coinChange_iter(self, coins: list[int], amount: int) -> int:
         dp = [float("inf")] * (amount + 1)
         dp[0] = 0
