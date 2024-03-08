@@ -29,7 +29,7 @@ class Solution:
                     min_coins = min(min_coins, coin_count + 1)
             return min_coins if min_coins != float("inf") else -1
 
-        return dfs(amount)
+        return dfs(amount)  # type: ignore
 
     # bottom up
     def coinChange_iter(self, coins: list[int], amount: int) -> int:
@@ -39,7 +39,7 @@ class Solution:
         for coin in coins:
             for x in range(coin, amount + 1):
                 dp[x] = min(dp[x], dp[x - coin] + 1)
-        return dp[amount] if dp[amount] != float("inf") else -1
+        return dp[amount] if dp[amount] != float("inf") else -1  # type: ignore
 
 
 coins = [5, 1, 2]
