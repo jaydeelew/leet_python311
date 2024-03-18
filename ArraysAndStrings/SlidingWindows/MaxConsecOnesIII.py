@@ -4,7 +4,7 @@
 
 def longestOnes(nums: list[int], k: int) -> int:
     left = flips = curlen = maxlen = 0
-    # make an actual copy of array instead of a reference to same array (arr = nums)
+    # make an actual copy of array instead of a reference to same array (i.e. arr = nums)
     arr = nums.copy()
     for right in range(0, len(nums)):
         # increase current length of "consecutive ones" subarray each iteration

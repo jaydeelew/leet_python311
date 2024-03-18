@@ -25,6 +25,10 @@ class DLL:
         self.tail.prev.next = new_node
         self.tail.prev = new_node
 
+    def array_to_ll(self, arr):
+        for val in arr:
+            self.add_rear(val)
+
     def rem_front(self):
         # assign head to prev pointer of the node after next
         self.head.next.next.prev = self.head
@@ -56,15 +60,15 @@ class DLL:
         while node_ptr.value:
             ans += node_ptr.value
             node_ptr = node_ptr.next
-        print(ans)
+        return ans
 
-    def print_middle(self):
+    def return_middle(self):
         if self.head.next is not None:
             slow = fast = self.head
             while fast and fast.next:
                 slow = slow.next
                 fast = fast.next.next
-            print(slow.value)
+            return slow
 
     def hasCycle(self):
         slow = fast = self.head
@@ -73,17 +77,17 @@ class DLL:
             fast = fast.next.next
             if slow == fast:
                 return True
-        print(False)
+        return False
 
     # find kth node from end
-    def find_k_node(self, k):
+    def find_kth_node(self, k):
         slow = fast = self.head
         for _ in range(k):
             fast = fast.next
         while fast:
             slow = slow.next
             fast = fast.next
-        print(slow.prev.value)
+        return slow
 
     # using two pointers
     def del_duplicates(self):
@@ -97,6 +101,8 @@ class DLL:
             else:
                 current = current.next
                 following = following.next
+
+    def reverse_list_in_place(self):
 
     def reverse_list(self):
         current = self.head.next
@@ -178,8 +184,5 @@ class DLL:
 
 
 dll = DLL()
-dll.add_rear("1")
-# dll.add_rear("2")
-# dll.add_rear("3")
-# dll.add_rear("4")
-# dll.add_rear("5")
+arr = [1, 2, 3, 4, 5]
+dll.array_to_ll(arr)

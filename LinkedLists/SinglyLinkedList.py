@@ -3,71 +3,88 @@ import copy
 
 class SLL:
     class ListNode:
-        def __init__(self, val, next=None):
+        def __init__(self, val):
             self.val = val
-            self.next = next
+            self.next = None
 
     def __init__(self):
         self.head = None
+        self.tail = None
+
+    def __iter__(self):
+        node = self.head
+        while node:
+            yield node
+            node = node.next
+
+    def add_front(self, val):
+        new_node = self.ListNode(val)
+        if self.head is None:
+            self.head = self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+    def add_rear(self, val):
+        new_node = self.ListNode(val)
+        if self.head is not None:
+            self.tail.next = new_node
+        else:
+            self.head = new_node
+
+        self.tail = new_node
 
     def add_array(self, arr):
         for element in arr:
             self.add_rear(element)
 
-    def add_front(self, val):
-        new_node = self.ListNode(val)
-        new_node.next = self.head
-        self.head = new_node
-
-    def add_rear(self, val):
-        new_node = self.ListNode(val)
-        if self.head is None:
-            self.head = new_node
-        else:
-            node_ptr = self.head
-            while node_ptr.next is not None:
-                node_ptr = node_ptr.next
-            node_ptr.next = new_node
-
     def rem_front(self):
         if self.head is not None:
-            self.head = self.head.next
+            if self.head is self.tail:
+                self.head = self.tail = None
+            else:
+                self.head = self.head.next
 
     def rem_rear(self):
-        if self.head is not None:
-            if self.head.next is None:
-                self.head = None
-                return
-            curr_node = self.head
-            while curr_node.next.next is not None:
-                curr_node = curr_node.next
-            curr_node.next = None
+        if self.tail is not None:
+            if self.head is self.tail:
+                self.head = self.tail = None
+            else:
+                curr_node = self.head
+                while curr_node.next is not self.tail:
+                    curr_node = curr_node.next
 
-    def del_node(self, val):
+                curr_node.next = None
+                self.tail = curr_node
+
+    def delete_node(self, val):
         if self.head is not None:
             if self.head.val == val:
                 self.head = self.head.next
                 return
             curr_node = self.head
+            # must search for val in curr_node.next since cannot skip over curr_node
             while curr_node.next is not None:
                 if curr_node.next.val == val:
+                    if curr_node.next is self.tail:
+                        self.tail = curr_node
+                    # skip over curr_node.next
                     curr_node.next = curr_node.next.next
                     return
                 curr_node = curr_node.next
 
-    def print_sum(self):
+    def copy_list(self):
+        return copy.deepcopy(sll)
+
+    def get_sum(self):
         sum = 0
         curr_node = self.head
         while curr_node is not None:
             sum += curr_node.val
             curr_node = curr_node.next
-        print(sum)
+        return sum
 
-    def copy_list(self):
-        return copy.deepcopy(sll)
-
-    # recursive
-    def get_sum(self, head):
+    def get_sum_recurse(self, head):
         curr_node = head
         # if there is no node beside head node
         if curr_node is None:
@@ -76,25 +93,24 @@ class SLL:
         if curr_node.next is None:
             # return val from last node
             return curr_node.val
-        # return curr_node head val + retrn value of this function
-        return curr_node.val + self.get_sum(curr_node.next)
+        # return curr_node val + return of value of call to next node
+        return curr_node.val + self.get_sum_recurse(curr_node.next)
 
-    def print_middle(self):
+    def get_middle(self):
         if self.head is not None:
             slow = fast = self.head
             while fast and fast.next:
                 slow = slow.next
                 fast = fast.next.next
-            print(slow.val)
+            return slow.val
 
     def reverse_sll(self):
         if self.head is not None:
             if self.head.next is None:
                 return self.head
-            else:
-                prev_node = None
+            prev_node = None
             curr_node = self.head
-            while curr_node is not None:
+            while curr_node:
                 next_node = curr_node.next
                 curr_node.next = prev_node
                 prev_node = curr_node
@@ -115,7 +131,6 @@ class SLL:
                 prev_node.next = curr_node.next
                 # prev_node.next now points to second node on previously-detached part of list
                 prev_node = curr_node
-
                 # save ptr to node after next. list will be detached at this point on ln below
                 recover_node = curr_node.next.next
                 # node after curr_node now points back to curr_node
@@ -175,24 +190,17 @@ class SLL:
             return self.head
 
     def rem_Nth_from_end(self, n):
-        if self.head is not None and n != 0:
-            if self.head.next is None and n == 1:
-                return None
-            if n == 1:
-                return None
-            prev_node = None
-            slow = fast = self.head
-            for _ in range(n):
-                fast = fast.next
-            while fast is not None:
-                prev_node = slow
-                slow = slow.next
-                fast = fast.next
-            if prev_node is None:
-                self.head = self.head.next
-            else:
-                prev_node.next = slow.next
-            return self.head
+        fast = slow = self.head
+        for _ in range(n):
+            fast = fast.next
+            if fast is None:
+                return -1
+
+        while fast is not None:
+            fast = fast.next
+            slow = slow.next
+
+        return slow.val
 
     def is_palindrome(self):
         slow = fast = self.head
@@ -254,11 +262,8 @@ class SLL:
         print("")
 
 
+arr = [1, 2, 3, 4, 5]
 sll = SLL()
-sll.add_rear(1)
-sll.add_rear(2)
-sll.add_rear(3)
-sll.add_rear(4)
-sll.add_rear(5)
-sll.print_nodes()
-sll.print_nodes(sll.delete_middle())
+sll.add_array(arr)
+print([n.val for n in sll])
+print(sll.rem_Nth_from_end(6))

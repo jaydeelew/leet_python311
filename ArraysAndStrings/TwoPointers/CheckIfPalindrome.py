@@ -3,13 +3,13 @@
 # That means, after reversing it, it is still the same string. For example: "abcdcba", or "racecar".
 
 
-def check_if_palindrome(s):
+def check_if_palindrome(arr):
     left = 0
-    right = len(s) - 1
+    right = len(arr) - 1
 
     while left < right:
         # if left and right pointers are not equal
-        if s[left] != s[right]:
+        if arr[left] != arr[right]:
             # not a palindrome
             return False
         left += 1
@@ -18,7 +18,7 @@ def check_if_palindrome(s):
     return True
 
 
-s = "racecar"
+arr = "racecar"
 # Output: True
 
-print(check_if_palindrome(s))
+print(check_if_palindrome(arr))
