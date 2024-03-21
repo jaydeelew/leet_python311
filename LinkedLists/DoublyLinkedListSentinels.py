@@ -4,7 +4,7 @@ import copy
 # this implementation of a DLL uses sentinels
 class DLL:
     class ListNode:
-        def __init__(self, val, prev, next):
+        def __init__(self, val, prev=None, next=None):
             self.value = val
             self.prev = prev
             self.next = next
@@ -12,8 +12,8 @@ class DLL:
     def __init__(self):
         self.head = self.ListNode(None, None, None)
         self.tail = self.ListNode(None, None, None)
-        self.head.next = self.tail
         self.tail.prev = self.head
+        self.head.next = self.tail
 
     def add_front(self, val):
         new_node = self.ListNode(val, self.head, self.head.next)
@@ -102,7 +102,8 @@ class DLL:
                 current = current.next
                 following = following.next
 
-    def reverse_list_in_place(self):
+    def copy_list(self):
+        return copy.deepcopy(dll)
 
     def reverse_list(self):
         current = self.head.next
@@ -111,26 +112,6 @@ class DLL:
             reversed.add_front(current.value)
             current = current.next
         reversed.print_nodes()
-
-    def copy_list(self):
-        return copy.deepcopy(dll)
-
-    def reverse_sll(self):
-        # using as a SLL
-        copied_list = self.copy_list()
-        curr_node = copied_list.head
-        prev_node = None
-        while curr_node:
-            # must save next node since pointer to it is changed on line below
-            next_node = curr_node.next
-            # have current node now point to previous node
-            curr_node.next = prev_node
-            # set previous node to current node
-            prev_node = curr_node
-            # make next node the current node
-            curr_node = next_node
-        # this last node of original list becomes the first in reversed list
-        return prev_node
 
     def reverse_dll(self):
         copied_list = self.copy_list()
@@ -145,31 +126,6 @@ class DLL:
             # the current node is assigned next node
             curr_node = next_node
         return copied_list.tail
-
-    def reverse_sll_between(self, left, right):
-        copied_list = self.copy_list()
-        prev_node = copied_list.head
-        curr_node = until_node = copied_list.head.next
-        for _ in range(left - 1):
-            prev_node = curr_node
-            curr_node = curr_node.next
-        for _ in range(right - 1):
-            until_node = until_node.next
-
-        # save until.node.next since it will change
-        terminate_loop = until_node.next
-        resume_node = curr_node
-        prev_node.next = until_node
-        prev_node = curr_node
-        curr_node = curr_node.next
-
-        while curr_node != terminate_loop and curr_node is not None:
-            next_node = curr_node.next
-            curr_node.next = prev_node
-            prev_node = curr_node
-            curr_node = next_node
-        resume_node.next = curr_node
-        return copied_list.head
 
     def print_nodes(self, outside_head=None):
         if outside_head is None:
@@ -186,3 +142,4 @@ class DLL:
 dll = DLL()
 arr = [1, 2, 3, 4, 5]
 dll.array_to_ll(arr)
+dll.print_nodes()

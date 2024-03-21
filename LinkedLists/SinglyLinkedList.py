@@ -1,11 +1,12 @@
 import copy
+from typing import Optional
 
 
 class SLL:
     class ListNode:
         def __init__(self, val):
             self.val = val
-            self.next = None
+            self.next: Optional[SLL.ListNode] = None
 
     def __init__(self):
         self.head = None
