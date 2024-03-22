@@ -9,14 +9,17 @@ class TimerError(Exception):
 class Timer:
     timers = defaultdict(list)
 
-    def __init__(self, task="this run", precision=8):
+    def __init__(self, precision=8):
         self._start_time = None
-        self.task = task
+        # self.task = None
         self.precision = precision
-        self.timers[task].append(0.0)
-        self.timers[task].append(0)
 
-    def start(self):
+    def start(self, task="this run"):
+        self.task = task
+        # accumulated time
+        self.timers[task].append(0.0)
+        # number of runs
+        self.timers[task].append(0)
         """Start a new timer"""
         if self._start_time is not None:
             raise TimerError("Timer is running. Use .stop() to stop it")
@@ -31,11 +34,11 @@ class Timer:
 
         elapsed_time = time.perf_counter() - self._start_time
         # update acummulative time for each run
-        self.timers[self.task][0] = elapsed_time + self.timers[self.task][0]
+        self.timers[self.task][0] += elapsed_time
         # update number of runs
-        self.timers[self.task][1] = self.timers[self.task][1] + 1
+        self.timers[self.task][1] += 1
         self._start_time = None
-        print(f"{elapsed_time:0.{self.precision}f} seconds for {self.task}")
+        print(f"\n{elapsed_time:0.{self.precision}f} seconds for {self.task}")
 
         avg_time = self.timers[self.task][0] / self.timers[self.task][1]
-        print(f"average time: {avg_time:0.{self.precision}f}\n")
+        print(f"average time: {avg_time:0.{self.precision}f} seconds for {self.timers[self.task][1]} run(s)\n")

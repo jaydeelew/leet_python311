@@ -6,6 +6,7 @@ from collections import defaultdict
 
 class Solution:
     def countComponents(self, n: int, edges: list[list[int]]) -> int:
+        # build graph
         graph = defaultdict(list)
         for x, y in edges:
             graph[x].append(y)
@@ -21,21 +22,24 @@ class Solution:
                     dfs(neighbor)
 
         ans = 0
-
+        # count how many connected components exists
         for node in range(n):
             if node not in seen:
                 seen.add(node)
                 ans += 1
+                # add to seen remaining nodes connected to current node
                 dfs(node)
 
         return ans
 
 
-# n = 5
-# edges = [[0, 1], [1, 2], [3, 4]] # output 2
-
 n = 5
-edges = [[0, 1], [1, 2], [2, 3], [3, 4]]  # output 1
+edges = [[0, 1], [1, 2], [3, 4]]
+# Output: 2
+
+# n = 5
+# edges = [[0, 1], [1, 2], [2, 3], [3, 4]]
+# Output: 1
 
 sol = Solution()
 print(sol.countComponents(n, edges))

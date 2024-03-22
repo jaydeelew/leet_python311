@@ -35,7 +35,7 @@ def print_all_nodes(root):
     ans = []
     while queue:
         nodes_in_current_level = len(queue)
-        # do some logic here for the current level
+        # do some logic here for the current level if needed
 
         for _ in range(nodes_in_current_level):
             node = queue.popleft()
