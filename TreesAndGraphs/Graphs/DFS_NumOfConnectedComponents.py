@@ -6,7 +6,7 @@ from collections import defaultdict
 
 class Solution:
     def countComponents(self, n: int, edges: list[list[int]]) -> int:
-        # build graph
+        # build undirected graph
         graph = defaultdict(list)
         for x, y in edges:
             graph[x].append(y)
@@ -14,7 +14,7 @@ class Solution:
 
         seen = set()
 
-        # this adds to seen all nodes (neighbors) connected to node
+        # this adds to seen all nodes (neighbors) connected to this node
         def dfs(node):
             for neighbor in graph[node]:
                 if neighbor not in seen:
