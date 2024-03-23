@@ -81,7 +81,7 @@ grid = [
 sol = Solution()
 t = Timer()
 
-for _ in range(99):
+for _ in range(999):
     t.start("Recursive")
     sol.maxAreaOfIsland(grid)
     t.stop()

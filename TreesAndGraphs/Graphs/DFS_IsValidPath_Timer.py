@@ -5,11 +5,10 @@
 # You want to determine if there is a valid path that exists from vertex source to vertex destination.
 # Given edges and the integers n, source, and destination, return true if there is a valid path from source to destination,
 # or false otherwise.
-import timeit
+from Timer import Timer
+from collections import defaultdict
 
-mysetup = "from collections import defaultdict"
 
-recursive_code = """
 def validPath(n: int, edges: list[list[int]], source: int, destination: int) -> bool:
     graph = defaultdict(list)
     for x, y in edges:
@@ -35,15 +34,15 @@ def validPath(n: int, edges: list[list[int]], source: int, destination: int) -> 
     except valid_path:
         return True
 
+
 n = 6
 edges = [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]]
 source = 0
 destination = 5
 
 validPath(n, edges, source, destination)
-"""
 
-iterative_code = """
+
 def validPath_Iterative(n: int, edges: list[list[int]], source: int, destination: int) -> bool:
     graph = defaultdict(list)
     for x, y in edges:
@@ -62,13 +61,19 @@ def validPath_Iterative(n: int, edges: list[list[int]], source: int, destination
                 stack.append(neighbor)
     return False
 
+
 n = 6
 edges = [[0, 1], [0, 2], [3, 5], [5, 4], [4, 3]]
 source = 0
 destination = 5
 
-validPath_Iterative(n, edges, source, destination)
-"""
+t = Timer()
 
-print("recursive:", timeit.timeit(setup=mysetup, stmt=recursive_code, number=100000))
-print("iterative:", timeit.timeit(setup=mysetup, stmt=iterative_code, number=100000))
+for _ in range(999):
+    t.start("Recursive")
+    validPath_Iterative(n, edges, source, destination)
+    t.stop()
+
+    t.start("Iterative")
+    validPath_Iterative(n, edges, source, destination)
+    t.stop()

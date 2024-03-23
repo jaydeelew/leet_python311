@@ -18,6 +18,7 @@ class Solution:
                     # call dfs on each neighbor of this node
                     dfs(neighbor)
 
+        # uncomment call below to run iterative version
         def dfs_iterative(start_node):
             stack = [start_node]
             while stack:
@@ -55,6 +56,7 @@ class Solution:
                 seen.add(i)
                 # add all of this node's neighbors to seen via dfs()
                 dfs(i)
+                # dfs_iterative(i)
 
         return ans
 
