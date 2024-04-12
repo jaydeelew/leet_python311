@@ -1,7 +1,4 @@
-import sys
 from TextEffects import banner, formatBinarySearch
-
-sys.path.append("./Modules")
 
 
 def binary_search(arr: list[int], target: int):

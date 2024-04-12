@@ -1,10 +1,8 @@
-def string_builder(s):
-    arr = []
-    for c in s:
-        arr.append(c)
+def string_builder(arr):
 
     return "".join(arr)
 
 
-s = "my string"
-print(string_builder(s))
+arr = ["m", "y", " ", "s", "t", "r", "i", "n", "g"]
+
+print(string_builder(arr))

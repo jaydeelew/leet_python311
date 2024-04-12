@@ -1,4 +1,17 @@
-# 39. Combination Sum
+# def backtrack(curr, OTHER_ARGUMENTS...):
+#     if (BASE_CASE):
+#         # modify the answer
+#         return
+
+#     ans = 0
+#     for (ITERATE_OVER_INPUT):
+#         # modify the current state
+#         ans += backtrack(curr, OTHER_ARGUMENTS...)
+#         # undo the modification of the current state
+
+#     return ans
+
+
 # Given an array of distinct positive integer candidates and a target integer target,
 # return a list of all unique combinations of candidates where the chosen numbers sum to target.
 # The same number may be chosen from candidates an unlimited number of times.

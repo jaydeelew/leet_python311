@@ -1,7 +1,4 @@
-import sys
 from TextEffects import formatBinarySearch
-
-sys.path.append("./Modules")
 
 
 # If target appears multiple times, return the left-most index:
