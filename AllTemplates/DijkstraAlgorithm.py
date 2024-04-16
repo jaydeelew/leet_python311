@@ -1,5 +1,4 @@
-# from math import inf
-# from heapq import *
+# import heapq
 
 # distances = [inf] * n
 # distances[source] = 0
@@ -16,78 +15,43 @@
 #             distances[nei] = dist
 #             heappush(heap, (dist, nei))
 
-
-class Graph:
-
-    def __init__(self, vertices):
-        self.V = vertices
-        self.graph = [[0 for column in range(vertices)] for row in range(vertices)]
-
-    def printSolution(self, dist):
-        print("Vertex \tDistance from Source")
-        for node in range(self.V):
-            print(node, "\t", dist[node])
-
-    # A utility function to find the vertex with
-    # minimum distance value, from the set of vertices
-    # not yet included in shortest path tree
-    def minDistance(self, dist, sptSet):
-
-        min = float("inf")
-
-        # Search not nearest vertex not in the
-        # shortest path tree
-        for u in range(self.V):
-            if dist[u] < min and sptSet[u] == False:
-                min = dist[u]
-                min_index = u
-
-        return min_index
-
-    # Function that implements Dijkstra's single source
-    # shortest path algorithm for a graph represented
-    # using adjacency matrix representation
-    def dijkstra(self, src):
-
-        dist = [float("inf")] * self.V
-        dist[src] = 0
-        sptSet = [False] * self.V
-
-        for _ in range(self.V):
-
-            # Pick the minimum distance vertex from
-            # the set of vertices not yet processed.
-            # x is always equal to src in first iteration
-            x = self.minDistance(dist, sptSet)
-
-            # Put the minimum distance vertex in the
-            # shortest path tree
-            sptSet[x] = True
-
-            # Update dist value of the adjacent vertices
-            # of the picked vertex only if the current
-            # distance is greater than new distance and
-            # the vertex in not in the shortest path tree
-            for y in range(self.V):
-                if self.graph[x][y] > 0 and sptSet[y] == False and dist[y] > dist[x] + self.graph[x][y]:
-                    dist[y] = dist[x] + self.graph[x][y]
-
-        self.printSolution(dist)
+import heapq
 
 
-# Driver's code
-if __name__ == "__main__":
-    g = Graph(9)
-    g.graph = [
-        [0, 4, 0, 0, 0, 0, 0, 8, 0],
-        [4, 0, 8, 0, 0, 0, 0, 11, 0],
-        [0, 8, 0, 7, 0, 4, 0, 0, 2],
-        [0, 0, 7, 0, 9, 14, 0, 0, 0],
-        [0, 0, 0, 9, 0, 10, 0, 0, 0],
-        [0, 0, 4, 14, 10, 0, 2, 0, 0],
-        [0, 0, 0, 0, 0, 2, 0, 1, 6],
-        [8, 11, 0, 0, 0, 0, 1, 0, 7],
-        [0, 0, 2, 0, 0, 0, 6, 7, 0],
-    ]
+def calculate_distances(graph, starting_vertex):
+    distances = {vertex: float("inf") for vertex in graph}
+    distances[starting_vertex] = 0
 
-    g.dijkstra(0)
+    # (current distance, current vertex)
+    pq = [(0, starting_vertex)]
+
+    while pq:
+        current_distance, current_vertex = heapq.heappop(pq)
+
+        # Nodes can get added to the priority queue multiple times. We only
+        # process a vertex the first time we remove it from the priority queue.
+        if current_distance > distances[current_vertex]:
+            continue
+
+        for neighbor, weight in graph[current_vertex].items():
+            distance = current_distance + weight
+
+            # Only consider this new path if it's better than any path we've
+            # already found.
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(pq, (distance, neighbor))
+
+    return distances
+
+
+example_graph = {
+    "U": {"V": 2, "W": 5, "X": 1},
+    "V": {"U": 2, "X": 2, "W": 3},
+    "W": {"V": 3, "U": 5, "X": 3, "Y": 1, "Z": 5},
+    "X": {"U": 1, "V": 2, "W": 3, "Y": 1},
+    "Y": {"X": 1, "W": 1, "Z": 1},
+    "Z": {"W": 5, "Y": 1},
+}
+
+print(calculate_distances(example_graph, "U"))
