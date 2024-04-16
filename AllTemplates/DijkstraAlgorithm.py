@@ -1,46 +1,33 @@
 # import heapq
-
-# distances = [inf] * n
-# distances[source] = 0
-# heap = [(0, source)]
-
-# while heap:
-#     curr_dist, node = heappop(heap)
-#     if curr_dist > distances[node]:
-#         continue
-
-#     for nei, weight in graph[node]:
-#         dist = curr_dist + weight
-#         if dist < distances[nei]:
-#             distances[nei] = dist
-#             heappush(heap, (dist, nei))
-
 import heapq
 
 
 def calculate_distances(graph, starting_vertex):
+    # distances maintains the shortest distance from the starting vertex to all other vertices
     distances = {vertex: float("inf") for vertex in graph}
     distances[starting_vertex] = 0
 
-    # (current distance, current vertex)
-    pq = [(0, starting_vertex)]
+    # list of tuples: (current distance, current vertex)
+    min_heap = [(0, starting_vertex)]
 
-    while pq:
-        current_distance, current_vertex = heapq.heappop(pq)
+    while min_heap:
+        current_distance, current_vertex = heapq.heappop(min_heap)
 
-        # Nodes can get added to the priority queue multiple times. We only
-        # process a vertex the first time we remove it from the priority queue.
+        # if the current distance is greater than the distance already computed for the current vertex,
+        # then we have already found a shorter path to the current vertex
+        # so we can skip this iteration
         if current_distance > distances[current_vertex]:
             continue
 
+        # for each neighbor of the current vertex, we calculate the distance to the neighbor
         for neighbor, weight in graph[current_vertex].items():
             distance = current_distance + weight
 
-            # Only consider this new path if it's better than any path we've
-            # already found.
+            # if the distance to the neighbor is shorter than the current distance,
+            # we update the distance in distances and push the neighbor into the heap
             if distance < distances[neighbor]:
                 distances[neighbor] = distance
-                heapq.heappush(pq, (distance, neighbor))
+                heapq.heappush(min_heap, (distance, neighbor))
 
     return distances
 
