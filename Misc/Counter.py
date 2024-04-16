@@ -15,6 +15,7 @@ class Test:
         return my_counter
 
 
+a = 8
 this_string = "mississippi"
 sol = Test()
 print(sol.test_counter(this_string))
