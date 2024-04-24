@@ -17,7 +17,7 @@
 
 
 def find_length(nums, k):
-    left = curr_sum = ans = 0
+    longest = curr_sum = left = 0
 
     for right in range(len(nums)):
         curr_sum += nums[right]
@@ -26,9 +26,9 @@ def find_length(nums, k):
             curr_sum -= nums[left]
             left += 1
 
-        ans = max(ans, right - left + 1)
+        longest = max(longest, right - left + 1)
 
-    return ans
+    return longest
 
 
 nums = [3, 1, 2, 7, 4, 2, 1, 1, 5]
