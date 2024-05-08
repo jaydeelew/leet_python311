@@ -24,6 +24,7 @@ def left_insert(arr, target):
         mid = (left + right) // 2
         # this would be target < arr[mid] for index of right insertion point
         if target <= arr[mid]:
+            # we do not want to say right = mid - 1 because mid may be the insertion point
             right = mid
         else:
             left = mid + 1

@@ -24,8 +24,10 @@ def binary_search(arr: list[int], target: int) -> int:
             print("\nTarget Found\n")
             return mid
         if target < arr[mid]:
+            # we want to limit our search to the left of mid
             right = mid - 1
         else:
+            # we want to limit our search to the right of mid
             left = mid + 1
 
     print("\nTarget not found, index " + str(left) + " is the insertion point\n")

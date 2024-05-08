@@ -47,6 +47,7 @@ def print_all_nodes(root):
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
+
     return ans
 
 

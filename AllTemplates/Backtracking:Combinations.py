@@ -12,33 +12,25 @@
 #     return ans
 
 
-# Given an array of distinct positive integer candidates and a target integer,
-# return a list of all unique combinations of candidates where the chosen numbers sum to target.
-# The same number may be chosen from candidates an unlimited number of times.
-# Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+def combination(nums: list[int]) -> list[list[int]]:
+    def backtrack(curr_path: list[int]):
+        if len(curr_path) == len(nums):
+            # append a copy and not a reference
+            ans.append(curr_path[:])
+            return
 
+        for n in nums:
+            curr_path.append(n)
+            backtrack(curr_path)
+            curr_path.pop()
 
-class Solution:
-    def combinationSum(self, nums: list[int]) -> list[list[int]]:
-        def backtrack(curr_path: list[int]):
-            if len(curr_path) == len(nums):
-                ans.append(curr_path[:])
-                return
+    ans = []
+    backtrack([])
+    return ans
 
-            for n in nums:
-                curr_path.append(n)
-                backtrack(curr_path)
-                curr_path.pop()
-
-        ans = []
-        backtrack([])
-        return ans
-
-
-sol = Solution()
 
 nums = [0, 1]
-print(sol.combinationSum(nums))
+print(combination(nums))
 # Output: [[0, 0], [0, 1], [1, 0], [1, 1]]
 
 # nums = [1, 2, 3]
