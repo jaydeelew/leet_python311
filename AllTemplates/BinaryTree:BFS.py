@@ -35,14 +35,14 @@ def print_all_nodes(root):
     ans = []
     while queue:
         nodes_in_current_level = len(queue)
-        # do some logic here for the current level if needed
+        # do some logic here for the current level
 
         for _ in range(nodes_in_current_level):
             node = queue.popleft()
-            # do some logic here on the current node
+            # do some logic here for current node
             ans.append(node.val)
 
-            # put the next level onto the queue
+            # putting next level onto the queue with completion of for loop
             if node.left:
                 queue.append(node.left)
             if node.right:

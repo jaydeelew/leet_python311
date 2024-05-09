@@ -21,10 +21,9 @@ class TreeNode:
 
 
 def dfs_pre_order(root):
-    ans = []
 
     def dfs(node):
-        if not node:
+        if node is None:
             return
 
         # pre-order result since append is prior to calls to left and right
@@ -33,6 +32,7 @@ def dfs_pre_order(root):
         dfs(node.left)
         dfs(node.right)
 
+    ans = []
     dfs(root)
     return ans
 
