@@ -1,3 +1,7 @@
+# Given an array of positive integers nums and an integer k
+# find the length of the longest subarray whose sum is less than or equal to k.
+
+
 # def fn(arr):
 #     left = ans = curr = 0
 
@@ -11,9 +15,6 @@
 #         # update ans
 
 #     return ans
-
-# Given an array of positive integers nums and an integer k,
-# find the length of the longest subarray whose sum is less than or equal to k.
 
 
 def find_length(nums, k):

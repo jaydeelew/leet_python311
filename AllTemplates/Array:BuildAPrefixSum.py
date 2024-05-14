@@ -12,6 +12,7 @@
 #     return prefix
 
 
+# with new array
 def runningSum(nums):
     prefix = [nums[0]]
 
@@ -21,6 +22,14 @@ def runningSum(nums):
     return prefix
 
 
+# in place
+def runningSum2(nums):
+    for i in range(1, len(nums)):
+        nums[i] = nums[i - 1] + nums[i]
+    return nums
+
+
 nums = [3, 1, 2, 10, 1]
 print(runningSum(nums))
+print(runningSum2(nums))
 # Output: [3, 4, 6, 16, 17]

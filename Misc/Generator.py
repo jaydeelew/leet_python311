@@ -7,4 +7,5 @@ def generator():
 for i in generator():
     print(i, end=" ")
 
+# blank line
 print()

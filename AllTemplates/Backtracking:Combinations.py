@@ -12,55 +12,23 @@
 #     return ans
 
 
-def combination(nums: list[int]) -> list[list[int]]:
-    def backtrack(curr_path: list[int]):
-        if len(curr_path) == len(nums):
-            # append a copy and not a reference
-            ans.append(curr_path[:])
-            return
+# for combinations, order does not matter (eg. [1, 2] and [2, 1] are considered the same)
+def combinations(nums):
+    def backtrack(start_index, curr_combo):
+        # no if statement here because we are appending all the combinations
+        ans.append(curr_combo[:])
 
-        for n in nums:
-            curr_path.append(n)
-            backtrack(curr_path)
-            curr_path.pop()
+        for i in range(start_index, len(nums)):
+            curr_combo.append(nums[i])
+            backtrack(i + 1, curr_combo)
+            # this is the backtrack
+            curr_combo.pop()
 
     ans = []
-    backtrack([])
+    backtrack(0, [])
     return ans
 
 
-nums = [0, 1]
-print(combination(nums))
-# Output: [[0, 0], [0, 1], [1, 0], [1, 1]]
-
-# nums = [1, 2, 3]
-# print(sol.combinationSum(nums))
-# Output: [
-#     [1, 1, 1],
-#     [1, 1, 2],
-#     [1, 1, 3],
-#     [1, 2, 1],
-#     [1, 2, 2],
-#     [1, 2, 3],
-#     [1, 3, 1],
-#     [1, 3, 2],
-#     [1, 3, 3],
-#     [2, 1, 1],
-#     [2, 1, 2],
-#     [2, 1, 3],
-#     [2, 2, 1],
-#     [2, 2, 2],
-#     [2, 2, 3],
-#     [2, 3, 1],
-#     [2, 3, 2],
-#     [2, 3, 3],
-#     [3, 1, 1],
-#     [3, 1, 2],
-#     [3, 1, 3],
-#     [3, 2, 1],
-#     [3, 2, 2],
-#     [3, 2, 3],
-#     [3, 3, 1],
-#     [3, 3, 2],
-#     [3, 3, 3],
-# ]
+ans = [1, 2, 3]
+print(combinations(ans))
+# Output: [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]

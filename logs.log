@@ -1,0 +1,6 @@
+INFO:root:Started program execution
+DEBUG:root:First number converted to int
+DEBUG:root:Second number converted to int
+INFO:root:Starting the operation...
+DEBUG:root:Addition was performed
+INFO:root:Program execution ended

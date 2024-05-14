@@ -1,3 +1,9 @@
+# Given an array of distinct positive integer candidates and a target integer,
+# return a list of all unique combinations of candidates where the chosen numbers sum to target.
+# The same number may be chosen from candidates an unlimited number of times.
+# Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+
+
 # def backtrack(curr, OTHER_ARGUMENTS...):
 #     if (BASE_CASE):
 #         # modify the answer
@@ -10,12 +16,6 @@
 #         # undo the modification of the current state
 
 #     return ans
-
-
-# Given an array of distinct positive integer candidates and a target integer,
-# return a list of all unique combinations of candidates where the chosen numbers sum to target.
-# The same number may be chosen from candidates an unlimited number of times.
-# Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 
 
 def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
@@ -32,10 +32,11 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
 
         for s in range(starting_index, len(candidates)):
             num = candidates[s]
-            # if the new sum is not checked against target,
-            # the value of starting_index is never changed
-            # since backtrack will recurse forever and the for loop
-            # will not iterate to the next starting inde
+            # if we do not check if curr_path_sum + num <= target,
+            # after the target is met the first time, the sum will keep growing as it's passed
+            # to the next recursion call, and the base case will never be triggered,
+            # the starting index will never be changed, and recursion will go on forever since
+            # the for loop will not iterate to the next starting index
             if curr_path_sum + num <= target:
                 curr_path.append(num)
                 # the starting index is s, not s+1
@@ -48,12 +49,16 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
     return ans
 
 
+candidates = [1, 2]
+target = 3
+# Output: [[1,1,1],[1,2]]
+
 # candidates = [2]
 # target = 8
 # Output: [[2,2,2,2]]
 
-candidates = [2, 3, 6, 7]
-target = 7
+# candidates = [2, 3, 6, 7]
+# target = 7
 # Output: [[2,2,3],[7]]
 
 # candidates = [2,3,5]
