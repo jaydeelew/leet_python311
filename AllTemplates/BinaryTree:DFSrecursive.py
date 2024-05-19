@@ -1,3 +1,6 @@
+# print the nodes of a binary tree using DFS in pre-order, recursively
+
+
 # def dfs(root):
 #     if not root:
 #         return
@@ -8,9 +11,6 @@
 #     dfs(root.left)
 #     dfs(root.right)
 #     return ans
-
-
-# print the nodes of a binary tree using DFS in pre-order, recursively
 
 
 class TreeNode:

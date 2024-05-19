@@ -1,3 +1,6 @@
+# print the nodes of a binary tree using DFS in pre-order, iteratively
+
+
 # def dfs(root):
 #     stack = [root]
 #     ans = 0
@@ -11,9 +14,6 @@
 #             stack.append(node.right)
 
 #     return ans
-
-
-# print the nodes of a binary tree using DFS in pre-order, iteratively
 
 
 class TreeNode:

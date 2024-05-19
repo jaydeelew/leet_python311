@@ -21,7 +21,6 @@ def combinations(nums):
         for i in range(start_index, len(nums)):
             curr_combo.append(nums[i])
             backtrack(i + 1, curr_combo)
-            # this is the backtrack
             curr_combo.pop()
 
     ans = []

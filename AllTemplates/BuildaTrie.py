@@ -1,6 +1,3 @@
-from collections import defaultdict
-
-
 # Trie as in reTRIEval of words/data
 class TrieNode:
     def __init__(self):

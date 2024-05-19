@@ -1,3 +1,8 @@
+# return index of left most insertion point when duplicates are allowed
+# this function will return the index of the first duplicate,
+# otherwise, the index of the next highest value
+
+
 # def fn(arr, target):
 #     left = 0
 #     right = len(arr)
@@ -9,10 +14,6 @@
 #             left = mid + 1
 #
 #     return left
-
-# return index of left most insertion point when duplicates are allowed
-# this function will return the index of the first duplicate,
-# otherwise, the index of the next highest value
 
 
 def left_insert(arr, target):

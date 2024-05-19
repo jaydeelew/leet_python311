@@ -16,7 +16,7 @@
 #     return ans
 
 
-def permute(nums: list[int]) -> list[list[int]]:
+def permutations(nums: list[int]) -> list[list[int]]:
     def backtrack(curr_path):
         if len(curr_path) == len(nums):
             # we need a copy and not a reference
@@ -45,4 +45,4 @@ nums = [1, 2, 3]
 # nums = [1]
 # # Output: [[1]]
 
-print(permute(nums))
+print(permutations(nums))
