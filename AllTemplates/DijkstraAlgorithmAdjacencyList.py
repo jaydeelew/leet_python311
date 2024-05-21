@@ -1,9 +1,9 @@
 import heapq
 
 
-def dijkstra(graph, starting_node):
+def dijkstra(adj_list, starting_node):
     # distances maintains the shortest distance from the starting node to all other vertices
-    total_distances = dict.fromkeys(graph, float("inf"))
+    total_distances = dict.fromkeys(adj_list, float("inf"))
     total_distances[starting_node] = 0
 
     # list of tuples: (current minimum distance from start, current node)
@@ -23,7 +23,7 @@ def dijkstra(graph, starting_node):
         seen.add(current_node)
 
         # for each neighbor of the current node, we calculate the distance from start to neighbor
-        for neighbor, dist_curr_node_to_neighbor in graph[current_node].items():
+        for neighbor, dist_curr_node_to_neighbor in adj_list[current_node].items():
             dist_start_to_neighbor = curr_node_dist_from_start + dist_curr_node_to_neighbor
 
             # if the distance from start neighbor is shorter than the total distance recorded thus far,
@@ -35,17 +35,17 @@ def dijkstra(graph, starting_node):
     return total_distances
 
 
-# graph = {
+# adj_list = {
 #     "A": {"B": 1, "C": 4},
 #     "B": {"A": 1, "C": 2, "D": 5},
 #     "C": {"A": 4, "B": 2, "D": 1},
 #     "D": {"B": 5, "C": 1},
 # }
 
-# print(dijkstra(graph, "A"))
+# print(dijkstra(adj_list, "A"))
 # Output: {'A': 0, 'B': 1, 'C': 3, 'D': 4}
 
-graph = {
+adj_list = {
     "S": {"A": 8, "B": 4},
     "A": {"B": 4},
     "B": {"A": 3, "C": 2, "D": 5},
@@ -53,5 +53,5 @@ graph = {
     "D": {},
 }
 
-print(dijkstra(graph, "S"))
+print(dijkstra(adj_list, "S"))
 # Output: {'S': 0, 'A': 7, 'B': 4, 'C': 6, 'D': 8}
