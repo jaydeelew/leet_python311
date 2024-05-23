@@ -50,9 +50,9 @@ def find_maximum_positive(arr):
     return arr[right]
 
 
-arr = [-5, -1, 0, 2, 3, 4, 6]
-arr2 = [-10, -5, 5, 10]
-arr3 = [-20, -15, -10, -5, 2, 5, 10, 15]
+arr = [-5, -1, 0, 2, 3, 4, 6]  # Output: 6
+arr2 = [-10, -5, 5, 10]  # Output: 10
+arr3 = [-20, -15, -10, -5, 2, 5, 10, 15]  # Output: 15
 
 print("Maximum positive value:", find_maximum_positive(arr))
 print("Maximum positive value:", find_maximum_positive(arr2))

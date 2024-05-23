@@ -47,9 +47,9 @@ def find_minimum_positive(arr):
     return arr[left]
 
 
-arr = [-5, -1, 0, 2, 3, 4, 6]
-arr2 = [-10, -5, 5, 10]
-arr3 = [-20, -15, -10, -5, 2, 5, 10, 15]
+arr = [-5, -1, 0, 2, 3, 4, 6]  # Output: 0
+arr2 = [-10, -5, 5, 10]  # Output: 5
+arr3 = [-20, -15, -10, -5, 2, 5, 10, 15]  # Output: 2
 
 print("Minimum positive value:", find_minimum_positive(arr))
 print("Minimum positive value:", find_minimum_positive(arr2))

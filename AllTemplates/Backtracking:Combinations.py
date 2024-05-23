@@ -12,11 +12,12 @@
 #     return ans
 
 
-# for combinations, order does not matter (eg. [1, 2] and [2, 1] are considered the same)
+# for combinations, order does not matter, e.g. we should not have duplicates [1, 2] and [2, 1]
 def combinations(nums):
     def backtrack(start_index, curr_combo):
         # no if statement here because we are appending all the combinations
         ans.append(curr_combo[:])
+        # no return needed since we are appending to ans
 
         for i in range(start_index, len(nums)):
             curr_combo.append(nums[i])

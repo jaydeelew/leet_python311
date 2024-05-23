@@ -18,7 +18,7 @@
 #     return ans
 
 
-def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
+def combinationSum(candidates, target):
     # starting index is needed to avoid duplicate combinations, e.g. [2,3] and [3,2]
     def backtrack(starting_index, curr_path, curr_path_sum):
         # if the current path sum is equal to the target
@@ -28,12 +28,12 @@ def combinationSum(candidates: list[int], target: int) -> list[list[int]]:
             # if we append a reference, the current path in ans
             # will be modified when we pop from curr_path
             ans.append(curr_path[:])
-            return
+            # no return needed since we are appending to ans
 
         for s in range(starting_index, len(candidates)):
             num = candidates[s]
             # if we do not check if curr_path_sum + num <= target,
-            # after the target is met the first time, the sum will keep growing as it's passed
+            # after the target is met the first time, the sum will keep growing as it is passed
             # to the next recursion call, and the base case will never be triggered,
             # the starting index will never be changed, and recursion will go on forever since
             # the for loop will not iterate to the next starting index
@@ -61,7 +61,7 @@ target = 3
 # target = 7
 # Output: [[2,2,3],[7]]
 
-# candidates = [2,3,5]
+# candidates = [2, 3, 5]
 # target = 8
 # Output: [[2,2,2,2],[2,3,3],[3,5]]
 
