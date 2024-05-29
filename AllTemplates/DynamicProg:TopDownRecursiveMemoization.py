@@ -26,7 +26,7 @@ def lengthOfLSIS_recursive(nums: list[int]) -> int:
         if i in memo:
             return memo[i]
 
-        # 1 for the subsequence containing only nums[i] thus far
+        # 1 for the subsequence containing only nums[i] (nums[i] being not greater than any previous nums[j])
         ans = 1
         for j in range(i):
             if nums[j] < nums[i]:

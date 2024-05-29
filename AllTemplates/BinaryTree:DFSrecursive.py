@@ -26,15 +26,13 @@ def dfs_pre_order(root):
         if node is None:
             return
 
-        # pre-order result since append is prior to calls to left and right
-        ans.append(node.val)
+        # pre-order since print is prior to calls to left and right
+        print(node.val, end=" ")
 
         dfs(node.left)
         dfs(node.right)
 
-    ans = []
     dfs(root)
-    return ans
 
 
 nine = TreeNode(9)
@@ -45,4 +43,5 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(dfs_pre_order(five))  # Output: 5 8 9 3 12 4 7
+dfs_pre_order(five)  # Output: 5 8 9 3 12 4 7
+print()  # new line

@@ -32,23 +32,23 @@ class TreeNode:
 def print_all_nodes(root):
     # [root], and not "root" alone, is necessary since deque requires an iterable
     queue = deque([root])
-    ans = []
     while queue:
         nodes_in_current_level = len(queue)
-        # do some logic here for the current level
+        # do some logic here for the current level:
+        # eg:
+        # current_level_values = [node.val for node in queue]
+        # ans.append(current_level_values)
 
         for _ in range(nodes_in_current_level):
             node = queue.popleft()
             # do some logic here for current node
-            ans.append(node.val)
+            print(node.val, end=" ")
 
             # putting next level onto the queue with completion of for loop
             if node.left:
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
-
-    return ans
 
 
 nine = TreeNode(9)
@@ -59,4 +59,5 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(print_all_nodes(five))  # Output: 5 8 3 9 12 7 4
+print_all_nodes(five)  # Output: 5 8 3 9 12 7 4
+print()  # new line

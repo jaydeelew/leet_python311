@@ -27,21 +27,20 @@ def dfs_pre_order(root):
     if not root:
         return
 
-    ans = []
-    # since iterative, we create make use of local stack
+    # since iterative, we make use of a local stack
     stack = [root]
 
     while stack:
         node = stack.pop()
-        ans.append(node.val)
+
+        # pre-order since print is prior to calls to left and right
+        print(node.val, end=" ")
 
         # on iterative approach, swap left & right order so that left pops from stack first
         if node.right:
             stack.append(node.right)
         if node.left:
             stack.append(node.left)
-
-    return ans
 
 
 nine = TreeNode(9)
@@ -52,4 +51,5 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(dfs_pre_order(five))  # Output: 5 8 9 3 12 4 7
+dfs_pre_order(five)  # Output: 5 8 9 3 12 4 7
+print()  # new line
