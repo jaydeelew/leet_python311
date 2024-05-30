@@ -1,7 +1,3 @@
-# Given an array nums of distinct integers, return all the possible permutations in any order.
-# For example, given nums = [1, 2, 3], return [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]].
-
-
 # def backtrack(curr, OTHER_ARGUMENTS...):
 #     if (BASE_CASE):
 #         # modify the answer
@@ -16,6 +12,8 @@
 #     return ans
 
 
+# Given an array nums of distinct integers, return all the possible permutations in any order.
+# For example, given nums = [1, 2, 3], return [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]].
 def permutations(nums: list[int]) -> list[list[int]]:
     def backtrack(curr_path):
         if len(curr_path) == len(nums):

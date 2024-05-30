@@ -1,6 +1,3 @@
-# If looking for a Maximum:
-
-
 # def fn(arr):
 #     def check(x):
 #         # this function is implemented depending on the problem

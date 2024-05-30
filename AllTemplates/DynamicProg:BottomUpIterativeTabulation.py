@@ -1,7 +1,3 @@
-# Given an integer array nums, return the length of the longest strictly increasing subsequence.
-# The term strictly means that there are not any duplicates in the subsequence.
-# Provide the Bottom-Up Recursive Tabulation solution.
-
 # def fn(arr):
 #     tab = [0] * len(arr)
 #     tab[BASE_CASE] = VALUE
@@ -10,6 +6,10 @@
 #         tab[i] = RECURRENCE_RELATION
 
 #     return tab[i]
+
+# Given an integer array nums, return the length of the longest strictly increasing subsequence.
+# The term strictly means that there are not any duplicates in the subsequence.
+# Provide the Bottom-Up Recursive Tabulation solution.
 
 
 # as we iterate through the array, we keep track of the longest strictly increasing subsequence

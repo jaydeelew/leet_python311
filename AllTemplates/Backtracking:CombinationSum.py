@@ -1,9 +1,3 @@
-# Given an array of distinct positive integer candidates and a target integer,
-# return a list of all unique combinations of candidates where the chosen numbers sum to target.
-# The same number may be chosen from candidates an unlimited number of times.
-# Two combinations are unique if the frequency of at least one of the chosen numbers is different.
-
-
 # def backtrack(curr, OTHER_ARGUMENTS...):
 #     if (BASE_CASE):
 #         # modify the answer
@@ -18,6 +12,10 @@
 #     return ans
 
 
+# Given an array of distinct positive integer candidates and a target integer,
+# return a list of all unique combinations of candidates where the chosen numbers sum to target.
+# The same number may be chosen from candidates an unlimited number of times.
+# Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 def combinationSum(candidates, target):
     # starting index is needed to avoid duplicate combinations, e.g. [2,3] and [3,2]
     def backtrack(starting_index, curr_path, curr_path_sum):

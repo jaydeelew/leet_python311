@@ -1,6 +1,3 @@
-# convert input graph into adjacency list or dictionary for this template
-
-
 # e.g. to build adjacency dictionary for list of edges:
 # def build_graph(edges):
 #     graph = defaultdict(list)
@@ -24,9 +21,8 @@
 #     seen = {START_NODE}
 #     return dfs(START_NODE)
 
+
 # find the max depth of graph
-
-
 def max_depth(adj_list):
     def dfs(node):
         ans = 0

@@ -1,7 +1,3 @@
-# Given an integer array nums, return the length of the longest strictly increasing subsequence.
-# The term strictly means that there are not any duplicates in the subsequence.
-# Provide the Top-Down Iterative Memoization solution.
-
 # def fn(arr):
 #     def dp(STATE):
 #         if BASE_CASE:
@@ -18,6 +14,9 @@
 #     return dp(STATE_FOR_WHOLE_INPUT)
 
 
+# Given an integer array nums, return the length of the longest strictly increasing subsequence.
+# The term strictly means that there are not any duplicates in the subsequence.
+# Provide the Top-Down Iterative Memoization solution.
 def lengthOfLSIS_recursive(nums: list[int]) -> int:
     memo = {}
 

@@ -28,5 +28,6 @@ pip-delete-this-directory.txt
 venv/
 
 Test.py
+Test2.py
 Game/
 Samples/
