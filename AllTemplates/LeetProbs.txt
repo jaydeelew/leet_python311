@@ -1,0 +1,41 @@
+# Given an array of positive integers nums and an integer k find the length of the longest subarray whose sum is less than or equal to k.
+# e.g. nums = [1, 2, 3, 4, 5], k = 10 -> 4
+
+# prefix sum with new array and in place
+# e.g. [1, 2, 3, 4, 5] -> [1, 3, 6, 10, 15]
+
+# combinations, order does not matter, e.g. we should not have duplicates [1, 2] and [2, 1]
+# e.g. nums = [1, 2], return [[], [1], [2], [1, 2]]
+
+# Given an array of distinct positive integer candidates and a target integer,
+# return a list of all unique combinations of candidates where the chosen numbers sum to target.
+# The same number may be chosen from candidates an unlimited number of times (this differs from the problem in the problem above).
+# e.g. candidates = [2, 3, 6, 7], target = 7 -> [[2, 2, 3], [7]]
+
+# Given an array nums of distinct integers, return all the possible permutations in any order.
+# e.g. nums = [1, 2, 3], return [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]].
+
+# Binary search: return index of target if found, return insertion index if not found
+# e.g. nums = [1, 2, 3, 4, 5], target = 3 -> 2
+
+# Binary search: return index of left most insertion point when duplicates are allowed
+# this function will return the index of the first duplicate,
+# otherwise, the index of the next highest value
+# e.g. nums = [1, 2, 3, 3, 3, 4, 5], target = 3 -> 2
+
+# Binary search: return index of right most insertion point when duplicates are allowed
+# this function will return the index just after the last duplicate,
+# otherwise, the index of the next highest value
+# e.g. nums = [1, 2, 3, 3, 3, 4, 5], target = 3 -> 5
+
+# Binary Search: find the minimum positive number in the array that satisfies the condition
+# when finding the minimum, all values after it, including the minimum, would meet the condition,
+# and all values before it would not meet the condition
+# It assumes the array is sorted
+# e.g. arr = [1, 3, 5, 7, 9, 11], condition = lambda x: x > 6 -> 7
+
+# Binary Search: find the maximum in the array that satisfies the condition
+# A maximum would have all values before it, including the maximum, meet the condition,
+# and all values after it would not meet the condition
+# It assumes the array is sorted
+# e.g. arr = [1, 3, 5, 7, 9, 11], condition = lambda x: x < 6 -> 5

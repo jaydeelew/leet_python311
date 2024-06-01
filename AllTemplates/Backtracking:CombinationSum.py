@@ -38,7 +38,7 @@ def combinationSum(candidates, target):
             if curr_path_sum + num <= target:
                 curr_path.append(num)
                 # the starting index is s, not s+1
-                # this allows the same number to be used multiple times
+                # this allows the same number to be used multiple times per the instructions
                 backtrack(s, curr_path, curr_path_sum + num)
                 curr_path.pop()
 

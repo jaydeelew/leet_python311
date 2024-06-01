@@ -17,7 +17,7 @@
 def lengthOfLSIS_iterative(nums: list[int]) -> int:
     # this is where we store the longest strictly increasing subsequence at each index
     tab = [1] * len(nums)
-    for i in range(len(nums)):
+    for i in range(1, len(nums)):
         for j in range(i):
             # if nums[j] < nums[i], then nums[i] is part of the longest strictly increasing subsequence
             if nums[j] < nums[i]:

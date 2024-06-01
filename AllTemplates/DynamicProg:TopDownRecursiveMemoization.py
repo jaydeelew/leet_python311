@@ -35,7 +35,7 @@ def lengthOfLSIS_recursive(nums: list[int]) -> int:
         return ans
 
     # Compute the length of the longest increasing subsequence for each element
-    # and return the maximum
+    # and return the maximum length using a generator expression
     return max(dp(i) for i in range(len(nums)))
 
 

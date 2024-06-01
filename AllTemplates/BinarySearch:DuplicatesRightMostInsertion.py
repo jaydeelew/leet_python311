@@ -32,8 +32,12 @@ def right_insert(arr, target):
     return left
 
 
-arr = [7, 11, 22]
-target = 11
+arr = [1, 2, 3, 3, 3, 4, 5]
+target = 3
+# Output: For right insertion, index 5 is the insertion point
+
+# arr = [7, 11, 22]
+# target = 11
 # Output: For right insertion, index 2 is the insertion point
 
 # arr = [1, 3, 3, 5, 7, 11, 11, 11, 15, 22]
