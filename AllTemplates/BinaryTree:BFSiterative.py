@@ -29,26 +29,30 @@ class TreeNode:
         self.right = right
 
 
-def print_all_nodes(root):
+def bfs_iterative(root):
     # [root], and not "root" alone, is necessary since deque requires an iterable
     queue = deque([root])
+    ans = []
     while queue:
-        nodes_in_current_level = len(queue)
+        num_of_nodes_curr_level = len(queue)
         # do some logic here for the current level:
-        # eg:
-        # current_level_values = [node.val for node in queue]
-        # ans.append(current_level_values)
+        # e.g.:
+        current_level_values = [node.val for node in queue]
+        ans.append(current_level_values)
 
-        for _ in range(nodes_in_current_level):
+        for _ in range(num_of_nodes_curr_level):
             node = queue.popleft()
             # do some logic here for current node
-            print(node.val, end=" ")
+            # e.g.:
+            # print(node.val, end=" ")
 
             # putting next level onto the queue with completion of for loop
             if node.left:
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
+
+    return ans
 
 
 nine = TreeNode(9)
@@ -59,5 +63,5 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print_all_nodes(five)  # Output: 5 8 3 9 12 7 4
+print(bfs_iterative(five))  # Output: 5 8 3 9 12 7 4
 print()  # new line

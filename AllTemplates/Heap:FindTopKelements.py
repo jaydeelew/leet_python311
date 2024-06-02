@@ -24,7 +24,7 @@ def top_k(arr, k):
     return sorted([num for num in heap])
 
 
-def findKthLargest(arr: list[int], k: int) -> int:
+def find_kth_largest(arr: list[int], k: int) -> int:
     heapq.heapify(arr)
     while len(arr) > k:
         heapq.heappop(arr)
@@ -37,5 +37,5 @@ k = 3
 print(top_k(arr, k))
 # Output: 6, 7, 9
 
-print(findKthLargest(arr, k))
+print(find_kth_largest(arr, k))
 # Output: 6

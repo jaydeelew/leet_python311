@@ -16,7 +16,7 @@
 # return a list of all unique combinations of candidates where the chosen numbers sum to target.
 # The same number may be chosen from candidates an unlimited number of times.
 # Two combinations are unique if the frequency of at least one of the chosen numbers is different.
-def combinationSum(candidates, target):
+def combination_sum(candidates, target):
     # starting index is needed to avoid duplicate combinations, e.g. [2,3] and [3,2]
     def backtrack(starting_index, curr_path, curr_path_sum):
         # if the current path sum is equal to the target
@@ -67,4 +67,4 @@ target = 3
 # target = 1
 # Output: []
 
-print(combinationSum(candidates, target))
+print(combination_sum(candidates, target))

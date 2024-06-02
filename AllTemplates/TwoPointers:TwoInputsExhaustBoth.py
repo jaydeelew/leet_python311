@@ -22,8 +22,6 @@
 
 
 # Given two sorted integer arrays, return an array that combines both of them and is also sorted.
-
-
 def combine(arr1, arr2):
     sorted_arr = []
     i = j = 0

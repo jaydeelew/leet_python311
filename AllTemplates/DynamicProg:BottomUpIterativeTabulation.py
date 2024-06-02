@@ -14,7 +14,7 @@
 
 # as we iterate through the array, we keep track of the longest strictly increasing subsequence
 # at each index, and at the end, we return the longest (max) strictly increasing subsequence
-def lengthOfLSIS_iterative(nums: list[int]) -> int:
+def len_of_LSIS_iterative(nums: list[int]) -> int:
     # this is where we store the longest strictly increasing subsequence at each index
     tab = [1] * len(nums)
     for i in range(1, len(nums)):
@@ -42,4 +42,4 @@ nums = [0, 1, 0, 3, 2, 3]
 # nums = [7, 7, 7, 7, 7, 7, 7]
 # Output: 1
 
-print(lengthOfLSIS_iterative(nums))
+print(len_of_LSIS_iterative(nums))

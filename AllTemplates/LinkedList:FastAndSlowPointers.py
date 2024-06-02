@@ -27,7 +27,7 @@ def get_middle(head):
     return slow.val
 
 
-def hasCycle(head):
+def has_cycle(head):
     slow = head
     fast = head
     while fast and fast.next:
@@ -48,4 +48,4 @@ one = ListNode(1, two)  # head
 
 # only run if list does not have a cycle
 print(get_middle(one))
-# print(hasCycle(one))
+# print(has_cycle(one))

@@ -15,5 +15,4 @@ def fn(arr):
 
 
 arr = ["h", "e", "l", "l", "o"]
-print(fn(arr))
-# Output: hello
+print(fn(arr))  # Output: hello

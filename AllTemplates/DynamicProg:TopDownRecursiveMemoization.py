@@ -17,7 +17,7 @@
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
 # Provide the Top-Down Iterative Memoization solution.
-def lengthOfLSIS_recursive(nums: list[int]) -> int:
+def len_of_LSIS_recursive(nums: list[int]) -> int:
     memo = {}
 
     def dp(i):
@@ -54,4 +54,4 @@ def lengthOfLSIS_recursive(nums: list[int]) -> int:
 nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # Output: 10
 
-print(lengthOfLSIS_recursive(nums))
+print(len_of_LSIS_recursive(nums))

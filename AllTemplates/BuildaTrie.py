@@ -4,11 +4,11 @@ class TrieNode:
         self.children = {}
         self.end_of_word = False
 
-    def allRemainders(self):
+    def all_remainders(self):
         if self.end_of_word:
             yield ""
         for char, child in self.children.items():
-            for remainder in child.allRemainders():
+            for remainder in child.all_remainders():
                 yield char + remainder
 
 
@@ -38,13 +38,13 @@ class Trie:
         current = self.locate(word)
         return current and current.end_of_word
 
-    def startsWith(self, prefix):
+    def starts_with(self, prefix):
         current = self.locate(prefix)
         if not current:
             return []
-        return [prefix + remainder for remainder in current.allRemainders()]
+        return [prefix + remainder for remainder in current.all_remainders()]
 
-    # def startsWith(self, prefix):
+    # def starts_with(self, prefix):
     #     current = self.locate(prefix)
     #     return True if current else False
 
@@ -62,4 +62,4 @@ arr = ["arm", "arms", "at", "be", "bet"]
 for w in arr:
     t.insert(w)
 
-print(t.startsWith("b"))
+print(t.starts_with("b"))

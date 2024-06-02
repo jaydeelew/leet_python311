@@ -23,7 +23,7 @@ from collections import defaultdict
 # and the target sum k has been seen before.
 # If it has, we have found a subarray whose sum equals k,
 # so we add the count of that difference (from the hashmap) to the answer
-def numSubarraysSummingToK(nums, k):
+def num_of_subarrays_summing_to_k(nums, k):
     # prefix_sum_count keeps track of the number of times a running sum, from any given index, equalling k occurs
     prefix_sum_count = defaultdict(int)
     # the number of times a prefix-sum of 0 occurs is 1,
@@ -62,4 +62,4 @@ k = 3
 # k = 1
 # Output: 0
 
-print(numSubarraysSummingToK(nums, k))
+print(num_of_subarrays_summing_to_k(nums, k))

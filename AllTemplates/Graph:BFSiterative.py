@@ -20,7 +20,7 @@
 from collections import deque
 
 
-def listLevels(adj_list):
+def list_levels(adj_list):
     queue = deque([0])
     seen = {0}
 
@@ -44,9 +44,9 @@ def listLevels(adj_list):
 directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
 
-listLevels(directed)
+list_levels(directed)
 print()  # new line
-listLevels(undirected)
+list_levels(undirected)
 
 # Output Directed Graph = [[0], [1, 2, 5], [7, 3, 4], [6]]
 # Output Undirected Graph = [[0], [1, 2, 5, 7], [3, 4], [6]]

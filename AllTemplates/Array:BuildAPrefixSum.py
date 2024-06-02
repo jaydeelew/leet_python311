@@ -13,7 +13,7 @@
 
 
 # with new array
-def runningSum(nums):
+def running_sum(nums):
     prefix = [nums[0]]
 
     for i in range(1, len(nums)):
@@ -23,13 +23,13 @@ def runningSum(nums):
 
 
 # in place
-def runningSum2(nums):
+def running_sum2(nums):
     for i in range(1, len(nums)):
         nums[i] = nums[i - 1] + nums[i]
     return nums
 
 
 nums = [3, 1, 2, 10, 1]
-print(runningSum(nums))
-print(runningSum2(nums))
+print(running_sum(nums))
+print(running_sum2(nums))
 # Output: [3, 4, 6, 16, 17]
