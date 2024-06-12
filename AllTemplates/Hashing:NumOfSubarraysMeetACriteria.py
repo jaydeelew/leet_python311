@@ -12,17 +12,11 @@
 
 #     return ans
 
-# calculates the number of subarrays within the given list nums where
-# the sum of the elements in the subarray equals the integer k.
-
 
 from collections import defaultdict
 
 
-# calculates the current prefix sum and checks if the difference between the current prefix sum
-# and the target sum k has been seen before.
-# If it has, we have found a subarray whose sum equals k,
-# so we add the count of that difference (from the hashmap) to the answer
+# calculate the number of subarrays within nums where the sum of the elements in a subarray equals k.
 def num_of_subarrays_summing_to_k(nums, k):
     # prefix_sum_count keeps track of the number of times a running sum, from any given index, equalling k occurs
     prefix_sum_count = defaultdict(int)
@@ -40,7 +34,7 @@ def num_of_subarrays_summing_to_k(nums, k):
         # if curr_sum - k exists in prefix_sum_count, then we have found a subarray
         # whose sum equals k, so we add the count of that difference (from the hashmap) to the answer
         ans += prefix_sum_count[curr_sum - k]
-        # this line must come after ans is updated or there may be an error (eg nums = [0], k = 0 would return 2)
+        # this line must come after ans is updated or there may be an error (e.g. nums = [0], k = 0 would return 2)
         prefix_sum_count[curr_sum] += 1
 
     return ans

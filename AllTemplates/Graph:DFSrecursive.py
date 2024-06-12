@@ -1,4 +1,4 @@
-# e.g. to build adjacency dictionary for list of edges:
+# build adjacency dictionary from list of edges:
 # def build_graph(edges):
 #     graph = defaultdict(list)
 #     for x, y in edges:
@@ -22,28 +22,31 @@
 #     return dfs(START_NODE)
 
 
-# find the max depth of graph
-def max_depth(adj_list):
+# return the max depth of a graph (in adjacency list form) from root to leaf
+def max_depth(adj_list, root):
+
     def dfs(node):
         ans = 0
-
+        # implicit base case: if node has no neighbors or all neighbors have been seen before,
+        # dfs is not called again, and 0 is returned
         for neighbor in adj_list[node]:
             if neighbor not in seen:
                 seen.add(neighbor)
-                # max depth of previous max vs. neighbor plus 1 for this node
                 ans = max(ans, dfs(neighbor) + 1)
 
         return ans
 
     # seen must be outside of dfs since placing it inside would reset it to {0} every time
-    seen = {0}
-    return dfs(0)
+    seen = {root}
+    return dfs(root)
 
 
-def max_sum_root_to_leaf(adj_list):
+# return the max sum in a graph (in adjacency list form) from root to leaf
+def max_sum(adj_list, root):
     def dfs(node):
         ans = 0
-
+        # implicit base case: if node has no neighbors or all neighbors have been seen before,
+        # dfs is not called again, and 0 is returned
         for neighbor in adj_list[node]:
             if neighbor not in seen:
                 seen.add(neighbor)
@@ -51,21 +54,25 @@ def max_sum_root_to_leaf(adj_list):
 
         return ans
 
-    seen = {0}
-    return dfs(0)
+    # seen must be outside of dfs since placing it inside would reset it to {0} every time
+    seen = {root}
+    return dfs(root)
 
 
-edges = {0: [2, 3], 1: [3], 2: [0], 3: [0, 1]}
-# max_depth output: 2
-# max_sum_root_to_leaf output: 4
+graph = {0: [1, 2], 1: [3], 2: [5], 3: [6], 5: [3, 7], 6: [], 7: []}
+root = 0
+# max_depth output: 3
+# max_sum_root_to_leaf output: 14
 
-# edges = {0: [1, 4, 8], 1: [0, 2, 3, 5], 2: [1], 3: [1, 9], 4: [0, 6, 7], 5: [1], 6: [4], 7: [4], 8: [0], 9: [3]}
+# graph = {0: [1, 4, 8], 1: [0, 2, 3, 5], 2: [1], 3: [1, 9], 4: [0, 6, 7], 5: [1], 6: [4], 7: [4], 8: [0], 9: [3]}
+# root = 0
 # max_depth output: 3
 # max_sum_root_to_leaf output: 13
 
-# edges = {0: []}
+# graph = {0: []}
+# root = 0
 # max_depth output: 0
 # max_sum_root_to_leaf output: 0
 
-print(max_depth(edges))
-print(max_sum_root_to_leaf(edges))
+print("max_depth:", max_depth(graph, root))
+print("max_sum:", max_sum(graph, root))

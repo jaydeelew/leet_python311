@@ -19,7 +19,8 @@ def combinations(nums):
         # if there were no duplicate inputs, we could just append to ans directly
         if curr_combo not in ans:
             ans.append(curr_combo[:])
-        # no return needed since we are appending to ans
+            # no return statement in this context since it would prematurely ends the recursion,
+            # preventing further exploration of combinations
 
         for i in range(start_index, len(nums)):
             curr_combo.append(nums[i])

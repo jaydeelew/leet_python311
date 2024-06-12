@@ -36,6 +36,11 @@ class Trie:
 
     def search(self, word):
         current = self.locate(word)
+        # If current is None (meaning the word is not even partially in the Trie),
+        # trying to access current.end_of_word would result in an AttributeError.
+        # This is because you would be trying to access an attribute of a None object.
+        # Checking current and current.end_of_word ensures that you only check
+        # current.end_of_word if current is not None, thus avoiding potential errors
         return current and current.end_of_word
 
     def starts_with(self, prefix):
@@ -49,10 +54,8 @@ class Trie:
     #     return True if current else False
 
     def remove(self, word):
-        current = self.root
-        if self.search(word):
-            for char in word:
-                current = current.children[char]
+        current = self.locate(word)
+        if current:
             current.end_of_word = False
 
 
@@ -62,4 +65,4 @@ arr = ["arm", "arms", "at", "be", "bet"]
 for w in arr:
     t.insert(w)
 
-print(t.starts_with("b"))
+print(t.starts_with("a"))

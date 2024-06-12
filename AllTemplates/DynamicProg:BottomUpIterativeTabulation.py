@@ -9,7 +9,7 @@
 
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
-# Provide the Bottom-Up Recursive Tabulation solution.
+# Provide the Bottom-Up Iterative Tabulation solution.
 
 
 # as we iterate through the array, we keep track of the longest strictly increasing subsequence

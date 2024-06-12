@@ -4,8 +4,8 @@ import heapq
 def dijkstra(adj_list, starting_node):
     # distances maintains the shortest distance from the starting node to all other vertices
     distances = dict.fromkeys(adj_list, float("inf"))
+    # distances = {node: float('inf') for node in adj_list}
     distances[starting_node] = 0
-
     # list of tuples: (current minimum distance from start, current node)
     min_heap = [(0, starting_node)]
     # seen is needed to prevent revisiting nodes that already have their shortest distance from start computed
@@ -17,21 +17,20 @@ def dijkstra(adj_list, starting_node):
         # whereas if a shorter distance is added first, greater distances will be ignored
         dist_from_start, node = heapq.heappop(min_heap)
 
-        if node in seen:
-            continue
-        # a seen neighbor's distance from start can still
-        # be updated in distances by the current node
-        seen.add(node)
+        if node not in seen:
+            # a seen neighbor's distance from start can still
+            # be updated in distances by the current node
+            seen.add(node)
 
-        # for each neighbor of the current node, we calculate the distance from start to neighbor
-        for neighbor, dist_to_neighbor in adj_list[node].items():
-            dist_start_to_neighbor = dist_from_start + dist_to_neighbor
+            # for each neighbor of the current node, we calculate the distance from start to neighbor
+            for neighbor, dist_to_neighbor in adj_list[node].items():
+                dist_start_to_neighbor = dist_from_start + dist_to_neighbor
 
-            # if the distance from start neighbor is shorter than the total distance recorded thus far,
-            # we update the distance in distances and push the neighbor onto the heap
-            if dist_start_to_neighbor < distances[neighbor]:
-                distances[neighbor] = dist_start_to_neighbor
-                heapq.heappush(min_heap, (dist_start_to_neighbor, neighbor))
+                # if the distance from start neighbor is shorter than the total distance recorded thus far,
+                # we update the distance in distances and push the neighbor onto the heap
+                if dist_start_to_neighbor < distances[neighbor]:
+                    distances[neighbor] = dist_start_to_neighbor
+                    heapq.heappush(min_heap, (dist_start_to_neighbor, neighbor))
 
     return distances
 

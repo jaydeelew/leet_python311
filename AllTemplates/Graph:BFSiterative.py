@@ -16,26 +16,30 @@
 #     return ans
 
 
-# list the contents of each level of the BFS in order starting with root
+# list the contents of each level of the graph (in adjacency list form) using BFS (iteratively) starting with root
 from collections import deque
 
 
-def list_levels(adj_list):
-    queue = deque([0])
-    seen = {0}
+def list_levels(adj_list, root):
+    queue = deque([root])
+    seen = {root}
+    ans = []
 
     while queue:
-        # do level work starting here
-        print(list(queue))
+        # do level work here
+        ans.append(list(queue))
 
         level_size = len(queue)
         for _ in range(level_size):
             node = queue.popleft()
-            # do node work starting here
+            # do node work here
+
             for neighbor in adj_list[node]:
                 if neighbor not in seen:
                     seen.add(neighbor)
                     queue.append(neighbor)
+
+    return ans
 
 
 # edges = [(0, 1), (0, 2), (0, 5), (1, 7), (2, 3), (2, 4), (4, 3), (3, 6), (7, 0)]  # contains a cycle
@@ -44,9 +48,8 @@ def list_levels(adj_list):
 directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
 
-list_levels(directed)
-print()  # new line
-list_levels(undirected)
+print(list_levels(directed, 0))
+print(list_levels(undirected, 0))
 
 # Output Directed Graph = [[0], [1, 2, 5], [7, 3, 4], [6]]
 # Output Undirected Graph = [[0], [1, 2, 5, 7], [3, 4], [6]]

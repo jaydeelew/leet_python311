@@ -27,7 +27,7 @@ def count_occurrences3(arr):
 
 
 # Test case
-test_array = [1, 2, 2, 3, 3, 3]
-print(count_occurrences(test_array))  # Expected output: {1: 1, 2: 2, 3: 3}
-print(count_occurrences2(test_array))  # Expected output: {1: 1, 2: 2, 3: 3}
-print(count_occurrences3(test_array))  # Expected output: {1: 1, 2: 2, 3: 3}
+test_array = [3, 2, 3, 1, 2, 3]
+print(count_occurrences(test_array))  # Expected output: {3: 3, 2: 2, 1: 1}
+print(count_occurrences2(test_array))  # Expected output: {3: 3, 2: 2, 1: 1}
+print(count_occurrences3(test_array))  # Expected output: {3: 3, 2: 2, 1: 1}

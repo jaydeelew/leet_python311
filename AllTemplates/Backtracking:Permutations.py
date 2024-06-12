@@ -20,7 +20,8 @@ def permutations(nums: list[int]) -> list[list[int]]:
             # we need a copy and not a reference
             # since we don't want the appended path(s) in ans to be modified
             ans.append(curr_path[:])
-            # we do not need a return here since we are appending to ans
+            # since there are no more numbers to add to curr_path, we return
+            return
 
         for num in nums:
             # we don't want to add the same number to curr_path multiple times

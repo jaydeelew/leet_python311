@@ -14,20 +14,20 @@
 import heapq
 
 
-def top_k(arr, k):
+def top_k(arr, k):  # O(nlog(k)) w
     heap = []
-    for num in arr:
-        heapq.heappush(heap, num)
+    for num in arr:  # O(n)
+        heapq.heappush(heap, num)  # O(log(k))
         if len(heap) > k:
-            heapq.heappop(heap)
+            heapq.heappop(heap)  # O(log(k))
 
-    return sorted([num for num in heap])
+    return sorted([num for num in heap])  # O(klog(k))
 
 
-def find_kth_largest(arr: list[int], k: int) -> int:
-    heapq.heapify(arr)
-    while len(arr) > k:
-        heapq.heappop(arr)
+def find_kth_largest(arr: list[int], k: int) -> int:  # O(nlog(n))
+    heapq.heapify(arr)  # O(n)
+    while len(arr) > k:  # O(n-k)
+        heapq.heappop(arr)  # O(log(n))
     return arr[0]
 
 
