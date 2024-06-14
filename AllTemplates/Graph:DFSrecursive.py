@@ -22,45 +22,26 @@
 #     return dfs(START_NODE)
 
 
-# return the max depth of a graph (in adjacency list form) from root to leaf
-def max_depth(adj_list, root):
-
-    def dfs(node):
-        ans = 0
-        # implicit base case: if node has no neighbors or all neighbors have been seen before,
-        # dfs is not called again, and 0 is returned
-        for neighbor in adj_list[node]:
+def max_depth(graph, start_node):
+    def dfs(node, depth):
+        max_depth = depth
+        for neighbor in graph[node]:
             if neighbor not in seen:
                 seen.add(neighbor)
-                ans = max(ans, dfs(neighbor) + 1)
+                current_depth = dfs(neighbor, depth + 1)
+                max_depth = max(max_depth, current_depth)
+        return max_depth
 
-        return ans
-
-    # seen must be outside of dfs since placing it inside would reset it to {0} every time
-    seen = {root}
-    return dfs(root)
-
-
-# return the max sum in a graph (in adjacency list form) from root to leaf
-def max_sum(adj_list, root):
-    def dfs(node):
-        ans = 0
-        # implicit base case: if node has no neighbors or all neighbors have been seen before,
-        # dfs is not called again, and 0 is returned
-        for neighbor in adj_list[node]:
-            if neighbor not in seen:
-                seen.add(neighbor)
-                ans = max(ans, dfs(neighbor) + neighbor)
-
-        return ans
-
-    # seen must be outside of dfs since placing it inside would reset it to {0} every time
-    seen = {root}
-    return dfs(root)
+    seen = {start_node}
+    return dfs(start_node, 0)
 
 
-graph = {0: [1, 2], 1: [3], 2: [5], 3: [6], 5: [3, 7], 6: [], 7: []}
+# Example usage:
+graph = {0: [1, 2], 1: [3], 2: [1], 3: []}
 root = 0
+
+# graph = {0: [1, 2], 1: [3], 2: [5], 3: [6], 5: [3, 7], 6: [], 7: []}
+# root = 0
 # max_depth output: 3
 # max_sum_root_to_leaf output: 14
 
@@ -75,4 +56,3 @@ root = 0
 # max_sum_root_to_leaf output: 0
 
 print("max_depth:", max_depth(graph, root))
-print("max_sum:", max_sum(graph, root))
