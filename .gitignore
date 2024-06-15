@@ -19,6 +19,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+*.log
 
 # Installer logs
 pip-log.txt
@@ -29,5 +30,3 @@ venv/
 
 Test.py
 Test2.py
-Game/
-Samples/
