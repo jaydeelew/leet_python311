@@ -14,21 +14,7 @@
 import heapq
 
 
-def find_top_k_by_target_difference(arr, k, target):
-    heap = []
-    for num in arr:
-        # negate the absolute difference to make it a max heap
-        difference = -abs(num - target)
-        heapq.heappush(heap, (difference, num))
-        if len(heap) > k:
-            heapq.heappop(heap)
-
-    # sort heap list in descending order of the negated absolute difference
-    # so that top k elements in arr are the closest to target
-    heap.sort(reverse=True)
-    return [num for _, num in heap]
-
-
+# find top k elements in arr
 def top_k(arr, k):  # O(nlog(k))
     heap = []
     for num in arr:  # O(n)
@@ -40,6 +26,7 @@ def top_k(arr, k):  # O(nlog(k))
     return heap
 
 
+# find kth largest element in arr
 def find_kth_largest(arr: list[int], k: int) -> int:  # O(nlog(n))
     heapq.heapify(arr)  # O(n)
     while len(arr) > k:  # O(n-k)
@@ -49,10 +36,6 @@ def find_kth_largest(arr: list[int], k: int) -> int:  # O(nlog(n))
 
 arr = [3, 6, 7, 2, 9, 4]
 k = 3
-target = 1
-
-print(find_top_k_by_target_difference(arr, k, target))
-# Output: 2, 3, 4
 
 print(top_k(arr, k))
 # Output: 6, 7, 9

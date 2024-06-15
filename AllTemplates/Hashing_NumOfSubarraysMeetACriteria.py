@@ -32,7 +32,7 @@ def num_of_subarrays_summing_to_k(nums, k):
         # curr_sum maintains the prefix-sum/running-sum thus far
         curr_sum += num
         # if curr_sum - k exists in prefix_sum_count, then we have found a subarray
-        # whose sum equals k, so we add the count of that difference (from the hashmap) to the answer
+        # whose sum equals k, so we add the current count from prefix_sum_count to the answer
         ans += prefix_sum_count[curr_sum - k]
         # this line must come after ans is updated or there may be an error (e.g. nums = [0], k = 0 would return 2)
         prefix_sum_count[curr_sum] += 1
