@@ -3,8 +3,8 @@
 #     ans = 0
 
 #     for num in arr:
-#         # for monotonic decreasing, just flip the > to <
-#         while stack and stack[-1] > num:
+#         # for monotonic decreasing, just flip the <= to >=
+#         while stack and num <= stack[-1]:
 #             # do logic
 #             stack.pop()
 #         stack.append(num)
@@ -12,15 +12,15 @@
 #     return ans
 
 
-def build_stack(arr):
+def build_stack(nums):
     stack = []
-    for element in arr:
+    for num in nums:
         # keep popping elements from the stack as long as there is a stack
         # and the current element is less or equal to the element at the top of the stack
-        while stack and element <= stack[-1]:
+        while stack and num <= stack[-1]:
             stack.pop()
         # push the current element onto the stack.
-        stack.append(element)
+        stack.append(num)
     return stack
 
 

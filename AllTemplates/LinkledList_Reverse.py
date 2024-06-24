@@ -10,6 +10,7 @@
 #     return prev
 
 
+# reverse a singly linked list and return the head of the reversed list
 def reverse_sll(head):
     curr_node = head
     prev_node = None

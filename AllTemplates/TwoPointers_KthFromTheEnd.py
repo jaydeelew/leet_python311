@@ -3,6 +3,8 @@ def kthFromTheEnd(head, k):
     fast = head
 
     for _ in range(k):
+        if fast is None:
+            return None  # return None if there are fewer than k nodes
         fast = fast.next
 
     while fast:
@@ -24,4 +26,8 @@ three = ListNode(3, four)
 two = ListNode(2, three)
 one = ListNode(1, two)  # head
 
-print(kthFromTheEnd(one, 2).val)  # 4
+result = kthFromTheEnd(one, 2)
+if result is not None:
+    print(result.val)  # safely access .val if result is not None
+else:
+    print("No such element")  # handle the case where result is None
