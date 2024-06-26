@@ -1,14 +1,17 @@
 # Trie as in reTRIEval of words/data
 class TrieNode:
     def __init__(self):
+        # children is a dictionary of TrieNodes where each key is a character and the value is the TrieNode
         self.children = {}
         self.end_of_word = False
 
     def all_remainders(self):
         if self.end_of_word:
+            print("end")
             yield ""
         for char, child in self.children.items():
             for remainder in child.all_remainders():
+                print(char + remainder)
                 yield char + remainder
 
 
@@ -20,8 +23,6 @@ class Trie:
         curr = self.root
         for char in word:
             if char not in curr.children:
-                # children is a dictionary of TrieNodes where each key is a character and the value is the TrieNode
-                # we do not need a defaultdict here since by creating the TrieNode we automatically create the key
                 curr.children[char] = TrieNode()
             curr = curr.children[char]
         curr.end_of_word = True
