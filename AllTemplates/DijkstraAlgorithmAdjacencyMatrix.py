@@ -3,9 +3,8 @@ import heapq
 
 def dijkstra(adj_matrix, starting_node):
     # distances maintains the shortest distance from the starting node to all other vertices
-    num_nodes = len(adj_matrix)
-    distances = dict.fromkeys(range(num_nodes), float("inf"))
-    # distances = {node: float("inf") for node in range(len(adj_matrix))}
+    # distances = dict.fromkeys(range(len(adj_matrix)), float("inf"))
+    distances = {node: float("inf") for node in range(len(adj_matrix))}
     distances[starting_node] = 0
 
     # list of tuples: (current minimum distance from start, current node)
@@ -23,7 +22,7 @@ def dijkstra(adj_matrix, starting_node):
             # be updated in distances by the current node
             seen.add(node)
             # for each neighbor of the current node, we calculate the distance from start to neighbor
-            for neighbor in range(num_nodes):
+            for neighbor in range(len(adj_matrix)):
                 if adj_matrix[node][neighbor] > 0:  # Dijstra's does not allow for negative weights
                     dist_to_neighbor = adj_matrix[node][neighbor]
                     dist_start_to_neighbor = dist_from_start + dist_to_neighbor

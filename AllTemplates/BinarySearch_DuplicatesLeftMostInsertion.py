@@ -21,7 +21,7 @@ def left_insert(arr, target):
     # since infinite loop occurs if target == arr[mid]
     while left < right:
         mid = (left + right) // 2
-        # this would be target < arr[mid] for index of right insertion point
+        # this would be target < arr[mid] if we were looking for index of right insertion point
         if target <= arr[mid]:
             # we do not want to say right = mid - 1 because mid may be the insertion point
             right = mid
@@ -32,9 +32,9 @@ def left_insert(arr, target):
     return left
 
 
-arr = [1, 2, 3, 3, 3, 4, 5]
+arr = [1, 3, 3, 5]
 target = 3
-# Output: For left insertion, index 2 is the insertion point
+# Output: For left insertion, index 1 is the insertion point
 
 # arr = [7, 11, 22]
 # target = 11

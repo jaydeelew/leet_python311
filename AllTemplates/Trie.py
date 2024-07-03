@@ -1,18 +1,30 @@
 # Trie as in reTRIEval of words/data
 class TrieNode:
     def __init__(self):
-        # children is a dictionary of TrieNodes where each key is a character and the value is the TrieNode
+        # children is a dictionary where each key is a character in a word and the value is a TrieNode
         self.children = {}
         self.end_of_word = False
 
-    def all_remainders(self):
+    # def all_suffixes(self):
+    #     if self.end_of_word:
+    #         yield ""
+    #     for char, child in self.children.items():
+    #         for suffix in child.all_suffixes():
+    #             yield char + suffix
+
+    def all_suffixes(self):
+        suffix_list = []
         if self.end_of_word:
-            print("end")
-            yield ""
+            # appending the empty string to the list of suffixes
+            # begins the process of adding the current character to the beginning of each suffixe
+            # since the second for loop below needs to iterate over something to begin building the final suffixe
+            suffix_list.append("")
         for char, child in self.children.items():
-            for remainder in child.all_remainders():
-                print(char + remainder)
-                yield char + remainder
+            # iterate over the list of suffixes returned by the child
+            # and add the current character to the beginning of each suffix
+            for suffix in child.all_suffixes():
+                suffix_list.append(char + suffix)
+        return suffix_list
 
 
 class Trie:
@@ -48,7 +60,7 @@ class Trie:
         curr = self.locate(prefix)
         if not curr:
             return []
-        return [prefix + remainder for remainder in curr.all_remainders()]
+        return [prefix + suffixes for suffixes in curr.all_suffixes()]
 
     # def startswith(self, prefix):
     #     return True if self.locate(prefix) else False
@@ -61,7 +73,8 @@ class Trie:
 
 t = Trie()
 
-arr = ["arm", "arms", "at", "be", "bet"]
+# arr = ["arm", "arms", "at", "be", "bet"]
+arr = ["are", "arm"]
 for w in arr:
     t.insert(w)
 
