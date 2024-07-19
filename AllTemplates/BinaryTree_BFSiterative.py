@@ -34,11 +34,12 @@ def bfs_iterative(root):
     queue = deque([root])
     ans = []
     while queue:
-        num_of_nodes_curr_level = len(queue)
         # do some logic here for the current level:
         # e.g.:
         current_level_values = [node.val for node in queue]
         ans.append(current_level_values)
+
+        num_of_nodes_curr_level = len(queue)
 
         for _ in range(num_of_nodes_curr_level):
             node = queue.popleft()
@@ -63,5 +64,5 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 
-print(bfs_iterative(five))  # Output: 5 8 3 9 12 7 4
+print(bfs_iterative(five))  # Output: [[5], [8, 3], [9, 12, 7], [4]]
 print()  # new line

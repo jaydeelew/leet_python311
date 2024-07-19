@@ -1,4 +1,4 @@
-# given an array of integers and an integer k, find all subsequences with sum k
+# given an array of integers and an integer k, return an array of arrays of all subsequences with sum k
 def find_subsequences_with_sum_k(nums, k):
     def backtrack(start_index, curr_path, curr_sum):
         if curr_sum == k:

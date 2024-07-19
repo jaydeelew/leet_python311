@@ -16,7 +16,9 @@
 
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
-# Provide the Top-Down Iterative Memoization solution.
+# Solve using a top-down/recursive memoization method
+
+
 def len_of_LSIS_recursive(nums: list[int]) -> int:
     memo = {}
 
@@ -30,15 +32,19 @@ def len_of_LSIS_recursive(nums: list[int]) -> int:
         for j in range(i):
             if nums[j] < nums[i]:
                 # we maintain the max subsequence up to and including i
-                # by taking the max of the previous subsequences with the addition of 1 for the current element
+                # i is included by adding 1.
                 ans = max(ans, dp(j) + 1)
-        # store the result in the memo after the for loop since we need only assign the final max once
+        # memo[i] is assigned 1 if there was no previous num[j] less than num[i],
+        # since the only subsequence is the current element.
         memo[i] = ans
         return ans
 
     # Compute the length of the longest increasing subsequence for each element
     # and return the maximum length using a generator expression
     return max(dp(i) for i in range(len(nums)))
+
+
+nums = [5, 2, 4, 3, 6]
 
 
 # nums = [10, 9, 2, 5, 3, 7, 101, 18]
@@ -53,7 +59,7 @@ def len_of_LSIS_recursive(nums: list[int]) -> int:
 # nums = [7, 7, 7, 7, 7, 7, 7]
 # Output: 1
 
-nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # Output: 10
 
 print(len_of_LSIS_recursive(nums))

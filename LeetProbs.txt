@@ -41,6 +41,8 @@ adj_list = {
 starting_node = "S"
 Output: {'S': 0, 'A': 7, 'B': 4, 'C': 6, 'D': 8}
 
+Build an adjacency dictionary from list of edges.
+
 Given a graph (in adjacency list form) and a starting node, list the contents of each level starting with the starting node.
 directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
@@ -115,7 +117,8 @@ three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 Output: [[5], [8, 3], [9, 12, 7], [4]]
 
-Given an array of positive integers nums and an integer k, find the length of the longest subarray whose sum is less than or equal to k.
+Given an array of positive integers nums and an integer k,
+find the length of the longest subarray whose sum is less than or equal to k.
 e.g. nums = [1, 2, 3, 4, 5], k = 10 -> 4
 
 Implement Dijkstra's algorithm to find the shortest path between two nodes in a graph.
@@ -140,11 +143,16 @@ Provide the Bottom-Up Iterative Tabulation solution.
 Provide the Top-Down Recursive Memoization solution.
 e.g. nums = [10, 9, 2, 5, 3, 7, 101, 18] -> 4
 
-Given an array of integers, find the kth largest element in arr.
+Given an array of unsorted integers, return the kth largest element in arr.
 e.g. arr = [3, 6, 7, 2, 9, 4], k = 3 -> 6
 
-Given an array of integers and an integer k, find all subsequences with sum k.
+Given an array of integers and an integer k, return all subsequences with sum k.
 e.g. nums = [1, 2, 3, 4, 5], k = 5 -> [[1, 4], [2, 3], [5]]
+
+Given an array nums of size n, return the majority element.
+The majority element is the element that appears more than n / 2 times.
+You may assume that the majority element always exists in the array.
+e.g. nums = [2, 2, 1, 1, 1, 2, 2] -> 2
 
 Perform a DFS on a binary tree using an iterative approach. Return the pre-order traversal of the tree's nodes.
 Perform a DFS on a binary tree using an recursive approach. Return the pre-order traversal of the tree's nodes.

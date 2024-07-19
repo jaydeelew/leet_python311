@@ -50,17 +50,18 @@ def max_sum(graph, start_node):
     return dfs(start_node, start_node)
 
 
-# graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
-# root = 0
-# print("max_depth:", max_depth(graph, root))  # Expected output: 3
-
+graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
+root = 0
+# max_depth output: 3
+# max_sum_root_to_leaf output: 6
 
 # graph = {0: [1, 2], 1: [3], 2: [1], 3: []}
 # root = 0
-# print("max_depth:", max_depth(graph, root))  # Expected output: 2
+# max_depth output: 2
+# max_sum_root_to_leaf output: 4
 
-graph = {0: [1, 2], 1: [3], 2: [5], 3: [6], 5: [3, 7], 6: [], 7: []}
-root = 0
+# graph = {0: [1, 2], 1: [3], 2: [5], 3: [6], 5: [3, 7], 6: [], 7: []}
+# root = 0
 # max_depth output: 3
 # max_sum_root_to_leaf output: 14
 
