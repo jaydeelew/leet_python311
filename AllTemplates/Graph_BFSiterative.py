@@ -1,3 +1,12 @@
+# build adjacency dictionary from list of edges:
+# def build_graph(edges):
+#     graph = defaultdict(list)
+#     for x, y in edges:
+#         graph[x].append(y)
+#         graph[y].append(x)  # undirected version has this line
+#     return graph
+
+
 # from collections import deque
 
 # def fn(graph):
@@ -17,7 +26,7 @@
 
 
 # list the contents of each level of the graph (in adjacency list form) using BFS (iteratively) starting with root
-from collections import deque
+from collections import defaultdict, deque
 
 
 def list_levels(adj_list, root):
@@ -42,11 +51,29 @@ def list_levels(adj_list, root):
     return ans
 
 
-# edges = [(0, 1), (0, 2), (0, 5), (1, 7), (2, 3), (2, 4), (4, 3), (3, 6), (7, 0)]  # contains a cycle
+def build_directed_graph(edges):
+    graph = defaultdict(list)
+    for x, y in edges:
+        graph[x].append(y)
+    return graph
+
+
+def build_undirected_graph(edges):
+    graph = defaultdict(list)
+    for x, y in edges:
+        graph[x].append(y)
+        graph[y].append(x)  # undirected version has this line
+    return graph
+
+
+edges = [(0, 1), (0, 2), (0, 5), (1, 7), (2, 3), (2, 4), (4, 3), (3, 6), (7, 0)]  # contains a cycle
 
 # note that directed graph needs leaves to be listed as keys with no neighbors
-directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
-undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
+# directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
+# undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
+
+directed = build_directed_graph(edges)
+undirected = build_undirected_graph(edges)
 
 print(list_levels(directed, 0))
 print(list_levels(undirected, 0))

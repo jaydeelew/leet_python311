@@ -66,3 +66,7 @@ t.stop()
 t.start("bottom up iterative")
 fib1(n)
 t.stop()
+
+t.start("bottom up iterative_2")
+fib7(n)
+t.stop()

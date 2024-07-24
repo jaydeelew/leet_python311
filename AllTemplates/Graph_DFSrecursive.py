@@ -22,58 +22,24 @@
 #     return dfs(START_NODE)
 
 
-def max_depth(graph, start_node):
-    def dfs(node, depth):
-        max_depth = depth
-        # the base case is when there are no more neighbors
+def sum_nodes(adj_list):
+
+    def dfs(node):
+        # the base case occurs when there are no more neighbors
+        ans = 0
+
         for neighbor in graph[node]:
             if neighbor not in seen:
                 seen.add(neighbor)
-                max_depth = max(max_depth, dfs(neighbor, depth + 1))
-        return max_depth
+                ans += dfs(neighbor) + neighbor
 
-    seen = {start_node}
-    return dfs(start_node, 0)
+        return ans
 
-
-def max_sum(graph, start_node):
-    def dfs(node, sum):
-        max_sum = sum
-        # the base case is when there are no more neighbors
-        for neighbor in graph[node]:
-            if neighbor not in seen:
-                seen.add(neighbor)
-                max_sum = max(max_sum, dfs(neighbor, sum + neighbor))
-        return max_sum
-
-    seen = {start_node}
-    return dfs(start_node, start_node)
+    seen = {0}
+    return dfs(0)
 
 
 graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
-root = 0
-# max_depth output: 3
-# max_sum_root_to_leaf output: 6
+# Output: 6
 
-# graph = {0: [1, 2], 1: [3], 2: [1], 3: []}
-# root = 0
-# max_depth output: 2
-# max_sum_root_to_leaf output: 4
-
-# graph = {0: [1, 2], 1: [3], 2: [5], 3: [6], 5: [3, 7], 6: [], 7: []}
-# root = 0
-# max_depth output: 3
-# max_sum_root_to_leaf output: 14
-
-# graph = {0: [1, 4, 8], 1: [0, 2, 3, 5], 2: [1], 3: [1, 9], 4: [0, 6, 7], 5: [1], 6: [4], 7: [4], 8: [0], 9: [3]}
-# root = 0
-# max_depth output: 3
-# max_sum_root_to_leaf output: 13
-
-# graph = {0: []}
-# root = 0
-# max_depth output: 0
-# max_sum_root_to_leaf output: 0
-
-print(max_depth(graph, root))
-print(max_sum(graph, root))
+print(sum_nodes(graph))

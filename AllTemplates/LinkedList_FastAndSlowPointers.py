@@ -19,6 +19,7 @@ class ListNode:
 
 def get_middle(head):
     slow = fast = head
+
     while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
@@ -26,8 +27,22 @@ def get_middle(head):
     return slow.val
 
 
+def kth_from_end(head, k):
+    slow = fast = head
+
+    for _ in range(k):
+        fast = fast.next
+
+    while fast:
+        slow = slow.next
+        fast = fast.next
+
+    return slow.val
+
+
 def has_cycle(head):
     slow = fast = head
+
     while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
@@ -42,9 +57,10 @@ four = ListNode(4, five)
 three = ListNode(3, four)
 two = ListNode(2, three)
 one = ListNode(1, two)  # head
-five.next = one  # create cycle
+# five.next = one  # create cycle
 
 # only run if list does not have a cycle
-# print(get_middle(one))
+print(get_middle(one))
+print(kth_from_end(one, 4))
 
 print(has_cycle(one))

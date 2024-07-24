@@ -17,7 +17,7 @@
 def right_insert(arr, target):
     left = 0
     right = len(arr) - 1
-    # cannot have left <= right as with standard binary search
+    # cannot have left <= right as with basic binary search
     # since infinite loop occurs if target == arr[mid]
     while left < right:
         mid = (left + right) // 2

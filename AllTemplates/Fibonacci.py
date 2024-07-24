@@ -15,13 +15,15 @@ def fib2(n, memo={0: 0, 1: 1}):
 
 # iteratively return fib(n)
 def fib3(n):
+    if n < 2:
+        return n
 
-    a, b = 0, 1
+    prev, curr = 0, 1
 
-    for _ in range(n):
-        a, b = b, a + b
+    for _ in range(2, n + 1):
+        prev, curr = curr, prev + curr
 
-    return a
+    return curr
 
 
 # recursively return fibonacci values up through fib(n)
@@ -68,38 +70,29 @@ def fib6(n):
 # iteratively return fibonacci values up through fib(n)
 def fib7(n):
     fib_list = []
-    a, b = 0, 1
+    prev, curr = 0, 1
     for _ in range(n + 1):
-        fib_list.append(a)
-        a, b = b, a + b
+        fib_list.append(prev)
+        prev, curr = curr, prev + curr
     return fib_list
 
 
 # iteratively return fibonacci values up through fib(n) using a generator
 def fib8(n):
-    a, b = 0, 1
+    prev, curr = 0, 1
     for _ in range(n + 1):
-        yield a
-        a, b = b, a + b
+        yield prev
+        prev, curr = curr, prev + curr
 
 
 n = 5
 
-print("recursive:", fib1(n))
-print("memoized:", fib2(n))
-print("iterative:", fib3(n))
 
-print("recursive:", fib4(n))
-print("recursive generator:", list(fib5(n)))  # generator
-
-print("iterative:", fib6(n))
-print("iterative:", fib7(n))
-print("iterative generator:", list(fib7(n)))  # generator
-
-x = fib8(n)
-print(x.__next__())
-print(x.__next__())
-print(x.__next__())
-print(x.__next__())
-print(x.__next__())
-print(x.__next__())
+print(fib1(n))
+print(fib2(n))
+print(fib3(n))
+print(list(fib4(n)))
+print(list(fib5(n)))
+print(fib6(n))
+print(fib7(n))
+print(list(fib8(n)))
