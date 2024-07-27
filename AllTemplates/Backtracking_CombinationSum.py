@@ -34,6 +34,7 @@ def combination_sum(candidates, target):
                 curr_path.append(candidates[i])
                 # the starting index is i, not i+1
                 # this allows the same number to be used multiple times per the instructions
+                # if we did not make use of a starting index, we would produce duplicates (e.g. [1, 2, 2], [2, 1, 2], [2, 2, 1])
                 backtrack(i, curr_path, new_sum)
                 curr_path.pop()
 
