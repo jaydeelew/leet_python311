@@ -1,12 +1,9 @@
 # Given an array nums of size n, return the majority element.
-# The majority element is the element that appears more than n / 2 times.
+# The majority element is the element that appears more than n/2 times.
 # You may assume that the majority element always exists in the array.
 from collections import Counter
 
 
-# The majorityElement function uses the Boyer-Moore Voting Algorithm.
-# Time Complexity: O(n), where n is the number of elements in the array.
-# Space Complexity: O(1), as it uses only a few extra variables.
 def majorityElement(nums: list[int]) -> int:
     candidate = nums[0]
     count = 0
@@ -18,14 +15,23 @@ def majorityElement(nums: list[int]) -> int:
 
     return candidate
 
+    # Time Complexity: O(n), where n is the length of the input array nums.
+    # This is because we iterate through the array once, performing constant time operations at each step.
+    #
+    # Space Complexity: O(1), as we only use a constant amount of extra space to store the candidate and count variables.
 
-# The majorityElement2 function uses a Counter to count the occurrences of each element.
-# Time Complexity: O(n), where n is the number of elements in the array.
-# Space Complexity: O(n), as it uses a dictionary to store the counts of each element.
+
 def majorityElement2(nums):
     counts = Counter(nums)
-    # counts.get sets the key to compare to the values of counts instead of the default of key for a dictionary
-    return max(counts, key=counts.get)
+    return max(counts.keys(), key=lambda x: counts[x])
+
+    # Time Complexity: O(n), where n is the length of the input array nums.
+    # This is because we iterate through the array once to create the Counter object,
+    # and then find the maximum value in the Counter, which takes O(n) time in the worst case.
+    #
+    # Space Complexity: O(n), as we create a Counter object (counts) to store the count of each unique element in the array.
+    # In the worst case, if all elements in the array are unique,
+    # the size of the Counter object will be equal to the size of the input array.
 
 
 nums = [2, 2, 1, 1, 1, 2, 2]

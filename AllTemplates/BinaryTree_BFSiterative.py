@@ -33,6 +33,7 @@ def bfs_iterative(root):
     # [root], and not "root" alone, is necessary since deque requires an iterable
     queue = deque([root])
     ans = []
+
     while queue:
         # do some logic here for the current level:
         # e.g.:

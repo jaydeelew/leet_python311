@@ -21,6 +21,7 @@ def build_stack(nums):
             stack.pop()
         # push the current element onto the stack.
         stack.append(num)
+
     return stack
 
 

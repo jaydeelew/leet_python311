@@ -1,10 +1,11 @@
 # calculate the number of subarrays within nums where the sum of the elements in a subarray equals k.
+
+
 def num_of_subarrays_summing_to_k(nums, k):
     # prefix_sum_count keeps track of the number of times a running sum, from any given index, equalling k occurs
-    # the number of times a prefix-sum of 0 occurs is 1
-    # since the empty subarray has a sum of 0.
+    # the number of times a prefix-sum of 0 occurs is at least 1 for the empty list
     # also, if the current running sum is equal to k, then curr_sum - k = 0, so we have found a subarray
-    # whose sum equals k, so we add 1 to the answer.
+    # whose sum equals k, we add 1 to the answer.
     prefix_sum_count = {0: 1}
     ans = curr_sum = 0
 
@@ -24,9 +25,12 @@ def num_of_subarrays_summing_to_k(nums, k):
     return ans
 
 
-nums = [1, 2, -1, 2, 1, -2, 3]
-k = 3
+# nums = [1, 2, -1, 2, 1, -2, 3]
+# k = 3
 # Output: 6
+
+nums = [1, 2, -3, 2, 1, -3, 3]
+k = 0
 
 # nums = [1, 2, 3]
 # k = 3

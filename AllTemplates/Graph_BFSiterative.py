@@ -51,6 +51,28 @@ def list_levels(adj_list, root):
     return ans
 
 
+def list_levels_INCORRECT(adj_list, root):
+    queue = deque([root])
+    seen = set()
+    ans = []
+
+    while queue:
+        ans.append(list(queue))
+        level_size = len(queue)
+
+        for _ in range(level_size):
+            node = queue.popleft()
+            if node not in seen:
+                seen.add(node)
+            # by not checking if neighbors have been seen, and instead trying to check when nodes are popped off the queue,
+            # we potentially add already seen nodes back onto the queue which could lead to endless loop
+            # or duplicate nodes on a level
+            for neighbor in adj_list[node]:
+                queue.append(neighbor)
+
+    return ans
+
+
 def build_directed_graph(edges):
     graph = defaultdict(list)
     for x, y in edges:

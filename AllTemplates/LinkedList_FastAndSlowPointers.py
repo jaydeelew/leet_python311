@@ -110,5 +110,5 @@ no_node = None
 print(get_middle(one))
 print(kth_from_end(one, 1))
 print(has_cycle(one))
-print_nodes(rotate_right_k_times(no_node, 1))
+print_nodes(rotate_right_k_times(one, 1))
 print()

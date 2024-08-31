@@ -49,9 +49,9 @@ class Trie:
 
     def search(self, word):
         curr = self.locate(word)
-        # If curr is None (meaning the word is not even partially in the Trie),
+        # If curr is None (meaning that word is not even a prefix in the Trie),
         # trying to access curr.end_of_word would result in an AttributeError.
-        # This is because you would be trying to access an attribute of a None object.
+        # This is because we would be trying to access an attribute of a None object.
         # Checking curr and curr.end_of_word ensures that you only check
         # curr.end_of_word if curr is not None, thus avoiding potential errors
         return curr and curr.end_of_word

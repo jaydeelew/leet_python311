@@ -35,6 +35,29 @@ def dijkstra(adj_list, starting_node):
     return distances
 
 
+def dijkstra_INCORRECT(adj_list, starting_node):
+    distances = {node: float("inf") for node in adj_list}
+    distances[starting_node] = 0
+    min_heap = [(0, starting_node)]
+    seen = {starting_node}
+
+    while min_heap:
+        dist_from_start, node = heapq.heappop(min_heap)
+
+        for neighbor, dist_to_neighbor in adj_list[node].items():
+            # for Dijkstra, unlike DFS and BFS, we do NOT check for seen when iterating over neighbors
+            # since we want to reach neigbors again to see if there is a shorter route
+            if neighbor not in seen:
+                seen.add(neighbor)
+                dist_start_to_neighbor = dist_from_start + dist_to_neighbor
+
+                if dist_start_to_neighbor < distances[neighbor]:
+                    distances[neighbor] = dist_start_to_neighbor
+                    heapq.heappush(min_heap, (dist_start_to_neighbor, neighbor))
+
+    return distances
+
+
 # adj_list = {
 #     "A": {"B": 1, "C": 4},
 #     "B": {"A": 1, "C": 2, "D": 5},
@@ -55,3 +78,4 @@ adj_list = {
 
 print(dijkstra(adj_list, "S"))
 # Output: {'S': 0, 'A': 7, 'B': 4, 'C': 6, 'D': 8}
+print(dijkstra_INCORRECT(adj_list, "S"))
