@@ -5,6 +5,7 @@ from functools import cache
 
 
 class Solution:
+    # memoization using @cache
     def lengthOfLIS(self, nums: list[int]) -> int:
         @cache
         def dp(i):
@@ -27,7 +28,9 @@ class Solution:
         # return the max of all calls to dp() from dp(0) to dp(len(nums) - 1)
         return max(dp(i) for i in range(len(nums)))
 
+    # tabulation using array (let's call it dp)
     def lengthOfLIS_iter(self, nums: list[int]) -> int:
+        # each element is at least a subsequence of 1
         dp = [1] * len(nums)
         for i in range(len(nums)):
             for j in range(i):

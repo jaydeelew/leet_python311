@@ -1,10 +1,11 @@
 # given an array of integers and an integer k, return an array of arrays of all subsequences with sum k
+
+
 def find_subsequences_with_sum_k(nums, k):
     def backtrack(start_index, curr_path, curr_sum):
         if curr_sum == k:
             ans.append(curr_path[:])
-            # since there are no more numbers to add to curr_path, we return
-            return
+            # we do not return here in case of the next number in path being negative
 
         for i in range(start_index, len(nums)):
             new_sum = curr_sum + nums[i]

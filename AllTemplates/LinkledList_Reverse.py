@@ -12,15 +12,16 @@
 
 # reverse a singly linked list and return the head of the reversed list
 def reverse_sll(head):
-    curr_node = head
-    prev_node = None
-    while curr_node:
-        next_node = curr_node.next
-        curr_node.next = prev_node
-        prev_node = curr_node
-        curr_node = next_node
+    curr = head
+    prev = None
 
-    return prev_node
+    while curr is not None:
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+
+    return prev
 
 
 class ListNode:

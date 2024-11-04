@@ -19,8 +19,7 @@ def reverse_array_in_place(arr):
 
 # reverse by slicing and creating a new list
 def reverse_array_new_list(arr):
-    reversed = arr[::-1]
-    return reversed
+    return arr[::-1]
 
     # Time Complexity: O(n), where n is the length of the input array arr.
     # This is because the slicing operation arr[::-1] creates a new reversed array in O(n) time.
