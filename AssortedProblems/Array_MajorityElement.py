@@ -61,7 +61,7 @@ def majorityElement4(nums):
     # Time Complexity: O(n log n), where n is the length of the input array nums.
     # This is because sorting the array takes O(n log n) time.
     #
-    # Space Complexity: O(n), as we create a new sorted array, which requires additional space proportional to the size of the input array.
+    # Space Complexity: O(n), as we create a new sorted array.
 
 
 def majorityElement5(nums):
