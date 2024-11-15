@@ -15,7 +15,7 @@ def second_lowest(nested_list):
         if sub[1] == sec_low:
             bisect.insort(names, sub[0])
         elif sub[1] < sec_low and sub[1] > lowest:
-            names.clear
+            names.clear()
             names.append(sub[0])
             sec_low = sub[1]
 
@@ -29,5 +29,7 @@ def second_lowest(nested_list):
 # Harry
 
 nested = [["Prashant", 52.22], ["Kush", 52.223], ["Kant", 52.222], ["Kanti", 52.2222], ["Harshit", 52.22222]]
+# Output:
+# Kant
 
 second_lowest(nested)
