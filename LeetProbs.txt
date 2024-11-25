@@ -52,6 +52,22 @@ Given an array of integers and an integer k, return the number of subarrays
 where the sum of the elements in the subarray equals k.
 e.g. nums = [1, 2, 3, 4, 5], k = 3 -> 2
 
+# Given a network of friends in the form of an adjacency list, return the shortest path between two people
+network = {
+    "Min": ["William", "Jayden", "Omar"],
+    "William": ["Min", "Noam"],
+    "Jayden": ["Min", "Amelia", "Ren", "Noam"],
+    "Ren": ["Jayden", "Omar"],
+    "Amelia": ["Jayden", "Adam", "Miguel"],
+    "Adam": ["Amelia", "Miguel", "Sofia", "Lucas"],
+    "Miguel": ["Amelia", "Adam", "Liam", "Nathan"],
+    "Noam": ["Nathan", "Jayden", "William"],
+    "Omar": ["Ren", "Min", "Scott"],
+}
+start = "Jayden"
+end = "Adam"
+Output: ['Jayden', 'Amelia', 'Adam']
+
 Given a graph (in adjacency list form) and a starting node, list the contents of each level starting with the starting node.
 directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
