@@ -4,8 +4,6 @@
 
 
 def threeSum(nums: list[int]) -> list[list[int]]:
-    # time complexity O(nlogn + n^2) -> O(n^2)
-    # space complexity O(1)
 
     nums.sort()  # O(nlogn)
     ans = []
@@ -32,6 +30,9 @@ def threeSum(nums: list[int]) -> list[list[int]]:
                 right -= 1
 
     return ans
+
+    # time complexity O(nlogn + n^2) -> O(n^2)
+    # space complexity O(1)
 
 
 nums = [-1, 0, 1, 2, -1, -4]

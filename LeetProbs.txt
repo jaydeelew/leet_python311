@@ -1,6 +1,9 @@
 Given an array, return a new array with the prefix sum.
 e.g. [1, 2, 3, 4, 5] -> [1, 3, 6, 10, 15]
 
+Given a string, reverse the string and return the reversed string.
+e.g. "hello" -> "olleh"
+
 Given an array, return all combinations. Order does not matter, e.g. we should not have duplicates [1, 2] and [2, 1].
 e.g. nums = [1, 2] -> [[], [1], [2], [1, 2]]
 
