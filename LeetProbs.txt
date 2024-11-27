@@ -52,7 +52,7 @@ Given an array of integers and an integer k, return the number of subarrays
 where the sum of the elements in the subarray equals k.
 e.g. nums = [1, 2, 3, 4, 5], k = 3 -> 2
 
-# Given a network of friends in the form of an adjacency list, return the shortest path between two people
+# Given a network of friends in the form of an adjacency list, return the shortest path between two people.
 network = {
     "Min": ["William", "Jayden", "Omar"],
     "William": ["Min", "Noam"],
@@ -91,6 +91,9 @@ three = ListNode(3, four)
 two = ListNode(2, three)
 one = ListNode(1, two)  # head
 Output: 3
+
+Given a string and a substring, return the number of times a substring appears in a string.
+e.g string = "ABCDCDC", sub_string = "CDC" -> 2
 
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
