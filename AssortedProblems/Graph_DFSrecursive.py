@@ -26,6 +26,7 @@ def sum_nodes(adj_list):
 
     def dfs(node):
         # the base case occurs when there are no more neighbors
+        # i.e. 0 will be returned
         ans = 0
 
         for neighbor in graph[node]:

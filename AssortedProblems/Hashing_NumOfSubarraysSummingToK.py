@@ -25,12 +25,12 @@ def num_of_subarrays_summing_to_k(nums, k):
 # k = 3
 # Output: 6
 
-nums = [1, 2, 3]
-k = 3
+# nums = [1, 2, 3]
+# k = 3
 # Output: 2
 
-# nums = [1, 2, 1, 2, 1]
-# k = 3
+nums = [1, 2, 1, 2, 1]
+k = 3
 # Output: 4
 
 # nums = [0]

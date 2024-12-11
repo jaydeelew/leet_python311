@@ -2,18 +2,17 @@
 from collections import deque
 
 
-# the recontructs the path from start node to end node by traversing through to-neighbor from-node and
-# then reversing the list
-def build_path(neighbor_node, start, end):
-    path = []
-
+# using a deque here is more efficient in adding to the front of the queue in O(1) time as opposed to
+# building the path with a list and append, and the having to reverse the list.
+def build_path(neighbor_node, end):
+    path = deque([])
     node = end
+
     while node:
-        path.append(node)
+        path.appendleft(node)
         node = neighbor_node[node]
 
-    path.reverse()
-    return path
+    return list(path)
 
 
 # this version checks if a node had been visited before adding it to the queue
@@ -28,30 +27,11 @@ def shortest_path(adj_list, start, end):
         node = queue.popleft()
 
         if node == end:
-            return build_path(neighbor_node, start, end)
+            return build_path(neighbor_node, end)
 
         for neighbor in adj_list[node]:
             # neighbor node also acts as seen/visited
             if neighbor not in neighbor_node:
-                queue.append(neighbor)
-                neighbor_node[neighbor] = node
-
-    return None
-
-
-# this version checks if a node had been visited after popping it from the queue
-# and can allow for already visited nodes to be enqueued which can be less efficient
-def shortest_path_2(adj_list, start, end):
-    queue = deque([start])
-    neighbor_node = {start: None}
-
-    while queue:
-        node = queue.popleft()
-        if node not in neighbor_node:
-            if node == end:
-                return build_path(neighbor_node, start, end)
-
-            for neighbor in adj_list[node]:
                 queue.append(neighbor)
                 neighbor_node[neighbor] = node
 
@@ -71,5 +51,4 @@ network = {
 }
 # Output:  ['Jayden', 'Amelia', 'Adam']
 
-print(shortest_path(network, "Jayden", "Adam"))
 print(shortest_path(network, "Jayden", "Adam"))

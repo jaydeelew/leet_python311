@@ -12,7 +12,7 @@ def dijkstra(adj_list, starting_node):
     seen = set()
 
     while min_heap:
-        # we use a min heap here to potentially reduce the number of times we update the distance of a node
+        # we use a min heap here to potentially reduce the number of times we update the distance of a node.
         # a FIFO queue could allow greater distances to be updated in distances first
         # whereas if a shorter distance is added first, greater distances will be ignored
         dist_from_start, node = heapq.heappop(min_heap)
@@ -26,7 +26,7 @@ def dijkstra(adj_list, starting_node):
             for neighbor, dist_to_neighbor in adj_list[node].items():
                 dist_start_to_neighbor = dist_from_start + dist_to_neighbor
 
-                # if the distance from start neighbor is shorter than the total distance recorded thus far,
+                # if the distance from start neighbor is shorter than the total distance recorded thus far for this neighbor,
                 # we update this distance for the neighbor in distances and push the neighbor onto the heap
                 if dist_start_to_neighbor < distances[neighbor]:
                     distances[neighbor] = dist_start_to_neighbor

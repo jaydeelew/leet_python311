@@ -17,26 +17,26 @@
 # The same number may be chosen from candidates an unlimited number of times.
 # Two combinations are unique if the frequency of at least one of the chosen numbers is different.
 def combination_sum(candidates, target):
-    def backtrack(start_index, curr_path, curr_sum):
+    def backtrack(start_index, curr_combo, curr_sum):
         if curr_sum == target:
-            ans.append(curr_path[:])
+            ans.append(curr_combo[:])
             # return here to avoid unnecessary adding to this path after the target is met
             return
 
         for i in range(start_index, len(candidates)):
             new_sum = curr_sum + candidates[i]
-            # if we do not check if curr_path_sum + num <= target,
+            # if we do not check if curr_combo_sum + num <= target,
             # after the target is met the first time, the sum will keep growing as it is passed
             # to the next recursion call, and the base case will never be triggered,
             # the starting index will never be changed, and recursion will go on forever since
             # the for loop will not iterate to the next starting index
             if new_sum <= target:
-                curr_path.append(candidates[i])
+                curr_combo.append(candidates[i])
                 # the starting index is i, not i+1
                 # this allows the same number to be used multiple times per the instructions
                 # if we did not make use of a starting index, we would produce duplicates (e.g. [1, 2, 2], [2, 1, 2], [2, 2, 1])
-                backtrack(i, curr_path, new_sum)
-                curr_path.pop()
+                backtrack(i, curr_combo, new_sum)
+                curr_combo.pop()
 
     ans = []
     backtrack(0, [], 0)
