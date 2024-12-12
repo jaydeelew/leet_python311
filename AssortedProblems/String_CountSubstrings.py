@@ -1,16 +1,11 @@
 # Given a string and a substring, return the number of times a substring appears in a string.
 
 
-def count_substrings(str, substr):
-    str_len = len(str)
-    substr_len = len(substr)
-    num_of_windows = str_len - substr_len + 1
-    split_sub = list(sub_string)
+def count_substrings(str, sub):
     count = 0
 
-    for i in range(num_of_windows):
-        sample = [str[ch] for ch in range(i, i + substr_len)]
-        if sample == split_sub:
+    for i in range(len(str) - len(sub) + 1):
+        if str[i : i + len(sub)] == sub:  # noqa E203
             count += 1
 
     return count

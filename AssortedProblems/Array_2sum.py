@@ -22,13 +22,12 @@ def twoSum(nums: list[int], target: int) -> list[int]:
 
 
 def twoSum_2(nums: list[int], target: int) -> list[int]:
-    hashmap = {}
-
+    val_idx = {}
     for i in range(len(nums)):
         need = target - nums[i]
-        if need in hashmap:
-            return [i, hashmap[need]]
-        hashmap[nums[i]] = i
+        if need in val_idx:
+            return [i, val_idx[need]]
+        val_idx[nums[i]] = i
 
     return []
 

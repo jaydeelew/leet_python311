@@ -105,7 +105,7 @@ e.g. nums = [3, 2, 4], target = 6 -> [1,2]
 
 Given a list of numbers with duplicate values, create three functions to count the number of occurrences of each value
 and return a dictionary with the count of each value. Use a standard dictionary, a Counter, and a defaultdict.
-e.g. [1, 2, 2, 3, 3, 3] -> {1: 1, 2: 2, 3: 3}
+e.g. nums = [1, 2, 2, 3, 3, 3] -> {1: 1, 2: 2, 3: 3}
 
 Given an array of integers and an integer k,
 return the number of subarrays where the sum of the elements in the subarray equals k.
