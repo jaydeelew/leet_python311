@@ -19,7 +19,8 @@ def build_stack(nums):
         # and the current element is less or equal to the element at the top of the stack
         while stack and num <= stack[-1]:
             stack.pop()
-        # push the current element onto the stack.
+        # if we were to append num to stack before checking to see if num <= stack[-1],
+        # num would always equal the top element of the stack
         stack.append(num)
 
     return stack
