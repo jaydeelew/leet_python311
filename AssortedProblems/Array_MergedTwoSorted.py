@@ -30,6 +30,10 @@ def merge_sorted_arrays_2(arr1, arr2):
         merged.append(arr2[j])
         j += 1
 
+    # Or more simply:
+    # merged.extend(arr1[i:])
+    # merged.extend(arr2[j:])
+
     return merged
 
     # Time Complexity: O(n + m), where n and m are the lengths of arr1 and arr2 respectively.
