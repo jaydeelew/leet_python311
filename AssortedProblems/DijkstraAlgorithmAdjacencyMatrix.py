@@ -23,7 +23,7 @@ def dijkstra(adj_matrix, starting_node):
             seen.add(node)
             # for each neighbor of the current node, we calculate the distance from start to neighbor
             for neighbor, dist_to_neighbor in enumerate(adj_matrix[node]):
-                if dist_to_neighbor > 0:  # Dijsktra does not allow for negative distances
+                if dist_to_neighbor > 0:  # a neighbor would have a distance greater than 0
                     dist_start_to_neighbor = dist_from_start + dist_to_neighbor
 
                     # if the distance from start neighbor is shorter than the total distance recorded thus far,
