@@ -4,20 +4,20 @@ from collections import Counter
 
 
 def is_subset(a, b):
-    status = True
     list_a = a.split()
     list_b = b.split()
 
-    a_counter = Counter(list_a)
-    b_counter = Counter(list_b)
+    b_count = Counter(list_b)
 
-    for num in a_counter.keys():
-        if b_counter[num] and b_counter[num] >= a_counter[num]:
-            b_counter[num] -= 1
+    for n in list_a:
+        # There is no need to test for the existence of b_count[n]
+        # since the Counter object will return 0 if the key does not exist
+        if b_count[n] > 0:
+            b_count[n] -= 1
         else:
-            status = False
+            return False
 
-    return status
+    return True
 
 
 a = "3 1 9 9"

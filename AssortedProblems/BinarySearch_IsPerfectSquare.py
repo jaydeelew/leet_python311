@@ -7,7 +7,10 @@ def isPerfectSquare(num):
     if num < 2:
         return True  # Directly return True for 0 and 1
 
-    left, right = 1, num
+    left = 2
+    right = num // 2
+
+    # we also need left equal to right since the left and right will merge on the square root
     while left <= right:
         mid = (left + right) // 2
         mid_squared = mid**2

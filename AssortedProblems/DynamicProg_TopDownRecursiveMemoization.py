@@ -31,8 +31,8 @@ def len_of_LSIS_recursive(nums: list[int]) -> int:
         ans = 1
         for j in range(i):
             if nums[j] < nums[i]:
-                # we maintain the max subsequence up to and including i
-                # i is included by adding 1.
+                # we maintain the max subsequence up to and including i,
+                # i is included by adding 1 with dp(j) + 1 below
                 ans = max(ans, dp(j) + 1)
         # memo[i] is assigned 1 if there was no previous num[j] less than num[i],
         # since the only subsequence is the current element.
@@ -45,7 +45,7 @@ def len_of_LSIS_recursive(nums: list[int]) -> int:
 
 
 nums = [5, 2, 4, 3, 6]
-
+# Output: 3
 
 # nums = [10, 9, 2, 5, 3, 7, 101, 18]
 # Output: 4

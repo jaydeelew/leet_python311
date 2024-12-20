@@ -21,7 +21,8 @@ def right_insert(arr, target):
     # since infinite loop occurs if target == arr[mid]
     while left < right:
         mid = (left + right) // 2
-        # this would be target <= arr[mid] if we were looking for index of left insertion point
+        # If you find a match (target == arr[mid]), using < will make the algorithm
+        # keep moving rightward by setting left = mid + 1.
         if target < arr[mid]:
             # we do not want to say right = mid - 1 because mid may be the insertion point
             right = mid

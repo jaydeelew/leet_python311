@@ -25,7 +25,8 @@ def shortest_path(adj_list, start, end):
 
     while queue:
         node = queue.popleft()
-
+        # we can check for the end node now since every node in the queue
+        # has aleady been added to the neighbor_node dictionary
         if node == end:
             return build_path(neighbor_node, end)
 

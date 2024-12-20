@@ -4,9 +4,11 @@
 
 def findSqrt(num):
     if num < 2:
-        return num  # Directly return the number if it's 0 or 1
+        # directly return the number if it's 0 or 1
+        return num
 
-    left, right = 1, num // 2  # No need to check beyond num // 2 for num > 1
+    # No need to check beyond num // 2 for num > 1
+    left, right = 2, num // 2
 
     while left <= right:
         mid = (left + right) // 2

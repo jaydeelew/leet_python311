@@ -15,16 +15,14 @@
 # as we iterate through the array, we keep track of the longest strictly increasing subsequence
 # at each index, and at the end, we return the longest (max) strictly increasing subsequence
 def len_of_LSIS_iterative(nums: list[int]) -> int:
-    # this is where we store the longest strictly increasing subsequence at each index
+    # this is where we store the longest strictly increasing subsequence ending at each index
     tab = [1] * len(nums)
+    # we start the range with 1 since tab[0] = 1 wll remain unchanged
     for i in range(1, len(nums)):
         for j in range(i):
-            # if nums[j] < nums[i], then nums[i] is part of the longest strictly increasing subsequence
             if nums[j] < nums[i]:
-                # so we update the tab value for the current index to the max of the current value
-                # and the value at the previous index + 1 (plus 1 because we found a new number to add to the length).
-                # tab[i] can be increasing or decreasind as the for j loop iterates to just before i,
-                # this is why we need to get the max
+                # the plus one in tab[j] + 1 represents the current index i.
+                # tab[i] may be assigned various increasing values, hence the need to take the max
                 tab[i] = max(tab[i], tab[j] + 1)
 
     return max(tab)

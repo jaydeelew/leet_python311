@@ -11,9 +11,8 @@ def majorityElement1(nums):
     for n in nums:
         if count == 0:
             candidate = n
-        # the element seen most thus far will always be the candidate
+        # same as: count += (1 if candidate == n else -1)
         count += 1 if candidate == n else -1
-    # ultimately, the candidate will be the majority element
     return candidate
 
     # Time Complexity: O(n), where n is the length of the input array nums.

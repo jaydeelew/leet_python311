@@ -1,7 +1,7 @@
-# Given an array nums of distinct integers, return all the possible permutations in any order.
+# Given an array of distinct integers, return all the possible permutations.
 
 
-def permutations(nums: list[int]) -> list[list[int]]:
+def permutations(nums):
     def backtrack(curr_perm):
         if len(curr_perm) == len(nums):
             # we need a copy and not a reference
@@ -25,8 +25,9 @@ def permutations(nums: list[int]) -> list[list[int]]:
 # the version uses swapping to avoid the need to check if the number is in the current path
 # and uses less memory by not using a curr_path list
 def permutations_2(nums):
+    # only need to check up to n - 1 since the last number will be the last one to be swapped
     def bt(start):
-        if start == len(nums):
+        if start == len(nums) - 1:
             ans.append(nums[:])
             return
 
