@@ -22,8 +22,7 @@ def left_insert(arr, target):
     while left < right:
         mid = (left + right) // 2
         # If you find a match (target == arr[mid]), using <= will make the algorithm
-        # keep searching leftward by setting right = mid.
-        # This continues until you find the first/leftmost occurrence.
+        # keep moving leftward by setting right = mid
         if target <= arr[mid]:
             # We do not want to say right = mid - 1 because mid may be the insertion point
             right = mid

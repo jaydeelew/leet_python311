@@ -4,30 +4,12 @@
 
 
 def twoSum(nums: list[int], target: int) -> list[int]:
-    val_idx = [(val, idx) for idx, val in enumerate(nums)]
-    val_idx.sort()
-
-    left = 0
-    right = len(nums) - 1
-    while left < right:
-        curr_sum = val_idx[left][0] + val_idx[right][0]
-        if curr_sum == target:
-            return [val_idx[left][1], val_idx[right][1]]
-        if curr_sum < target:
-            left += 1
-        else:
-            right -= 1
-
-    return []
-
-
-def twoSum_2(nums: list[int], target: int) -> list[int]:
-    val_idx = {}
+    num_idx = {}
     for i in range(len(nums)):
         need = target - nums[i]
-        if need in val_idx:
-            return [i, val_idx[need]]
-        val_idx[nums[i]] = i
+        if need in num_idx:
+            return [i, num_idx[need]]
+        num_idx[nums[i]] = i
 
     return []
 
@@ -46,4 +28,3 @@ target = 6
 # Output: [0,1]
 
 print(twoSum(nums, target))
-print(twoSum_2(nums, target))

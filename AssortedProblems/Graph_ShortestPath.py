@@ -3,14 +3,14 @@ from collections import deque
 
 
 # using a deque here is more efficient in adding to the front of the queue in O(1) time as opposed to
-# building the path with a list and append, and the having to reverse the list.
-def build_path(neighbor_node, end):
-    path = deque([])
+# building the path with a list and append, and then having to reverse the list.
+def build_path(to_from, end):
+    path = deque()
     node = end
 
     while node:
         path.appendleft(node)
-        node = neighbor_node[node]
+        node = to_from[node]
 
     return list(path)
 
@@ -21,20 +21,19 @@ def shortest_path(adj_list, start, end):
     # neighbor node is a dictionary where key is the neighbor and the value is the node
     # when we reconstruct the path with build_path() above, the while loop is terminated when node = None,
     # hence we add start:None
-    neighbor_node = {start: None}
+    to_from = {start: None}
 
     while queue:
         node = queue.popleft()
-        # we can check for the end node now since every node in the queue
-        # has aleady been added to the neighbor_node dictionary
-        if node == end:
-            return build_path(neighbor_node, end)
 
         for neighbor in adj_list[node]:
             # neighbor node also acts as seen/visited
-            if neighbor not in neighbor_node:
+            if neighbor not in to_from:
+                to_from[neighbor] = node
+                # check neighbor for end now instead of adding it to the queue and checking when it's popped
+                if node == end:
+                    return build_path(to_from, end)
                 queue.append(neighbor)
-                neighbor_node[neighbor] = node
 
     return None
 
