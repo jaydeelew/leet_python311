@@ -1,7 +1,10 @@
+# 0. Find Maximum Value That Satisfies a Condition
 # Given a sorted array and a condition, find the maximum value in the array that satisfies the condition.
 # A maximum would have all values before it, including the maximum, meet the condition.
 # All values after the maximum would not meet the condition.
 # This assumes the array is sorted.
+
+
 def find_max(arr, cond):
     if not arr:
         return None
@@ -41,5 +44,14 @@ tests = [
     ([1], lambda x: x > 3, "x > 3: A single element does not satisfy", None),
 ]
 
-for arr, cond, desc, excepted in tests:
-    print(f"{arr}, {desc}, Expect: {excepted}, {find_max(arr, cond) == excepted}")
+max_len_num = max(len(str(test[0])) for test in tests) + 1
+max_len_desc = max(len(str(test[2])) for test in tests) + 1
+
+for input in tests:
+    result = find_max(input[0], input[1])
+    print(
+        f"nums: {str(input[0]):<{max_len_num}}"
+        f"Cond: {str(input[2]):<{max_len_desc}}"
+        f"Expect: {str(input[3]):<7}"
+        f"Result: {result == input[3]}"
+    )

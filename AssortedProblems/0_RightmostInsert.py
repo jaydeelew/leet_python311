@@ -11,7 +11,7 @@
 #     return left
 
 
-# return index of right most insertion point when duplicates are allowed
+# return index of rightmost insertion point when duplicates are allowed
 # this function will return the index just after the last duplicate,
 # otherwise, the index of the next highest value
 def right_insert(arr, target):

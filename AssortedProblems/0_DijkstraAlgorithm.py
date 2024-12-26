@@ -1,3 +1,4 @@
+# 0. Dijkstra's Algorithm
 import heapq
 
 
@@ -45,8 +46,9 @@ def dijkstra_INCORRECT(adj_list, starting_node):
         dist_from_start, node = heapq.heappop(min_heap)
 
         for neighbor, dist_to_neighbor in adj_list[node].items():
-            # for Dijkstra, unlike DFS and BFS, we do NOT check for seen when iterating over neighbors
-            # since we want to reach neigbors again to see if there is a shorter route
+            # For Dijkstra, unlike DFS and BFS on graph, we do NOT check for seen when iterating over neighbors
+            # (as seen below)
+            # since we want to reach neigbors again to see if there is a shorter route from start to neighbor.
             if neighbor not in seen:
                 seen.add(neighbor)
                 dist_start_to_neighbor = dist_from_start + dist_to_neighbor

@@ -6,14 +6,17 @@
 
 def second_lowest(nested):
 
-    # Work with a copy of the list to avoid modifying the input
+    # Work with a copy of the list to avoid modifying the input.
+    # The list is sorted by the scores first, then the names.
     students = sorted(nested, key=lambda x: (x[1], x[0]))
 
-    # Find the second lowest grade
+    # Find the second lowest grade.
     scores = sorted(set(x[1] for x in students))
     if len(scores) < 2:
         return
 
+    # By creating a set and thereby removing duplicates and sorting it,
+    # we will have scores[1] be the second lowest score
     second_min = scores[1]
 
     # Print names of students with second lowest grade

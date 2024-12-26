@@ -1,19 +1,20 @@
-# given an array of integers and an integer k, return an array of arrays of all subsequences with sum k
+# 0. Subsequences Summing to K
+# Given an array of integers and an integer k, return an array of arrays of all subsequences with sum k
 
 
-def find_subsequences_with_sum_k(nums, k):
+def subsequencesSumToK(nums, k):
     def backtrack(start_index, curr_path, curr_sum):
         if curr_sum == k:
             ans.append(curr_path[:])
-            # we do not return here in case of the next number in path being negative
+            # We do not return here in case of the next number in path being negative.
 
         for i in range(start_index, len(nums)):
             new_sum = curr_sum + nums[i]
-            # if the new sum is greater than k, we continue to the next number in the nums array
+            # If the new sum is greater than k, we continue to the next number in the nums array.
             if new_sum <= k:
                 curr_path.append(nums[i])
-                # the starting index is i+1, not i
-                # this prevents the same number from being used multiple times
+                # The starting index is i+1, not i.
+                # This prevents the same number from being used multiple times.
                 backtrack(i + 1, curr_path, new_sum)
                 curr_path.pop()
 
@@ -30,4 +31,4 @@ k = 5
 # k = 5
 # Output: [[2, 3], [2, 1, 2], [3, 2], [5]]
 
-print(find_subsequences_with_sum_k(nums, k))
+print(subsequencesSumToK(nums, k))
