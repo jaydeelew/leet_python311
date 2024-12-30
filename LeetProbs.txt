@@ -111,7 +111,7 @@ start = "Jayden"
 end = "Adam"
 # Output: ['Jayden', 'Amelia', 'Adam']
 
-0. List Levels in Graph
+# 0. List Levels in Graph
 # Given a graph (in adjacency list form) and a starting node, list the contents of each level starting with the starting node.
 directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
@@ -119,7 +119,7 @@ start_node = 0
 # Output Directed Graph = [[0], [1, 2, 5], [7, 3, 4], [6]]
 # Output Undirected Graph = [[0], [1, 2, 5, 7], [3, 4], [6]]
 
-0. Rightmost Insert List With Duplicates
+# 0. Rightmost Insert List With Duplicates
 # Given a sorted array and a target, return index of rightmost insertion point when duplicates are allowed.
 # This function will return the index just after the last duplicate,
 # otherwise, the index of the next highest value.
@@ -145,7 +145,7 @@ two = ListNode(2, three)
 one = ListNode(1, two)  # head
 # Output: 3
 
-# 438. Find All Anagrams in a String
+# 0. Count Substrings
 # Given a string and a substring, return the number of times a substring appears in a string.
 string = "ABCDCDC"
 sub_string = "CDC"
@@ -159,20 +159,33 @@ nums = [3, 2, 4]
 target = 6
 # Output: [1,2]
 
-# Given an array of integers and an integer k,
-# return the number of subarrays where the sum of the elements in the subarray equals k.
-nums = [1, 2, 3, 4, 5]
-k = 3
-# Output: 2
+# 658. Find K Closest Elements
+# Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array.
+# The result should also be sorted in ascending order.
+# An integer a is closer to x than an integer b if:
+# |a - x| < |b - x|, or
+# |a - x| == |b - x| and a < b
+arr = [1, 2, 3, 4, 5]
+k = 4
+x = 3
+# Output: [1, 2, 3, 4]
 
-# Given an array of integers, find the top k elements that are closest to target.
-arr = [3, 6, 7, 2, 9, 4]
+# 0. Find K Closet Elements (unsorted array)
+# Given an integer array arr, two integers k and target, return the k closest integers to targer in the array.
+# The result should also be sorted in ascending order.
+# An integer a is closer to x than an integer b if:
+# |a - x| < |b - x|, or
+# |a - x| == |b - x| and a < b
+arr = [9, 1, 11, 6, 22, 7]
 k = 3
-target = 5
-# Output: [6, 7, 4]
+x = 5
+# Output: [1, 6, 7]
 
-# Given a linked list of nodes where each node has a value and a next pointer,
-# determine if the linked list has a cycle.
+# 141. Linked List Cycle
+# Given head, the head of a linked list, determine if the linked list has a cycle in it.
+# There is a cycle in a linked list if there is some node in the list that can be reached
+# again by continuously following the next pointer.
+# Return true if there is a cycle in the linked list. Otherwise, return false.
 five = ListNode(5)
 four = ListNode(4, five)
 three = ListNode(3, four)
@@ -181,7 +194,8 @@ one = ListNode(1, two)  # head
 five.next = one
 # Output: True
 
-# Given a singly linked list, reverse the list and return the head of the reversed list.
+# 206. Reverse Linked List
+# Reverse a singly linked list and return the head of the reversed list
 five = ListNode(5)
 four = ListNode(4, five)
 three = ListNode(3, four)

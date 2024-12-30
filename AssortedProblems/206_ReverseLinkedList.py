@@ -1,4 +1,5 @@
-# reverse a singly linked list and return the head of the reversed list
+# 206. Reverse Linked List
+# Reverse a singly linked list and return the head of the reversed list
 
 # POINTERS BEFORE WHILE LOOP
 # 1 --> 2 --> 3 --> None, P=None

@@ -2,6 +2,7 @@
 # Given a string and a substring, return the number of times a substring appears in a string.
 
 
+# In the Knuth-Morris-Pratt (KMP) algorithm, lps stands for "longest proper prefix which is also a suffix."
 def compute_lps_array(sub_string):
     m = len(sub_string)
     lps = [0] * m
