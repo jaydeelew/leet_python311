@@ -1,18 +1,8 @@
-# def fn(arr):
-#     stack = []
-#     ans = 0
-
-#     for num in arr:
-#         # for monotonic decreasing, just flip the <= to >=
-#         while stack and num <= stack[-1]:
-#             # do logic
-#             stack.pop()
-#         stack.append(num)
-
-#     return ans
+# 0. Monotonically Increasing Stack
+# Given an integer array, return a monotonic increasing stack of the array.
 
 
-def build_stack(nums):
+def buildStack(nums):
     stack = []
     for num in nums:
         # keep popping elements from the stack as long as there is a stack
@@ -29,4 +19,4 @@ def build_stack(nums):
 arr = [1, 4, 5, 3, 3, 12, 10]
 # Output: [1, 3, 10]
 
-print(build_stack(arr))
+print(buildStack(arr))

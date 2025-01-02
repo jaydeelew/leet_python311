@@ -1,20 +1,8 @@
-# def fn(arr, target):
-#     left = 0
-#     right = len(arr)
-#     while left < right:
-#         mid = (left + right) // 2
-#         if target <= arr[mid]
-#             right = mid
-#         else:
-#             left = mid + 1
-#
-#     return left
+# 0. Lefmost Insert
+# Given a sorted array, return index of leftmost insertion point when duplicates are allowed
 
 
-# return index of leftmost insertion point when duplicates are allowed
-# this function will return the index of the first duplicate,
-# otherwise, the index of the next highest value
-def left_insert(arr, target):
+def leftMostInsert(arr, target):
     left = 0
     right = len(arr) - 1
     # cannot have while left <= right as with basic binary search
@@ -45,4 +33,4 @@ target = 3
 # target = 11
 # Output: For left insertion, index 5 is the insertion point
 
-left_insert(arr, target)
+leftMostInsert(arr, target)

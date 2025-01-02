@@ -1,4 +1,4 @@
-# 0. Max Depth of Graph
+# 0. Max Depth DAG
 # Given a directed acyclic graph (in adjacency list form) and a starting node,
 # return the maximum depth of the graph from starting node to a leaf.
 

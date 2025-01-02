@@ -1,3 +1,4 @@
+# 33. Search in Rotated Sorted Array
 # There is an integer array nums sorted in ascending order (with distinct values).
 # Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length)
 # such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
@@ -17,7 +18,7 @@ def search(nums: list[int], target: int) -> int:
         if nums[mid] == target:
             return mid
         # If the left half is sorted
-        elif nums[mid] >= nums[left]:
+        if nums[mid] >= nums[left]:
             # If the target is in the left half
             if nums[left] <= target <= nums[mid]:
                 right = mid - 1

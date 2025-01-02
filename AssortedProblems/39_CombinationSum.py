@@ -1,22 +1,11 @@
-# def backtrack(curr, OTHER_ARGUMENTS...):
-#     if (BASE_CASE):
-#         # modify the answer
-#         return
-
-#     ans = 0
-#     for (ITERATE_OVER_INPUT):
-#         # modify the current state
-#         ans += backtrack(curr, OTHER_ARGUMENTS...)
-#         # undo the modification of the current state
-
-#     return ans
-
-
+# 39. Combination Sum
 # Given an array of distinct positive integer candidates and a target integer,
 # return a list of all unique combinations of candidates where the chosen numbers sum to target.
 # The same number may be chosen from candidates an unlimited number of times.
 # Two combinations are unique if the frequency of at least one of the chosen numbers is different.
-def combination_sum(candidates, target):
+
+
+def combinationSum(candidates, target):
     def backtrack(start_index, curr_combo, curr_sum):
         if curr_sum == target:
             ans.append(curr_combo[:])
@@ -67,4 +56,4 @@ target = 5
 # target = 1
 # Output: []
 
-print(combination_sum(candidates, target))
+print(combinationSum(candidates, target))

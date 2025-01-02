@@ -1,10 +1,11 @@
+# 0. Second Lowest
 # Given the names and grades for each student in a class of students stored in a nested list,
 # print the name(s) of any student(s) having the second lowest grade.
 # Note: If there are multiple students with the second lowest grade, order their names alphabetically
 # and print each name on a new line.
 
 
-def second_lowest(nested):
+def secondLowest(nested):
 
     # Work with a copy of the list to avoid modifying the input.
     # The list is sorted by the scores first, then the names.
@@ -34,4 +35,4 @@ nested = [["Harry", 37.21], ["Berry", 37.21], ["Tina", 37.2], ["Akriti", 41], ["
 # Output:
 # Kant
 
-second_lowest(nested)
+secondLowest(nested)

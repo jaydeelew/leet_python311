@@ -1,19 +1,7 @@
-# def fn(arr, target):
-#     left = 0
-#     right = len(arr)
-#     while left < right:
-#         mid = (left + right) // 2
-#         if target < arr[mid]:
-#             right = mid
-#         else:
-#             left = mid + 1
-#
-#     return left
+# 0. Rightmost Insert
+# Given a sorted array, return index of rightmost insertion point when duplicates are allowed
 
 
-# return index of rightmost insertion point when duplicates are allowed
-# this function will return the index just after the last duplicate,
-# otherwise, the index of the next highest value
 def right_insert(arr, target):
     left = 0
     right = len(arr) - 1

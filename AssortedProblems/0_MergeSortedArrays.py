@@ -1,4 +1,5 @@
-# Given two sorted integer arrays, return an array that combines both of them and is also sorted.
+# 0. Merge Sorted Arrays
+# Given two sorted integer arrays, return a new sorted array that combines both of them and is also sorted.
 
 
 def merge_sorted_arrays(arr1, arr2):

@@ -1,25 +1,10 @@
-# def fn(arr):
-#     def dp(STATE):
-#         if BASE_CASE:
-#             return 0
-
-#         if STATE in memo:
-#             return memo[STATE]
-
-#         ans = RECURRENCE_RELATION(STATE)
-#         memo[STATE] = ans
-#         return ans
-
-#     memo = {}
-#     return dp(STATE_FOR_WHOLE_INPUT)
-
-
+# 300. Longest Increasing Subsequence (recursive)
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
 # Solve using a top-down/recursive memoization method
 
 
-def len_of_LSIS_recursive(nums: list[int]) -> int:
+def lsisRecursive(nums: list[int]) -> int:
     memo = {}
 
     def dp(i):
@@ -62,4 +47,4 @@ nums = [5, 2, 4, 3, 6]
 # nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # Output: 10
 
-print(len_of_LSIS_recursive(nums))
+print(lsisRecursive(nums))

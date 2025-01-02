@@ -1,20 +1,12 @@
-# def fn(arr):
-#     tab = [0] * len(arr)
-#     tab[BASE_CASE] = VALUE
-
-#     for i in arr:
-#         tab[i] = RECURRENCE_RELATION
-
-#     return tab[i]
-
+# 300. Longest Increasing Subsequence (iterative)
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
 # Solve using a bottom-Up/iterative tabulation method.
 
 
-# as we iterate through the array, we keep track of the longest strictly increasing subsequence
-# at each index, and at the end, we return the longest (max) strictly increasing subsequence
-def len_of_LSIS_iterative(nums: list[int]) -> int:
+# As we iterate through the array, we keep track of the longest strictly increasing subsequence
+# at each index, and at the end, we return the longest (max) strictly increasing subsequence.
+def lsisIterative(nums: list[int]) -> int:
     # this is where we store the longest strictly increasing subsequence ending at each index
     tab = [1] * len(nums)
     # we start the range with 1 since tab[0] = 1 wll remain unchanged
@@ -40,4 +32,4 @@ nums = [0, 1, 0, 3, 2, 3]
 # nums = [7, 7, 7, 7, 7, 7, 7]
 # Output: 1
 
-print(len_of_LSIS_iterative(nums))
+print(lsisIterative(nums))

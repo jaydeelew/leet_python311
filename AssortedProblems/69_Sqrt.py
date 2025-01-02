@@ -1,8 +1,10 @@
-# Find the square root of a number using binary search
-# If the number is not a perfect square, return the floor of the square root
+# 69. Sqrt(x)
+# Given a non-negative integer x, return the square root of x rounded down to the nearest integer.
+# The returned integer should be non-negative as well.
+# You must not use any built-in exponent function or operator.
 
 
-def findSqrt(num):
+def mySqrt(num):
     if num < 2:
         # directly return the number if it's 0 or 1
         return num
@@ -24,7 +26,7 @@ def findSqrt(num):
     return right
 
 
-print(findSqrt(16))
-print(findSqrt(17))
-print(findSqrt(1))
-print(findSqrt(0))
+print(mySqrt(16))
+print(mySqrt(17))
+print(mySqrt(1))
+print(mySqrt(0))

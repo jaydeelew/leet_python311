@@ -9,6 +9,12 @@ arr = [1, 2, 3, 4, 5]
 ["h","e","l","l","o"]
 # Output: ["o","l","l","e","h"]
 
+# 0. Sum All Nodes of a Graph
+# Given a graph in adjacency list form, return the sum of all nodes.
+# Solve this iteratively
+graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
+# Output: 6
+
 # 78. Subsets
 # Given an integer array nums of unique elements, return all possible
 # subsets (the power set).
@@ -84,6 +90,11 @@ starting_node = "S"
 edges = [(0, 1), (0, 3), (1, 3), (2, 3), (3, 5)]
 # Output = {0: [1, 3], 1: [0, 3], 3: [0, 1, 2, 5], 2: [3], 5: [3]}
 
+# 0. Monotonically Increasing Stack
+# Given an integer array, return a monotonic increasing stack of the array.
+arr = [1, 4, 5, 3, 3, 12, 10]
+# Output: [1, 3, 10]
+
 # 560. Subarray Sum Equals K
 # Given an array of integers nums and an integer k,
 # return the total number of subarrays whose sum equals to k.
@@ -119,7 +130,7 @@ start_node = 0
 # Output Directed Graph = [[0], [1, 2, 5], [7, 3, 4], [6]]
 # Output Undirected Graph = [[0], [1, 2, 5, 7], [3, 4], [6]]
 
-# 0. Rightmost Insert List With Duplicates
+# 0. Rightmost Insert
 # Given a sorted array and a target, return index of rightmost insertion point when duplicates are allowed.
 # This function will return the index just after the last duplicate,
 # otherwise, the index of the next highest value.
@@ -194,6 +205,20 @@ one = ListNode(1, two)  # head
 five.next = one
 # Output: True
 
+# 0. Max Depth Undirected Acyclic Graph
+# Given an undirected cyclic graph (in adjacency list form) and a starting node,
+# return the maximum depth of the graph from starting node to a leaf.
+adj_list = {
+    "a": ["b", "c", "e"],
+    "b": ["a"],
+    "c": ["a", "d"],
+    "d": ["c"],
+    "e": ["f"],
+    "f": ["e", "g"],
+    "g": ["f"],
+}
+# Output: 3
+
 # 206. Reverse Linked List
 # Reverse a singly linked list and return the head of the reversed list
 five = ListNode(5)
@@ -203,28 +228,62 @@ two = ListNode(2, three)
 one = ListNode(1, two)  # head
 # Output: 5 -> 4 -> 3 -> 2 -> 1
 
-# Given an integer array, return a monotonic increasing stack of the array.
-arr = [1, 4, 5, 3, 3, 12, 10]
-# Output: [1, 3, 10]
+# 144. Binary Tree Preorder Traversal (iterative)
+# Given the root of a binary tree, return the preorder traversal of its nodes' values.
+nine = TreeNode(9)
+seven = TreeNode(7)
+four = TreeNode(4)
+eight = TreeNode(8, nine)
+twelve = TreeNode(12, four)
+three = TreeNode(3, twelve, seven)
+five = TreeNode(5, eight, three)  # root node
+# Output: 5 8 9 3 12 4 7
 
+# 739. Daily Temperatures
+# Given an array of integers temperatures represents the daily temperatures,
+# return an array answer such that answer[i] is the number of days you have to wait
+# after the ith day to get a warmer temperature.
+# If there is no future day for which this is possible, keep answer[i] == 0 instead.
 # Given an array of characters, reverse the array in-place.
 s = ["h", "e", "l", "l", "o"]
 # Output: ["o", "l", "l", "e", "h"]
 
-# Given two sorted integer arrays, return an array that combines both of them and is also sorted in O(n+m) time.
-arr1 = [1, 4, 7, 20]
-arr2 = [3, 5, 6]
-# Output: [1, 3, 4, 5, 6, 7, 20]
+# 88. Merge Sorted Array
+# You are given two integer arrays nums1 and nums2, sorted in non-decreasing order,
+# and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+# Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+# The final sorted array should not be returned by the function,
+# but instead be stored inside the array nums1. To accommodate this,
+# nums1 has a length of m + n, where the first m elements denote the elements that should be merged,
+# and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+nums1 = [1,2,3,0,0,0]
+m = 3
+nums2 = [2,5,6]
+n = 3
+# Output: [1,2,2,3,5,6]
+# Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
 
+nums1 = [1]
+m = 1
+nums2 = []
+n = 0
+# Output: [1]
+# Explanation: The arrays we are merging are [1] and [].
 
+nums1 = [0]
+m = 0
+nums2 = [1]
+n = 1
+# Output: [1]
+# Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
+
+# 0. List Levels Binary Tree
 # Given the root of a binary tree, return the levels of the tree from root on down in a list of lists.
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
-
-
 nine = TreeNode(9)
 seven = TreeNode(7)
 four = TreeNode(4)
@@ -234,12 +293,14 @@ three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 # Output: [[5], [8, 3], [9, 12, 7], [4]]
 
-# Given an array of positive integers nums and an integer k,
-# find the length of the longest subarray whose sum is less than or equal to k.
-nums = [1, 2, 3, 4, 5]
-k = 10
+# 325. Maximum Size Subarray Sum Equals k
+# Given an array nums and a target value k, find the maximum length of a subarray that sums to k.
+# If there isn't one, return 0 instead.
+nums = [1, -1, 5, -2, 3]
+k = 3
 # Output: 4
 
+# 0. Dijkstra's Algorithm
 # Implement Dijkstra's algorithm to find the shortest path between two nodes in a graph.
 # The graph is represented as an adjacency matrix and the algorithm should return a dictionary of
 # keys as nodes and values as the shortest distance from the start node to that node.
@@ -253,36 +314,42 @@ adj_matrix = [
 starting_node = 0
 # Output: {0: 0, 1: 7, 2: 4, 3: 6, 4: 8}
 
+# 0. Top K Elements
 # Given an array of integers, find the top k elements in arr.
+# The result order does not matter.
 arr = [3, 6, 7, 2, 9, 4]
 k = 3
 # Output: [6, 7, 9]
 
+# 300. Longest Increasing Subsequence
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
-# Provide the Bottom-Up Iterative Tabulation solution.
-# Provide the Top-Down Recursive Memoization solution.
+# Provide an iterative solution.
 nums = [10, 9, 2, 5, 3, 7, 101, 18]
 # Output: 4
 
-# Given an array of unsorted integers, return the kth largest element in arr.
+# 215. Kth Largest Element in an Array
+# Given an integer array nums and an integer k, return the kth largest element in the array.
+# Note that it is the kth largest element in the sorted order, not the kth distinct element.
+# Can you solve it without sorting?
 arr = [3, 6, 7, 2, 9, 4]
 k = 3
 # Output: 6
 
-# Given an array of integers and an integer k, return all subsequences with sum k.
-nums = [1, 2, 3, 4, 5]
-k = 5
-# Output: [[1, 4], [2, 3], [5]]
-
+# 169. Majority Element
 # Given an array nums of size n, return the majority element.
 # The majority element is the element that appears more than n / 2 times.
 # You may assume that the majority element always exists in the array.
 nums = [2, 2, 1, 1, 1, 2, 2]
 # Output: 2
 
-# Perform a DFS on a binary tree using an iterative approach. Return the pre-order traversal of the tree's nodes.
-# Perform a DFS on a binary tree using an recursive approach. Return the pre-order traversal of the tree's nodes.
+# 144. Binary Tree Preorder Traversal (recursive)
+# Given the root of a binary tree, return the preorder traversal of its nodes' values.
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 nine = TreeNode(9)
 seven = TreeNode(7)
 four = TreeNode(4)
@@ -292,18 +359,27 @@ three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 # Output: 5 8 9 3 12 4 7
 
-# Write a function that determines if a given number is a perfect square.
-# It takes an integer `num` as a parameter and returns a boolean value.
-# The function returns `True` if `num` is a perfect square, otherwise it returns `False`.
+# 367. Valid Perfect Square
+# Given a positive integer num, return true if num is a perfect square or false otherwise.
+# A perfect square is an integer that is the square of an integer.
+# In other words, it is the product of some integer with itself.
+# You must not use any built-in library function, such as sqrt.
 num = 16
 # Output: True
 
-# Find the square root of a number using binary search
+# 69. Sqrt(x)
+# Given a non-negative integer x, return the square root of x rounded down to the nearest integer.
+# The returned integer should be non-negative as well.
+# You must not use any built-in exponent function or operator.
 num = 16
 # Output: 4
 
+# 0. Kth From The End
 # Given a singly linked list, return the value of the kth node from the end of the list.
-five = ListNode(5)
+class ListNode:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
 four = ListNode(4, five)
 three = ListNode(3, four)
 two = ListNode(2, three)
@@ -311,17 +387,68 @@ one = ListNode(1, two)  # head
 k = 2
 # Output: 4
 
+# 0. Is Subset
 # Given two strings, a and b, return True if a is a subset of b, otherwise return False.
 a = "3 1 9 9"
 b = "5 0 7 9 4 1 3 9 6"
 # Output: True
 
+# 0. Sum All Nodes of a Graph
+# Given a graph in adjacency list form, return the sum of all nodes.
+# Solve this recursively
+graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
+# Output: 6
+
+# 0. Max Sum to Leaf in a Graph
 # Given a directed acyclic graph (in adjacency list form) and a starting node,
 # return the maximum sum of the graph from starting node to a leaf.
 adj_list = {0: [2, 3], 1: [], 2: [], 3: [1]}
 start = 0
-# Output: 4
 
+# 0. Max Depth Undirected Cyclic Graph
+# Given an undirected cyclic graph (in adjacency list form) and a starting node,
+# return the maximum depth of the graph from starting node to a leaf.
+adj_list = {
+    "a": ["b", "c"],
+    "b": ["a", "c", "d"],
+    "c": ["a", "b", "d"],
+    "d": ["b", "c"],
+}
+# Output: 3
+
+adj_list_2 = {
+    "p": ["q", "s", "r"],
+    "q": ["p", "t", "u"],
+    "r": ["p", "v", "x"],
+    "s": ["p", "w", "x"],
+    "t": ["q", "u"],
+    "u": ["q", "t"],
+    "v": ["r", "w"],
+    "w": ["s", "v"],
+    "x": ["r", "s"],
+}
+# 112. Path Sum
+# Given the root of a binary tree and an integer targetSum,
+# return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+one = TreeNode(1)
+seven = TreeNode(7)
+two = TreeNode(2)
+thirteen = TreeNode(13)
+three = TreeNode(3, twelve, seven)
+eleven = TreeNode(11, seven, two)
+eight = TreeNode(8, thirteen, four_b)
+four_a = TreeNode(4, eleven)
+four_b = TreeNode(4, right = one) 
+five = TreeNode(5, four_a, eight)  # root node
+targetSum = 22
+# Output: True
+
+# 0. Lefmost Insert
 # Given a sorted array, return index of leftmost insertion point when duplicates are allowed
 # This function will return the index of the first duplicate,
 # otherwise, the index of the next highest value.
@@ -329,22 +456,29 @@ nums = [1, 2, 3, 3, 3, 4, 5]
 target = 3
 # Output: 2
 
-# Given a list of numbers with duplicate values, return the most common value.
-nums = [1, 2, 1, 2, 2, 1, 3, 3, 1]
-# Output: 1
+# 300. Longest Increasing Subsequence
+# Given an integer array nums, return the length of the longest strictly increasing subsequence.
+# The term strictly means that there are not any duplicates in the subsequence.
+# Provide a recursive solution.
+nums = [10, 9, 2, 5, 3, 7, 101, 18]
+# Output: 4
 
-# * Given an array of distinct positive integer candidates and a target integer,
+# 39. Combination Sum
+# Given an array of distinct positive integer candidates and a target integer,
 # return a list of all unique combinations of candidates where the chosen numbers sum to target.
 # The same number may be chosen from candidates an unlimited number of times.
 candidates = [2, 3, 6, 7]
 target = 7
 # Output: [[2, 2, 3], [7]]
 
-# Given a string, return how many times the word balloon can be spelled from the letters in the string.
+# 1189. Maximum Number of Balloons
+# Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
+# You can use each character in text at most once. Return the maximum number of instances that can be formed.
 string = "nlaebolko"
 # Output: 1
 
-# * Given the names and grades for each student in a class of students, store them in a nested list
+# 0. Second Lowest
+# Given the names and grades for each student in a class of students, store them in a nested list
 # and print the name(s) of any student(s) having the second lowest grade.
 # Note: If there are multiple students with the second lowest grade, order their names alphabetically
 # and print each name on a new line.
@@ -352,3 +486,59 @@ nested = [["Harry", 37.21], ["Berry", 37.21], ["Tina", 37.2], ["Akriti", 41], ["
 # Output:
 # Berry
 # Harry
+
+# 0. Merge Sorted Arrays
+# Given two sorted integer arrays, return a new sorted array that combines both of them and is also sorted.
+arr1 = [1, 4, 7, 20]
+arr2 = [3, 5, 6]
+# Output: [1, 3, 4, 5, 6, 7, 20]
+
+# 77. Combinations
+# Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].
+# You may return the answer in any order.
+n = 4
+k = 2
+# Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+
+# 0. Max Sum Undirected Cyclical Graph
+# Given an undirected cyclical graph and a starting node, return the maximum distance from the starting
+# node going through all other nodes and not visiting any node more than once.
+adj_list = {
+    "p": {"q": 7, "r": 3, "s": 2},
+    "q": {"p": 7, "t": 4, "u": 1},
+    "r": {"p": 3, "v": 5, "x": 2},
+    "s": {"p": 2, "w": 6, "x": 2},
+    "t": {"q": 4, "u": 3},
+    "u": {"q": 1, "t": 3},
+    "v": {"r": 5, "w": 4},
+    "w": {"s": 6, "v": 4},
+    "x": {"r": 2, "s": 2},
+}
+# Output: 20
+
+# 33. Search in Rotated Sorted Array
+# There is an integer array nums sorted in ascending order (with distinct values).
+# Prior to being passed to your function, nums is possibly rotated at an unknown pivot index k (1 <= k < nums.length)
+# such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed).
+# For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6,7,0,1,2].
+# Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums,
+# or -1 if it is not in nums.
+# You must write an algorithm with O(log n) runtime complexity.
+nums = [3, 4, 5, 6, 7, 0, 1, 2]
+target = 5
+# Output: 2
+
+# 509. Fibonacci Number
+# The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence,
+# such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+# Given n, calculate F(n).
+n = 20
+# Output: 6765
+
+# 204. Count Primes
+# Given an integer n, return the number of prime numbers that are strictly less than n.
+
+# 0. Given n, return True if n is prime, otherwise return false.
+
+# 204. Count Primes
+# Given an integer n, return the number of prime numbers that are strictly less than n.

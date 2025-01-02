@@ -1,4 +1,7 @@
 # 0. Dijkstra's Algorithm
+# Implement Dijkstra's algorithm to find the shortest path between two nodes in a graph.
+# The graph is represented as an adjacency matrix and the algorithm should return a dictionary of
+# keys as nodes and values as the shortest distance from the start node to that node.
 import heapq
 
 

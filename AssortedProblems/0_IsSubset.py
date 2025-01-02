@@ -1,3 +1,4 @@
+# 0. Is Subset
 # Given two strings, a and b, return True if a is a subset of b, otherwise return False.
 
 from collections import Counter
@@ -22,5 +23,6 @@ def is_subset(a, b):
 
 a = "3 1 9 9"
 b = "5 0 7 9 4 1 3 9 6"
+# Output: True
 
 print(is_subset(a, b))
