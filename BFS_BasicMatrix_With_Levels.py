@@ -12,10 +12,10 @@ class Solution:
 
         # adjacent cells
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-        queue = deque([(0, 0)])
-        # if its been in the queue, it's been seen
-        seen = {(0, 0)}
+        queue = deque([(0, 0)])  # (x, y)
+        seen = {(0, 0)}  # (x, y)
         steps = 0
+
         while queue:
             # do level work starting here
             num_coords_in_queue = len(queue)
@@ -25,7 +25,7 @@ class Solution:
                 if matrix[row][col] == target:
                     return (row, col, steps)
                 for dx, dy in directions:
-                    adj_row, adj_col = row + dy, col + dx
+                    adj_row, adj_col = row + dx, col + dy
                     if valid(adj_row, adj_col) and (adj_row, adj_col) not in seen:
                         seen.add((adj_row, adj_col))
                         queue.append((adj_row, adj_col))
@@ -34,14 +34,16 @@ class Solution:
         return (-1, -1, -1)
 
 
-target = 3
 matrix = [
     [1, 15, 0, 16, 5],
     [13, 19, 4, 12, 2],
     [8, 17, 11, 6, 9],
     [14, 7, 10, 18, 3],
 ]
+
+target = 3
 # Output: (3, 4, 7)
+target = 1
 
 sol = Solution()
 print(sol.findCoordinates(matrix, target))
