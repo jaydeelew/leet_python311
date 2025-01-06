@@ -23,15 +23,43 @@ def isSubsequence(s, t):
     return False
 
 
-# s = "abc"
-# t = "ahbgdc"
-# Output: True
+def isSubsequence_2(s, t):
+    # Early return if s is an empty set which is always a subset.
+    if len(s) == 0:
+        return True
+
+    # Early return if t is shorter than s.
+    if len(t) < len(s):
+        return False
+
+    i = j = 0
+    while i < len(s) and j < len(t):
+        if s[i] == t[j]:
+            i += 1
+        j += 1
+    return i == len(s)
+
+
+def isSubsequence_3(s, t):
+    iter_t = iter(t)
+    # For each char in s, next(iter_t) is called until there is either a match
+    # with char, which will pause iteration and continue to the next char, or until iter_t
+    # raises a StopIteration exception when it reached the end of t.
+    # If all chars in s are found, True is returned, otherwise False.
+    return all(char in iter_t for char in s)
+
+
+s = "abc"
+t = "ahbgdc"
+Output: True
 
 # s = "axc"
 # t = "ahbgdc"
 # Output: False
 
-s = ""
-t = "gfegee"
+# s = ""
+# t = "gfegee"
 
 print(isSubsequence(s, t))
+print(isSubsequence_2(s, t))
+print(isSubsequence_3(s, t))

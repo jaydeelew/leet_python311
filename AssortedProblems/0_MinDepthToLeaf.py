@@ -1,24 +1,30 @@
+# 0. Minimum Depth to Leaf
+# Given a graph in the form of an adjacency list and a starting node,
+# find the minimum depth to a leaf node.
+# The function should work for directed and undirected graphs.
+# It should return -1 if the graph contains no leaf nodes.
+
 from collections import deque
 
 
-def min_depth_to_leaf(adj_list, root):
+def minDepthToLeaf(adj_list, start_node):
 
-    # if root is not in the list or there are no nodes
-    if root not in adj_list or not adj_list:
+    # if start_node is not in the list or there are no nodes
+    if start_node not in adj_list or not adj_list:
         return -1
 
-    # if root is a leaf (has no children)
-    if not adj_list[root]:
+    # if start_node is a leaf (has no children)
+    if not adj_list[start_node]:
         return 0
 
-    q = deque([root])
-    seen = {root}
+    q = deque([start_node])
+    seen = {start_node}
     depth = 0
     directed_graph = False
 
-    if len(adj_list[root]) > 0:
-        first_neighbor = adj_list[root][0]
-        if root not in adj_list[first_neighbor]:
+    if len(adj_list[start_node]) > 0:
+        first_neighbor = adj_list[start_node][0]
+        if start_node not in adj_list[first_neighbor]:
             directed_graph = True
 
     while q:
@@ -74,8 +80,14 @@ undirected = {
     12: [5],
 }  # Output: 2
 
-only_root = {0: []}  # Output: 0
+only_start_node = {0: []}  # Output: 0
 empty = {}  # Output: -1
-cycle = {0: [1], 1: [2], 2: [0]}  # Output: -1
+cycle_directed = {0: [1], 1: [2], 2: [0]}  # Output: -1
+cycle_undirected = {0: [1, 2], 1: [0, 2], 2: [0, 1]}  # Output: -1
 
-print(min_depth_to_leaf(undirected, 0))
+print(minDepthToLeaf(directed, 0))
+print(minDepthToLeaf(undirected, 0))
+print(minDepthToLeaf(only_start_node, 0))
+print(minDepthToLeaf(empty, 0))
+print(minDepthToLeaf(cycle_directed, 0))
+print(minDepthToLeaf(cycle_undirected, 0))

@@ -535,10 +535,21 @@ target = 5
 n = 20
 # Output: 6765
 
-# 204. Count Primes
-# Given an integer n, return the number of prime numbers that are strictly less than n.
-
 # 0. Given n, return True if n is prime, otherwise return false.
 
 # 204. Count Primes
 # Given an integer n, return the number of prime numbers that are strictly less than n.
+
+# 1143. Longest Common Subsequence
+# Given two strings text1 and text2, return the length of their longest common subsequence.
+# If there is no common subsequence, return 0.
+# A subsequence of a string is a new string generated from the original string with some
+# characters (can be none) deleted without changing the relative order of the remaining characters.
+# For example, "ace" is a subsequence of "abcde".
+# A common subsequence of two strings is a subsequence that is common to both strings.
+s1 = "ABCBDAB"
+s2 = "BDCABC"
+# Output: 4
+
+# 0. Reverse String
+# Given a string, reverse the string and return the reversed string.
