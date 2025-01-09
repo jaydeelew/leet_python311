@@ -1,5 +1,6 @@
-# 199. Given the root of a binary tree, imagine yourself standing on the right side of it.
-# Return the values of the nodes you can see ordered from top to bottom.
+# 199. Binary Tree Right Side View
+# Given the root of a binary tree, imagine yourself standing on the right side of it,
+# return the values of the nodes you can see ordered from top to bottom.
 from typing import Optional
 from collections import deque
 
@@ -17,16 +18,15 @@ class BinaryBFS:
             return []
         ans = []
         queue = deque([root])
+
         while queue:
             num_of_nodes_this_level = len(queue)
-            # do some logic here for the current level
+            # Append the value of the last node in this level
             ans.append(queue[-1].val)
 
             for _ in range(num_of_nodes_this_level):
                 cur_node = queue.popleft()
-                # do some logic here on the current node
 
-                # put the next level onto the queue
                 if cur_node.left:
                     queue.append(cur_node.left)
                 if cur_node.right:

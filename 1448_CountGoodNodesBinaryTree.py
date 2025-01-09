@@ -1,4 +1,5 @@
-# 1448. Given the root of a binary tree, find the number of nodes that are good. A node is good if the path between the root
+# 1448. Count Good Nodes in Binary Tree
+# Given the root of a binary tree, find the number of nodes that are good. A node is good if the path between the root
 # and the node has no nodes with a greater value.
 from typing import Optional
 

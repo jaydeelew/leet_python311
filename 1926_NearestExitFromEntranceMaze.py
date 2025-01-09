@@ -1,4 +1,5 @@
-# 1926. You are given an m x n matrix maze (0-indexed) with empty cells (represented as '.')
+# 1926. Nearest Exit from Entrance in Maze
+# You are given an m x n matrix maze (0-indexed) with empty cells (represented as '.')
 # and walls (represented as '+'). You are also given the entrance of the maze,
 # where entrance = [entrancerow, entrancecol] denotes the row and column of the cell you are initially standing at.
 # In one step, you can move one cell up, down, left, or right. You cannot step into a cell with a wall,

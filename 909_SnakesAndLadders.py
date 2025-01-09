@@ -1,4 +1,5 @@
-# 909. You are given an n x n integer matrix board where the cells are labeled from 1 to n^2 in a Boustrophedon style
+# 909. Snakes and Ladders
+# You are given an n x n integer matrix board where the cells are labeled from 1 to n^2 in a Boustrophedon style
 # starting from the bottom left of the board (i.e. board[n - 1][0]) and alternating direction each row.
 # You start on square 1 of the board. In each move, starting from square curr, do the following:
 # Choose a destination square next with a label in the range [curr + 1, min(curr + 6, n^2)].
@@ -14,7 +15,6 @@
 # For example, suppose the board is [[-1,4],[-1,3]], and on the first move, your destination square is 2.
 # You follow the ladder to square 3, but do not follow the subsequent ladder to 4.
 # Return the least number of moves required to reach the square n^2. If it is not possible to reach the square, return -1.
-
 from collections import deque
 
 

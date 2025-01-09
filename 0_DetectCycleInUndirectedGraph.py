@@ -1,4 +1,9 @@
-def is_cyclic(graph):
+# 0. Detect Cycle Undirected Graph
+# Given an undirected graph in the form of an adjacency list and a starting node,
+# return True if the graph contains a cycle, otherwise False.
+
+
+def detectCycle(graph):
     def dfs(node, parent):
         seen.add(node)
         for neighbor in graph[node]:
@@ -17,6 +22,6 @@ def is_cyclic(graph):
     return False
 
 
-# Example usage:
 graph = {0: [1, 2], 1: [0, 2], 2: [0, 1], 3: [4], 4: [3]}  # Graph with a cycle (0 <-> 1 <-> 2 <-> 0)
-print("Graph has a cycle:", is_cyclic(graph))
+# graph = {0: [1, 2], 1: [0], 2: [0], 3: [4], 4: [3]}  # Graph without a cycle (0 <-> 1 <-> 2 <-> 3)
+print("Graph has a cycle:", detectCycle(graph))

@@ -1,4 +1,5 @@
-# 2101. You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt.
+# 2101. Detonate the Maximum Bombs
+# You are given a list of bombs. The range of a bomb is defined as the area where its effect can be felt.
 # This area is in the shape of a circle with the center as the location of the bomb.
 # The bombs are represented by a 0-indexed 2D integer array bombs where bombs[i] = [xi, yi, ri].
 # xi and yi denote the X-coordinate and Y-coordinate of the location of the ith bomb, whereas ri denotes the radius of its range.
