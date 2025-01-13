@@ -3,32 +3,40 @@
 # return the maximum depth of the graph from starting node to a leaf.
 
 
-# def max_depth(adj_list, start_node):
-#     def dfs(node):
-#         m_depth = 0
+def maxDepth(adj_list, node):
+    max_depth = 0
 
-#         for neighbor in adj_list[node]:
-#             # the plus one counts the edge to the neighbor
-#             m_depth = max(m_depth, dfs(neighbor) + 1)
+    for neighbor in adj_list[node]:
+        # The plus one counts the edge to the neighbor.
+        # Since a leaf node has no neighbors, it will return 0 edges.
+        max_depth = max(max_depth, maxDepth(adj_list, neighbor) + 1)
 
-#         return m_depth
-
-#     return dfs(start_node)
+    return max_depth
 
 
-def max_depth(adj_list, node):
-    # or part: if leaf node (empty neighbor list)
-    if node not in adj_list or not adj_list[node]:
-        return 0
-    return 1 + max(max_depth(adj_list, neighbor) for neighbor in adj_list[node])
+# def maxDepth(adj_list, node):
+#     # if tree node
+#     if not adj_list[node]:
+#         return 0
+#     return 1 + max(maxDepth(adj_list, neighbor) for neighbor in adj_list[node])
 
 
-adj_list = {0: [2, 3], 1: [], 2: [], 3: [1]}
-# start = 0
+graph1 = {0: [1, 3], 1: [2], 2: [], 3: [4, 5], 4: [], 5: []}
+start1 = 0
+print(maxDepth(graph1, start1))
 # Output: 2
 
-# adj_list = {0: [1, 3], 1: [2], 2: [6], 3: [4, 5], 4: [], 5: [], 6: []}
-start = 0
+graph2 = {0: [1], 1: [2, 3, 4], 2: [], 3: [], 4: [5], 5: []}
+start2 = 0
+print(maxDepth(graph2, start2))
 # Output: 3
 
-print(max_depth(adj_list, start))
+graph3 = {0: [1], 1: [2], 2: [3], 3: []}
+start3 = 0
+print(maxDepth(graph3, start3))
+# Output: 3
+
+graph4 = {0: []}
+start4 = 0
+print(maxDepth(graph4, start4))
+# Output: 0

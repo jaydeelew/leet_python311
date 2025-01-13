@@ -1,3 +1,6 @@
+# 0. List Graph Levels
+# Given a directed or undirected graph in the form of an adjacency list,
+# return a list of lists of elements at each level.
 from collections import deque
 
 
@@ -51,5 +54,5 @@ directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: [
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
 # Output Undirected Graph = [[0], [1, 2, 5, 7], [3, 4], [6]]
 
-print(list_levels(directed, 0))
-print(list_levels(undirected, 0))
+print(listLevels(directed, 0))
+print(listLevels(undirected, 0))
