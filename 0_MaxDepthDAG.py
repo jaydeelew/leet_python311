@@ -16,10 +16,11 @@
 #     return dfs(start_node)
 
 
-def max_depth(adj_list, root):
-    if root not in adj_list or not adj_list[root]:  # if leaf node
+def max_depth(adj_list, node):
+    # or part: if leaf node (empty neighbor list)
+    if node not in adj_list or not adj_list[node]:
         return 0
-    return 1 + max(max_depth(adj_list, neighbor) for neighbor in adj_list[root])
+    return 1 + max(max_depth(adj_list, neighbor) for neighbor in adj_list[node])
 
 
 adj_list = {0: [2, 3], 1: [], 2: [], 3: [1]}
