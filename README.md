@@ -2,4 +2,4 @@ The code contained herein are my solutions to various LeetCode problems that wer
 
 Each file contains the problem number (if provided by the course), the problem definition, my commented solutions (usually), inputs, and expected outputs. There are occasions where I had to view the provided solution after taking too long to come up with one on my own. In these cases, I understood the solution and commented the code for future reference. There are also some examples provided by the tutorial which I likewise included and commented.
 
-Files are preceded by a 0 if they are not directly a LeetCode problem, but are included as either examples given in the tutorial, or created by me to help improve my understanding of an algorithm. The actual LeetCode problems are preceded by their problem number.
+Files are preceded by a 0 if they are not directly a LeetCode problem, but are included as either examples given in the tutorial, or created by me to help improve my understanding of an algorithm. The actual LeetCode problems are preceded by their problem number (or no number if I have not yet modified the file name).
