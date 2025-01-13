@@ -28,5 +28,11 @@ pip-delete-this-directory.txt
 # Virual Environment
 venv/
 
+Testing/
 Test.py
 Test2.py
+
+Sorts/
+
+.env
+.coverage

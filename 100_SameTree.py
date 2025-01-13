@@ -1,4 +1,5 @@
-# 100. Given the roots of two binary trees p and q, check if they are the same tree.
+# 100. Same Tree
+# Given the roots of two binary trees p and q, check if they are the same tree.
 # Two binary trees are the same tree if they are structurally identical and the nodes have the same values.
 class TreeNode:
     def __init__(self, val, left=None, right=None):

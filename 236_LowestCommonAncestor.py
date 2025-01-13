@@ -1,4 +1,5 @@
-# 236. Given the root of a binary tree and two nodes p and q that are in the tree, return the lowest common ancestor (LCA)
+# 236. Lowest Common Ancestor of a Binary Tree
+# Given the root of a binary tree and two nodes p and q that are in the tree, return the lowest common ancestor (LCA)
 # of the two nodes. The LCA is the lowest node in the tree that has both p and q as descendants
 # (note: a node is a descendant of itself).
 from typing import Optional

@@ -1,5 +1,6 @@
-# find the maximum depth of a leaf in a directed acyclic graph (DAG) from a given root
-# where a node may have more that one incoming edge
+# 0. Max Depth DAG Maybe Multiple Parents
+# Find the maximum depth of a leaf in a directed acyclic graph (DAG) from a given root
+# where a node may have more that one incoming edge.
 def max_depth(adj_list, root):
     def dfs(node, depth):
         if depth > seen.get(node, -1):
@@ -14,8 +15,8 @@ def max_depth(adj_list, root):
     return dfs(root, 0)
 
 
-# find the maximum sum of nodes to a leaf in a directed acyclic graph (DAG) from a given root
-# where a node may have more that one incoming edge
+# Find the maximum sum of nodes to a leaf in a directed acyclic graph (DAG) from a given root
+# where a node may have more that one incoming edge.
 def max_sum(adj_list, root):
     def dfs(node, current_sum):
         if current_sum + node > seen.get(node, float("-inf")):
@@ -31,12 +32,12 @@ def max_sum(adj_list, root):
     return dfs(root, 0)
 
 
-graph = {0: [1, 2], 1: [3], 2: [1], 3: []}
+# graph = {0: [1, 2], 1: [3], 2: [1, 3], 3: []}
 root = 0
 # Output: 3
 # Output: 6
 
-# graph = {0: [1, 2, 3, 8], 1: [2], 2: [3], 3: [4], 4: [], 8: [4]}
+graph = {0: [1, 2, 3, 8], 1: [2], 2: [3], 3: [4], 4: [], 8: [4]}
 # root = 0
 # Output: 4
 # Output: 12
