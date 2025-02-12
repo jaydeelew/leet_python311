@@ -1,4 +1,4 @@
-# A monotonically increasing stack
+# 0. Monotonically Increasing Stack
 
 
 class IncreasingStack:

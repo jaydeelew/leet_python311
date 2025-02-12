@@ -14,7 +14,7 @@ print("List reversed in place:", original_list)
 lst = [1, 2, 3, 4, 5]
 print("List reversed with with slicing:", lst[::-1])
 
-# Merge two sorted lists
+# Merge two sorted lists in O(n + m) time
 list1 = [1, 3, 5, 7, 11]
 list2 = [4, 6, 11, 12]
 print("Merged sorted lists:", list1 + list2)

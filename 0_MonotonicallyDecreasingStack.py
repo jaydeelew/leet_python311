@@ -1,4 +1,4 @@
-# A monotonically decreasing stack
+# 0. Monotonically Decreasing Stack
 
 
 class DescreasingStack:
