@@ -6,23 +6,21 @@
 import heapq
 
 
-class Solution:
-    def connectSticks(self, sticks: list[int]) -> int:
-        heapq.heapify(sticks)
-        len_sticks = len(sticks)
-        cost = 0
+def connectSticks(sticks: list[int]) -> int:
+    heapq.heapify(sticks)
+    len_sticks = len(sticks)
+    cost = 0
 
-        # length of sticks minus one to leave one stick remaining
-        for _ in range(len_sticks - 1):
-            new_stick = heapq.heappop(sticks) + heapq.heappop(sticks)
-            cost += new_stick
-            heapq.heappush(sticks, new_stick)
+    # length of sticks minus one to leave one stick remaining
+    for _ in range(len_sticks - 1):
+        new_stick = heapq.heappop(sticks) + heapq.heappop(sticks)
+        cost += new_stick
+        heapq.heappush(sticks, new_stick)
 
-        return cost
+    return cost
 
 
 sticks = [1, 8, 3, 5]
 # Output: 30
 
-sol = Solution()
-print(sol.connectSticks(sticks))
+print(connectSticks(sticks))

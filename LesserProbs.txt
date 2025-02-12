@@ -1,0 +1,170 @@
+# Reverse a list in place
+original_list = [1, 2, 3, 4, 5]
+
+# Reverse a list by creating a new list
+lst = [1, 2, 3, 4, 5]
+
+# Merge two lists
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+
+# Count the occurrences of an element in a list
+numbers = [1, 2, 2, 3, 2, 4, 5]
+
+# Remove duplicates from a list
+duplicates = [1, 2, 2, 3, 3, 4, 5, 5]
+
+# Find the common elements between two lists
+list_a = [1, 2, 3, 4]
+list_b = [3, 4, 5, 6]
+
+# Find the union of elements between two lists
+list_x = [1, 2, 3]
+list_y = [3, 4, 5]
+
+# Sort a list of dictionaries by a key
+dict_list = [{"name": "Bob", "age": 25}, {"name": "Alice", "age": 22}]
+
+# Flatten a nested list
+nested = [[1, 2], [3, 4], [5, 6]]
+
+# Generate a list of even numbers
+# Example range: 0 to 10
+
+# Create a list of random numbers
+# Example: 5 random numbers between 1 and 100
+
+# Sum all elements in a list
+numbers = [1, 2, 3, 4, 5]
+
+# Find the product of all elements in a list
+numbers = [1, 2, 3, 4]
+
+# Concatenate two lists
+list1 = [1, 2]
+list2 = [3, 4]
+
+# Generate a list of squares
+# Example range: 0 to 4
+
+# Display "Loading .", "Loading ..", "Loading ..." one the same line in one second intervals
+
+# Filter even and odd numbers from a list
+numbers = [1, 2, 3, 4, 5, 6]
+
+# Find the index of an element in a list
+items = ["apple", "banana", "orange"]
+
+# Create a list of prime numbers
+# Example range: 2 to 19
+
+# Remove an element from a list by value
+fruits = ["apple", "banana", "orange"]
+
+# Insert an element at a specific position in a list
+numbers = [1, 2, 4]
+
+# Rotate a list left or right
+numbers = [1, 2, 3, 4, 5]
+
+# Check if all elements in a list are unique
+numbers = [1, 2, 3, 4, 5]
+
+# Create a dictionary from two lists
+keys = ["a", "b", "c"]
+values = [1, 2, 3]
+
+# Swap keys and values in a dictionary
+original = {"a": 1, "b": 2}
+
+# Merge two dictionaries
+dict1 = {"a": 1, "b": 2}
+dict2 = {"c": 3, "d": 4}
+
+# Remove a key from a dictionary
+data = {"a": 1, "b": 2, "c": 3}
+
+# Check if a key exists in a dictionary
+data = {"name": "John", "age": 30}
+
+# Find the maximum and minimum values in a dictionary
+scores = {"John": 85, "Alice": 92, "Bob": 78}
+
+# Sort a dictionary by keys or values
+data = {"b": 2, "a": 1, "c": 3}
+
+# Count the occurrences of characters in a string
+text = "hello"
+
+# Reverse a string
+text = "hello"
+
+# Check if a string is a palindrome
+text = "radar"
+
+# Find the length of a string
+text = "Python"
+
+# Replace a substring in a string
+text = "Hello World"
+
+# Remove whitespace from a string
+text = "  Hello  World  "
+
+# Split a string into a list of words
+text = "Hello World Python"
+
+# Join a list of words into a string
+words = ["Hello", "World"]
+
+# Convert a string to uppercase or lowercase
+text = "Hello"
+
+# Find the first non-repeating character in a string
+text = "leetcode"
+
+# Check if a string contains a substring
+text = "Hello World"
+
+# Count vowels and consonants in a string
+text = "Hello"
+
+# Reverse the words in a string
+text = "Hello World"
+
+# Generate a random string
+# Example: 5 random letters
+
+# Check if a string starts or ends with a substring
+text = "Hello World"
+
+# Format a string using placeholders
+name = "John"
+age = 30
+
+# Find the frequency of words in a string
+text = "hello world hello python"
+
+# Extract numbers from a string
+text = "abc123def456"
+
+# Check if a string contains only digits
+text = "12345"
+
+# Create a set from a list
+numbers = [1, 2, 2, 3, 3, 4]
+
+# Add and remove elements in a set
+numbers = {1, 2, 3}
+
+# Find the union of two sets
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+
+# Find the intersection of two sets
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+
+# Find the difference between two sets
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
