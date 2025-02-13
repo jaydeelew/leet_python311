@@ -11,7 +11,7 @@ class Timer:
 
     def __init__(self, precision=8):
         self._start_time = None
-        # self.task = None
+        self.task = None
         self.precision = precision
 
     def start(self, task="this run"):

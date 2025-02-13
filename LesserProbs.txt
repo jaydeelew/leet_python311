@@ -22,17 +22,15 @@ list_b = [3, 4, 5, 6]
 list_x = [1, 2, 3]
 list_y = [3, 4, 5]
 
-# Sort a list of dictionaries by a key
+# Sort a list of dictionaries by a common key
 dict_list = [{"name": "Bob", "age": 25}, {"name": "Alice", "age": 22}]
 
 # Flatten a nested list
 nested = [[1, 2], [3, 4], [5, 6]]
 
-# Generate a list of even numbers
-# Example range: 0 to 10
+# Generate a list of even numbers in range: 0 to 10
 
-# Create a list of random numbers
-# Example: 5 random numbers between 1 and 100
+# Create a list of random numbers 5 random numbers between 1 and 100
 
 # Sum all elements in a list
 numbers = [1, 2, 3, 4, 5]
@@ -44,8 +42,7 @@ numbers = [1, 2, 3, 4]
 list1 = [1, 2]
 list2 = [3, 4]
 
-# Generate a list of squares
-# Example range: 0 to 4
+# Generate a list of squares in range: 0 to 4
 
 # Display "Loading .", "Loading ..", "Loading ..." one the same line in one second intervals
 
@@ -55,8 +52,7 @@ numbers = [1, 2, 3, 4, 5, 6]
 # Find the index of an element in a list
 items = ["apple", "banana", "orange"]
 
-# Create a list of prime numbers
-# Example range: 2 to 19
+# Create a list of prime numbers in range: 2 to 19
 
 # Remove an element from a list by value
 fruits = ["apple", "banana", "orange"]
@@ -90,7 +86,7 @@ data = {"name": "John", "age": 30}
 # Find the maximum and minimum values in a dictionary
 scores = {"John": 85, "Alice": 92, "Bob": 78}
 
-# Sort a dictionary by keys or values
+# Sort a dictionary by keys and then values
 data = {"b": 2, "a": 1, "c": 3}
 
 # Count the occurrences of characters in a string
@@ -132,8 +128,7 @@ text = "Hello"
 # Reverse the words in a string
 text = "Hello World"
 
-# Generate a random string
-# Example: 5 random letters
+# Generate a random string of 5 random letters
 
 # Check if a string starts or ends with a substring
 text = "Hello World"
@@ -168,3 +163,15 @@ set2 = {3, 4, 5}
 # Find the difference between two sets
 set1 = {1, 2, 3}
 set2 = {3, 4, 5}
+
+# Display "Loading .", "Loading ..", "Loading ..." one the same line in one second intervals
+
+# Given a list of keyword arguments to a function, have the function print one of the keyword arguments
+a="alpha", b="beta", c="delta"
+
+# Given a list of positional arguments to a function, have the function print the second argument
+"alpha", "beta", "delta"
+
+# Build a string from a list of characters
+arr = ["h", "e", "l", "l", "o"]
+

@@ -1,8 +1,8 @@
-from Timer import Timer
-from functools import cache
+# 0. Factorial
+# Given a positive integer n, write a function to return the factorial of n.
 
 
-@cache
+# Recursive
 def factorial1(n):
     if n == 0 or n == 1:
         return 1
@@ -10,6 +10,7 @@ def factorial1(n):
     return factorial1(n - 1) * n
 
 
+# Iterative
 def factorial2(n):
     product = 1
     for i in range(1, n + 1):
@@ -18,12 +19,5 @@ def factorial2(n):
     return product
 
 
-t = Timer("recursive")
-t.start()
-factorial1(500)
-t.stop()
-
-t = Timer("iterative")
-t.start()
-factorial2(500)
-t.stop()
+print(factorial1(20))
+print(factorial2(20))

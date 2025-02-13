@@ -251,6 +251,36 @@ set1 = {1, 2, 3}
 set2 = {3, 4, 5}
 print("Difference between sets:", set1 - set2)
 
+
+# Given a list of keyword arguments to a function, have the function print one of the keyword arguments
+# a="alpha", b="beta", c="delta"
+def key_word_args(**kwargs):
+    # for keyword, value in kwargs.items():
+    #     print("The value of keyword", keyword, "is", value)
+    print(kwargs["c"])
+
+
+key_word_args(a="alpha", b="beta", c="delta")
+
+
+# Given a list of positional arguments to a function, have the function print the second argument
+# "alpha", "beta", "delta"
+def args(*args):
+    # for value in args:
+    #     print("The arg is", value)
+    print(args[1])
+
+
+args("alpha", "beta", "delta")
+
+# Build a string from a list of characters
+arr = ["h", "e", "l", "l", "o"]
+print("".join(arr))
+
+# Split a string up into separate characters in an array
+str = "hello"
+print(list(str))
+
 # Display "Loading .", "Loading ..", "Loading ..." one the same line in one second intervals
 for i in range(1, 4):
     print(f"Loading {'.' * i}", end="\r")
