@@ -1,14 +1,15 @@
 # 78. Subsets
-# Given an integer array nums of unique elements, return all possible
-# subsets (the power set).
+# Given an integer array nums of unique elements, return all possible subsets (the power set).
 # The solution set must not contain duplicate subsets. Return the solution in any order.
 
 
 def subsets(nums):
     def bt(start_index, curr_combo):
-        # we need a copy and not a reference
-        # since we don't want the appended path(s) in ans to be modified
+        # We need a copy and not a reference
+        # since we don't want the appended path(s) in ans to be modifieda.
         ans.append(curr_combo[:])
+        # We don't want to return here since recursion would never occur
+        # since there is no condition that would skip over the return statement.
 
         for i in range(start_index, len(nums)):
             curr_combo.append(nums[i])

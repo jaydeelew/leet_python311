@@ -615,6 +615,16 @@ class Node:
         self.val = val
         self.next = next
         self.random = random
+def printLinkedList(head):
+    ans = []
+    curr_node = head
+    while curr_node:
+        randomPtr = None
+        if curr_node.random:
+            randomPtr = curr_node.random.val
+        ans.append([curr_node.val, randomPtr])
+        curr_node = curr_node.next
+    print(ans)
 # Creating a linked list: 7 -> 13 -> 11 -> 10 -> 1
 # with random pointers: [7,null] -> [13,7] -> [11,1] -> [10,11] -> [1,7]
 one = Node(1)

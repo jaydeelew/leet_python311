@@ -122,11 +122,18 @@ print("Dictionary from two lists:", dict(zip(keys, values)))
 original = {"a": 1, "b": 2, "c": 3}
 print("Dictionary with swapped keys and values:", {v: k for k, v in original.items()})
 
-# Merge two dictionaries
+# Merge two dictionaries with the second dictionary overwriting the values of the first
+# if there are dubplicate keys
 dict1 = {"a": 1, "b": 2, "c": 5}
 dict2 = {"c": 3, "d": 4}
 print("Merged dictionaries (method 1):", {**dict1, **dict2})
 print("Merged dictionaries (method 2):", dict1 | dict2)
+
+# Find the intersection of two dictionaries while retaining all the values in any duplicated keys
+dict1 = {"a": 1, "b": 2, "c": 3}
+dict2 = {"b": 20, "c": 30, "d": 40}
+print({key: (dict1[key], dict2[key]) for key in dict1 if key in dict2})
+# Output: {'b': (2, 20), 'c': (3, 30)}
 
 # Remove a key from a dictionary
 data = {"a": 1, "b": 2, "c": 3}

@@ -175,3 +175,6 @@ a="alpha", b="beta", c="delta"
 # Build a string from a list of characters
 arr = ["h", "e", "l", "l", "o"]
 
+# Find the intersection of two dictionaries while retaining all the values in any duplicated keys
+dict1 = {"a": 1, "b": 2, "c": 3}
+dict2 = {"b": 20, "c": 30, "d": 40}

@@ -25,23 +25,31 @@ class Node:
 
 
 def copyRandomList(head):
-    oldToCopy = {None: None}
+    # We include None:None for the cases when origToCopy is accessed via curr.next and curr.random below.
+    origToCopy = {None: None}
 
     curr = head
 
+    # Build origToCopy dictionary with key as original node and value as new node
     while curr:
+        # Make a new node object with same value as the original node without the next and random pointers.
+        # We don't include the current pointers of next and random since they point to the original linked list nodes.
         copy = Node(curr.val)
-        oldToCopy[curr] = copy
+        # The curr node acts as the key in oldCopy and the value is the new copy.
+        origToCopy[curr] = copy
         curr = curr.next
 
+    # Reset curr to head
     curr = head
     while curr:
-        copy = oldToCopy[curr]
-        copy.next = oldToCopy[curr.next]
-        copy.random = oldToCopy[curr.random]
+        # Make sure to asssign 'copy' the copy from origToCopy.
+        copy = origToCopy[curr]
+        # The copy's next and random pointers will point the new copies of the next and random nodes.
+        copy.next = origToCopy[curr.next]
+        copy.random = origToCopy[curr.random]
         curr = curr.next
 
-    return oldToCopy[head]
+    return origToCopy[head]
 
 
 def printLinkedList(head):
@@ -56,7 +64,6 @@ def printLinkedList(head):
     print(ans)
 
 
-# Test case setup
 # Creating a linked list: 7 -> 13 -> 11 -> 10 -> 1
 # with random pointers: [7,null] -> [13,7] -> [11,1] -> [10,11] -> [1,7]
 one = Node(1)

@@ -9,6 +9,7 @@ def combine(n, k):
 
         if len(curr_combo) == k:
             ans.append(curr_combo[:])
+            return
 
         for i in range(si, n):
             curr_combo.append(i + 1)
@@ -22,9 +23,13 @@ def combine(n, k):
 
 n = 4
 k = 2
-# Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+# Output: [[1, 2], [1, 3], [1, 4], [2, 3], [2, 4], [3, 4]]
 # Explanation: There are 4 choose 2 = 6 total combinations.
 
+# n = 3
+# k = 3
+# Output: [[1,2,3]]
+# Explanation: There is only one possible combination since we need to choose all 3 numbers from a set of 3.
 
 # n = 1
 # k = 1
