@@ -23,7 +23,6 @@ class Suit(Enum):
 
 # The values here do matter since they are chosen to correspond to the card values.
 class CardValue(Enum):
-    ACE = 1
     TWO = 2
     THREE = 3
     FOUR = 4
@@ -36,6 +35,7 @@ class CardValue(Enum):
     JACK = 11
     QUEEN = 12
     KING = 13
+    ACE = 14
 
 
 class PlayingCard(Card):
@@ -126,7 +126,7 @@ class Hand:
         return self.hand_value < other.hand_value
 
 
-class GameHand(Hand):
+class PokerHand(Hand):
     def __init__(self) -> None:
         self.__cards: list[Card] = []
 
@@ -137,7 +137,7 @@ class GameHand(Hand):
     def get_hand(self):
         return self.__cards
 
-    def __lt__(self, other: "GameHand | Any") -> bool:
+    def __lt__(self, other: "PokerHand | Any") -> bool:
         a_cards_objs = self.__cards
         b_cards_objs = other.get_hand
         a_values = [card.card_value for card in a_cards_objs]
@@ -162,7 +162,7 @@ class GameHand(Hand):
 class Game:
     def __init__(self) -> None:
         self.__cards: list[Card] = []
-        self.__hands: list[GameHand] = []
+        self.__hands: list[PokerHand] = []
 
     def add_card(self, suit: str, value: str) -> None:
         self.__cards.append(PlayingCard(suit, value))
@@ -177,14 +177,14 @@ class Game:
         return self.__cards[card_a] > self.__cards[card_b]
 
     def list_cards(self) -> None:
-        for number, card in enumerate(self.__cards):
+        for number, _ in enumerate(self.__cards):
             print(f"{number}: {self.card_string(number)}")
 
     def add_joker(self, color: str) -> None:
         self.__cards.append(Joker(color))
 
     def add_hand(self, card_indices: list[int]) -> None:
-        new_hand = GameHand()
+        new_hand = PokerHand()
         for card_id in card_indices:
             new_hand.add_card(self.__cards[card_id])
         self.__hands.append(new_hand)
