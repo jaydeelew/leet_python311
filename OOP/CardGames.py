@@ -1,24 +1,13 @@
+"""
+TODO:
+- Limit number of players
+- Add a draw option
+"""
+
 from enum import Enum, auto
 from typing import Any
-
-
-class Card:
-    @property
-    def card_value(self) -> int:
-        raise NotImplementedError()
-
-    def __lt__(self, other):
-        return self.card_value < other.card_value
-
-
-# We use auto here since the order and values don't matter.
-# The values are only This is needed to distinguish the suits.
-class Suit(Enum):
-    CLUBS = auto()  # 1
-    DIAMONDS = auto()  # 2
-    HEARTS = auto()  # 3
-    SPADES = auto()  # 4
-    JOKER = auto()  # 5
+import random
+from collections import Counter
 
 
 # The values here do matter since they are chosen to correspond to the card values.
@@ -38,179 +27,520 @@ class CardValue(Enum):
     ACE = 14
 
 
+# We use auto here since the order and values don't matter.
+# The values are only needed to distinguish the suits.
+class Suit(Enum):
+    CLUBS = auto()  # 1
+    DIAMONDS = auto()  # 2
+    HEARTS = auto()  # 3
+    SPADES = auto()  # 4
+
+
+SUIT_TO_ENUM = {
+    "Clubs": Suit.CLUBS,
+    "Diamonds": Suit.DIAMONDS,
+    "Hearts": Suit.HEARTS,
+    "Spades": Suit.SPADES,
+}
+
+ENUM_TO_SUIT = {v: s for s, v in SUIT_TO_ENUM.items()}
+
+CARD_TO_ENUM = {
+    "Two": CardValue.TWO,
+    "Three": CardValue.THREE,
+    "Four": CardValue.FOUR,
+    "Five": CardValue.FIVE,
+    "Six": CardValue.SIX,
+    "Seven": CardValue.SEVEN,
+    "Eight": CardValue.EIGHT,
+    "Nine": CardValue.NINE,
+    "Ten": CardValue.TEN,
+    "Jack": CardValue.JACK,
+    "Queen": CardValue.QUEEN,
+    "King": CardValue.KING,
+    "Ace": CardValue.ACE,
+}
+
+ENUM_TO_CARD = {v: s for s, v in CARD_TO_ENUM.items()}
+
+
+class Card:
+    @property
+    def get_value(self) -> int:
+        raise NotImplementedError()
+
+    def __lt__(self, other: "Card") -> bool:
+        return self.get_value < other.get_value
+
+
 class PlayingCard(Card):
-    # Maps suit names (str) to Suit enum values
-    # Example: "Clubs" -> Suit.CLUBS (value: 1)
-    # This is needed to find self.__value in __init__
-    SUIT_VALUE = {
-        "Clubs": Suit.CLUBS,
-        "Diamonds": Suit.DIAMONDS,
-        "Hearts": Suit.HEARTS,
-        "Spades": Suit.SPADES,
-    }
-
-    # Maps enum values (Suit) to suit names (str)
-    # Example: Suit.CLUBS -> "Clubs"
-    # This is needed to find suit in __str__
-    VALUE_SUIT = {e: n for n, e in SUIT_VALUE.items()}
-
-    # Maps card values (str) to CardValue enum values
-    # Example: "A" -> CardValue.ACE
-    # This is needed to find self.__value in __init__
-    CODE_CARDVALUE = {
-        "A": CardValue.ACE,
-        # This is a dictionary comprehension that creates mappings from string numbers ("2" through "10")
-        # to their corresponding CardValue enum members. For example, "2" -> CardValue.TWO
-        **{str(i): getattr(CardValue, CardValue(i).name) for i in range(2, 11)},
-        "J": CardValue.JACK,
-        "Q": CardValue.QUEEN,
-        "K": CardValue.KING,
-    }
-
-    # Maps CardValue enum values to card values (str)
-    # Example: CardValue.ACE -> "A"
-    # This is needed to find value in __str__
-    CARDVALUE_CODE = {e: n for n, e in CODE_CARDVALUE.items()}
-
-    def __init__(self, suit: str, value: str):
-        super().__init__()  # Not necessary since super class has no __init__.
-        self.__suit: Suit = self.SUIT_VALUE[suit]
-        self.__value: CardValue = self.CODE_CARDVALUE[value]
+    def __init__(self, cardValue: CardValue, suitValue: Suit):
+        self._card_value = cardValue
+        self._suit_value = suitValue
 
     @property
-    def card_value(self) -> int:
-        return self.__value.value
+    def get_value(self) -> int:
+        return self._card_value
+
+    @property
+    def get_suit(self) -> Suit:
+        return self._suit_value
 
     def __str__(self) -> str:
-        value = self.CARDVALUE_CODE[self.__value]
-        suit = self.VALUE_SUIT[self.__suit]
+        value = ENUM_TO_CARD[self.get_value]
+        suit = ENUM_TO_SUIT[self.get_suit]
         return f"{value} of {suit}"
 
 
-class JokerColor(Enum):
-    RED = auto()
-    BLACK = auto()
-
-
-class Joker(Card):
-    # Maps color names (str) to JokerColor enum values
-    # Example: "Red" -> JokerColor.RED
-    # This is needed to find self.__color in __init__
-    COLORS_TO_ENUMS = {
-        "Red": JokerColor.RED,
-        "Black": JokerColor.BLACK,
-    }
-    # Maps enum values (JokerColor) to color names (str)
-    # Example: JokerColor.RED -> "Red"
-    # This is needed to return the color in __str__
-    ENUMS_TO_COLORS = {e: n for n, e in COLORS_TO_ENUMS.items()}
-
-    def __init__(self, color: str):
-        super().__init__()  # Not necessary since super class has no __init__.
-        self.__color: JokerColor = self.COLORS_TO_ENUMS[color]
-
-    @property
-    def card_value(self):
-        return 14
-
-    def __str__(self) -> str:
-        return f"{self.ENUMS_TO_COLORS[self.__color]} Joker"
-
-
 class Hand:
+    def __init__(self, cards: list[Card]) -> None:
+        self._cards = cards
+        self._hand_value = None
+
     @property
-    def hand_value(self) -> int:
+    def get_hand(self) -> list:
+        raise NotImplementedError()
+
+    @property
+    def hand_value(self):
         raise NotImplementedError()
 
     def __lt__(self, other):
-        return self.hand_value < other.hand_value
+        raise NotImplementedError()
 
 
 class PokerHand(Hand):
-    def __init__(self) -> None:
-        self.__cards: list[Card] = []
+    class PokerHands(Enum):
+        ROYAL_FLUSH = 10
+        STRAIGHT_FLUSH = 9
+        FOUR_OF_A_KIND = 8
+        FULL_HOUSE = 7
+        FLUSH = 6
+        STRAIGHT = 5
+        THREE_OF_A_KIND = 4
+        TWO_PAIR = 3
+        ONE_PAIR = 2
+        HIGH_CARD = 1
 
-    def add_card(self, new_card: Card) -> None:
-        self.__cards.append(new_card)
+    def __init__(self, cards: list[Card]) -> None:
+        super().__init__(cards)
+        self._hand_value = self.best_hand()
 
     @property
-    def get_hand(self):
-        return self.__cards
+    def get_hand(self) -> list:
+        cards = []
+        cards.append(self._hand_value[0].name)
+        for card in self._cards:
+            cards.append(str(card))
+        return cards
 
+    @property
+    def hand_value(self):
+        return self._hand_value
+
+    # This works by comparing the tuple returned by this Pokerhand's _hand_value to another Pokerhand.
     def __lt__(self, other: "PokerHand | Any") -> bool:
-        a_cards_objs = self.__cards
-        b_cards_objs = other.get_hand
-        a_values = [card.card_value for card in a_cards_objs]
-        b_values = [card.card_value for card in b_cards_objs]
-        a_values.sort(reverse=True)
-        b_values.sort(reverse=True)
+        # Determine if the two hands are equal in order of hands.
+        # We need to append .value to self.hand_value[0] since this is an Enum.
+        if self._hand_value[0].value == other._hand_value[0].value:
+            match self._hand_value[0].value:
+                case self.PokerHands.ROYAL_FLUSH.value:
+                    return False
+                case self.PokerHands.STRAIGHT_FLUSH.value:
+                    return self._hand_value[1] < other._hand_value[1]
+                case self.PokerHands.FOUR_OF_A_KIND.value:
+                    return self._hand_value[1] < other._hand_value[1]
+                case self.PokerHands.FULL_HOUSE.value:
+                    if self._hand_value[1] < other._hand_value[1]:
+                        return True
+                    elif self._hand_value[1] > other._hand_value[1]:
+                        return False
+                    # If the three of a kinds are equal, compare the pairs.
+                    elif self._hand_value[2] < other._hand_value[2]:
+                        return True
+                    # If the other pair is <= to this pair return False
+                    return False
+                case self.PokerHands.FLUSH.value:
+                    for i in range(1, 6):
+                        if self._hand_value[i] < other._hand_value[i]:
+                            return True
+                        elif self._hand_value[i] > other._hand_value[i]:
+                            return False
+                    # If all the card values are equal:
+                    return False
+                case self.PokerHands.STRAIGHT.value:
+                    return self._hand_value[1] < other._hand_value[1]
+                case self.PokerHands.THREE_OF_A_KIND.value:
+                    if self._hand_value[1] < other._hand_value[1]:
+                        return True
+                    elif self._hand_value[1] > other._hand_value[1]:
+                        return False
+                    else:
+                        for i in range(2, 4):
+                            if self._hand_value[i] < other._hand_value[i]:
+                                return True
+                            elif self._hand_value[i] > other._hand_value[i]:
+                                return False
+                        # If the remaining card values are equal:
+                        return False
+                case self.PokerHands.TWO_PAIR.value:
+                    if self._hand_value[1] < other._hand_value[1]:
+                        return True
+                    elif self._hand_value[1] > other._hand_value[1]:
+                        return False
+                    # If the higher value pairs are equal, compare the lower value pairs.
+                    elif self._hand_value[2] < other._hand_value[2]:
+                        return True
+                    elif self._hand_value[2] > other._hand_value[2]:
+                        return False
+                    # If both pairs are equal in value, look to the remaining card.
+                    elif self._hand_value[3] < other._hand_value[3]:
+                        return True
+                    # If the remaining card values are equal:
+                    return False
+                case self.PokerHands.ONE_PAIR.value:
+                    if self._hand_value[1] < other._hand_value[1]:
+                        return True
+                    elif self._hand_value[1] > other._hand_value[1]:
+                        return False
+                    # Since the pairs are equal:
+                    else:
+                        for i in range(2, 5):
+                            if self._hand_value[i] < other._hand_value[i]:
+                                return True
+                            elif self._hand_value[i] > other._hand_value[i]:
+                                return False
+                        # If the remaining card values are equal:
+                        return False
+                case self.PokerHands.HIGH_CARD.value:
+                    return self._hand_value[1] < other._hand_value[1]
+        else:
+            return self._hand_value[0].value < other._hand_value[0].value
 
-        i = j = 0
-        while i < len(a_values) and j < len(b_values):
-            if a_values[i] == b_values[j]:
-                i += 1
-                j += 1
-                continue
-            if a_values[i] > b_values[j]:
-                return True
-            else:
-                return False
+    # Best hand returns a tuple of the highest value of the hand.
+    def best_hand(self) -> tuple[PokerHands, int, int, int, int, int]:
+        def check_high_card():
+            return max(values)
 
-        return False
+        def check_one_pair() -> bool:
+            pair_count = 0
+            for val in values_to_counts.values():
+                if val == 2:
+                    pair_count += 1
+            return pair_count == 1
+
+        def check_two_pair() -> bool:
+            pair_count = 0
+            for val in values_to_counts.values():
+                if val == 2:
+                    pair_count += 1
+            return pair_count == 2
+
+        def check_three_kind() -> bool:
+            for val in values_to_counts.values():
+                if val == 3:
+                    return True
+            return False
+
+        def check_straight() -> bool:
+            for i in range(1, len(values)):
+                if values[i] - values[i - 1] != 1:
+                    return False
+            return True
+
+        def check_flush() -> bool:
+            return len(suits) == 1
+
+        def check_full_house() -> bool:
+            return one_pair and three_kind
+
+        def check_four_kind() -> bool:
+            for val in values_to_counts.values():
+                if val == 4:
+                    return True
+            return False
+
+        def check_straight_flush() -> bool:
+            return flush and straight
+
+        def check_royal_flush() -> bool:
+            return straight_flush and high_card == "Ace"
+
+        # A -1 in indexes 1-5 of the return tuple indicates value not used.
+        # Royal Flush does not need any index 1-5.
+        # Four of a Kind places its value at index 1, and the fifth card at index 2.
+        # Straigt Flush, Straight, and High Card place High Card at index 1.
+        # Full House places its Three of a Kind value at index 1, and the pair value at index 2.
+        # Flush places all five card values in descending order in indexes 1-5.
+        # Three of a Kind places its value at index 1, and the remaining card values in descending at index 2 and 3.
+        # Two Pair places its higher value at index 1, and second value at index 2.
+        # Pair places its value at index 1, and the other three value in descending order at indexes 2-4.
+        # and the remaining card in the third int value.
+        def result_tuple(hand: self.PokerHands) -> tuple[self.PokerHands, int, int, int, int, int]:
+            match hand:
+                case self.PokerHands.ROYAL_FLUSH:
+                    return (hand, -1, -1, -1, -1, -1)
+                case self.PokerHands.STRAIGHT_FLUSH:
+                    return (hand, high_card, -1, -1, -1, -1)
+                case self.PokerHands.FOUR_OF_A_KIND:
+                    for val, cnt in values_to_counts.items():
+                        if cnt == 4:
+                            fok = val
+                        if cnt == 1:
+                            fifth = val
+                    return (hand, fok, fifth, -1, -1, -1)
+                case self.PokerHands.FULL_HOUSE:
+                    pair = 0
+                    three = 0
+                    for val, cnt in values_to_counts.items():
+                        if cnt == 2:
+                            pair = val
+                        if cnt == 3:
+                            three = val
+                    return (hand, three, pair, -1, -1, -1)
+                case self.PokerHands.FLUSH:
+                    a = values_to_counts[4]
+                    b = values_to_counts[3]
+                    c = values_to_counts[2]
+                    d = values_to_counts[1]
+                    e = values_to_counts[0]
+                    return (hand, a, b, c, d, e)
+                case self.PokerHands.STRAIGHT:
+                    return (hand, high_card, -1, -1, -1, -1)
+                case self.PokerHands.THREE_OF_A_KIND:
+                    other_cards = []
+                    for val, cnt in values_to_counts.items():
+                        if cnt == 3:
+                            tok = val
+                        if cnt == 1:
+                            other_cards.append(val)
+                    higher = max(other_cards)
+                    lower = min(other_cards)
+                    return (hand, tok, higher, lower, -1, -1)
+                case self.PokerHands.TWO_PAIR:
+                    pairs = []
+                    for val, cnt in values_to_counts.items():
+                        if cnt == 2:
+                            pairs.append(val)
+                        if cnt == 1:
+                            remaining = val
+                    higher = max(pairs)
+                    lower = min(pairs)
+                    return (hand, higher, lower, remaining, -1, -1)
+                case self.PokerHands.ONE_PAIR:
+                    other_cards = []
+                    for val, cnt in values_to_counts.items():
+                        if cnt == 2:
+                            pair = val
+                        if cnt == 1:
+                            other_cards.append(val)
+                    other_cards.sort(reverse=True)
+                    b = other_cards[0]
+                    c = other_cards[1]
+                    d = other_cards[2]
+                    return (hand, pair, b, c, d, -1)
+                case self.PokerHands.HIGH_CARD:
+                    other_cards = []
+                    for val in values_to_counts.keys():
+                        other_cards.append(val)
+                    other_cards.sort(reverse=True)
+                    a = other_cards[0]
+                    b = other_cards[1]
+                    c = other_cards[2]
+                    d = other_cards[3]
+                    e = other_cards[4]
+                    return (hand, a, b, c, d, e)
+
+        suits = {card.get_suit.name for card in self._cards}
+        values = [card.get_value.value for card in self._cards]
+        values.sort()
+        values_to_counts = Counter(values)
+
+        high_card = check_high_card()  # High card holds actual card value.
+        one_pair = check_one_pair()
+        two_pair = check_two_pair()
+        three_kind = check_three_kind()
+        flush = check_flush()
+        straight = check_straight()
+        full_house = check_full_house()
+        four_kind = check_four_kind()
+        straight_flush = check_straight_flush()
+        royal_flush = check_royal_flush()
+
+        hands = [
+            (royal_flush, self.PokerHands.ROYAL_FLUSH),
+            (straight_flush, self.PokerHands.STRAIGHT_FLUSH),
+            (four_kind, self.PokerHands.FOUR_OF_A_KIND),
+            (full_house, self.PokerHands.FULL_HOUSE),
+            (flush, self.PokerHands.FLUSH),
+            (straight, self.PokerHands.STRAIGHT),
+            (three_kind, self.PokerHands.THREE_OF_A_KIND),
+            (two_pair, self.PokerHands.TWO_PAIR),
+            (one_pair, self.PokerHands.ONE_PAIR),
+            (True, self.PokerHands.HIGH_CARD),  # Always true as fallback
+        ]
+
+        for is_hand, hand_type in hands:
+            if is_hand:  # True if these cards make up this hand.
+                return result_tuple(hand_type)
 
 
-class Game:
+class Deck:
     def __init__(self) -> None:
-        self.__cards: list[Card] = []
-        self.__hands: list[PokerHand] = []
+        self._deck: dict[int, Card] = {}
+        self._dealt: list[int] = []
+        self._build_deck()
 
-    def add_card(self, suit: str, value: str) -> None:
-        self.__cards.append(PlayingCard(suit, value))
+    def _build_deck(self) -> None:
+        count = 1
+        for suit in Suit:
+            for value in CardValue:
+                new_card = PlayingCard(value, suit)
+                self._deck[count] = new_card
+                count += 1
 
-    def card_string(self, card: int) -> str:
-        return str(self.__cards[card])
+    def random_deal(self, hand_size: int) -> list[Card]:
+        hand = []
+        # Convert range to set and remove dealt cards via set subtraction.
+        available_cards = set(range(1, len(self._deck) + 1)) - set(self._dealt)
+        # Convert back to list for random.sample.
+        sample = random.sample(list(available_cards), hand_size)
 
-    def last_card_string(self) -> str:
-        return str(self.__cards[-1])
+        for card_num in sample:
+            hand.append(self._deck[card_num])
+            self._dealt.append(card_num)
 
-    def card_beats(self, card_a: int, card_b: int) -> bool:
-        return self.__cards[card_a] > self.__cards[card_b]
+        return hand
 
-    def list_cards(self) -> None:
-        for number, _ in enumerate(self.__cards):
-            print(f"{number}: {self.card_string(number)}")
+    def reset_deck(self) -> None:
+        self._dealt.clear()
 
-    def add_joker(self, color: str) -> None:
-        self.__cards.append(Joker(color))
+    def print_deck(self) -> None:
+        for i, card in self._deck.items():
+            print(i, str(card))
 
-    def add_hand(self, card_indices: list[int]) -> None:
-        new_hand = PokerHand()
-        for card_id in card_indices:
-            new_hand.add_card(self.__cards[card_id])
-        self.__hands.append(new_hand)
 
-    def hand_string(self, hand: int) -> str:
-        # For each card object in the hand, convert it to a string and join them with a comma.
-        return ", ".join(str(card) for card in self.__hands[hand].get_hand)
+class Player:
+    def __init__(self, name: str) -> None:
+        self._name = name
 
-    def beats_hand(self, hand_a: int, hand_b: int) -> bool:
-        return hand_a > hand_b
+    @property
+    def get_name(self) -> str:
+        return self._name
+
+
+class PokerGame:
+    def __init__(self, num_players: int, draw: bool) -> None:
+        self._deck: Deck = Deck()
+        self._players: dict[Player, PokerHand | None] = {}
+        self.add_players(num_players)
+
+    def add_players(self, num_players: int) -> None:
+        for _ in range(num_players):
+            name = input("Enter a player's name: ")
+            self._players[Player(name)] = None
+
+    def deal_cards(self, hand_size: int) -> None:
+        for player in self._players:
+            hand = self._deck.random_deal(hand_size)
+            self._players[player] = PokerHand(hand)
+
+    def show_hand(self, player: Player) -> None:
+        hand = self._players[player]
+        if hand:  # Check if hand exists
+            print(f"\n{player.get_name}'s ", end="")
+            match hand.hand_value[0].value:
+                case PokerHand.PokerHands.ROYAL_FLUSH.value:
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.get_value.value)
+                    print("Royal Flush:", ", ".join(str(card) for card in sorted_cards))
+
+                case PokerHand.PokerHands.STRAIGHT_FLUSH.value:
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.get_value.value)
+                    print("Straight Flush:", ", ".join(str(card) for card in sorted_cards))
+
+                case PokerHand.PokerHands.FOUR_OF_A_KIND.value:
+                    # Group four matching cards first, then the remaining card
+                    four_value = hand.hand_value[1]
+                    four_cards = [card for card in hand._cards if card.get_value.value == four_value]
+                    other_card = [card for card in hand._cards if card.get_value.value != four_value]
+                    print("Four of a Kind:", ", ".join(str(card) for card in four_cards + other_card))
+
+                case PokerHand.PokerHands.FULL_HOUSE.value:
+                    # Group three matching cards first, then the pair
+                    three_value = hand.hand_value[1]
+                    pair_value = hand.hand_value[2]
+                    three_cards = [card for card in hand._cards if card.get_value.value == three_value]
+                    pair_cards = [card for card in hand._cards if card.get_value.value == pair_value]
+                    print("Full House:", ", ".join(str(card) for card in three_cards + pair_cards))
+
+                case PokerHand.PokerHands.FLUSH.value:
+                    # Sort by value since they're all the same suit
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.get_value.value, reverse=True)
+                    print("Flush:", ", ".join(str(card) for card in sorted_cards))
+
+                case PokerHand.PokerHands.STRAIGHT.value:
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.get_value.value)
+                    print("Straight:", ", ".join(str(card) for card in sorted_cards))
+
+                case PokerHand.PokerHands.THREE_OF_A_KIND.value:
+                    three_value = hand.hand_value[1]
+                    three_cards = [card for card in hand._cards if card.get_value.value == three_value]
+                    other_cards = sorted(
+                        [card for card in hand._cards if card.get_value.value != three_value],
+                        key=lambda x: x.get_value.value,
+                        reverse=True,
+                    )
+                    print("Three of a Kind:", ", ".join(str(card) for card in three_cards + other_cards))
+
+                case PokerHand.PokerHands.TWO_PAIR.value:
+                    high_pair = hand.hand_value[1]
+                    low_pair = hand.hand_value[2]
+                    high_pair_cards = [card for card in hand._cards if card.get_value.value == high_pair]
+                    low_pair_cards = [card for card in hand._cards if card.get_value.value == low_pair]
+                    other_card = [card for card in hand._cards if card.get_value.value not in (high_pair, low_pair)]
+                    print("Two Pair:", ", ".join(str(card) for card in high_pair_cards + low_pair_cards + other_card))
+
+                case PokerHand.PokerHands.ONE_PAIR.value:
+                    pair_value = hand.hand_value[1]
+                    pair_cards = [card for card in hand._cards if card.get_value.value == pair_value]
+                    other_cards = sorted(
+                        [card for card in hand._cards if card.get_value.value != pair_value],
+                        key=lambda x: x.get_value.value,
+                        reverse=True,
+                    )
+                    print("One Pair:", ", ".join(str(card) for card in pair_cards + other_cards))
+
+                case PokerHand.PokerHands.HIGH_CARD.value:
+                    sorted_cards = sorted(hand._cards, key=lambda x: x.get_value.value, reverse=True)
+                    print("High Card:", ", ".join(str(card) for card in sorted_cards))
+
+    def show_all_hands(self) -> None:
+        for player in self._players.keys():
+            self.show_hand(player)
+
+    def draw_cards(self) -> None:
+        pass
+
+    def winner(self) -> Player:
+        winner = None
+        winning_hand = None
+
+        for player, hand in self._players.items():
+            if winner is None:
+                winner = player
+                winning_hand = hand
+            elif hand > winning_hand:
+                winner = player
+                winning_hand = hand
+
+        return winner
 
 
 if __name__ == "__main__":
-    game = Game()
-
-    for _ in range(4):
-        suit, value = input("Enter the suit and card value seperated by a space: ").split()
-        game.add_joker(value) if suit == "Joker" else game.add_card(suit, value)
-        print(game.last_card_string())
-
-    game.list_cards()
-
-    game.add_hand([0, 2])
-    game.add_hand([1, 3])
-
-    if game.beats_hand(0, 1):
-        print(f"Hand 0: {game.hand_string(0)} beats Hand 1: {game.hand_string(1)}")
-    else:
-        print(f"Hand 1: {game.hand_string(1)} beats Hand 0: {game.hand_string(0)}")
+    game = PokerGame(num_players=2, draw=False)
+    game.deal_cards(5)
+    # game.draw_cards()
+    winning_player = game.winner()
+    game.show_all_hands()
+    print("\nAnd the winner is ... ", end="")
+    game.show_hand(winning_player)
