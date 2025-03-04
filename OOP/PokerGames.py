@@ -570,6 +570,9 @@ class PokerGame:
                     sorted_cards = sorted(hand._cards, key=lambda x: x.get_value.value, reverse=True)
                     print("High Card:", ", ".join(str(card) for card in sorted_cards))
 
+    def show_players_hand(self, player):
+        self.show_hand(player)
+
     def show_all_hands(self) -> None:
         for player in self._players.keys():
             self.show_hand(player)
@@ -627,7 +630,6 @@ class PokerGame:
 if __name__ == "__main__":
     game = PokerGame()
     game.deal_cards(5)
-    game.show_all_hands()
     if game.draw_game:
         game.draw_cards()
     game.show_all_hands()
