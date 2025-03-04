@@ -2,6 +2,7 @@
 TODO:
 - Limit number of players
 - Add a draw option
+- Test PlayingCard.__lt__()
 """
 
 from enum import Enum, auto
@@ -79,12 +80,15 @@ class PlayingCard(Card):
         self._suit_value = suitValue
 
     @property
-    def get_value(self) -> int:
+    def get_value(self) -> CardValue:
         return self._card_value
 
     @property
     def get_suit(self) -> Suit:
         return self._suit_value
+
+    def __lt__(self, other: "Card") -> bool:
+        return self.get_value.value < other.get_value.value
 
     def __str__(self) -> str:
         value = ENUM_TO_CARD[self.get_value]
@@ -137,6 +141,16 @@ class PokerHand(Hand):
     @property
     def hand_value(self):
         return self._hand_value
+
+    def add_card(self, card: Card) -> None:
+        self._cards.append((card))
+
+    def remove_card(self, card_value: CardValue, suit: Suit) -> bool:
+        for card in self._cards:
+            if card.get_value == card_value and card.get_suit == suit:
+                self._cards.remove(card)
+                return True
+        return False
 
     # This works by comparing the tuple returned by this Pokerhand's _hand_value to another Pokerhand.
     def __lt__(self, other: "PokerHand | Any") -> bool:
@@ -412,6 +426,13 @@ class Deck:
 
         return hand
 
+    def random_deal_one(self) -> PlayingCard:
+        # Convert range to set and remove dealt cards via set subtraction.
+        available_cards = set(range(1, len(self._deck) + 1)) - set(self._dealt)
+        # Convert back to list for random.sample.
+        sample = random.sample(list(available_cards), 1)
+        return self._deck[sample[0]]
+
     def reset_deck(self) -> None:
         self._dealt.clear()
 
@@ -430,10 +451,45 @@ class Player:
 
 
 class PokerGame:
-    def __init__(self, num_players: int, draw: bool) -> None:
+    def __init__(self) -> None:
+        self._draw = False
+        self._num_players = 0
+        while True:
+            ans = input("Would you like to play 5 card draw? y/n: ")
+            if ans in {"y", "Y", "n", "N"}:
+                ans = ans.lower()
+                if ans == "y":
+                    self._draw = True
+                break
+            else:
+                print("You must enter y or n")
+                input("Press Enter to continue...")
+
+        while True:
+            ans = input("Enter the number of players: ")
+            try:
+                self._num_players = int(ans)
+            except ValueError:
+                print("Invalid input. Please enter a number")
+                input("Press Enter to continue...")
+                continue
+
+            if self._draw and self._num_players > 6:
+                print("There must be 2 to 6 players in a game of 5 card draw\n")
+                continue
+            elif self._num_players > 10:
+                print("There must be 2 to 10 players in a game of 5 card stud\n")
+                continue
+
+            break
+
         self._deck: Deck = Deck()
         self._players: dict[Player, PokerHand | None] = {}
-        self.add_players(num_players)
+        self.add_players(self._num_players)
+
+    @property
+    def draw_game(self):
+        return self._draw
 
     def add_players(self, num_players: int) -> None:
         for _ in range(num_players):
@@ -519,7 +575,39 @@ class PokerGame:
             self.show_hand(player)
 
     def draw_cards(self) -> None:
-        pass
+        for player in self._players:
+            num_cards_trading = 0
+            while True:
+                ans = input(f"\n{player.get_name}, how many cards are you trading in (0-3)? ")
+                try:
+                    num_cards_trading = int(ans)
+                except ValueError:
+                    print("Invalid input. Please enter a number")
+                    input("Press Enter to continue ...")
+                    continue
+
+                if not 0 <= num_cards_trading <= 3:
+                    print("You must enter a number from 0 to 3")
+                    input("Press Enter to continue ...")
+                else:
+                    break
+
+            curr_num_cards = 0
+            while curr_num_cards < num_cards_trading:
+                trade = input("Enter the card you are trading (e.g. Two of Hearts): ").split()
+                # Is trade is a valid card?
+                if trade[0] in CARD_TO_ENUM and trade[2] in SUIT_TO_ENUM:
+                    # If the player is holding this card, remove the card from the players hand.
+                    if self._players[player].remove_card(CARD_TO_ENUM[trade[0]], SUIT_TO_ENUM[trade[2]]):
+                        new_card = self._deck.random_deal_one()
+                        self._players[player].add_card(new_card)
+                        curr_num_cards += 1
+                    else:
+                        print(f"{player.get_name} does not have a {trade[0]} of {trade[2]} to trade in")
+                        input("Press Enter to continue ...")
+                else:
+                    print("Invalid card. Please enter a valid card value and suit.")
+                    input("Press Enter to continue ...")
 
     def winner(self) -> Player:
         winner = None
@@ -537,10 +625,12 @@ class PokerGame:
 
 
 if __name__ == "__main__":
-    game = PokerGame(num_players=2, draw=False)
+    game = PokerGame()
     game.deal_cards(5)
-    # game.draw_cards()
-    winning_player = game.winner()
     game.show_all_hands()
+    if game.draw_game:
+        game.draw_cards()
+    game.show_all_hands()
+    winning_player = game.winner()
     print("\nAnd the winner is ... ", end="")
     game.show_hand(winning_player)
