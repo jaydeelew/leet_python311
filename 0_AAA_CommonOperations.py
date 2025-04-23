@@ -14,10 +14,11 @@ print("List reversed in place:", original_list)
 lst = [1, 2, 3, 4, 5]
 print("List reversed with with slicing:", lst[::-1])
 
-# Merge two sorted lists in O(n + m) time
+# Merge two sorted lists into one of the lists in O(n + m) time
 list1 = [1, 3, 5, 7, 11]
 list2 = [4, 6, 11, 12]
-print("Merged sorted lists:", list1 + list2)
+list1.extend(list2)
+print("Merged sorted lists:", list1)
 
 # Count the occurrences of an element in a list
 numbers = [1, 2, 2, 3, 2, 4, 5]
@@ -51,10 +52,6 @@ print("Even numbers from 0 to 10:", [num for num in range(11) if num % 2 == 0])
 # Create a list of 5 random numbers between 1 and 100
 print("5 random numbers between 1 and 100:", [random.randint(1, 100) for _ in range(5)])
 
-# Sum all elements in a list
-numbers = [1, 2, 3, 4, 5]
-print("Sum of all elements:", sum(numbers))
-
 # Find the product of all elements in a list
 numbers = [1, 2, 3, 4]
 print("Product of all elements:", math.prod(numbers))
@@ -75,20 +72,6 @@ print("Odd numbers in list:", [x for x in numbers if x % 2 != 0])
 # Find the index of an element in a list
 items = ["apple", "banana", "orange"]
 print("Index of 'banana':", items.index("banana"))
-
-
-# Create a list of prime numbers in range: 2 to 19
-def isPrime(num):
-    if num < 2:
-        return False
-
-    for i in range(2, int(num**0.5 + 1)):
-        if num % i == 0:
-            return False
-    return True
-
-
-print("Prime numbers from 2 to 19:", [p for p in range(2, 20) if isPrime(p)])
 
 # Remove an element from a list by value
 fruits = ["apple", "banana", "orange"]
@@ -288,7 +271,10 @@ print("".join(arr))
 str = "hello"
 print(list(str))
 
-# Display "Loading .", "Loading ..", "Loading ..." one the same line in one second intervals
-for i in range(1, 4):
-    print(f"Loading {'.' * i}", end="\r")
-    sleep(1)
+# Cycle through "Loading .", "Loading ..", "Loading ..." on the same line in one second intervals
+# from time import sleep
+while True:
+    for i in range(0, 4):
+        print("Loading" + "." * i, end="\r")
+        sleep(0.5)
+    print(" " * 20, end="\r")
