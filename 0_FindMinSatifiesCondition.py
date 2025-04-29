@@ -25,8 +25,10 @@ def find_min(arr, condition):
     while left < right:
         mid = (left + right) // 2
         if condition(arr[mid]):
+            # Bring right to mid and not mid - 1 since mid may be the mininum
             right = mid
         else:
+            # Condition failed, so mid is not the mininum
             left = mid + 1
 
     return arr[left]

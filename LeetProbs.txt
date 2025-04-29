@@ -6,7 +6,7 @@ arr = [1, 2, 3, 4, 5]
 # 344. Reverse String
 # Write a function that reverses a string. The input string is given as an array of characters s.
 # You must do this by modifying the input array in-place with O(1) extra memory.
-# lst = ["h","e","l","l","o"]
+lst = ["h","e","l","l","o"]
 # Output: ["o","l","l","e","h"]
 
 # 0. Sum All Nodes of a Graph
@@ -64,7 +64,7 @@ arr = [1, 3, 5, 7, 9, 11]
 condition = lambda x: x < 6
 # Output: 5
 
-# 0. TrieNose class
+# 0. TrieNode class
 # Make a Trie class with methods for insert, locate, search, remove, and starts_with:
 class TrieNode:
     def __init__(self):
@@ -164,7 +164,7 @@ sub_string = "CDC"
 # Output: 2
 
 # 1. Two Sum
-# * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+# Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 # You may assume that each input would have exactly one solution, and you may not use the same element twice.
 # You can return the answer in any order.
 nums = [3, 2, 4]

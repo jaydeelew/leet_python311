@@ -4,6 +4,7 @@ import math
 import string
 from collections import Counter
 from time import sleep
+from itertools import groupby
 
 # Reverse a list in place
 original_list = [1, 2, 3, 4, 5]
@@ -109,8 +110,7 @@ print("Dictionary with swapped keys and values:", {v: k for k, v in original.ite
 # if there are dubplicate keys
 dict1 = {"a": 1, "b": 2, "c": 5}
 dict2 = {"c": 3, "d": 4}
-print("Merged dictionaries (method 1):", {**dict1, **dict2})
-print("Merged dictionaries (method 2):", dict1 | dict2)
+print("Merged dictionaries:", dict1 | dict2)
 
 # Find the intersection of two dictionaries while retaining all the values in any duplicated keys
 dict1 = {"a": 1, "b": 2, "c": 3}
@@ -132,10 +132,9 @@ scores = {"John": 85, "Alice": 92, "Bob": 78}
 print("Maximum value in dictionary:", max(scores.values()))
 print("Minimum value in dictionary:", min(scores.values()))
 
-# Sort a dictionary by keys and values
-data = {"b": 3, "a": 1, "c": 2}
-print("Dictionary sorted by keys:", dict(sorted(data.items())))
-print("Dictionary sorted by values:", dict(sorted(data.items(), key=lambda x: x[1])))
+# Sort by values first, then keys
+data = {"b": 2, "a": 2, "c": 1, "d": 1}
+print(sorted(data.items(), key=lambda x: (x[1], x[0])))
 
 # Count the occurrences of characters in a string
 text = "hello"
@@ -170,24 +169,27 @@ text = "Hello"
 print("String in uppercase:", text.upper())
 print("String in lowercase:", text.lower())
 
-# Find the first non-repeating character in a string
+# Find the first non-repeating character anywhere in a string
 s = "ababcd"
 counts = Counter(s)
 print("First non-repeating character:", next((ch for ch in s if counts[ch] == 1), None))
 
+# Find the first non-repeating (consecutively) character in a string
+text = "lleettcodde"
+for char, group in groupby(text):
+    if len(list(group)) == 1:
+        print("First non-repeating character:", char)
+        break
+
 # Check if a string contains a substring
 text = "Hello World"
-print("Does string contain 'World'?:", "World" in text)
+print("Does text contain 'or'?: ", "or" in text)
 
 # Count vowels and consonants in a string
 text = "Hello"
 vowels = set("aeiouAEIOU")
 print("Number of vowels:", sum(1 for char in text if char.isalpha() and char in vowels))
 print("Number of consonants:", sum(1 for char in text if char.isalpha() and char not in vowels))
-
-# Reverse the words in a string
-str = "Hello there today world"
-print("String with reversed words:", " ".join(reversed(str.split())))
 
 # Generate a random string of 5 letters
 print("Random 5-letter string:", "".join(random.choices(string.ascii_letters, k=5)))
@@ -196,11 +198,6 @@ print("Random 5-letter string:", "".join(random.choices(string.ascii_letters, k=
 text = "Hello World"
 print("Does string start with 'Hello'?:", text.startswith("Hello"))
 print("Does string end with 'Hello'?:", text.endswith("Hello"))
-
-# Format a string using placeholders
-name = "John"
-age = 30
-print("Formatted string:", f"My name is {name} and I am {age} years old.")
 
 # Find the frequency of words in a string
 text = "hello world hello python"
@@ -276,5 +273,5 @@ print(list(str))
 while True:
     for i in range(0, 4):
         print("Loading" + "." * i, end="\r")
-        sleep(0.5)
+        sleep(1)
     print(" " * 20, end="\r")

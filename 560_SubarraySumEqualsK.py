@@ -16,9 +16,9 @@ def subarraySumEqualsK(nums, k):
 
     for num in nums:
         prefix_sum += num
-        check_if_prefix_sum = prefix_sum - k
-        if check_if_prefix_sum in prefix_sum_counts:
-            ans += prefix_sum_counts[check_if_prefix_sum]
+        check_if_prefix_sum_exists = prefix_sum - k
+        if check_if_prefix_sum_exists in prefix_sum_counts:
+            ans += prefix_sum_counts[check_if_prefix_sum_exists]
         # this line must come after ans is updated or there may be an error (e.g. nums = [0], k = 0 would return 2)
         prefix_sum_counts[prefix_sum] = prefix_sum_counts.get(prefix_sum, 0) + 1
     return ans
@@ -48,4 +48,4 @@ k = 3
 # k = 2
 # Output: 2
 
-print(num_of_subarrays_summing_to_k(nums, k))
+print(subarraySumEqualsK(nums, k))

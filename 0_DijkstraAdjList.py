@@ -16,8 +16,8 @@ def dijkstra(adj_list, starting_node):
     seen = set()
 
     while min_heap:
-        # we use a min heap here to potentially reduce the number of times we update the distance of a node.
-        # a FIFO queue could allow greater distances to be updated in distances first
+        # We use a min heap here to potentially reduce the number of times we update the distance of a node.
+        # A FIFO queue could allow greater distances to be updated in distances first
         # whereas if a shorter distance is added first, greater distances will be ignored
         dist_from_start, node = heapq.heappop(min_heap)
 

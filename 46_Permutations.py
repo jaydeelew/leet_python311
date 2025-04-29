@@ -1,26 +1,11 @@
 # 46. Permutations
 # Given an array of distinct integers, return all the possible permutations.
+from itertools import permutations
 
 
-def permutations(nums):
-    def backtrack(curr_perm):
-        if len(curr_perm) == len(nums):
-            # we need a copy and not a reference
-            # since we don't want the appended path(s) in ans to be modified
-            ans.append(curr_perm[:])
-            # since there are no more numbers to add to curr_perm, we return
-            return
-
-        for num in nums:
-            # we don't want to add the same number to curr_perm multiple times
-            if num not in curr_perm:
-                curr_perm.append(num)
-                backtrack(curr_perm)
-                curr_perm.pop()
-
-    ans = []
-    backtrack([])
-    return ans
+def permutations_1(nums):
+    # Most efficient solution using Python's built-in itertools module
+    return list(permutations(nums))
 
 
 # the version uses swapping to avoid the need to check if the number is in the current path
@@ -42,6 +27,27 @@ def permutations_2(nums):
     return ans
 
 
+def permutations_3(nums):
+    def backtrack(curr_perm):
+        if len(curr_perm) == len(nums):
+            # we need a copy and not a reference
+            # since we don't want the appended path(s) in ans to be modified
+            ans.append(curr_perm[:])
+            # since there are no more numbers to add to curr_perm, we return
+            return
+
+        for num in nums:
+            # we don't want to add the same number to curr_perm multiple times
+            if num not in curr_perm:
+                curr_perm.append(num)
+                backtrack(curr_perm)
+                curr_perm.pop()
+
+    ans = []
+    backtrack([])
+    return ans
+
+
 nums = [1, 2, 3]
 # Output: [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 
@@ -51,5 +57,6 @@ nums = [1, 2, 3]
 # nums = [1]
 # # Output: [[1]]
 
-print(permutations(nums))
+print(permutations_1(nums))
 print(permutations_2(nums))
+print(permutations_3(nums))

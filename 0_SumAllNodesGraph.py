@@ -3,6 +3,7 @@
 
 
 def sumAllNodes(graph):
+    # no stack or queue needed since we don't care about the order we visit the nodes
     seen = set()
     total = 0
 
@@ -11,7 +12,7 @@ def sumAllNodes(graph):
         if node not in seen:
             seen.add(node)
             total += node
-            # Only process neighbors if we haven't seen this node before
+            # Only process neighbors if we haven't seen them before
             for neighbor in graph[node]:
                 if neighbor not in seen:
                     seen.add(neighbor)

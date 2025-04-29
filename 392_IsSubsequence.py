@@ -18,6 +18,7 @@ def isSubsequence(s, t):
     for char in t:
         if char == s[i]:
             i += 1
+            # if we matched all of s before there are no more characters in t
             if i == len(s):
                 return True
 
@@ -42,6 +43,7 @@ def isSubsequence_2(s, t):
 
 
 def isSubsequence_3(s, t):
+    # iter() is needed here since "char in t" alone would check if the char exists anywhere it t
     iter_t = iter(t)
     # For each char in s, next(iter_t) is called until there is either a match
     # with char in iter_t, which will pause iteration and continue to the next char in s, or until iter_t
@@ -60,6 +62,7 @@ Output: True
 
 # s = ""
 # t = "gfegee"
+# Output: True
 
 print(isSubsequence(s, t))
 print(isSubsequence_2(s, t))
