@@ -1,34 +1,34 @@
 # 0. Prefix Sum
 # Given an array, return a new array containing the running sum.
+def prefixSum(arr):
 arr = [1, 2, 3, 4, 5]
 # Output: [1, 3, 6, 10, 15]
-def prefixSum(arr):
 print(prefixSum(arr))
 
 # 344. Reverse String
 # Write a function that reverses a string. The input string is given as an array of characters s.
 # You must do this by modifying the input array in-place with O(1) extra memory.
+def reverseString(lst):
 lst = ["h","e","l","l","o"]
 # Output: ["o","l","l","e","h"]
-def reverseString(lst):
 print(reverseString(lst))
 
 # 0. Sum All Nodes of a Graph
 # Given a graph in adjacency list form and a starting node, return the sum of all nodes.
 # Solve this iteratively
+def sumAllNodes(graph, start):
 graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
 start = 0
 # Output: 6
-def sumAllNodes(graph, start):
 print(sumAllNodes(graph, start))
 
 # 78. Subsets
 # Given an integer array nums of unique elements, return all possible
 # subsets (the power set).
 # The solution set must not contain duplicate subsets: e.g. [1, 2] and [2, 1].
+def subsets(nums):
 nums = [1, 2]
 # Output: [[], [1], [2], [1, 2]]
-def subsets(nums):
 print(subsets(nums))
 
 # 392. Is Subsequence
@@ -36,17 +36,17 @@ print(subsets(nums))
 # A subsequence of a string is a new string that is formed from the original string by
 # deleting some (can be none) of the characters without disturbing the relative positions
 # of the remaining characters.
+def isSubsequence(s, t):
 s = "abc"
 t = "ahbgdc"
 # Output: True
-def isSubsequence(s, t):
 print(isSubsequence(s, t))
 
 # 46. Permutations
 # Given an array nums of distinct integers, return all the possible permutations.
+def permutations(nums):
 nums = [1, 2, 3]
 # Output: [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]].
-def permutations(nums):
 print(permutations(nums))
 
 # 704. Binary Search
@@ -54,10 +54,10 @@ print(permutations(nums))
 # and an integer target, write a function to search target in nums.
 # If target exists, then return its index. Otherwise, return -1.
 # You must write an algorithm with O(log n) runtime complexity.
+def binarySearch(nums, target):
 nums = [1, 2, 3, 4, 5]
 target = 3
 # Output: 2
-def binarySearch(nums, target):
 print(binarySearch(nums, target))
 
 # 0. Find Minimum Value That Satisfies a Condition
@@ -65,10 +65,10 @@ print(binarySearch(nums, target))
 # When finding the minimum, all values after it, including the minimum, would meet the condition,
 # and all values before it would not meet the condition.
 # This assumes the array is sorted.
+def findMinimumValue(arr, condition):
 arr = [1, 3, 5, 7, 9, 11]
 condition = lambda x: x > 6
 # Output: 7
-def findMinimumValue(arr, condition):
 print(findMinimumValue(arr, condition))
 
 # 0. Find Maximum Value That Satisfies a Condition
@@ -76,26 +76,27 @@ print(findMinimumValue(arr, condition))
 # A maximum would have all values before it, including the maximum, meet the condition.
 # All values after the maximum would not meet the condition.
 # This assumes the array is sorted.
+def findMaximumValue(arr, condition):
 arr = [1, 3, 5, 7, 9, 11]
 condition = lambda x: x < 6
 # Output: 5
-def findMaximumValue(arr, condition):
 print(findMaximumValue(arr, condition))
 
 # 0. TrieNode class
 # Make a Trie class with methods for insert, locate, search, remove, and starts_with:
+def trieNode(arr):
 class TrieNode:
     def __init__(self):
         self.children = {}
         self.end_of_word = False
 arr = ["arm", "arms", "at", "be", "bet"]
-def trieNode(arr):
 print(trieNode(arr))
 
 # 0. Dijkstra's Algorithm
 # Implement Dijkstra's algorithm to find the shortest path between two nodes in a graph.
 # The graph is represented as an adjacency list and the algorithm should return a dictionary of
 # keys as nodes and values as the shortest distance from the start node to that node.
+def dijkstras(adj_list, starting_node):
 adj_list = {
     "S": {"A": 8, "B": 4},
     "A": {"B": 4},
@@ -105,21 +106,20 @@ adj_list = {
 }
 starting_node = "S"
 # Output: {'S': 0, 'A': 7, 'B': 4, 'C': 6, 'D': 8}
-def dijkstras(adj_list, starting_node):
 print(dijkstras(adj_list, starting_node))
 
 # 0. Build Adjacency List
 # Build an undirected adjacency list from list of edges.
+def buildAdjacencyList(edges):
 edges = [(0, 1), (0, 3), (1, 3), (2, 3), (3, 5)]
 # Output = {0: [1, 3], 1: [0, 3], 3: [0, 1, 2, 5], 2: [3], 5: [3]}
-def buildAdjacencyList(edges):
 print(buildAdjacencyList(edges))
 
 # 0. Monotonically Increasing Stack
 # Given an integer array, return a monotonic increasing stack of the array.
+def monotonicStack(arr):
 arr = [1, 4, 5, 3, 3, 12, 10]
 # Output: [1, 3, 10]
-def monotonicStack(arr):
 print(monotonicStack(arr))
 
 # 560. Subarray Sum Equals K
@@ -127,15 +127,16 @@ print(monotonicStack(arr))
 # return the total number of subarrays whose sum equals to k.
 # A subarray is a contiguous non-empty sequence of elements within an array.
 # Integers can be negative where the sum of the elements in the subarray equals k. Integers can be positive and negative.
+def subarraySum(nums, k):
 nums = [1, 2, 3, 4, 5]
 k = 3
 # Output: 2
-def subarraySum(nums, k):
 print(subarraySum(nums, k))
 
 # 0. Shortest Path Between Two Nodes
 # Given a network of friends in the form of an adjacency list listing each person's list of friends,
 # return the shortest path between them.
+def shortestPath(network, start, end):
 network = {
     "Min": ["William", "Jayden", "Omar"],
     "William": ["Min", "Noam"],
@@ -150,67 +151,66 @@ network = {
 start = "Jayden"
 end = "Adam"
 # Output: ['Jayden', 'Amelia', 'Adam']
-def shortestPath(network, start, end):
 print(shortestPath(network, start, end))
 
 # 0. List Levels in Graph
 # Given a graph (in adjacency list form) and a starting node, list the contents of each level starting with the starting node.
+def listLevels(directed, undirected, start_node):
 directed = {0: [1, 2, 5], 1: [7], 2: [3, 4], 4: [3], 3: [6], 7: [0], 5: [], 6: []}
 undirected = {0: [1, 2, 5, 7], 1: [0, 7], 2: [0, 3, 4], 5: [0], 7: [1, 0], 3: [2, 4, 6], 4: [2, 3], 6: [3]}
 start_node = 0
 # Output Directed Graph = [[0], [1, 2, 5], [7, 3, 4], [6]]
 # Output Undirected Graph = [[0], [1, 2, 5, 7], [3, 4], [6]]
-def listLevels(directed, undirected, start_node):
 print(listLevels(directed, undirected, start_node))
 
 # 0. Rightmost Insert
 # Given a sorted array and a target, return index of rightmost insertion point when duplicates are allowed.
 # This function will return the index just after the last duplicate,
 # otherwise, the index of the next highest value.
+def rightmostInsert(nums, target):
 nums = [1, 2, 3, 3, 3, 4, 5]
 target = 3
 # Output: 5
-def rightmostInsert(nums, target):
 print(rightmostInsert(nums, target))
 
 # 0. Max Depth of Graph
 # Given a directed acyclic graph (in adjacency list form) and a starting node,
 # return the maximum depth of the graph from starting node to a leaf.
+def maxDepth(adj_list, start_node):
 adj_list = {0: [2, 3], 1: [], 2: [], 3: [1]}
 start_node = 0
 # Output: 2
-def maxDepth(adj_list, start_node):
 print(maxDepth(adj_list, start_node))
 
 # 876. Middle of the Linked List
 # Given a linked list of nodes where each node has a value and a next pointer,
 # return the middle node of the linked list. If the linked list has an even number of nodes,
 # return the second/right middle node.
+def middle(one):
 five = ListNode(5)
 four = ListNode(4, five)
 three = ListNode(3, four)
 two = ListNode(2, three)
 one = ListNode(1, two)  # head
 # Output: 3
-def middle(one):
 print(middle(one))
 
 # 0. Count Substrings
 # Given a string and a substring, return the number of times a substring appears in a string.
+def countSubstrings(string, sub_string):
 string = "ABCDCDC"
 sub_string = "CDC"
 # Output: 2
-def countSubstrings(string, sub_string):
 print(countSubstrings(string, sub_string))
 
 # 1. Two Sum
 # Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 # You may assume that each input would have exactly one solution, and you may not use the same element twice.
 # You can return the answer in any order.
+def twoSum(nums, target):
 nums = [3, 2, 4]
 target = 6
 # Output: [1,2]
-def twoSum(nums, target):
 print(twoSum(nums, target))
 
 # 658. Find K Closest Elements
@@ -219,31 +219,31 @@ print(twoSum(nums, target))
 # An integer a is closer to x than an integer b if:
 # |a - x| < |b - x|, or
 # |a - x| == |b - x| and a < b
+def findKClosest(arr, k, x):
 arr = [1, 2, 3, 4, 5]
 k = 4
 x = 3
 # Output: [1, 2, 3, 4]
-def findKClosest(arr, k, x):
 print(findKClosest(arr, k, x))
 
 # 1380. Lucky Numbers in a Matrix
 # Given an m x n matrix of distinct numbers, return all lucky numbers in the matrix in any order.
 # A lucky number is an element of the matrix such that it is
 # the minimum element in its row and maximum in its column.
+def luckyNumbers(matrix):
 matrix = [
     [3, 7, 8],
     [9, 11, 13],
     [15, 16, 17],
 ]
 # Output: [15]
-def luckyNumbers(matrix):
 print(luckyNumbers(matrix))
 
 # 53. Maximum Subarray
 # Given an integer array nums, find the subarray with the largest sum, and return its sum.
+def maximumSubarray(arr):
 arr = [2, 3, -8, 7, -1, 2, 3]
 # Output: 11
-def maximumSubarray(arr):
 print(maximumSubarray(arr))
 
 # 0. Find K Closet Elements (unsorted array)
@@ -252,11 +252,11 @@ print(maximumSubarray(arr))
 # An integer a is closer to x than an integer b if:
 # |a - x| < |b - x|, or
 # |a - x| == |b - x| and a < b
+def findKClosetElements(arr, k, x):
 arr = [9, 1, 11, 6, 22, 7]
 k = 3
 x = 5
 # Output: [6, 7, 9]
-def findKClosetElements(arr, k, x):
 print(findKClosetElements(arr, k, x))
 
 # 141. Linked List Cycle
@@ -264,6 +264,7 @@ print(findKClosetElements(arr, k, x))
 # There is a cycle in a linked list if there is some node in the list that can be reached
 # again by continuously following the next pointer.
 # Return true if there is a cycle in the linked list. Otherwise, return false.
+def linkedListCycle(one):
 five = ListNode(5)
 four = ListNode(4, five)
 three = ListNode(3, four)
@@ -271,12 +272,12 @@ two = ListNode(2, three)
 one = ListNode(1, two)  # head
 five.next = one
 # Output: True
-def linkedListCycle(one):
 print(linkedListCycle(one))
 
 # 0. Max Depth Undirected Acyclic Graph
 # Given an undirected cyclic graph (in adjacency list form) and a starting node,
 # return the maximum depth of the graph from starting node to a leaf.
+def maxDepthUndirected(adj_list):
 adj_list = {
     "a": ["b", "c", "e"],
     "b": ["a"],
@@ -287,22 +288,22 @@ adj_list = {
     "g": ["f"],
 }
 # Output: 3
-def maxDepthUndirected(adj_list):
 print(maxDepthUndirected(adj_list))
 
 # 206. Reverse Linked List
 # Reverse a singly linked list and return the head of the reversed list
+def reverseLinkedList(one):
 five = ListNode(5)
 four = ListNode(4, five)
 three = ListNode(3, four)
 two = ListNode(2, three)
 one = ListNode(1, two)  # head
 # Output: 5 -> 4 -> 3 -> 2 -> 1
-def reverseLinkedList(one):
 print(reverseLinkedList(one))
 
 # 144. Binary Tree Preorder Traversal (iterative)
 # Given the root of a binary tree, return the preorder traversal of its nodes' values.
+def binaryTreePreorder(five):
 nine = TreeNode(9)
 seven = TreeNode(7)
 four = TreeNode(4)
@@ -311,7 +312,6 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 # Output: 5 8 9 3 12 4 7
-def binaryTreePreorder(five):
 print(binaryTreePreorder(five))
 
 # 739. Daily Temperatures
@@ -320,9 +320,9 @@ print(binaryTreePreorder(five))
 # after the ith day to get a warmer temperature.
 # If there is no future day for which this is possible, keep answer[i] == 0 instead.
 # Given an array of characters, reverse the array in-place.
+def dailyTemperatures(s):
 s = ["h", "e", "l", "l", "o"]
 # Output: ["o", "l", "l", "e", "h"]
-def dailyTemperatures(s):
 print(dailyTemperatures(s))
 
 # 88. Merge Sorted Array
@@ -333,17 +333,18 @@ print(dailyTemperatures(s))
 # but instead be stored inside the array nums1. To accommodate this,
 # nums1 has a length of m + n, where the first m elements denote the elements that should be merged,
 # and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+def mergeSortedArray(nums1, m, nums2, n):
 nums1 = [1,2,3,0,0,0]
 m = 3
 nums2 = [2,5,6]
 n = 3
 # Output: [1,2,2,3,5,6]
 # Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
-def mergeSortedArray(nums1, m, nums2, n):
 print(mergeSortedArray(nums1, m, nums2, n))
 
 # 0. List Levels Binary Tree
 # Given the root of a binary tree, return the levels of the tree from root on down in a list of lists.
+def listLevelsBinaryTree(five):
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -357,22 +358,22 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 # Output: [[5], [8, 3], [9, 12, 7], [4]]
-def listLevelsBinaryTree(five):
 print(listLevelsBinaryTree(five))
 
 # 325. Maximum Size Subarray Sum Equals k
 # Given an array nums and a target value k, find the maximum length of a subarray that sums to k.
 # If there isn't one, return 0 instead.
+def maximumSizeSubarray(nums, k):
 nums = [1, -1, 5, -2, 3]
 k = 3
 # Output: 4
-def maximumSizeSubarray(nums, k):
 print(maximumSizeSubarray(nums, k))
 
 # 0. Dijkstra's Algorithm
 # Implement Dijkstra's algorithm to find the shortest path between two nodes in a graph.
 # The graph is represented as an adjacency matrix and the algorithm should return a dictionary of
 # keys as nodes and values as the shortest distance from the start node to that node.
+def dijkstrasMatrix(adj_matrix, starting_node):
 adj_matrix = [
     [0, 8, 4, 0, 0],
     [0, 0, 4, 0, 0],
@@ -382,48 +383,48 @@ adj_matrix = [
 ]
 starting_node = 0
 # Output: {0: 0, 1: 7, 2: 4, 3: 6, 4: 8}
-def dijkstrasMatrix(adj_matrix, starting_node):
 print(dijkstrasMatrix(adj_matrix, starting_node))
 
 # 0. Top K Elements
 # Given an array of integers, find the top k elements in arr.
 # The result order does not matter.
+def topKElements(arr, k):
 arr = [3, 6, 7, 2, 9, 4]
 k = 3
 # Output: [6, 7, 9]
-def topKElements(arr, k):
 print(topKElements(arr, k))
 
 # 300. Longest Increasing Subsequence
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
 # Provide an iterative solution.
+def longestIncreasingSubsequence(nums):
 nums = [10, 9, 2, 5, 3, 7, 101, 18]
 # Output: 4
-def longestIncreasingSubsequence(nums):
 print(longestIncreasingSubsequence(nums))
 
 # 215. Kth Largest Element in an Array
 # Given an integer array nums and an integer k, return the kth largest element in the array.
 # Note that it is the kth largest element in the sorted order, not the kth distinct element.
 # Can you solve it without sorting?
+def kthLargestElement(arr, k):
 arr = [3, 6, 7, 2, 9, 4]
 k = 3
 # Output: 6
-def kthLargestElement(arr, k):
 print(kthLargestElement(arr, k))
 
 # 169. Majority Element
 # Given an array nums of size n, return the majority element.
 # The majority element is the element that appears more than n / 2 times.
 # You may assume that the majority element always exists in the array.
+def majorityElement(nums):
 nums = [2, 2, 1, 1, 1, 2, 2]
 # Output: 2
-def majorityElement(nums):
 print(majorityElement(nums))
 
 # 144. Binary Tree Preorder Traversal (recursive)
 # Given the root of a binary tree, return the preorder traversal of its nodes' values.
+def binaryTreePreorderRecursive(five):
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -437,7 +438,6 @@ twelve = TreeNode(12, four)
 three = TreeNode(3, twelve, seven)
 five = TreeNode(5, eight, three)  # root node
 # Output: 5 8 9 3 12 4 7
-def binaryTreePreorderRecursive(five):
 print(binaryTreePreorderRecursive(five))
 
 # 367. Valid Perfect Square
@@ -445,22 +445,23 @@ print(binaryTreePreorderRecursive(five))
 # A perfect square is an integer that is the square of an integer.
 # In other words, it is the product of some integer with itself.
 # You must not use any built-in library function, such as sqrt.
+def validPerfectSquare(num):
 num = 16
 # Output: True
-def validPerfectSquare(num):
 print(validPerfectSquare(num))
 
 # 69. Sqrt(x)
 # Given a non-negative integer x, return the square root of x rounded down to the nearest integer.
 # The returned integer should be non-negative as well.
 # You must not use any built-in exponent function or operator.
+def sqrt(num):
 num = 16
 # Output: 4
-def sqrt(num):
 print(sqrt(num))
 
 # 0. Kth From The End
 # Given a singly linked list, return the value of the kth node from the end of the list.
+def kthFromTheEnd(one, k):
 class ListNode:
     def __init__(self, val, next=None):
         self.val = val
@@ -471,36 +472,36 @@ two = ListNode(2, three)
 one = ListNode(1, two)  # head
 k = 2
 # Output: 4
-def kthFromTheEnd(one, k):
 print(kthFromTheEnd(one, k))
 
 # 0. Is Subset
 # Given two strings, a and b, return True if a is a subset of b, otherwise return False.
+def isSubset(a, b):
 a = "3 1 9 9"
 b = "5 0 7 9 4 1 3 9 6"
 # Output: True
-def isSubset(a, b):
 print(isSubset(a, b))
 
 # 0. Sum All Nodes of a Graph
 # Given a graph in adjacency list form, return the sum of all nodes.
 # Solve this recursively
+def sumAllNodesRecursive(graph):
 graph = {0: [2, 1], 1: [3], 2: [1], 3: []}
 # Output: 6
-def sumAllNodesRecursive(graph):
 print(sumAllNodesRecursive(graph))
 
 # 0. Max Sum to Leaf in a Graph
 # Given a directed acyclic graph (in adjacency list form) and a starting node,
 # return the maximum sum of the graph from starting node to a leaf.
+def maxSumToLeaf(adj_list, start):
 adj_list = {0: [2, 3], 1: [], 2: [], 3: [1]}
 start = 0
-def maxSumToLeaf(adj_list, start):
 print(maxSumToLeaf(adj_list, start))
 
 # 0. Max Depth Undirected Cyclic Graph
 # Given an undirected cyclic graph (in adjacency list form) and a starting node,
 # return the maximum depth of the graph from starting node to a leaf.
+def maxDepthUndirectedCyclic(adj_list, start):
 adj_list = {
     "a": ["b", "c"],
     "b": ["a", "c", "d"],
@@ -519,12 +520,18 @@ adj_list_2 = {
     "w": ["s", "v"],
     "x": ["r", "s"],
 }
-def maxDepthUndirectedCyclic(adj_list, start):
 print(maxDepthUndirectedCyclic(adj_list, start))
+
+# 0. Find All Palindromes
+# Given a string s, find all palindromes in the string with a length of 3 or greater.
+def find_all_palindromes(s):
+s = "racecarp"
+# Output: ["racecar", "aceca", "cec"]
 
 # 112. Path Sum
 # Given the root of a binary tree and an integer targetSum,
 # return true if the tree has a root-to-leaf path such that adding up all the values along the path equals targetSum.
+def hasPathSum(root, targetSum):
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -542,51 +549,50 @@ four_b = TreeNode(4, right = one)
 five = TreeNode(5, four_a, eight)  # root node
 targetSum = 22
 # Output: True
-def hasPathSum(root, targetSum):
 print(hasPathSum(root, targetSum))
 
 # 0. Lefmost Insert
 # Given a sorted array, return index of leftmost insertion point when duplicates are allowed
 # This function will return the index of the first duplicate,
 # otherwise, the index of the next highest value.
+def leftmostInsert(nums, target):
 nums = [1, 2, 3, 3, 3, 4, 5]
 target = 3
 # Output: 2
-def leftmostInsert(nums, target):
 print(leftmostInsert(nums, target))
 
 # 300. Longest Increasing Subsequence
 # Given an integer array nums, return the length of the longest strictly increasing subsequence.
 # The term strictly means that there are not any duplicates in the subsequence.
 # Provide a recursive solution.
+def lengthOfLIS(nums):
 nums = [10, 9, 2, 5, 3, 7, 101, 18]
 # Output: 4
-def lengthOfLIS(nums):
 print(lengthOfLIS(nums))
 
 # 0. Factorial
 # Given a positive integer n, write a function to return the factorial of n.
+def factorial(n):
 n = 5
 # Output: 120
-def factorial(n):
 print(factorial(n))
 
 # 39. Combination Sum
 # Given an array of distinct positive integer candidates and a target integer,
 # return a list of all unique combinations of candidates where the chosen numbers sum to target.
 # The same number may be chosen from candidates an unlimited number of times.
+def combinationSum(candidates, target):
 candidates = [2, 3, 6, 7]
 target = 7
 # Output: [[2, 2, 3], [7]]
-def combinationSum(candidates, target):
 print(combinationSum(candidates, target))
 
 # 1189. Maximum Number of Balloons
 # Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
 # You can use each character in text at most once. Return the maximum number of instances that can be formed.
+def maxNumberOfBalloons(text):
 string = "nlaebolko"
 # Output: 1
-def maxNumberOfBalloons(text):
 print(maxNumberOfBalloons(text))
 
 # 0. Second Lowest
@@ -594,33 +600,34 @@ print(maxNumberOfBalloons(text))
 # and print the name(s) of any student(s) having the second lowest grade.
 # Note: If there are multiple students with the second lowest grade, order their names alphabetically
 # and print each name on a new line.
+def secondLowest(nested):
 nested = [["Harry", 37.21], ["Berry", 37.21], ["Tina", 37.2], ["Akriti", 41], ["Harsh", 39]]
 # Output:
 # Berry
 # Harry
-def secondLowest(nested):
 print(secondLowest(nested))
 
 # 0. Merge Sorted Arrays
 # Given two sorted integer arrays, return a new sorted array that combines both of them and is also sorted.
+def mergeSortedArrays(arr1, arr2):
 arr1 = [1, 4, 7, 20]
 arr2 = [3, 5, 6]
 # Output: [1, 3, 4, 5, 6, 7, 20]
-def mergeSortedArrays(arr1, arr2):
 print(mergeSortedArrays(arr1, arr2))
 
 # 77. Combinations
 # Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].
 # You may return the answer in any order.
+def combinations(n, k):
 n = 4
 k = 2
 # Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
-def combinations(n, k):
 print(combinations(n, k))
 
 # 0. Max Sum Undirected Cyclical Graph
 # Given an undirected cyclical graph and a starting node, return the maximum distance from the starting
 # node going through all other nodes and not visiting any node more than once.
+def maxSumUndirectedCyclical(adj_list, start):
 adj_list = {
     "p": {"q": 7, "r": 3, "s": 2},
     "q": {"p": 7, "t": 4, "u": 1},
@@ -633,7 +640,6 @@ adj_list = {
     "x": {"r": 2, "s": 2},
 }
 # Output: 20
-def maxSumUndirectedCyclical(adj_list, start):
 print(maxSumUndirectedCyclical(adj_list, start))
 
 # 33. Search in Rotated Sorted Array
@@ -644,19 +650,19 @@ print(maxSumUndirectedCyclical(adj_list, start))
 # Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums,
 # or -1 if it is not in nums.
 # You must write an algorithm with O(log n) runtime complexity.
+def searchRotatedArray(nums, target):
 nums = [3, 4, 5, 6, 7, 0, 1, 2]
 target = 5
 # Output: 2
-def searchRotatedArray(nums, target):
 print(searchRotatedArray(nums, target))
 
 # 509. Fibonacci Number
 # The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence,
 # such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
 # Given n, calculate F(n).
+def fibonacci(n):
 n = 20
 # Output: 6765
-def fibonacci(n):
 print(fibonacci(n))
 
 # 0. Given n, return True if n is prime, otherwise return false.
@@ -675,10 +681,10 @@ print(countPrimes(n))
 # characters (can be none) deleted without changing the relative order of the remaining characters.
 # For example, "ace" is a subsequence of "abcde".
 # A common subsequence of two strings is a subsequence that is common to both strings.
+def longestCommonSubsequence(s1, s2):
 s1 = "ABCBDAB"
 s2 = "BDCABC"
 # Output: 4
-def longestCommonSubsequence(s1, s2):
 print(longestCommonSubsequence(s1, s2))
 
 # 0. Reverse String
@@ -689,31 +695,31 @@ print(reverseString(s))
 # 70. Climbing Stairs
 # You are climbing a staircase. It takes n steps to reach the top.
 # Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+def climbStairs(n):
 n = 2
 # Output: 2
 n = 3
 # Output: 3
-def climbStairs(n):
 print(climbStairs(n))
 
 # 0. Detect Cycle Directed Graph
 # Given a directed graph in the form of an adjacency list and a starting node,
 # return True if the graph contains a cycle, otherwise False.
+def detectCycleDirected(graph, start):
 graph = {0: [1], 1: [2], 2: [0], 3: [4], 4: []}  # Graph with a cycle (0 -> 1 -> 2 -> 0)
 # Output: True
 # graph = {0: [1, 2], 1: [2], 2: []}  # Graph without cycle.
 # Output: False
-def detectCycleDirected(graph, start):
 print(detectCycleDirected(graph, start))
 
 # 0. Detect Cycle Undirected Graph
 # Given an undirected graph in the form of an adjacency list and a starting node,
 # return True if the graph contains a cycle, otherwise False.
+def detectCycleUndirected(graph, start):
 graph = {0: [1, 2], 1: [0, 2], 2: [0, 1], 3: [4], 4: [3]}  # Graph with a cycle (0 <-> 1 <-> 2 <-> 0)
 # Output: True
 # graph = {0: [1, 2], 1: [0], 2: [0], 3: [4], 4: [3]}  # Graph without a cycle (0 <-> 1 <-> 2 <-> 3)
 # Output: False
-def detectCycleUndirected(graph, start):
 print(detectCycleUndirected(graph, start))
 
 # 1004. Max Consecutive Ones III
@@ -761,6 +767,7 @@ def printLinkedList(head):
         ans.append([curr_node.val, randomPtr])
         curr_node = curr_node.next
     print(ans)
+def copyRandomList(head):
 # Creating a linked list: 7 -> 13 -> 11 -> 10 -> 1
 # with random pointers: [7,null] -> [13,7] -> [11,1] -> [10,11] -> [1,7]
 one = Node(1)
@@ -778,5 +785,4 @@ thirteen.next = eleven
 thirteen.random = seven
 seven.next = thirteen
 seven.random = None
-def copyRandomList(head):
 print(copyRandomList(head))
