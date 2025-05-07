@@ -246,7 +246,7 @@ arr = [2, 3, -8, 7, -1, 2, 3]
 # Output: 11
 print(maximumSubarray(arr))
 
-# 0. Find K Closet Elements (unsorted array)
+# 0. Find K Closest Elements (unsorted array)
 # Given an integer array arr, two integers k and target, return the k closest integers to targer in the array.
 # The result should also be sorted in ascending order.
 # An integer a is closer to x than an integer b if:
@@ -440,6 +440,21 @@ five = TreeNode(5, eight, three)  # root node
 # Output: 5 8 9 3 12 4 7
 print(binaryTreePreorderRecursive(five))
 
+# 0. Efficient Janitor
+# The janitor of a high school is extremely efficient.
+# By the end of each day, all of the school's waste is in plastic bags weighing between 1.01 pounds and 3.00 pounds.
+# All plastic bags are then taken to the trash bins outside.
+# One trip is described as selecting a number of bags which together do not weigh more than 3.00 pounds,
+# dumping them in the outside trash can, and returning to the school.
+# Given the number of plastic bags n, and the weights of each bag,
+# determine the minimum number of trips the janitor has to make.
+n = 5
+weight = [1.01, 1.99, 2.5, 1.5, 1.01]
+# Output: 3
+# The janitor can carry all plastic bags out in 3 trips:
+# [1.01 + 1.99, 2.5, 1.5 + 1.01]
+print(numberOfBags(n, weight))
+
 # 367. Valid Perfect Square
 # Given a positive integer num, return true if num is a perfect square or false otherwise.
 # A perfect square is an integer that is the square of an integer.
@@ -525,8 +540,9 @@ print(maxDepthUndirectedCyclic(adj_list, start))
 # 0. Find All Palindromes
 # Given a string s, find all palindromes in the string with a length of 3 or greater.
 def find_all_palindromes(s):
-s = "racecarp"
+s = "racecarppvip"
 # Output: ["racecar", "aceca", "cec"]
+print(find_all_palindromes(s))
 
 # 112. Path Sum
 # Given the root of a binary tree and an integer targetSum,
@@ -687,6 +703,15 @@ s2 = "BDCABC"
 # Output: 4
 print(longestCommonSubsequence(s1, s2))
 
+# 0. Perfect Substring
+# A string s comprised of digits from 0 to 9 contains a perfect substring if all the elements
+# within a substring occur exactly k times. Calculate the number of perfect substrings in s.
+def perfectSubstring(s, k):
+# Example test case
+s = "1102021222"
+k = 2
+print(perfectSubstring(s, k))
+
 # 0. Reverse String
 # Given a string, reverse the string and return the reversed string.
 def reverseString(s):
@@ -721,6 +746,21 @@ graph = {0: [1, 2], 1: [0, 2], 2: [0, 1], 3: [4], 4: [3]}  # Graph with a cycle 
 # graph = {0: [1, 2], 1: [0], 2: [0], 3: [4], 4: [3]}  # Graph without a cycle (0 <-> 1 <-> 2 <-> 3)
 # Output: False
 print(detectCycleUndirected(graph, start))
+
+# 0. Counting Fractions
+# Consider the fraction, n/d, where n and d are positive integers.
+# If n < d and the only common factor is 1, i.e. the greatest common factor(GCF), it is called a reduced proper fraction.
+# If we list the set of reduced proper fractions for d ≤ 8 in ascending order of size, we get:
+# 1/8, 1/7, 1/6, 1/5, 1/4,
+# 2/7, 1/3, 3/8, 2/5, 3/7,
+# 1/2, 4/7, 3/5, 5/8, 2/3,
+# 5/7, 3/4, 4/5, 5/6, 6/7,
+# 7/8
+# It can be seen that there are 21 elements in this set.
+# Write a program to count the number of proper fractions for a given number d.
+def countFractions(d):
+d = 8
+# Output: 21
 
 # 1004. Max Consecutive Ones III
 # Given a binary array nums and an integer k,

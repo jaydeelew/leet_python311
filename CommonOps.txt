@@ -150,6 +150,9 @@ set2 = {3, 4, 5}
 set1 = {1, 2, 3}
 set2 = {3, 4, 5}
 
+# Format a number with commas
+num = 10000000000000
+
 # Display "Loading .", "Loading ..", "Loading ..." one the same line in one second intervals
 
 # Given a list of keyword arguments to a function, have the function print one of the keyword arguments

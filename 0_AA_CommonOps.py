@@ -268,6 +268,9 @@ print("".join(arr))
 str = "hello"
 print(list(str))
 
+# Format a number with commas
+print(f"{10000000000:,}")
+
 # Cycle through "Loading .", "Loading ..", "Loading ..." on the same line in one second intervals
 # from time import sleep
 while True:
