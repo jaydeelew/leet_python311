@@ -603,6 +603,13 @@ target = 7
 # Output: [[2, 2, 3], [7]]
 print(combinationSum(candidates, target))
 
+# 5. Longest Palindromic Substring
+# Given a string s, return the longest palindromic substring in s.
+def longestPalindrome(s):
+s = "dabacfqadd"
+print(longestPalindrome(s))
+
+# Output: "aba"
 # 1189. Maximum Number of Balloons
 # Given a string text, you want to use the characters of text to form as many instances of the word "balloon" as possible.
 # You can use each character in text at most once. Return the maximum number of instances that can be formed.

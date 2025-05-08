@@ -8,20 +8,20 @@ from functools import cache
 
 # decorate fib() with the cache decorator from functools library
 @cache
-def fib5(n):
-    return n if n < 2 else fib5(n - 1) + fib5(n - 2)
+def fib1(n):
+    return n if n < 2 else fib1(n - 1) + fib1(n - 2)
 
 
 # top-down recursive with built-in memoization array (or dictionary)
-def fib3(n, memo={0: 0, 1: 1}):
+def fib2(n, memo={0: 0, 1: 1}):
     if n not in memo:
-        memo[n] = fib3(n - 1) + fib3(n - 2)
+        memo[n] = fib2(n - 1) + fib2(n - 2)
 
     return memo[n]
 
 
 # botton-up iterative version
-def fib1(n):
+def fib3(n):
     arr = [0] * (n + 1)
     arr[1] = 1
     for i in range(2, n + 1):
@@ -31,8 +31,8 @@ def fib1(n):
 
 
 # top-down recursive without memoization
-def fib2(n):
-    return n if n < 2 else fib2(n - 1) + fib2(n - 2)
+def fib4(n):
+    return n if n < 2 else fib4(n - 1) + fib4(n - 2)
 
 
 n = 5
@@ -42,20 +42,20 @@ t = Timer()
 
 t.start("recursive with memoization @cache")
 for _ in range(iterations):
-    fib5(n)
+    fib1(n)
 t.stop()
 
 t.start("recursive with built-in memoization")
 for _ in range(iterations):
-    fib3(n)
+    fib2(n)
 t.stop()
 
 t.start("bottom up iterative")
 for _ in range(iterations):
-    fib1(n)
+    fib3(n)
 t.stop()
 
 t.start("recursive without memoization")
 for _ in range(iterations):
-    fib2(n)
+    fib4(n)
 t.stop()
