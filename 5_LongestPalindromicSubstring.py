@@ -35,10 +35,10 @@ def longestPalindrom(s):
     return s[start : start + max_len]  # noqa
 
 
-s = "dabacfqadd"
+# s = "dabacfqadd"
 # Output: "aba"
 
-# s = "babad"
+s = "babad"
 # Output: "bab", "aba" is also a valid answer.
 
 # s = "cbbd"
