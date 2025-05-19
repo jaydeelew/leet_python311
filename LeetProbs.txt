@@ -734,6 +734,19 @@ n = 3
 # Output: 3
 print(climbStairs(n))
 
+# 0. Count Numbers to x with Digit Sum y
+# Given two numbers x and y, count how many numbers from 1 to x (inclusive) have digits that sum to y
+# For example, if x = 25 and y = 5:
+# - 5 (sum of digits = 5)
+# - 14 (sum of digits = 1 + 4 = 5)
+# - 23 (sum of digits = 2 + 3 = 5)
+# Output: 3
+def countNumbers(x, y):
+x = 13
+y = 2
+# Output: 3
+print(f"Count of numbers <= {x} with digit sum {y}: {countNumbers_1(x, y)}")
+
 # 0. Detect Cycle Directed Graph
 # Given a directed graph in the form of an adjacency list and a starting node,
 # return True if the graph contains a cycle, otherwise False.

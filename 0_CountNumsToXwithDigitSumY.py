@@ -60,5 +60,6 @@ def countNumbers_2(num, target):
 
 x = 11
 y = 2
+# Output: 2
 print(f"Count of numbers <= {x} with digit sum {y}: {countNumbers_1(x, y)}")
 print(f"Count of numbers <= {x} with digit sum {y}: {countNumbers_2(x, y)}")
