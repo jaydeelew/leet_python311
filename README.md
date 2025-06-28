@@ -1,8 +1,4 @@
-# 🚀 LeetCode Solutions Collection
-
-A comprehensive collection of my solutions to LeetCode problems from their Interview Crash Course: Algorithms and Data Structures, plus additional problems discovered through AlgoMonster or invented by me (not that someone else didn't think of them as well).
-
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Project Structure](#project-structure)
@@ -17,59 +13,46 @@ A comprehensive collection of my solutions to LeetCode problems from their Inter
 - [Key Features](#key-features)
 - [License](#license)
 
-## 🎯 Overview
+## Overview
 
-This repository contains my solutions to various algorithmic problems, including:
+A comprehensive collection of my solutions to LeetCode problems from their Interview Crash Course: Algorithms and Data Structures, plus additional problems discovered through AlgoMonster or invented by me (not that someone else didn't think of them as well).
 
-- **LeetCode Problems**: Numbered solutions (e.g., `1_TwoSum.py`, `200_NumberOfIslands.py`)
-- **Tutorial Examples**: Helper files prefixed with `0_` that demonstrate algorithms and concepts
-- **Practice Problems**: Additional problems from various sources
-- **Data Structures**: Implementations of common data structures and algorithms
-- **Utility Modules**: Reusable code snippets and helper functions
-
-Each file includes:
-
-- Problem definition and description
-- My commented solutions
-- Test cases with inputs and expected outputs
-- Some explanations of the approach used are provided
-
-## 📁 Project Structure
+## Project Structure
 
 ```
 leet_python311/
-├── 📄 LeetCode Problems (numbered files)
+├── LeetCode Problems (numbered files)
 │   ├── 1_TwoSum.py
 │   ├── 200_NumberOfIslands.py
 │   └── ... (100+ solutions)
-├── 🔧 Tutorial & Helper Files (0_ prefix)
+├── Tutorial & Helper Files (0_ prefix)
 │   ├── 0_AA_CommonOps.py          # Common operations and utilities
 │   ├── 0_BST.py                   # Binary Search Tree operations
 │   ├── 0_DijkstraAdjList.py       # Dijkstra's algorithm
 │   └── ... (50+ helper files)
-├── 📊 Sorts/                      # Sorting algorithms
+├── Sorts/                        # Sorting algorithms
 │   ├── BubbleSort.py
 │   ├── QuickSort.py
 │   ├── MergeSort.py
 │   └── ... (6 sorting algorithms)
-├── 🧩 Snippets/                   # Code snippets and examples
+├── Snippets/                     # Code snippets and examples
 │   ├── CacheDecorator.py
 │   ├── ListComprehension.py
 │   ├── StringManipulations.py
 │   └── ... (25+ snippets)
-├── 🛠️ Modules/                    # Reusable modules
+├── Modules/                      # Reusable modules
 │   ├── Timer.py
 │   ├── Formatting.py
 │   └── TextEffects.py
-└── 📖 README.md                   # This file
+└── README.md                     # This file
 ```
 
-## ⚙️ Prerequisites
+## Prerequisites
 
 - **Python Version**: 3.11+ (recommended)
 - **Operating System**: Linux, macOS, or Windows
 
-## 🚀 Installation
+## Installation
 
 1. **Clone the repository**:
 
@@ -87,7 +70,7 @@ leet_python311/
 
 3. **Ready to use!** No additional dependencies required.
 
-## 💻 Usage
+## Usage
 
 ### Running Individual Problems
 
@@ -101,21 +84,21 @@ python 1_TwoSum.py
 python Sorts/QuickSort.py
 ```
 
-## 📝 File Naming Convention
+## File Naming Convention
 
 - **`[Number]_[ProblemName].py`**: LeetCode problems (e.g., `1_TwoSum.py`)
 - **`0_[Description].py`**: Tutorial examples and helper files
 - **`[Category]/[Algorithm].py`**: Organized by category (e.g., `Sorts/QuickSort.py`)
 
-## 🏷️ Categories
+## Categories
 
-### 🔢 LeetCode Problems
+### LeetCode Problems
 
 - **Easy**: Problems 1-1000 (e.g., `1_TwoSum.py`, `125_ValidPalindrome.py`)
 - **Medium**: Problems 1000-2000 (e.g., `1004_MaxConsecOnesIII.py`)
 - **Hard**: Advanced problems (e.g., `1293_ShortestPathGridWithKremovableObstacles.py`)
 
-### 🧮 Algorithm Categories
+## Algorithm Categories
 
 - **Arrays & Strings**: `3_LongestSubstringNoRepeats.py`, `5_LongestPalindromicSubstring.py`, `53_MaxSubarray.py`, `560_SubarraySumEqualsK.py`, `209_MinSizeSubarrySum.py`, `643_MaxAvgSubarray1.py`, `2090_KradiuSubarrayAvgs.py`, `487_LengthOfLongestSubstringOfOnes.py`, `2389_LongestSubsequenceWithSumLimit.py`, `2461_MaxSumOfDistinctSubarraysLenk.py`, `2260_MinConsecCardsToPickUp.py`, `2248_IntersectionOfMultipleArrays.py`, `2352_EqualColumnAndRowPairs.py`
 
@@ -149,20 +132,20 @@ python Sorts/QuickSort.py
 
 - **String Manipulation**: `125_ValidPalindrome.py`, `468_ValidateIPaddress.py`, `392_IsSubsequence.py`, `433_MinimumGeneticMutation.py`, `1544_MakeStringGreat.py`, `1047_RemoveAdjacentDuplicates.py`
 
-### 🛠️ Utility Files
+## Utility Files
 
 - **Common Operations**: `0_AA_CommonOps.py` - Essential Python operations
 - **Data Structures**: `0_BST.py`, `0_Trie.py` - Implementation examples
 - **Algorithms**: `0_DijkstraAdjList.py`, `0_KahnAlgo.py` - Classic algorithms
 - **Sorting**: `Sorts/` directory with 6 different sorting algorithms
 
-### 📚 Code Snippets
+## Code Snippets
 
 - **Python Features**: `Snippets/ListComprehension.py`, `Snippets/Generator_SquareNums.py`
 - **Data Manipulation**: `Snippets/ShallowAndDeepCopy.py`, `Snippets/RemoveDupsFromList.py`
 - **String Operations**: `Snippets/StringManipulations.py`, `Snippets/IsAnagram.py`
 
-## 🎯 Key Features
+## Key Features
 
 - **Comprehensive Coverage**: 100+ LeetCode problems with solutions
 - **Educational Focus**: Well-commented code with explanations
@@ -171,7 +154,7 @@ python Sorts/QuickSort.py
 - **Test Cases**: Included test cases with expected outputs on many problems
 - **Cross-Platform**: Works on Linux, macOS, and Windows
 
-## 📄 License
+## License
 
 This project is for educational purposes. All LeetCode problems are property of LeetCode.
 
