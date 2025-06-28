@@ -11,7 +11,8 @@ A comprehensive collection of my solutions to LeetCode problems from their Inter
 - [Usage](#usage)
 - [File Naming Convention](#file-naming-convention)
 - [Categories](#categories)
-- [Contributing](#contributing)
+- [Key Features](#key-features)
+- [License](#license)
 
 ## 🎯 Overview
 
@@ -28,7 +29,7 @@ Each file includes:
 - Problem definition and description
 - My commented solutions
 - Test cases with inputs and expected outputs
-- Some Explanations of the approach used
+- Some explanations of the approach used are provided
 
 ## 📁 Project Structure
 
@@ -113,13 +114,37 @@ python Sorts/QuickSort.py
 
 ### 🧮 Algorithm Categories
 
-- **Arrays & Strings**: `3_LongestSubstringNoRepeats.py`, `5_LongestPalindromicSubstring.py`
-- **Linked Lists**: `19_RemoveNthFromEnd.py`, `21_MergeTwoSortedLists.py`
-- **Trees**: `100_SameTree.py`, `104_MaxDepthBinaryTree.py`
-- **Graphs**: `200_NumberOfIslands.py`, `323_NumOfConnectedComponents.py`
-- **Dynamic Programming**: `198_HouseRobber.py`, `322_CoinChange.py`
+- **Arrays & Strings**: `3_LongestSubstringNoRepeats.py`, `5_LongestPalindromicSubstring.py`, `53_MaxSubarray.py`, `560_SubarraySumEqualsK.py`, `209_MinSizeSubarrySum.py`, `643_MaxAvgSubarray1.py`, `2090_KradiuSubarrayAvgs.py`, `487_LengthOfLongestSubstringOfOnes.py`, `2389_LongestSubsequenceWithSumLimit.py`, `2461_MaxSumOfDistinctSubarraysLenk.py`, `2260_MinConsecCardsToPickUp.py`, `2248_IntersectionOfMultipleArrays.py`, `2352_EqualColumnAndRowPairs.py`
+
+- **Linked Lists**: `19_RemoveNthFromEnd.py`, `21_MergeTwoSortedLists.py`, `138_CopyListRandomPointer.py`, `141_LinkedListCycle.py`, `876_MiddleLinkedList.py`, `61_RotateList.py`, `206_ReverseLinkedList.py`
+
+- **Trees**: `100_SameTree.py`, `104_MaxDepthBinaryTree.py`, `98_IsValidBST.py`, `701_InsertIntoBST.py`, `530_MinDiffBetweenNodesBST.py`, `103_BinaryTreeZigzagLevelTraveral.py`, `144_PreorderTraversal.py`, `111_MinDepthBinaryTree.py`, `1448_CountGoodNodesBinaryTree.py`, `236_LowestCommonAncestor.py`, `270_ClosestBinarySearchTreeValue.py`, `515_LargestValueEachTreeRow.py`, `1302_DeepestLeavesSum.py`, `199_BinaryTreeRightSideView.py`, `863_AllNodesDistanceKfromTarget.py`
+
+- **Graphs**: `200_NumberOfIslands.py`, `323_NumOfConnectedComponents.py`, `1091_ShortestPathBinaryMatrix.py`, `1129_ShortestPathAlternatingColors.py`, `797_AllPathsFromSourceToTarget.py`, `841_KeysAndRooms.py`, `1971_IsValidPath.py`, `1466_ReorderRoutesToCityZero.py`, `1557_MinNumOfVerticesToReachAllNodes.py`, `1926_NearestExitFromEntranceMaze.py`, `2368_ReachableNodesWithRestrictions.py`, `2101_DetonateMaxBombs.py`, `743_NetworkDelayTime.py`
+
+- **Dynamic Programming**: `198_HouseRobber.py`, `322_CoinChange.py`, `70_ClimbingStairs.py`, `746_MinCostClimbingStairs.py`, `300_LsisIterative.py`, `300_LsisRecursive.py`, `1143_LongestCommonSubsequence.py`, `509_Fibonacci.py`
+
 - **Two Pointers**: `15_3Sum.py`, `209_MinSizeSubarrySum.py`
+
 - **Sliding Window**: `3_LongestSubstringNoRepeats.py`, `340_LongestSubstringMostKsameChars.py`
+
+- **Binary Search**: `704_BinarySearch.py`, `69_Sqrt.py`, `33_SearchRotatedArray.py`, `270_ClosestBinarySearchTreeValue.py`, `875_KokoEatingBananas.py`, `1870_MinSpeedToArriveOnTime.py`, `1283_FIndSmallestDivisorGivenThreshold.py`, `1231_DivideChocolate.py`
+
+- **Heaps & Priority Queues**: `295_MedianFromDataStream.py`, `502_IP0.py`, `347_TopKfrequentElements.py`, `703_KthLargestElementInStream.py`, `215_KthLargestElement.py`, `973_KclosestPointsToOrigin.py`, `2208_MinStepsToHalfSumAnArray.py`, `RemainderAfterSmashStones.py`, `RemoveStonesMinimizeArraySum.py`, `1167_MinimumCostConnectSticks.py`
+
+- **Backtracking & Recursion**: `17_LetterCombinationsOfPhoneNum.py`, `22_GenerateParentheses.py`, `39_CombinationSum.py`, `46_Permutations.py`, `77_Combinations.py`, `78_Subsets.py`, `216_CombinationSum3.py`
+
+- **Greedy**: `881_FewestNumOfBoatsToSavePeople.py`, `1710_MaximizeUnitsOnTruck.py`, `1481_LeastUniqueIntsAfterKremovals.py`, `1196_HowManyApplesCanPutInBasket.py`, `1189_MaxNumberOfBalloons.py`
+
+- **Stack & Queue**: `739_DailyTemperatures.py`, `844_BackspaceStringCompare.py`, `1047_RemoveAdjacentDuplicates.py`, `1544_MakeStringGreat.py`
+
+- **Hash Table & Counting**: `217_ContainsDuplicates.py`, `169_MajorityElement.py`, `49_GroupAnagrams.py`, `771_JewelsAndStones.py`, `1832_IsPangram.py`, `1941_AllCharsEqualOccurences.py`, `1133_LargestUniqueNumber.py`, `1426_CountingElements.py`
+
+- **Math & Number Theory**: `204_CountPrimes.py`, `367_ValidPerfectSquare.py`, `1323_Max69Number.py`, `1732_FindHighestAltitude.py`, `1433_MinValueGetPosStepByStepSum.py`
+
+- **Matrix & 2D Arrays**: `542_01Matrix.py`, `1380_LuckyNumsInMatrix.py`, `2352_EqualColumnAndRowPairs.py`
+
+- **String Manipulation**: `125_ValidPalindrome.py`, `468_ValidateIPaddress.py`, `392_IsSubsequence.py`, `433_MinimumGeneticMutation.py`, `1544_MakeStringGreat.py`, `1047_RemoveAdjacentDuplicates.py`
 
 ### 🛠️ Utility Files
 
