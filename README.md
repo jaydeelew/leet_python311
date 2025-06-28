@@ -11,6 +11,9 @@ A comprehensive collection of my solutions to LeetCode problems from their Inter
 - [Usage](#usage)
 - [File Naming Convention](#file-naming-convention)
 - [Categories](#categories)
+- [Algorithm Categories](#algorithm-categories)
+- [Utility Files](#utility-files)
+- [Code Snippets](#code-snippets)
 - [Key Features](#key-features)
 - [License](#license)
 
