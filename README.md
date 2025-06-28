@@ -57,7 +57,6 @@ leet_python311/
 │   ├── Timer.py
 │   ├── Formatting.py
 │   └── TextEffects.py
-├── 📋 requirements.txt            # Python dependencies
 └── 📖 README.md                   # This file
 ```
 
@@ -65,7 +64,6 @@ leet_python311/
 
 - **Python Version**: 3.11+ (recommended)
 - **Operating System**: Linux, macOS, or Windows
-- **Package Manager**: pip
 
 ## 🚀 Installation
 
@@ -83,10 +81,7 @@ leet_python311/
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-3. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+3. **Ready to use!** No additional dependencies required.
 
 ## 💻 Usage
 
