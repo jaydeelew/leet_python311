@@ -290,6 +290,13 @@ adj_list = {
 # Output: 3
 print(maxDepthUndirected(adj_list))
 
+# 0. First True
+# Find the first True in a sorted boolean array and return it's index.
+# If there are no True elements, return -1.
+def firstTrue(bools: list[bool]) -> int:
+arr = [False, False, True, True, True]
+# Output: 2
+
 # 206. Reverse Linked List
 # Reverse a singly linked list and return the head of the reversed list
 def reverseLinkedList(one):
