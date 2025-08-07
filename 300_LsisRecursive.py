@@ -20,7 +20,7 @@ def lsisRecursive(nums: list[int]) -> int:
                 # i is included by adding 1 with dp(j) + 1 below
                 ans = max(ans, dp(j) + 1)
         # memo[i] is assigned 1 if there was no previous num[j] less than num[i],
-        # since the only subsequence is the current element.
+        # since the current element is the only element in the subsequence.
         memo[i] = ans
         return ans
 

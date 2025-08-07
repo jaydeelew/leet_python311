@@ -22,6 +22,7 @@ def findMin(nums: list[int]) -> int:
 
     while left <= right:
         mid = (left + right) // 2
+        # same as: if arr[mid] <= arr[-1]:
         if isLessThanOrEqualToLastElement(nums[mid], last):
             curr_min = nums[mid]
             right = mid - 1

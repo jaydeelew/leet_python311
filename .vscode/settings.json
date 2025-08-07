@@ -7,10 +7,4 @@
         "--max-line-length=133"
     ],
     "python.REPL.enableREPLSmartSend": false,
-#    "github.copilot.enable": {
-#        "*": true,
-#        "plaintext": false,
-#        "markdown": false,
-#        "scminput": false
-    },
 }
