@@ -39,6 +39,7 @@ def lsisOptimal(nums: list[int]) -> int:
                 # num is less than or equal to tails[mid], so we search in the left half
                 # and keep mid as a potential position.
                 right = mid
+            # left and right will converge to the position where num can be placed.
 
         # If left == len(tails), we're extending the longest subsequence
         if left == len(tails):
