@@ -1,9 +1,34 @@
 # 78. Subsets
 # Given an integer array nums of unique elements, return all possible subsets (the power set).
 # The solution set must not contain duplicate subsets. Return the solution in any order.
-from itertools import subsets
 
 
+from itertools import combinations
+
+
+# Uses Python's built-in itertools.combinations for optimal C-level performance
+def subsets_itertools(nums):
+    subsets = []
+    # Generate all combinations of all possible lengths (0 to len(nums))
+    for length in range(len(nums) + 1):
+        subsets.extend(combinations(nums, length))
+
+    # Convert tuples to lists if needed
+    return [list(subset) for subset in subsets]
+
+
+# Iteratively builds subsets by adding each element to all existing subsets
+def subsets_cascading(nums):
+    subsets = [[]]
+
+    for num in nums:
+        # Double the current subsets by adding the new number to each existing subset
+        subsets += [curr + [num] for curr in subsets]
+
+    return subsets
+
+
+# Creates subsets by incrementally adding each number to all existing subsets
 def subsets_iterative(nums):
     ans = [[]]  # Start with empty subset
 
@@ -18,6 +43,7 @@ def subsets_iterative(nums):
     return ans
 
 
+# Generates subsets using recursive backtracking approach
 def subsets_backtrack(nums):
     def bt(start_index, curr_combo):
         # We need a copy and not a reference
@@ -45,4 +71,6 @@ nums = [1, 2, 3]
 
 
 print(subsets_iterative(nums))
+print(subsets_cascading(nums))
 print(subsets_backtrack(nums))
+print(subsets_itertools(nums))
