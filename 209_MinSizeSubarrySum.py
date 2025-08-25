@@ -1,22 +1,23 @@
 # 209. Minimum Size Subarray Sum
 # Given an array of positive integers nums and a positive integer target, return the minimal length of a
-# subarray whose sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+# subarray whose window_sum is greater than or equal to target. If there is no such subarray, return 0 instead.
 
 
 def minSubArrayLen(target: int, nums: list[int]) -> int:
-    left = runningSum = 0
-    minlength = float("inf")
-    for right in range(len(nums)):
-        runningSum += nums[right]
-        # keep moving left window/subarray boundary until statement is not true
-        while runningSum >= target:
-            currlength = right - left + 1
-            # record shortest window with sum greater than or equal to target
-            minlength = min(currlength, minlength)
-            runningSum -= nums[left]
+    left = window_sum = 0
+    n = len(nums)
+    shortest = n + 1
+
+    for right in range(n):
+        window_sum += nums[right]
+        while window_sum >= target:
+            shortest = min(shortest, right - left + 1)
+            if shortest == 1:
+                return 1
+            window_sum -= nums[left]
             left += 1
-    # if the sum of all elements in nums[] is less than target, return 0
-    return minlength if sum(nums) >= target else 0  # type: ignore
+
+    return shortest if shortest < n + 1 else 0
 
 
 nums = [2, 3, 1, 2, 4, 3]

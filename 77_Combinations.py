@@ -5,10 +5,12 @@
 from itertools import combinations
 
 
+# C-optimized built-in function
 def combine_1(n, k):
     return list(combinations(range(1, n + 1), k))
 
 
+# Iterartve approach
 def combine_2(n, k):
     # Use iterative approach with binary sorted state
     result = []
@@ -34,20 +36,27 @@ def combine_2(n, k):
     return result
 
 
+# Bactracking with pruning
 def combine_3(n, k):
-    def bt(si, curr_combo):
+    def bt(start, curr_combo):
+        # Early pruning: if we can't possibly fill the remaining slots
+        remaining_needed = k - len(curr_combo)
+        remaining_available = n - start + 1
+
+        if remaining_needed > remaining_available:
+            return
 
         if len(curr_combo) == k:
             ans.append(curr_combo[:])
             return
 
-        for i in range(si, n):
-            curr_combo.append(i + 1)
+        for i in range(start, n + 1):
+            curr_combo.append(i)
             bt(i + 1, curr_combo)
             curr_combo.pop()
 
     ans = []
-    bt(0, [])
+    bt(1, [])
     return ans
 
 

@@ -1,0 +1,85 @@
+How to Use Recursive Tracer to Generate SVG Call Trees
+========================================================
+
+The recursive_tracer.py module helps you visualize how recursive functions work by creating
+an SVG diagram showing the call tree with arguments and return values.
+
+Prerequisites:
+--------------
+1. Install Graphviz (required for SVG generation):
+   sudo apt install graphviz
+
+Steps to Trace a Recursive Function:
+------------------------------------
+
+1. Import the tracer in your Python file:
+   ```python
+   from recursive_tracer import trace_calls, tracer
+   ```
+
+2. Add the @trace_calls decorator to the recursive function you want to trace:
+   ```python
+   @trace_calls
+   def your_recursive_function(args):
+       # your recursive code here
+       pass
+   ```
+
+3. Before running the function, reset the tracer to clear any previous data:
+   ```python
+   tracer.reset()
+   ```
+
+4. Call your recursive function normally:
+   ```python
+   print(your_recursive_function(input_data))
+   ```
+
+5. Generate the SVG visualization:
+   ```python
+   tracer.generate_svg("my_function_trace")
+   ```
+
+Generic Example:
+---------------
+
+# In your_file.py:
+from recursive_tracer import trace_calls, tracer
+
+@trace_calls
+def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+@trace_calls  
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n-1)
+
+# Usage:
+tracer.reset()  # Clear any previous traces
+result = fibonacci(5)
+print(f"fibonacci(5) = {result}")
+tracer.generate_svg("fibonacci_trace")
+
+# For a different function:
+tracer.reset()  # Clear previous traces
+result = factorial(4)
+print(f"factorial(4) = {result}")
+tracer.generate_svg("factorial_trace")
+
+Output:
+-------
+- Creates "fibonacci_trace.svg" and "factorial_trace.svg" files in the current directory
+- Open the SVG file in VS Code or a web browser to view the call tree
+- Each node shows: function_name(arguments) -> return_value
+- Arrows show the parent-child relationship between recursive calls
+
+Tips:
+-----
+- Use small input sizes for complex recursive functions to keep the tree readable
+- The SVG shows the exact order of recursive calls and their relationships
+- Return values are truncated if too long to keep the diagram clean
+- You can trace multiple functions by adding @trace_calls to each one

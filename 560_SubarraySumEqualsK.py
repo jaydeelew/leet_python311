@@ -6,19 +6,20 @@
 
 
 def subarraySumEqualsK(nums, k):
-    # The prefix_sum_counts keeps track of the number of times a running sum,
-    # from any index up to and including the current index, equalling k occurs.
-    # The number of times a prefix-sum of 0 occurs is at least 1 for the empty list.
-    # If the current prefix sum - k had been seen before in the prefix_sum_counts,
-    # we add that number of times seen to the answer.
+    # prefix_sum_counts maps prefix_sum -> how many times we've seen it so far.
+    # A subarray ending at the current index sums to k iff (prefix_sum - k) appeared before;
+    # add that frequency to the answer.
+    # Seed with {0: 1} to count subarrays that start at index 0 (empty prefix).
     prefix_sum_counts = {0: 1}
     ans = prefix_sum = 0
 
     for num in nums:
         prefix_sum += num
-        check_if_prefix_sum_exists = prefix_sum - k
-        if check_if_prefix_sum_exists in prefix_sum_counts:
-            ans += prefix_sum_counts[check_if_prefix_sum_exists]
+        does_this_prefix_sum_exist = prefix_sum - k
+        if does_this_prefix_sum_exist in prefix_sum_counts:
+            # If the difference exists, it means there are subarrays ending at the current index
+            # that sum to k, so we add the count of those subarrays to ans.
+            ans += prefix_sum_counts[does_this_prefix_sum_exist]
         # this line must come after ans is updated or there may be an error (e.g. nums = [0], k = 0 would return 2)
         prefix_sum_counts[prefix_sum] = prefix_sum_counts.get(prefix_sum, 0) + 1
     return ans

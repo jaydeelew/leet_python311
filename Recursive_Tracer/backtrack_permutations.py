@@ -1,15 +1,11 @@
 # 46. Permutations
 # Given an array of distinct integers, return all the possible permutations.
-from itertools import permutations
+from recursive_tracer import trace_calls, tracer
 
 
-# Most efficient solution using Python's built-in itertools module
-def permutations_1(nums):
-    return list(permutations(nums))
-
-
-# Use boolean array to track used elements
-def permutations_2(nums):
+@trace_calls
+def permuts(nums):
+    @trace_calls
     def bt(path):
         if len(path) == len(nums):
             ans.append(path[:])
@@ -30,13 +26,7 @@ def permutations_2(nums):
 
 
 nums = [1, 2, 3]
-# Output: [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
 
-# nums = [0, 1]
-# # Output: [[0,1],[1,0]]
-
-# nums = [1]
-# # Output: [[1]]
-
-print(permutations_1(nums))
-print(permutations_2(nums))
+tracer.reset()
+print(permuts(nums))
+tracer.generate_svg("backtrack_permutations")
