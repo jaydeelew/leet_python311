@@ -70,7 +70,7 @@ nums = [1, 2, 3]
 # Output: [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
 
 
+print(subsets_itertools(nums))
 print(subsets_iterative(nums))
 print(subsets_cascading(nums))
 print(subsets_backtrack(nums))
-print(subsets_itertools(nums))
