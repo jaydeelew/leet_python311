@@ -3,6 +3,8 @@
 # return a boolean array that represents the answer to each query.
 # A query is true if the sum of the subarray from x to y is less than limit, or false otherwise.
 
+# This line added for testing purposes.
+
 
 def answerQueries(nums, queries, limit):
     # build a prefix sum
